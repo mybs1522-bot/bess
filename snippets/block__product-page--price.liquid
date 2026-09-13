@@ -20,6 +20,35 @@
     
     {% assign current_variant = product.selected_or_first_available_variant %}
     {% assign s_type = settings.saleType | default: 'percent' %}
+
+    <div class="product-price-curriculum-lead">
+      A visual guide to understanding home design. Books to Design <strong>Kitchen</strong>, <strong>Washroom</strong>, <strong>Living</strong>, <strong>Bedroom</strong>, <strong>Exteriors &amp; Landscapes</strong>.
+    </div>
+
+    <style>
+    .product-price-curriculum-lead {
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 14.5px;
+      line-height: 1.55;
+      color: #4b5563;
+      margin-top: 4px;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+    .product-price-curriculum-lead strong {
+      font-weight: 700;
+      color: #111827;
+    }
+    @media (max-width: 640px) {
+      .product-price-curriculum-lead {
+        font-size: 13.5px;
+        line-height: 1.5;
+        margin-top: 2px;
+        margin-bottom: 10px;
+      }
+    }
+    </style>
+
     <div 
     class="product__price--holder product__price--{{block.id}}
     font__family--{{-block.settings.fontFamily}} font__size--{{-block.settings.fontSize}} 
