@@ -54,7 +54,7 @@
           "type": "productPageTab",
           "settings": {
             "showInline": false,
-            "heading": "About The Book",
+            "heading": "About",
             "content": "description",
             "metafieldNS": "global",
             "metafieldKey": "",
@@ -62,35 +62,11 @@
             "customContent": "<p>150 pages. Hand-drawn diagrams. Verified clearances. The one resource on every designer's desk.</p>"
           }
         },
-        "tab_specs": {
-          "type": "productPageTab",
-          "settings": {
-            "showInline": false,
-            "heading": "Book Specifications",
-            "content": "custom",
-            "metafieldNS": "global",
-            "metafieldKey": "",
-            "page": "",
-            "customContent": "<div style=\"line-height: 1.8; font-size: 14px; color: #374151;\"><p><strong>Title:</strong> The Kitchen Design Book: Every Dimension. Every Detail.</p><p><strong>Page Count:</strong> 150 Precision Hand-Drawn Pages</p><p><strong>Format:</strong> Digital eBook (High-Res PDF) &amp; Optional Physical Hardcopy</p><p><strong>Compatibility:</strong> Mobile, Tablet, Desktop &amp; Printable Blueprints</p><p><strong>Includes:</strong> Working Triangle Rules, Cabinet Height Guides, Aisle Clearances, Electrical &amp; Lighting Layouts</p><p><strong>Guarantee:</strong> 30-Day 100% No-Regret Money-Back Guarantee</p><p><strong>Updates:</strong> Free Lifetime Digital Updates Included</p></div>"
-          }
-        },
-        "tab_author": {
-          "type": "productPageTab",
-          "settings": {
-            "showInline": false,
-            "heading": "About the Author",
-            "content": "custom",
-            "metafieldNS": "global",
-            "metafieldKey": "",
-            "page": "",
-            "customContent": "<div style=\"line-height: 1.8; font-size: 14px;\"><p>Written by professional architects and interior space planners with over 15 years of residential design experience.</p></div>"
-          }
-        },
         "tab_reviews": {
           "type": "productPageTab",
           "settings": {
             "showInline": false,
-            "heading": "Reader Reviews",
+            "heading": "Reviews",
             "content": "reviews",
             "metafieldNS": "global",
             "metafieldKey": "",
@@ -114,8 +90,6 @@
         "ppATC",
         "shop_pay",
         "tab_synopsis",
-        "tab_specs",
-        "tab_author",
         "tab_reviews",
         "trust_badges"
       ],
