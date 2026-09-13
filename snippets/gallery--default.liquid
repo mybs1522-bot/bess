@@ -2,15 +2,7 @@
     <button data-thumbnail_slide="-" class="thumbnail--slide hide-mobile" aria-label="Previous"><i class="uil uil-angle-left-b"></i></button>
 {% endif %}
 <div class="gallery__thumbnails hidden-scroll">
-    {% if product.images.size == 0 and product.media.size == 0 %}
-        <div class="slide--product book-cover-placeholder-wrap" data-bstr-slide>
-            <div class="book-cover-mockup">
-                <div class="book-cover-spine"></div>
-                <div>
-                    <span class="book-cover-badge">Hardcover Edition</span>
-                    <h2 class="book-cover-title">{{ product.title }}</h2>
-                    <div class="book-cover-divider"></div>
-                    <p class="book-cover-author">{% if product.vendor != blank %}{{ product.vendor }}{% else %}Author / Publisher Edition{% endif %}</p>
+    </p>
                 </div>
                 <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 12px; font-size: 11px; color: #a3e6d2;">
                     Collector's Release
@@ -62,6 +54,23 @@
     <button data-bstr-slider-button="+" class="slider__button slider__button--next hide-mobile" aria-label="Next"><i class="uil uil-angle-right-b"></i></button>
 {% endif %}
 <div class="slider--product" data-bstr-slider-height="auto" data-bstr-slider-orientation="horizontal" data-bstr-slide-holder="1" data-bstr-slider-current="0">
+    {% if product.images.size == 0 and product.media.size == 0 %}
+        <div class="slide--product book-cover-placeholder-wrap" data-bstr-slide>
+            <div class="book-cover-mockup">
+                <div class="book-cover-spine"></div>
+                <div>
+                    <span class="book-cover-badge">Hardcover Edition</span>
+                    <h2 class="book-cover-title">{{ product.title }}</h2>
+                    <div class="book-cover-divider"></div>
+                    <p class="book-cover-author">{% if product.vendor != blank %}{{ product.vendor }}{% else %}Author Edition{% endif %}</p>
+                </div>
+                <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 12px; font-size: 11px; color: #a3e6d2;">
+                    Collector's Release
+                </div>
+            </div>
+            <p class="book-cover-hint">Upload your book cover image in Shopify Admin &rarr; Products</p>
+        </div>
+    {% endif %}
     {% for image in product.images %}
         <div data-variants="|{% for var in image.variants %}{{var.options| join: '#' | escape}}|{% endfor %}" class="slide--product {% if isAutoZoom %}zoom{% endif %}" data-bstr-slide>
             <img height="{{image.height}}" width="{{image.width}}" loading="lazy"  class="lazyload {% if isAutoZoom %}image-zoom{% endif %}" alt="{{image.alt | escape}}" src="{{ image.src | img_url: '1280x' }}" data-zoom="{{ image | img_url: '1024x1024', scale: 2 }}">
