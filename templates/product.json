@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "breadcrumbs": {
@@ -48,18 +57,8 @@
         },
         "shop_pay": {
           "type": "productPageShopPay",
-          "settings": {}
-        },
-        "delivery_estimate": {
-          "type": "productPageLDelivery",
           "settings": {
-            "noMargin": false,
-            "icon": "",
-            "iconColor": "#138867",
-            "text": "<p><strong>Fast Dispatch:</strong> Delivered within %start%-%end% business days in protective packaging.</p>",
-            "start": "2",
-            "end": "4",
-            "textColor": "#474747"
+            "noMargin": false
           }
         },
         "tab_synopsis": {
@@ -67,7 +66,11 @@
           "settings": {
             "showInline": false,
             "heading": "Synopsis",
-            "content": "description"
+            "content": "description",
+            "metafieldNS": "global",
+            "metafieldKey": "",
+            "page": "",
+            "customContent": "<p>Add custom content here!</p>"
           }
         },
         "tab_specs": {
@@ -76,7 +79,10 @@
             "showInline": false,
             "heading": "Book Specifications",
             "content": "custom",
-            "customContent": "<div style=\"line-height: 1.8; font-size: 14px;\"><p><strong>Format Options:</strong> Hardcover, Paperback, eBook, Audiobook</p><p><strong>Language:</strong> English</p><p><strong>Condition:</strong> Brand New / First Edition</p><p><strong>Guarantee:</strong> 30-Day Hassle-Free Returns</p></div>"
+            "metafieldNS": "global",
+            "metafieldKey": "",
+            "page": "",
+            "customContent": "<div style=\"line-height: 1.8; font-size: 14px;\">\n<p><strong>Format Options:</strong> Hardcover, Paperback, eBook, Audiobook</p>\n<p><strong>Language:</strong> English</p>\n<p><strong>Condition:</strong> Brand New / First Edition</p>\n<p><strong>Guarantee:</strong> 30-Day Hassle-Free Returns</p>\n</div>"
           }
         },
         "tab_author": {
@@ -85,6 +91,9 @@
             "showInline": false,
             "heading": "About the Author",
             "content": "custom",
+            "metafieldNS": "global",
+            "metafieldKey": "",
+            "page": "",
             "customContent": "<div style=\"line-height: 1.8; font-size: 14px;\"><p>Discover the inspiration and craft behind the writing. Full biographical notes and author interview highlights.</p></div>"
           }
         },
@@ -93,20 +102,18 @@
           "settings": {
             "showInline": false,
             "heading": "Reader Reviews",
-            "content": "reviews"
+            "content": "reviews",
+            "metafieldNS": "global",
+            "metafieldKey": "",
+            "page": "",
+            "customContent": "<p>Add custom content here!</p>"
           }
         },
         "trust_badges": {
           "type": "productPageBadge",
           "settings": {
             "noMargin": false,
-            "badge": "shopify://shop_images/2adge11.png"
-          }
-        },
-        "social_share": {
-          "type": "productPageShare",
-          "settings": {
-            "noMargin": false
+            "imageAlt": ""
           }
         }
       },
@@ -117,13 +124,11 @@
         "ppSwatch",
         "ppATC",
         "shop_pay",
-        "delivery_estimate",
         "tab_synopsis",
         "tab_specs",
         "tab_author",
         "tab_reviews",
-        "trust_badges",
-        "social_share"
+        "trust_badges"
       ],
       "settings": {
         "view": "default",
