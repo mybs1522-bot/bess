@@ -7,6 +7,9 @@
             --><button class="quantity--input__button quantity--input__decr" onclick="BoosterTheme.cart.quantityHandler(event, true, false)">+</button>
         </div>
         {% render 'add-to-cart-button', type: 'secondary', price: product.price %}
+        <button type="button" onclick="window.openDigitalCheckout ? window.openDigitalCheckout('{{product.selected_or_first_available_variant.id}}') : null" class="button button--primary button--filled button--primary__filled button--full-width digital-buy-btn" style="margin-top: 10px; background: #ea580c !important; border: none; border-radius: 14px; font-weight: 800; padding: 14px 20px; color: #fff !important; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(234, 88, 12, 0.35);">
+          <span>⚡ Get Instant Access (Instant PDF)</span>
+        </button>
         {% if settings.dynamicCheckout %}
             <div data-dynamic-button="{{product.id}}"  class="col-12 no-gap checkout--dynamic">
             {{ form | payment_button }}
