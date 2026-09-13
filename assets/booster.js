@@ -2045,12 +2045,23 @@ class ProductSlider extends BstrSlider {
                 if(!ch) continue
                 if(ch.clientHeight > max) max = ch.clientHeight
             }
-            if(max) slider.closest('[data-bstr-ppslider]').style.maxHeight = `${max}px`
+            let holder = slider.closest('[data-bstr-ppslider]');
+            if(holder){
+                let topBar = holder.querySelector('.arch-image-top-bar');
+                let extra = 0;
+                if(topBar){
+                    let style = window.getComputedStyle(topBar);
+                    extra = topBar.offsetHeight + parseFloat(style.marginTop || 0) + parseFloat(style.marginBottom || 0);
+                }
+                if(max) holder.style.maxHeight = `${max + extra}px`;
+            }
         } else {
             slider.closest('[data-bstr-ppslider]').style.maxHeight = null
         }
 
-        document.querySelector(`[data-bstr-slider-thumb="${current[0].index}"][data-bstr-slider-for="${id}"]`).classList.add('bstrSlider__thumb--active')
+        let activeThumb = document.querySelector(`[data-bstr-slider-thumb="${current[0].index}"][data-bstr-slider-for="${id}"]`);
+        if(activeThumb) activeThumb.classList.add('bstrSlider__thumb--active');
+        if(typeof this._moveThumbTo === 'function') this._moveThumbTo({index: current[0].index});
     }
 }
 

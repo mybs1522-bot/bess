@@ -911,4 +911,120 @@ shopify-payment-terms {
     margin-bottom: 8px !important;
   }
 }
+
+/* 12. Ultra-Smooth Product Gallery & Zero-Overlap System */
+@media (max-width: 789px) {
+  .gallery.gallery__default {
+    display: flex !important;
+    flex-direction: column-reverse !important;
+    gap: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    width: 100% !important;
+  }
+
+  .slider--product__holder {
+    position: relative !important;
+    width: 100% !important;
+    max-height: none !important; /* Overrides broken JS cap preventing the 38px image overlap */
+    overflow: visible !important;
+    margin-bottom: 16px !important; /* Clean breathing room between main image and thumbnails */
+    padding: 0 !important;
+  }
+
+  .slider--product {
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    border-radius: 16px !important;
+    background: #ffffff !important;
+  }
+
+  .slide--product {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    flex: 0 0 100% !important;
+    scroll-snap-align: center !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    background: #ffffff !important;
+  }
+
+  .slide--product img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 480px !important;
+    object-fit: contain !important;
+    border-radius: 14px !important;
+    display: block !important;
+    margin: 0 auto !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
+    transition: transform 0.25s ease !important;
+  }
+
+  /* Sleek, modern thumbnail strip without clunky browser scrollbar */
+  .gallery__thumbnails {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 9px !important;
+    width: 100% !important;
+    max-height: none !important;
+    padding: 6px 2px 10px 2px !important;
+    margin: 0 !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-snap-type: x mandatory !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+
+  .gallery__thumbnails::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  .gallery__thumbnail {
+    flex: 0 0 68px !important;
+    width: 68px !important;
+    height: 68px !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    border: 2px solid #e5e7eb !important;
+    background: #f8fafc !important;
+    opacity: 0.65 !important;
+    cursor: pointer !important;
+    box-sizing: border-box !important;
+    scroll-snap-align: start !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  .gallery__thumbnail img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 9px !important;
+    display: block !important;
+  }
+
+  .gallery__thumbnail:hover {
+    opacity: 0.9 !important;
+    border-color: #cbd5e1 !important;
+  }
+
+  .gallery__thumbnail.bstrSlider__thumb--active {
+    opacity: 1 !important;
+    border-color: #ea580c !important;
+    transform: scale(1.05) !important;
+    box-shadow: 0 0 0 2px rgba(234, 88, 12, 0.25), 0 4px 12px rgba(234, 88, 12, 0.18) !important;
+  }
+}
 </style>

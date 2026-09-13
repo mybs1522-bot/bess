@@ -96,7 +96,7 @@
     window.addEventListener('DOMContentLoaded', () => {
         ($ => {
             var currentScroll = 0;
-            var thumbnailCount = $('.gallery__thumbnail').length
+            var thumbnailCount = $('.gallery__thumbnail').length;
 
             $('.thumbnail--slide').click(function(event) {
                 if($(this).data('thumbnail_slide') == '+') {
@@ -111,16 +111,47 @@
                     }, 200);
                 } else if ($(this).data('thumbnail_slide') == '-') {
                     if(currentScroll <= 0) {
-                            currentScroll = 0;
-                        } else {
-                            currentScroll = currentScroll - 86;
-                        }
-                        $('.gallery__thumbnails').animate({
-                            scrollTop: currentScroll
-                        }, 200);
+                        currentScroll = 0;
+                    } else {
+                        currentScroll = currentScroll - 86;
                     }
-            })
-        })(jQuery)
+                    $('.gallery__thumbnails').animate({
+                        scrollTop: currentScroll
+                    }, 200);
+                }
+            });
+
+            // Smooth Auto-Center Active Thumbnail on Mobile
+            const thumbHolder = document.querySelector('.gallery__thumbnails');
+            if (thumbHolder) {
+                const centerActiveThumb = (target) => {
+                    if (!target || window.innerWidth >= 790) return;
+                    const scrollTarget = target.offsetLeft - (thumbHolder.offsetWidth / 2) + (target.offsetWidth / 2);
+                    thumbHolder.scrollTo({ left: Math.max(0, scrollTarget), behavior: 'smooth' });
+                };
+
+                const observer = new MutationObserver((mutations) => {
+                    mutations.forEach((mutation) => {
+                        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                            const target = mutation.target;
+                            if (target && target.classList && target.classList.contains('bstrSlider__thumb--active')) {
+                                centerActiveThumb(target);
+                            }
+                        }
+                    });
+                });
+
+                document.querySelectorAll('.gallery__thumbnail').forEach(th => {
+                    observer.observe(th, { attributes: true });
+                });
+
+                // Check initial active thumbnail
+                const initialActive = thumbHolder.querySelector('.bstrSlider__thumb--active');
+                if (initialActive) {
+                    setTimeout(() => centerActiveThumb(initialActive), 100);
+                }
+            }
+        })(jQuery);
     });
 </script>
   
