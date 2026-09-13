@@ -1,0 +1,474 @@
+{% comment %}
+  Sticky Bottom "Buy Now" Bar with Evergreen Timer (7h 37m 40s)
+  Slides up smoothly when the user scrolls down to the "About" section.
+{% endcomment %}
+
+<div id="arch-sticky-buy-bar" class="arch-sticky-bar" aria-hidden="true">
+  <div class="arch-sticky-bar__inner">
+    
+    <!-- Left: Product details & Evergreen Urgency Timer -->
+    <div class="arch-sticky-bar__info">
+      <div class="arch-sticky-bar__meta">
+        <span class="arch-sticky-bar__title">{{ product.title | truncate: 32 }}</span>
+        <div class="arch-sticky-bar__pricing">
+          <span class="arch-sticky-bar__price" id="archStickyPrice">
+            {{ product.selected_or_first_available_variant.price | money }}
+          </span>
+          {% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
+            <span class="arch-sticky-bar__compare" id="archStickyCompare">
+              {{ product.selected_or_first_available_variant.compare_at_price | money }}
+            </span>
+          {% endif %}
+          <span class="arch-sticky-bar__tag">Digital Edition</span>
+        </div>
+      </div>
+
+      <!-- Evergreen Countdown Timer (7 Hour 37 Min 40 Sec) -->
+      <div class="arch-sticky-timer">
+        <span class="arch-timer-pulse-dot"></span>
+        <span class="arch-timer-label">Offer ends in:</span>
+        <div class="arch-timer-display">
+          <span class="arch-timer-box" id="archStickyHours">07</span><span class="arch-timer-sep">:</span><!--
+          --><span class="arch-timer-box" id="archStickyMinutes">37</span><span class="arch-timer-sep">:</span><!--
+          --><span class="arch-timer-box" id="archStickySeconds">40</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: High-Converting Buy Now Action Button -->
+    <div class="arch-sticky-bar__action">
+      <button type="button" id="archStickyBuyBtn" class="arch-sticky-btn" onclick="executeStickyBuyNow(this)">
+        <svg class="arch-sticky-btn__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        <span class="arch-sticky-btn__text">Buy Now</span>
+        <svg class="arch-sticky-btn__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<style>
+/* ─── STICKY BOTTOM BUY NOW BAR STYLING ─── */
+.arch-sticky-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 99999;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid #e2e8f0;
+  box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.08), 0 -1px 3px rgba(0, 0, 0, 0.04);
+  transform: translateY(115%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+  box-sizing: border-box;
+}
+
+.arch-sticky-bar.arch-sticky-bar--visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.arch-sticky-bar__inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  box-sizing: border-box;
+}
+
+/* Info Section */
+.arch-sticky-bar__info {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex: 1;
+  min-width: 0;
+}
+
+.arch-sticky-bar__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.arch-sticky-bar__title {
+  font-family: 'Space Grotesk', -apple-system, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: -0.01em;
+}
+
+.arch-sticky-bar__pricing {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1;
+}
+
+.arch-sticky-bar__price {
+  font-family: 'Space Grotesk', -apple-system, sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: #ea580c;
+}
+
+.arch-sticky-bar__compare {
+  font-size: 12px;
+  font-weight: 600;
+  color: #94a3b8;
+  text-decoration: line-through;
+}
+
+.arch-sticky-bar__tag {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #059669;
+  background: #ecfdf5;
+  padding: 2px 7px;
+  border-radius: 9999px;
+  border: 1px solid #a7f3d0;
+}
+
+/* Evergreen Countdown Timer (Premium & Effective) */
+.arch-sticky-timer {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  box-shadow: 0 1px 3px rgba(234, 88, 12, 0.08);
+  flex-shrink: 0;
+}
+
+.arch-timer-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ea580c;
+  display: inline-block;
+  animation: archTimerPulse 1.6s infinite ease-in-out;
+  flex-shrink: 0;
+}
+
+@keyframes archTimerPulse {
+  0% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(234, 88, 12, 0.7);
+  }
+  70% {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 6px rgba(234, 88, 12, 0);
+  }
+  100% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(234, 88, 12, 0);
+  }
+}
+
+.arch-timer-label {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #9a3412;
+}
+
+.arch-timer-display {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-family: 'Space Grotesk', -apple-system, monospace;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #ea580c;
+  letter-spacing: -0.01em;
+}
+
+.arch-timer-box {
+  display: inline-block;
+  min-width: 17px;
+  text-align: center;
+}
+
+.arch-timer-sep {
+  opacity: 0.6;
+  margin: 0 -1px;
+}
+
+/* Action Button: Buy Now with Icon */
+.arch-sticky-bar__action {
+  flex-shrink: 0;
+}
+
+.arch-sticky-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-family: 'Space Grotesk', -apple-system, sans-serif;
+  font-size: 14.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 10px 22px;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.35);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.arch-sticky-btn:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 6px 18px rgba(234, 88, 12, 0.45);
+  background: linear-gradient(135deg, #f97316 0%, #c2410c 100%);
+}
+
+.arch-sticky-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.arch-sticky-btn__icon {
+  flex-shrink: 0;
+  stroke: #ffffff;
+}
+
+.arch-sticky-btn__arrow {
+  flex-shrink: 0;
+  stroke: #ffffff;
+  transition: transform 0.2s ease;
+}
+
+.arch-sticky-btn:hover .arch-sticky-btn__arrow {
+  transform: translateX(2px);
+}
+
+/* Spinner for click state */
+.arch-spinner {
+  animation: archSpin 0.75s linear infinite;
+  stroke: #ffffff;
+}
+@keyframes archSpin {
+  100% { transform: rotate(360deg); }
+}
+
+/* ─── MOBILE RESPONSIVE TWEAKS ─── */
+@media (max-width: 640px) {
+  .arch-sticky-bar__inner {
+    padding: 8px 14px;
+    gap: 10px;
+  }
+  .arch-sticky-bar__info {
+    gap: 8px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .arch-sticky-bar__title {
+    display: none; /* Keep clean on small mobile */
+  }
+  .arch-sticky-bar__pricing {
+    gap: 6px;
+  }
+  .arch-sticky-bar__price {
+    font-size: 15px;
+  }
+  .arch-sticky-timer {
+    padding: 3px 8px;
+    gap: 5px;
+  }
+  .arch-timer-label {
+    font-size: 9px;
+  }
+  .arch-timer-display {
+    font-size: 11px;
+  }
+  .arch-sticky-btn {
+    padding: 9px 16px;
+    font-size: 13.5px;
+    gap: 6px;
+  }
+  .arch-sticky-btn__icon {
+    width: 15px;
+    height: 15px;
+  }
+  .arch-sticky-btn__arrow {
+    display: none;
+  }
+}
+</style>
+
+<script>
+(function() {
+  /* 1. EVERGREEN COUNTDOWN TIMER (7 Hours 37 Min 40 Sec) */
+  const DURATION_SECONDS = 7 * 3600 + 37 * 60 + 40; // 27,460 seconds
+  const STORAGE_KEY = 'arch_evergreen_deadline_v1';
+
+  function getDeadline() {
+    let stored = localStorage.getItem(STORAGE_KEY);
+    const now = Date.now();
+    if (!stored || isNaN(parseInt(stored, 10)) || parseInt(stored, 10) <= now) {
+      const newDeadline = now + DURATION_SECONDS * 1000;
+      localStorage.setItem(STORAGE_KEY, newDeadline);
+      return newDeadline;
+    }
+    return parseInt(stored, 10);
+  }
+
+  let deadline = getDeadline();
+
+  function updateTimer() {
+    const now = Date.now();
+    let diff = Math.max(0, Math.floor((deadline - now) / 1000));
+
+    if (diff <= 0) {
+      // Evergreen reset once expired
+      deadline = now + DURATION_SECONDS * 1000;
+      localStorage.setItem(STORAGE_KEY, deadline);
+      diff = DURATION_SECONDS;
+    }
+
+    const h = Math.floor(diff / 3600);
+    const m = Math.floor((diff % 3600) / 60);
+    const s = diff % 60;
+
+    const elH = document.getElementById('archStickyHours');
+    const elM = document.getElementById('archStickyMinutes');
+    const elS = document.getElementById('archStickySeconds');
+
+    const pad = n => (n < 10 ? '0' + n : '' + n);
+
+    if (elH) elH.textContent = pad(h);
+    if (elM) elM.textContent = pad(m);
+    if (elS) elS.textContent = pad(s);
+  }
+
+  setInterval(updateTimer, 1000);
+  updateTimer();
+
+  /* 2. SCROLL DETECTION: SHOW WHEN USER REACHES ABOUT SECTION */
+  function getAboutSection() {
+    return document.getElementById('product-tabs-section') ||
+           document.querySelector('.tab__container--product') ||
+           document.querySelector('.book-about-editorial') ||
+           document.querySelector('.lp6-hero') ||
+           document.getElementById('tab--tab_synopsis') ||
+           document.querySelector('.product--tab__content') ||
+           document.querySelector('.product-description-avada');
+  }
+
+  function handleScrollVisibility() {
+    const bar = document.getElementById('arch-sticky-buy-bar');
+    if (!bar) return;
+
+    const aboutEl = getAboutSection();
+    if (!aboutEl) return;
+
+    const rect = aboutEl.getBoundingClientRect();
+    // Show when top of About section enters upper 75% of viewport
+    const triggerOffset = window.innerHeight * 0.75;
+
+    if (rect.top <= triggerOffset) {
+      bar.classList.add('arch-sticky-bar--visible');
+      bar.setAttribute('aria-hidden', 'false');
+    } else {
+      bar.classList.remove('arch-sticky-bar--visible');
+      bar.setAttribute('aria-hidden', 'true');
+    }
+  }
+
+  window.addEventListener('scroll', handleScrollVisibility, { passive: true });
+  window.addEventListener('resize', handleScrollVisibility, { passive: true });
+  document.addEventListener('DOMContentLoaded', handleScrollVisibility);
+  setTimeout(handleScrollVisibility, 500);
+
+  /* 3. SYNC PRICE WITH SWATCH / VARIANT CHANGES */
+  document.addEventListener('change', function(e) {
+    if (e.target && (e.target.matches('[data-swatch-index]') || e.target.name === 'id')) {
+      syncPrice();
+    }
+  });
+
+  function syncPrice() {
+    setTimeout(function() {
+      const mainPrice = document.querySelector('.product__price .price--regular') ||
+                        document.querySelector('.product__price') ||
+                        document.querySelector('.product-page__price');
+      if (mainPrice) {
+        const text = mainPrice.innerText.trim().split('\n')[0];
+        const stickyPrice = document.getElementById('archStickyPrice');
+        if (stickyPrice && text) stickyPrice.textContent = text;
+      }
+    }, 100);
+  }
+
+  /* 4. EXECUTE BUY NOW ACTION (Direct 1-Click to Checkout) */
+  window.executeStickyBuyNow = function(btn) {
+    if (!btn) btn = document.getElementById('archStickyBuyBtn');
+    if (btn) {
+      btn.style.opacity = '0.85';
+      btn.style.pointerEvents = 'none';
+      const textSpan = btn.querySelector('.arch-sticky-btn__text');
+      if (textSpan) textSpan.textContent = 'Redirecting...';
+    }
+
+    // Get current active variant ID
+    let variantId = null;
+    const variantInput = document.querySelector('[data-bstr-variant-input]') ||
+                         document.querySelector('input[name="id"]');
+    if (variantInput && variantInput.value) {
+      variantId = variantInput.value;
+    } else {
+      variantId = '{{ product.selected_or_first_available_variant.id }}';
+    }
+
+    // Direct checkout payload
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: variantId, quantity: 1 })
+    })
+    .then(function() {
+      window.location.href = '/checkout';
+    })
+    .catch(function() {
+      // Fallback
+      const mainForm = document.querySelector('form[action*="/cart/add"]');
+      if (mainForm) {
+        mainForm.submit();
+      } else {
+        window.location.href = '/cart/' + variantId + ':1';
+      }
+    });
+  };
+
+})();
+</script>
