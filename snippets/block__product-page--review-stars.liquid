@@ -21,7 +21,7 @@
       {% assign rating_count = "2,324" %}
       {% assign score = "4.9" %}
   {% endcase %}
-  <div class="book-editorial-rating-wrapper" onclick="document.querySelector('[onclick*=\'tab--\']:last-of-type')?.click();" style="cursor: pointer;">
+  <div class="book-editorial-rating-wrapper" onclick="scrollToProductReviews(event);" style="cursor: pointer;" title="Read {{ rating_count }} verified reviews">
     <div class="rating-stars-gold">
       <span>★</span><span>★</span><span>★</span><span>★</span><span class="star-half">★</span>
     </div>
@@ -31,3 +31,56 @@
     <span class="rating-bestseller-badge">Verified Readers</span>
   </div>
 </div>
+
+<script>
+  function scrollToProductReviews(event) {
+    if (event) event.preventDefault();
+    
+    // 1. Find and activate Reviews tab
+    var tabs = document.querySelectorAll('.tab--product');
+    var reviewsTab = null;
+    tabs.forEach(function(tab) {
+      if (tab.textContent.toLowerCase().indexOf('review') !== -1) {
+        reviewsTab = tab;
+      }
+    });
+
+    if (reviewsTab) {
+      reviewsTab.click();
+    } else {
+      var tabByAttr = document.querySelector('[onclick*="tab_reviews"]') || document.querySelector('[onclick*="tab--"]:last-of-type');
+      if (tabByAttr) tabByAttr.click();
+    }
+
+    // 2. Ensure content container is active/displayed
+    var reviewContainer = document.getElementById('tab--tab_reviews');
+    if (reviewContainer) {
+      reviewContainer.classList.add('tab--show');
+    }
+
+    // 3. Smooth scroll with offset for sticky header
+    setTimeout(function() {
+      var target = document.getElementById('bstr-reviews-component') || reviewContainer || reviewsTab;
+      if (target) {
+        var headerOffset = 80;
+        var elementPosition = target.getBoundingClientRect().top;
+        var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 50);
+  }
+</script>
+
+<style>
+  .book-editorial-rating-wrapper {
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+  .book-editorial-rating-wrapper:hover .rating-count-text {
+    text-decoration: underline;
+    color: #ea580c;
+  }
+</style>
