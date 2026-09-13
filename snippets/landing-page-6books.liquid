@@ -1,0 +1,1747 @@
+{% comment %}
+  6 Books for Interior/Exterior Design - Full Landing Page
+  Ported directly from 49book repository (minus testimonials)
+{% endcomment %}
+
+<div id="landing-page-6books" class="lp6-root">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;1,9..144,400;1,9..144,700&display=swap');
+
+    .lp6-root {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: #111827;
+      background: #ffffff;
+      line-height: 1.5;
+      overflow-x: hidden;
+      margin: 0 -15px; /* Offset parent tab padding */
+      padding: 0;
+    }
+
+    .lp6-root * {
+      box-sizing: border-box;
+    }
+
+    .lp6-font-display {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .lp6-font-serif {
+      font-family: 'Fraunces', serif;
+    }
+
+    .lp6-container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .lp6-container-sm {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .lp6-gradient-text {
+      background: linear-gradient(135deg, #ea580c 0%, #d97706 50%, #b45309 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Buttons */
+    .lp6-btn-ebook {
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+      color: #ffffff !important;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      border-radius: 16px;
+      padding: 16px 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 10px 25px rgba(234, 88, 12, 0.3);
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .lp6-btn-ebook:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 15px 35px rgba(234, 88, 12, 0.45);
+      background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+    }
+
+    .lp6-btn-hardcopy {
+      background: #111827;
+      color: #ffffff !important;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      border-radius: 16px;
+      padding: 16px 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+      cursor: pointer;
+      border: 1px solid #374151;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .lp6-btn-hardcopy:hover {
+      transform: translateY(-2px) scale(1.02);
+      background: #1f2937;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    }
+
+    .lp6-btn-hardcopy-light {
+      background: #ffffff;
+      color: #111827 !important;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      border-radius: 16px;
+      padding: 16px 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      cursor: pointer;
+      border: 1px solid #e5e7eb;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .lp6-btn-hardcopy-light:hover {
+      transform: translateY(-2px) scale(1.02);
+      background: #f9fafb;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Hero Section */
+    .lp6-hero {
+      position: relative;
+      background: linear-gradient(165deg, #fefcf9 0%, #fff8f0 25%, #ffffff 50%, #fef9f2 75%, #fffdf8 100%);
+      padding: 40px 0 60px;
+      overflow: hidden;
+      border-bottom: 1px solid #fed7aa40;
+    }
+
+    .lp6-trust-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 18px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      border: 1px solid #ffedd5;
+      border-radius: 9999px;
+      box-shadow: 0 4px 15px rgba(234, 88, 12, 0.05);
+      margin-bottom: 24px;
+    }
+
+    .lp6-avatar-group {
+      display: flex;
+      margin-right: 4px;
+    }
+
+    .lp6-avatar-group img {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid #ffffff;
+      object-fit: cover;
+      margin-left: -8px;
+    }
+
+    .lp6-avatar-group img:first-child {
+      margin-left: 0;
+    }
+
+    .lp6-stars {
+      display: flex;
+      color: #f59e0b;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+
+    /* Hero Slider */
+    .lp6-slider-wrap {
+      position: relative;
+      max-width: 860px;
+      margin: 0 auto;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(234, 88, 12, 0.12), 0 8px 24px rgba(0, 0, 0, 0.08);
+      background: #ffffff;
+      border: 1px solid rgba(251, 146, 60, 0.2);
+    }
+
+    .lp6-slide-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .lp6-slide-img-ghost {
+      width: 100%;
+      height: auto;
+      opacity: 0;
+      display: block;
+      pointer-events: none;
+    }
+
+    .lp6-slide-item {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
+      transform: scale(0.97);
+      pointer-events: none;
+    }
+
+    .lp6-slide-item.active {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+      z-index: 2;
+    }
+
+    .lp6-slide-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .lp6-slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+
+    .lp6-slider-btn:hover {
+      background: rgba(0, 0, 0, 0.8);
+      transform: translateY(-50%) scale(1.05);
+    }
+
+    .lp6-slider-prev { left: 16px; }
+    .lp6-slider-next { right: 16px; }
+
+    .lp6-slider-dots {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      backdrop-filter: blur(4px);
+    }
+
+    .lp6-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+      border: none;
+      padding: 0;
+      transition: all 0.3s ease;
+    }
+
+    .lp6-dot.active {
+      width: 24px;
+      background: #f97316;
+    }
+
+    /* 6 Book Thumbnails Grid */
+    .lp6-thumb-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 640px) {
+      .lp6-thumb-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+    }
+
+    .lp6-thumb-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      background: #f3f4f6;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      transition: all 0.4s ease;
+      cursor: pointer;
+    }
+
+    .lp6-thumb-card:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 16px 40px rgba(234, 88, 12, 0.16);
+    }
+
+    .lp6-thumb-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .lp6-thumb-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .lp6-thumb-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 50%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 16px;
+    }
+
+    .lp6-thumb-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.7);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .lp6-thumb-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 2px 0 0;
+      line-height: 1.2;
+    }
+
+    /* Industries / Who this is for */
+    .lp6-industry-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 990px) {
+      .lp6-industry-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 540px) {
+      .lp6-industry-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .lp6-industry-card {
+      background: #ffffff;
+      border: 1px solid #f3f4f6;
+      border-radius: 18px;
+      padding: 20px 14px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+      transition: all 0.25s ease;
+    }
+
+    .lp6-industry-card:hover {
+      border-color: #fed7aa;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(234, 88, 12, 0.08);
+    }
+
+    .lp6-industry-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 12px;
+      border-radius: 14px;
+      background: #fff7ed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ea580c;
+    }
+
+    /* Curriculum Interactive Section */
+    .lp6-curriculum-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .lp6-curr-tab-btn {
+      padding: 10px 18px;
+      border-radius: 14px;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid transparent;
+      background: #f3f4f6;
+      color: #374151;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .lp6-curr-tab-btn:hover {
+      background: #e5e7eb;
+    }
+
+    .lp6-curr-tab-btn.active {
+      background: #ea580c;
+      color: #ffffff;
+      box-shadow: 0 6px 20px rgba(234, 88, 12, 0.25);
+    }
+
+    .lp6-curr-display-box {
+      background: #ffffff;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+      border: 1px solid #f3f4f6;
+      display: flex;
+      flex-direction: row;
+    }
+
+    @media (max-width: 768px) {
+      .lp6-curr-display-box {
+        flex-direction: column;
+      }
+    }
+
+    .lp6-curr-cover-col {
+      width: 38%;
+      background: #f9fafb;
+      min-height: 380px;
+    }
+
+    @media (max-width: 768px) {
+      .lp6-curr-cover-col {
+        width: 100%;
+        min-height: 280px;
+      }
+    }
+
+    .lp6-curr-cover-col img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .lp6-curr-content-col {
+      width: 62%;
+      padding: 32px 36px;
+    }
+
+    @media (max-width: 768px) {
+      .lp6-curr-content-col {
+        width: 100%;
+        padding: 24px 20px;
+      }
+    }
+
+    .lp6-curr-sections-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .lp6-curr-sections-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
+
+    .lp6-curr-sec-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: #ea580c;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .lp6-curr-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .lp6-curr-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 14px;
+      color: #374151;
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    .lp6-check-icon {
+      color: #10b981;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* Marketing callout */
+    .lp6-callout-box {
+      background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+      border-left: 5px solid #ea580c;
+      border-radius: 20px;
+      padding: 24px 28px;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      margin: 24px auto 0;
+      max-width: 760px;
+    }
+
+    /* Pain points */
+    .lp6-pain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 640px) {
+      .lp6-pain-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .lp6-pain-card {
+      background: #f9fafb;
+      border: 1px solid #f3f4f6;
+      border-radius: 20px;
+      padding: 24px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: all 0.25s;
+    }
+
+    .lp6-pain-card:hover {
+      border-color: #fed7aa;
+      background: #ffffff;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    }
+
+    /* Features Grid */
+    .lp6-feat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 860px) {
+      .lp6-feat-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 540px) {
+      .lp6-feat-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .lp6-feat-card {
+      background: #ffffff;
+      border: 1px solid #f3f4f6;
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      transition: all 0.25s ease;
+    }
+
+    .lp6-feat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(234, 88, 12, 0.08);
+      border-color: #fed7aa;
+    }
+
+    .lp6-feat-icon-box {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      background: #fff7ed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ea580c;
+      margin-bottom: 16px;
+    }
+
+    /* Pricing card */
+    .lp6-pricing-box {
+      background: #ffffff;
+      border-radius: 32px;
+      padding: 40px 32px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+      border: 1px solid #f3f4f6;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .lp6-pricing-top-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #f97316 0%, #fbbf24 50%, #ea580c 100%);
+    }
+
+    .lp6-pricing-check-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      text-align: left;
+      margin: 28px 0;
+    }
+
+    @media (max-width: 600px) {
+      .lp6-pricing-check-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* FAQ Details */
+    .lp6-faq-item {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+      transition: all 0.2s ease;
+    }
+
+    .lp6-faq-item:hover {
+      border-color: #fdba74;
+    }
+
+    .lp6-faq-summary {
+      padding: 20px 24px;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #111827;
+      list-style: none;
+      user-select: none;
+    }
+
+    .lp6-faq-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .lp6-faq-content {
+      padding: 0 24px 20px;
+      color: #4b5563;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .lp6-faq-icon {
+      transition: transform 0.3s ease;
+      color: #9ca3af;
+    }
+
+    details[open] .lp6-faq-icon {
+      transform: rotate(180deg);
+      color: #ea580c;
+    }
+  </style>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 1: HERO — The First Impression
+       ═══════════════════════════════════════════════ -->
+  <section class="lp6-hero">
+    <div class="lp6-container" style="text-align: center;">
+
+      <!-- Opener -->
+      <p style="font-size: 16px; font-weight: 600; color: #1f2937; max-width: 600px; margin: 0 auto 12px; line-height: 1.5;">
+        In Architecture &amp; Design, <strong style="color: #030712; font-weight: 900;">dimensions and clearances</strong> matter most. The real question is —
+      </p>
+
+      <h2 class="lp6-font-display" style="font-size: clamp(22px, 4vw, 32px); font-weight: 900; color: #ea580c; line-height: 1.2; max-width: 680px; margin: 0 auto 16px; letter-spacing: -0.5px;">
+        How to design a Home perfectly without wasting time searching inspirations and dimensions?
+      </h2>
+
+      <p style="font-size: 15px; font-weight: 700; color: #374151; margin-bottom: 20px;">
+        That's why we present
+      </p>
+
+      <!-- Main Headline -->
+      <h1 class="lp6-font-display" style="font-size: clamp(34px, 6vw, 68px); font-weight: 900; line-height: 1.05; color: #111827; letter-spacing: -1.5px; margin: 0 auto 20px; max-width: 880px;">
+        6 Books on<br />
+        <span class="lp6-gradient-text">Interior &amp; Exterior Design</span>
+      </h1>
+
+      <!-- Trust badge pill -->
+      <div class="lp6-trust-pill">
+        <div class="lp6-avatar-group">
+          <img src="{{ 'reader1.jpg' | asset_url }}" alt="Reader" loading="lazy" />
+          <img src="{{ 'reader2.jpg' | asset_url }}" alt="Reader" loading="lazy" />
+          <img src="{{ 'reader3.jpg' | asset_url }}" alt="Reader" loading="lazy" />
+          <img src="{{ 'reader4.jpg' | asset_url }}" alt="Reader" loading="lazy" />
+        </div>
+        <div class="lp6-stars">★★★★★</div>
+        <span style="font-size: 12px; font-weight: 700; color: #374151;">Trusted by designers in 21+ countries</span>
+      </div>
+
+      <!-- Hero Gallery Slider -->
+      <div class="lp6-slider-wrap" id="lp6HeroSlider">
+        <div class="lp6-slide-container">
+          <!-- Ghost image to give natural height -->
+          <img class="lp6-slide-img-ghost" src="{{ 'hero-mistakes-grid.jpg' | asset_url }}" alt="Hero Sizing" />
+
+          <!-- Slide 1 -->
+          <div class="lp6-slide-item active" data-slide="0">
+            <img src="{{ 'hero-mistakes-grid.jpg' | asset_url }}" alt="Small Mistakes, Big Problems - Get It Right! Graphical Interior Design Guide" />
+          </div>
+          <!-- Slide 2 -->
+          <div class="lp6-slide-item" data-slide="1">
+            <img src="{{ 'hero-standard-measurements.jpg' | asset_url }}" alt="Standard Measurements for Kitchen, Living Room, Bedroom &amp; Washroom" />
+          </div>
+          <!-- Slide 3 -->
+          <div class="lp6-slide-item" data-slide="2">
+            <img src="{{ 'hero-how-to-plan.jpg' | asset_url }}" alt="How to Plan - Smart Planning Tips for Every Space" />
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <button type="button" class="lp6-slider-btn lp6-slider-prev" onclick="lp6SlidePrev()" aria-label="Previous Slide">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <button type="button" class="lp6-slider-btn lp6-slider-next" onclick="lp6SlideNext()" aria-label="Next Slide">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+
+        <!-- Dots -->
+        <div class="lp6-slider-dots" id="lp6SliderDots">
+          <button type="button" class="lp6-dot active" onclick="lp6GoToSlide(0)" aria-label="Slide 1"></button>
+          <button type="button" class="lp6-dot" onclick="lp6GoToSlide(1)" aria-label="Slide 2"></button>
+          <button type="button" class="lp6-dot" onclick="lp6GoToSlide(2)" aria-label="Slide 3"></button>
+        </div>
+      </div>
+
+      <!-- Value Prop Below Slider -->
+      <div style="margin-top: 50px; text-align: center;">
+        <p style="color: #ea580c; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 10px;">Before you design anything</p>
+        <h2 class="lp6-font-display" style="font-size: clamp(24px, 4vw, 42px); font-weight: 900; color: #111827; letter-spacing: -1px; line-height: 1.15; margin: 0 auto 14px;">
+          One wrong measurement = <span class="lp6-font-serif" style="font-style: italic; font-weight: normal; color: #ea580c;">thousands wasted.</span>
+        </h2>
+        <p style="color: #4b5563; font-size: 16px; max-width: 600px; margin: 0 auto 8px; line-height: 1.6;">
+          <strong style="color: #111827;">800+ handmade diagrams.</strong> Every dimension, clearance &amp; layout — what works and what fails.
+        </p>
+        <p style="color: #ea580c; font-weight: 700; font-size: 16px;">
+          20 years of knowledge — yours in hours.
+        </p>
+
+        <!-- 6 Book Thumbnails Grid -->
+        <div class="lp6-thumb-grid">
+          <div class="lp6-thumb-card" onclick="lp6SelectCurriculum(0)">
+            <img src="{{ 'living_room.png' | asset_url }}" alt="Living Room Design Book" loading="lazy" />
+            <div class="lp6-thumb-overlay">
+              <span class="lp6-thumb-num">Book 1</span>
+              <h3 class="lp6-thumb-title">Living Room</h3>
+            </div>
+          </div>
+          <div class="lp6-thumb-card" onclick="lp6SelectCurriculum(1)">
+            <img src="{{ 'kitchen.png' | asset_url }}" alt="Kitchen Design Book" loading="lazy" />
+            <div class="lp6-thumb-overlay">
+              <span class="lp6-thumb-num">Book 2</span>
+              <h3 class="lp6-thumb-title">Kitchen</h3>
+            </div>
+          </div>
+          <div class="lp6-thumb-card" onclick="lp6SelectCurriculum(2)">
+            <img src="{{ 'bedroom.png' | asset_url }}" alt="Bedroom Design Book" loading="lazy" />
+            <div class="lp6-thumb-overlay">
+              <span class="lp6-thumb-num">Book 3</span>
+              <h3 class="lp6-thumb-title">Bedroom</h3>
+            </div>
+          </div>
+          <div class="lp6-thumb-card" onclick="lp6SelectCurriculum(3)">
+            <img src="{{ 'washroom.png' | asset_url }}" alt="Washroom Design Book" loading="lazy" />
+            <div class="lp6-thumb-overlay">
+              <span class="lp6-thumb-num">Book 4</span>
+              <h3 class="lp6-thumb-title">Washroom</h3>
+            </div>
+          </div>
+          <div class="lp6-thumb-card" onclick="lp6SelectCurriculum(4)">
+            <img src="{{ 'study.png' | asset_url }}" alt="Study Design Book" loading="lazy" />
+            <div class="lp6-thumb-overlay">
+              <span class="lp6-thumb-num">Book 5</span>
+              <h3 class="lp6-thumb-title">Study</h3>
+            </div>
+          </div>
+          <div class="lp6-thumb-card" onclick="lp6SelectCurriculum(5)">
+            <img src="{{ 'elevations.png' | asset_url }}" alt="Elevations Design Book" loading="lazy" />
+            <div class="lp6-thumb-overlay">
+              <span class="lp6-thumb-num">Book 6</span>
+              <h3 class="lp6-thumb-title">Elevations</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 2: WHO THIS IS FOR
+       ═══════════════════════════════════════════════ -->
+  <section style="padding: 60px 0; background: #ffffff;">
+    <div class="lp6-container">
+      <div style="text-align: center; margin-bottom: 36px;">
+        <p style="color: #ea580c; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Who is this for?</p>
+        <h2 class="lp6-font-display" style="font-size: clamp(24px, 4vw, 36px); font-weight: 800; color: #111827; letter-spacing: -0.5px; margin: 0;">
+          Trusted by <span style="color: #ea580c;">every type</span> of design professional
+        </h2>
+      </div>
+
+      <div class="lp6-industry-grid">
+        <div class="lp6-industry-card">
+          <div class="lp6-industry-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          </div>
+          <p style="font-size: 14px; font-weight: 700; color: #1f2937; margin: 0;">Homeowners</p>
+        </div>
+        <div class="lp6-industry-card">
+          <div class="lp6-industry-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+          </div>
+          <p style="font-size: 14px; font-weight: 700; color: #1f2937; margin: 0;">Architecture Students</p>
+        </div>
+        <div class="lp6-industry-card">
+          <div class="lp6-industry-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path></svg>
+          </div>
+          <p style="font-size: 14px; font-weight: 700; color: #1f2937; margin: 0;">Interior Designers</p>
+        </div>
+        <div class="lp6-industry-card">
+          <div class="lp6-industry-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"></rect><path d="M9 22v-4h6v4"></path><path d="M8 6h.01"></path><path d="M16 6h.01"></path><path d="M12 6h.01"></path><path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M16 10h.01"></path><path d="M16 14h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path></svg>
+          </div>
+          <p style="font-size: 14px; font-weight: 700; color: #1f2937; margin: 0;">Real Estate Developers</p>
+        </div>
+        <div class="lp6-industry-card">
+          <div class="lp6-industry-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 12-8.5 8.5c-.83.83-2.17.83-3 0 0 0 0 0 0 0a2.12 2.12 0 0 1 0-3L12 9"></path><path d="M17.64 15 22 10.64"></path><path d="m20.91 3.26-2.17-2.17a2.12 2.12 0 0 0-3 0L12 4.83l6.36 6.36 3.73-3.73a2.12 2.12 0 0 0 0-3.04l-1.18-1.16Z"></path></svg>
+          </div>
+          <p style="font-size: 14px; font-weight: 700; color: #1f2937; margin: 0;">Renovators</p>
+        </div>
+        <div class="lp6-industry-card">
+          <div class="lp6-industry-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+          </div>
+          <p style="font-size: 14px; font-weight: 700; color: #1f2937; margin: 0;">DIY Enthusiasts</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 3: LEARN WITH INTERACTIVE DIAGRAMS
+       ═══════════════════════════════════════════════ -->
+  <section style="padding: 70px 0; background: #ffffff; border-top: 1px solid #f3f4f6; border-bottom: 1px solid #f3f4f6;">
+    <div class="lp6-container">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <p style="color: #ea580c; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">What makes these books special</p>
+        <h2 class="lp6-font-display" style="font-size: clamp(28px, 5vw, 48px); font-weight: 900; color: #111827; letter-spacing: -1px; margin: 0 auto 12px;">
+          Learn with <span class="lp6-font-serif" style="font-style: italic; font-weight: normal; color: #ea580c;">Interactive Diagrams</span>
+        </h2>
+        <p style="color: #4b5563; font-size: 16px; max-width: 650px; margin: 0 auto; line-height: 1.6;">
+          Every page is filled with <strong style="color: #111827;">handmade diagrams</strong> covering room layouts, clearances, and dimensions — so you can see <strong style="color: #059669;">what works</strong> and <strong style="color: #dc2626;">what doesn't</strong> at a glance.
+        </p>
+      </div>
+
+      <!-- Diagram Grid Image -->
+      <div style="border-radius: 24px; overflow: hidden; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08); border: 1px solid #e5e7eb; background: #ffffff; margin-bottom: 30px;">
+        <img src="{{ 'interactive-diagrams-grid.png' | asset_url }}" alt="Floor plan diagrams showing layouts with dimensions" style="width: 100%; height: auto; display: block;" loading="lazy" />
+      </div>
+
+      <!-- Diagram Icons Image -->
+      <div style="border-radius: 24px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); border: 1px solid #e5e7eb; background: #ffffff; padding: 24px; text-align: center;">
+        <img src="{{ 'interactive-diagrams-icons.png' | asset_url }}" alt="Categories: Space Planning, Tips Tricks and Ideas, History of Architecture, Don'ts and Do's" style="max-width: 760px; width: 100%; height: auto; display: inline-block;" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 4: BOOK FLIP-THROUGH VIDEO + CTA
+       ═══════════════════════════════════════════════ -->
+  <section style="padding: 70px 0; background: #fafafa;">
+    <div class="lp6-container-sm">
+
+      <!-- Responsive Video Iframe -->
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 24px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12); border: 1px solid #e5e7eb; background: #000000;">
+        <iframe
+          title="Book flip-through preview"
+          src="https://iframe.mediadelivery.net/embed/494628/223e3dd8-1052-49ec-99f4-c326b50108e6?autoplay=true&loop=true&muted=true&preload=true&responsive=true"
+          loading="lazy"
+          style="border: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+          allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <!-- Action Buttons Under Video -->
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 16px; margin-top: 30px;">
+        <div style="text-align: center;">
+          <button type="button" onclick="lp6AddEbook(this)" class="lp6-btn-ebook">
+            E-Books Download — $49
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+          <p style="font-size: 12px; color: #6b7280; margin: 8px 0 0; display: flex; align-items: center; justify-content: center; gap: 4px; font-weight: 600;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Download Instantly
+          </p>
+        </div>
+
+        <span style="font-size: 13px; font-weight: 800; color: #9ca3af; text-transform: uppercase;">or</span>
+
+        <div style="text-align: center;">
+          <button type="button" onclick="lp6AddHardcopy(this)" class="lp6-btn-hardcopy">
+            Get Hardcopies — $199
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          </button>
+          <p style="font-size: 12px; color: #6b7280; margin: 8px 0 0; display: flex; align-items: center; justify-content: center; gap: 4px; font-weight: 600;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="13" x="1" y="3" rx="2"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+            10-Day Delivery Globally
+          </p>
+        </div>
+      </div>
+
+      <!-- Curriculum Tabs -->
+      <div style="margin-top: 60px;">
+        <div style="text-align: center; margin-bottom: 30px;">
+          <p style="color: #ea580c; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">What's inside</p>
+          <h2 class="lp6-font-display" style="font-size: clamp(26px, 4.5vw, 44px); font-weight: 900; color: #111827; letter-spacing: -1px; margin: 0 auto 10px;">
+            800+ pages that cover <span class="lp6-font-serif" style="font-style: italic; font-weight: normal; color: #ea580c;">everything</span>
+          </h2>
+          <p style="color: #4b5563; font-size: 16px;">
+            Every clearance. Every dimension. Every mistake you could make — <strong style="color: #111827;">and how to avoid it</strong>.
+          </p>
+        </div>
+
+        <div class="lp6-curriculum-tabs" id="lp6CurrTabs">
+          <button type="button" class="lp6-curr-tab-btn active" onclick="lp6SelectCurriculum(0)">🛋️ Book 1</button>
+          <button type="button" class="lp6-curr-tab-btn" onclick="lp6SelectCurriculum(1)">🍳 Book 2</button>
+          <button type="button" class="lp6-curr-tab-btn" onclick="lp6SelectCurriculum(2)">🛏️ Book 3</button>
+          <button type="button" class="lp6-curr-tab-btn" onclick="lp6SelectCurriculum(3)">🛁 Book 4</button>
+          <button type="button" class="lp6-curr-tab-btn" onclick="lp6SelectCurriculum(4)">📚 Book 5</button>
+          <button type="button" class="lp6-curr-tab-btn" onclick="lp6SelectCurriculum(5)">🏛️ Book 6</button>
+        </div>
+
+        <!-- Curriculum Details Card -->
+        <div class="lp6-curr-display-box">
+          <div class="lp6-curr-cover-col">
+            <img id="lp6CurrImg" src="{{ 'living_room.png' | asset_url }}" alt="Curriculum Book" />
+          </div>
+          <div class="lp6-curr-content-col">
+            <h3 id="lp6CurrTitle" class="lp6-font-display" style="font-size: 24px; font-weight: 800; color: #111827; margin: 0 0 16px;">Living Room Design Book</h3>
+            <div class="lp6-curr-sections-grid" id="lp6CurrGrid">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 5: MARKETING COPY & VALUE CALLOUT
+       ═══════════════════════════════════════════════ -->
+  <section style="padding: 70px 0; background: #ffffff;">
+    <div class="lp6-container-sm" style="text-align: center;">
+      <p style="color: #4b5563; font-size: 16px; font-style: italic; margin-bottom: 8px;">
+        In our business of Architecture and Design, <strong style="color: #111827;">knowing the right dimensions and clearances</strong> matters the most.
+      </p>
+      <p style="color: #4b5563; font-size: 16px; margin-bottom: 16px;">
+        And now, the question is no longer <span class="lp6-font-serif" style="font-style: italic;">how</span> to learn it. The real question is...
+      </p>
+      <h2 class="lp6-font-display" style="font-size: clamp(26px, 5vw, 46px); font-weight: 900; color: #ea580c; letter-spacing: -1px; line-height: 1.15; margin: 0 auto 24px;">
+        How to learn it WITHOUT making expensive mistakes?
+      </h2>
+
+      <div class="lp6-callout-box">
+        <span style="font-size: 32px; line-height: 1;">💡</span>
+        <p style="text-align: left; font-size: 16px; line-height: 1.6; color: #1f2937; margin: 0;">
+          That's <strong style="color: #ea580c;">exactly why</strong> we created these 6 books. <strong style="color: #ea580c;">800+ pages of handmade diagrams</strong> showing every dimension, clearance, and layout — what works and what fails. <span class="lp6-font-serif" style="font-style: italic; color: #030712; font-weight: 700;">Learn in hours what took us 20 years to master.</span>
+        </p>
+      </div>
+
+      <div style="margin-top: 50px; text-align: left;">
+        <h3 class="lp6-font-display" style="font-size: 24px; font-weight: 900; color: #111827; text-align: center; margin-bottom: 20px;">
+          Here's the thing — <span class="lp6-font-serif" style="font-style: italic; font-weight: normal; color: #ea580c;">this is for you if...</span>
+        </h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px;">
+          <div style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: #f9fafb; border-radius: 14px; border: 1px solid #f3f4f6;">
+            <span style="font-size: 18px;">✅</span>
+            <p style="font-size: 14px; font-weight: 600; color: #1f2937; margin: 0;">You want to stay 10 steps ahead of your contractor</p>
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: #f9fafb; border-radius: 14px; border: 1px solid #f3f4f6;">
+            <span style="font-size: 18px;">✅</span>
+            <p style="font-size: 14px; font-weight: 600; color: #1f2937; margin: 0;">You're designing for a client and want to deliver flawlessly</p>
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: #f9fafb; border-radius: 14px; border: 1px solid #f3f4f6;">
+            <span style="font-size: 18px;">✅</span>
+            <p style="font-size: 14px; font-weight: 600; color: #1f2937; margin: 0;">You love designs that function beautifully and look amazing</p>
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: #f9fafb; border-radius: 14px; border: 1px solid #f3f4f6;">
+            <span style="font-size: 18px;">✅</span>
+            <p style="font-size: 14px; font-weight: 600; color: #1f2937; margin: 0;">You believe in smart, intuitive design with purpose</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 6: SOUND FAMILIAR? (PAIN POINTS)
+       ═══════════════════════════════════════════════ -->
+  <section style="padding: 70px 0; background: #f9fafb; border-top: 1px solid #f3f4f6;">
+    <div class="lp6-container-sm">
+      <div style="text-align: center; margin-bottom: 36px;">
+        <p style="color: #ea580c; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Sound familiar?</p>
+        <h2 class="lp6-font-display" style="font-size: clamp(26px, 4.5vw, 44px); font-weight: 900; color: #111827; letter-spacing: -1px; margin: 0 auto 10px;">
+          You know what <span class="lp6-font-serif" style="font-style: italic; font-weight: normal; color: #ea580c;">really hurts?</span>
+        </h2>
+        <p style="color: #4b5563; font-size: 16px;">It's not that you don't care about design. You do. But...</p>
+      </div>
+
+      <div class="lp6-pain-grid">
+        <div class="lp6-pain-card">
+          <span style="font-size: 30px; line-height: 1; flex-shrink: 0;">😩</span>
+          <p style="color: #4b5563; font-size: 14px; line-height: 1.6; margin: 0;">
+            You spend hours searching for dimensions... and the room still feels 'off.' You know something's wrong but can't figure out what.
+          </p>
+        </div>
+        <div class="lp6-pain-card">
+          <span style="font-size: 30px; line-height: 1; flex-shrink: 0;">💸</span>
+          <p style="color: #4b5563; font-size: 14px; line-height: 1.6; margin: 0;">
+            That expensive furniture looked perfect in the store. At home? It blocks the walkway. Now you live with the regret every single day.
+          </p>
+        </div>
+        <div class="lp6-pain-card">
+          <span style="font-size: 30px; line-height: 1; flex-shrink: 0;">😶</span>
+          <p style="color: #4b5563; font-size: 14px; line-height: 1.6; margin: 0;">
+            Designers, YouTube, blogs — nobody gives you the actual numbers. Just vibes and mood boards that don't translate to real life.
+          </p>
+        </div>
+        <div class="lp6-pain-card">
+          <span style="font-size: 30px; line-height: 1; flex-shrink: 0;">🤯</span>
+          <p style="color: #4b5563; font-size: 14px; line-height: 1.6; margin: 0;">
+            You have the taste. What's missing is the precise knowledge that separates pros from amateurs. The handmade diagrams that show what's right and what's wrong.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 7: WHY THESE BOOKS CHANGE EVERYTHING
+       ═══════════════════════════════════════════════ -->
+  <section style="padding: 70px 0; background: #ffffff;">
+    <div class="lp6-container-sm">
+      <div style="border-top: 5px solid #ea580c; padding-top: 40px; text-align: center;">
+        <h2 class="lp6-font-display" style="font-size: clamp(26px, 4.5vw, 44px); font-weight: 900; color: #111827; letter-spacing: -1px; margin: 0 auto 12px;">
+          But here's what makes these books <span class="lp6-font-serif" style="font-style: italic; font-weight: normal; color: #ea580c;">different</span>
+        </h2>
+        <p style="color: #4b5563; font-size: 16px; max-width: 600px; margin: 0 auto 30px; line-height: 1.6;">
+          They're not just theory. They're <strong style="color: #111827;">handmade diagrams</strong> that show you <strong style="color: #059669;">exactly what works</strong> and <strong style="color: #dc2626;">exactly what fails</strong>.
+        </p>
+
+        <div style="max-width: 600px; margin: 0 auto; text-align: left; display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: flex; gap: 12px; align-items: flex-start; font-size: 15px;">
+            <span style="font-size: 20px; line-height: 1;">💡</span>
+            <p style="margin: 0; color: #374151;"><strong style="color: #111827;">Instantly look more professional</strong> — clients notice when you know exact dimensions without checking your phone</p>
+          </div>
+          <div style="display: flex; gap: 12px; align-items: flex-start; font-size: 15px;">
+            <span style="font-size: 20px; line-height: 1;">📐</span>
+            <p style="margin: 0; color: #374151;"><strong style="color: #111827;">Every measurement is from real projects</strong> — not theoretical textbooks that have never seen a real construction site</p>
+          </div>
+          <div style="display: flex; gap: 12px; align-items: flex-start; font-size: 15px;">
+            <span style="font-size: 20px; line-height: 1;">🏠</span>
+            <p style="margin: 0; color: #374151;"><strong style="color: #111827;">Design rooms that actually work</strong> — where doors open properly, furniture fits perfectly, and nothing feels cramped</p>
+          </div>
+          <div style="display: flex; gap: 12px; align-items: flex-start; font-size: 15px;">
+            <span style="font-size: 20px; line-height: 1;">✨</span>
+            <p style="margin: 0; color: #374151;"><strong style="color: #111827;">The "unfair advantage"</strong> — know things in 2 hours that others take years of trial and error to learn</p>
+          </div>
+          <div style="display: flex; gap: 12px; align-items: flex-start; font-size: 15px;">
+            <span style="font-size: 20px; line-height: 1;">💰</span>
+            <p style="margin: 0; color: #374151;"><strong style="color: #111827;">Save thousands in costly mistakes</strong> — one wrong kitchen layout costs more than 10x the price of all 6 books</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 8: THE BACKSTORY — BUILD TRUST
+       ═══════════════════════════════════════════════ -->
+  <section style="padding: 70px 0; background: #f9fafb; border-top: 1px solid #f3f4f6;">
+    <div class="lp6-container-sm">
+      <div style="text-align: center; margin-bottom: 30px;">
+        <p style="color: #ea580c; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Here's the truth</p>
+        <h2 class="lp6-font-serif" style="font-size: clamp(24px, 4vw, 38px); font-style: italic; color: #111827; line-height: 1.25; margin: 0 auto; max-width: 680px;">
+          "We got tired of watching people waste money on mistakes that could've been avoided."
+        </h2>
+      </div>
+
+      <div style="font-size: 16px; line-height: 1.7; color: #374151; display: flex; flex-direction: column; gap: 16px; max-width: 680px; margin: 0 auto;">
+        <p>After 20 years and 1,000+ projects, we've seen it all. Beautiful homes ruined by <strong style="color: #111827;">one wrong measurement.</strong> One forgotten clearance. One layout that looked perfect on paper but felt <span class="lp6-font-serif" style="font-style: italic;">completely wrong</span> in real life.</p>
+        <p>And every single time, the homeowner says: <span class="lp6-font-serif" style="font-style: italic; color: #111827;">"I wish someone had just told me."</span></p>
+        <p>Look, here's what nobody tells you: <strong style="color: #111827;">hiring a designer doesn't guarantee you'll avoid these mistakes.</strong> Most designers keep their dimensional knowledge secret — it's their competitive edge.</p>
+        <p>And YouTube? It teaches you trends. <strong style="color: #111827;">Trends expire. Dimensions don't.</strong></p>
+        <p>So we did something different. We took <strong style="color: #111827;">every measurement, every clearance, every layout principle</strong> we've learned and put it into 6 books with <strong style="color: #ea580c;">handmade diagrams</strong> that show you what's right and what's wrong.</p>
+        <p style="font-weight: 600; color: #111827; border-left: 4px solid #f97316; padding-left: 16px; margin-top: 10px;">
+          20 years of knowledge — yours in hours. No guessing. No mistakes. Just <span class="lp6-font-serif" style="font-style: italic;">clarity</span>.<br />
+          <span style="font-size: 13px; font-weight: normal; color: #6b7280;">— The Home Design Books Team</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 9: WHAT YOU GET — FEATURES
+       ═══════════════════════════════════════════════ -->
+  <section style="padding: 70px 0; background: #ffffff;">
+    <div class="lp6-container">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <h2 class="lp6-font-display" style="font-size: clamp(26px, 4.5vw, 40px); font-weight: 900; color: #111827; margin: 0;">
+          Everything you get <span style="color: #ea580c;">for $49</span>
+        </h2>
+      </div>
+
+      <div class="lp6-feat-grid">
+        <div class="lp6-feat-card">
+          <div class="lp6-feat-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </div>
+          <h3 style="font-size: 17px; font-weight: 800; color: #111827; margin: 0 0 6px;">Instant PDF Download</h3>
+          <p style="font-size: 14px; color: #4b5563; line-height: 1.5; margin: 0;">Get the files immediately after purchase. No shipping, no waiting.</p>
+        </div>
+
+        <div class="lp6-feat-card">
+          <div class="lp6-feat-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12c-2-2.67-4-4-6-4a4 4 0 1 0 0 8c2 0 4-1.33 6-4Zm0 0c2 2.67 4 4 6 4a4 4 0 0 0 0-8c-2 0-4 1.33-6 4Z"></path></svg>
+          </div>
+          <h3 style="font-size: 17px; font-weight: 800; color: #111827; margin: 0 0 6px;">Lifetime Updates</h3>
+          <p style="font-size: 14px; color: #4b5563; line-height: 1.5; margin: 0;">If we update a chapter or add a trend, you get the new file for free.</p>
+        </div>
+
+        <div class="lp6-feat-card">
+          <div class="lp6-feat-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+          </div>
+          <h3 style="font-size: 17px; font-weight: 800; color: #111827; margin: 0 0 6px;">800+ Pages</h3>
+          <p style="font-size: 14px; color: #4b5563; line-height: 1.5; margin: 0;">Zero fluff. Just actionable design theory, dimensions, and guides.</p>
+        </div>
+
+        <div class="lp6-feat-card">
+          <div class="lp6-feat-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m4.93 4.93 4.24 4.24"></path><path d="m14.83 9.17 4.24-4.24"></path><path d="m14.83 14.83 4.24 4.24"></path><path d="m9.17 14.83-4.24 4.24"></path><circle cx="12" cy="12" r="4"></circle></svg>
+          </div>
+          <h3 style="font-size: 17px; font-weight: 800; color: #111827; margin: 0 0 6px;">Design Support</h3>
+          <p style="font-size: 14px; color: #4b5563; line-height: 1.5; margin: 0;">Reply to your purchase email with questions. We actually answer.</p>
+        </div>
+
+        <div class="lp6-feat-card">
+          <div class="lp6-feat-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          <h3 style="font-size: 17px; font-weight: 800; color: #111827; margin: 0 0 6px;">Reader Community</h3>
+          <p style="font-size: 14px; color: #4b5563; line-height: 1.5; margin: 0;">Join 50k+ other designers and homeowners in our newsletter.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 10: BUSINESS MODULES (PAYS FOR ITSELF)
+       ═══════════════════════════════════════════════ -->
+  <section style="padding: 70px 0; background: #f9fafb; border-top: 1px solid #f3f4f6;">
+    <div class="lp6-container">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <p style="color: #ea580c; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Start using them today</p>
+        <h2 class="lp6-font-display" style="font-size: clamp(26px, 4.5vw, 44px); font-weight: 900; color: #111827; letter-spacing: -1px; margin: 0 auto;">
+          Here's how this <span class="lp6-font-serif" style="font-style: italic; font-weight: normal; color: #ea580c;">pays for itself</span> instantly
+        </h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+        <div style="background: #ffffff; border: 1px solid #f3f4f6; border-radius: 20px; padding: 24px; display: flex; gap: 16px; align-items: flex-start; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+          <div style="width: 48px; height: 48px; border-radius: 14px; background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); color: #ffffff; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+          </div>
+          <div>
+            <h3 style="font-size: 17px; font-weight: 800; color: #111827; margin: 0 0 6px;">Redesign Your Home</h3>
+            <p style="font-size: 14px; color: #4b5563; line-height: 1.5; margin: 0;">Apply professional design principles to transform every room. Clearances, layouts, and materials explained step-by-step.</p>
+          </div>
+        </div>
+
+        <div style="background: #ffffff; border: 1px solid #f3f4f6; border-radius: 20px; padding: 24px; display: flex; gap: 16px; align-items: flex-start; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+          <div style="width: 48px; height: 48px; border-radius: 14px; background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); color: #ffffff; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+          </div>
+          <div>
+            <h3 style="font-size: 17px; font-weight: 800; color: #111827; margin: 0 0 6px;">Start a Design Practice</h3>
+            <p style="font-size: 14px; color: #4b5563; line-height: 1.5; margin: 0;">Use these frameworks as your reference library. Serve clients with confidence using tried-and-tested design systems.</p>
+          </div>
+        </div>
+
+        <div style="background: #ffffff; border: 1px solid #f3f4f6; border-radius: 20px; padding: 24px; display: flex; gap: 16px; align-items: flex-start; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+          <div style="width: 48px; height: 48px; border-radius: 14px; background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); color: #ffffff; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+          </div>
+          <div>
+            <h3 style="font-size: 17px; font-weight: 800; color: #111827; margin: 0 0 6px;">Ace Your Projects</h3>
+            <p style="font-size: 14px; color: #4b5563; line-height: 1.5; margin: 0;">Architecture and design students — use the practical knowledge, dimension charts, and real examples to excel.</p>
+          </div>
+        </div>
+
+        <div style="background: #ffffff; border: 1px solid #f3f4f6; border-radius: 20px; padding: 24px; display: flex; gap: 16px; align-items: flex-start; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+          <div style="width: 48px; height: 48px; border-radius: 14px; background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); color: #ffffff; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
+          </div>
+          <div>
+            <h3 style="font-size: 17px; font-weight: 800; color: #111827; margin: 0 0 6px;">Stage &amp; Sell Properties</h3>
+            <p style="font-size: 14px; color: #4b5563; line-height: 1.5; margin: 0;">Real estate developers — use design principles to stage model flats that convert browsers into buyers.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 11: GUARANTEE + PRICING CTA CARD
+       (Testimonials omitted as requested)
+       ═══════════════════════════════════════════════ -->
+  <section style="padding: 80px 0; background: #ffffff;">
+    <div class="lp6-container-sm">
+
+      <!-- Guarantee -->
+      <div style="text-align: center; margin-bottom: 40px;">
+        <div style="width: 72px; height: 72px; border-radius: 24px; background: #ecfdf5; color: #059669; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 18px;">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+        </div>
+        <h2 class="lp6-font-display" style="font-size: clamp(26px, 4vw, 36px); font-weight: 900; color: #111827; margin: 0 0 12px;">
+          And yes, you're <span style="color: #059669;">completely protected</span>
+        </h2>
+        <p style="color: #4b5563; font-size: 16px; line-height: 1.6; max-width: 580px; margin: 0 auto;">
+          Try the books for 30 days. If they don't change how you design — <strong style="color: #111827;">we'll refund every penny.</strong> No questions. No forms. Just an email. <span class="lp6-font-serif" style="font-style: italic;">We take the risk, not you.</span>
+        </p>
+      </div>
+
+      <!-- Pricing Card -->
+      <div class="lp6-pricing-box">
+        <div class="lp6-pricing-top-bar"></div>
+
+        <p style="color: #9ca3af; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">The Complete Collection</p>
+        <div class="lp6-font-display" style="font-size: clamp(54px, 8vw, 76px); font-weight: 900; color: #111827; line-height: 1; letter-spacing: -2px; margin-bottom: 6px;">
+          $49
+        </div>
+        <p style="color: #ea580c; font-weight: 700; font-size: 14px; margin-bottom: 24px;">
+          One-time payment · Yours forever · Free updates for life
+        </p>
+
+        <div class="lp6-pricing-check-grid">
+          <div style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #374151; font-weight: 600;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+            All 6 eBooks (PDF)
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #374151; font-weight: 600;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Instant Download
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #374151; font-weight: 600;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12c-2-2.67-4-4-6-4a4 4 0 1 0 0 8c2 0 4-1.33 6-4Zm0 0c2 2.67 4 4 6 4a4 4 0 0 0 0-8c-2 0-4 1.33-6 4Z"></path></svg>
+            Lifetime Updates
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #374151; font-weight: 600;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+            Clearance Charts
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #374151; font-weight: 600;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"></path></svg>
+            High-Res Images
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #374151; font-weight: 600;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+            30-Day Guarantee
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 20px;">
+          <div>
+            <button type="button" onclick="lp6AddEbook(this)" class="lp6-btn-ebook" style="width: 100%; padding: 18px 24px; font-size: 18px;">
+              E-Books Download — $49
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+            <p style="font-size: 12px; color: #6b7280; margin: 6px 0 0; display: flex; align-items: center; justify-content: center; gap: 4px; font-weight: 600;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              Download Instantly
+            </p>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="flex: 1; height: 1px; background: #e5e7eb;"></div>
+            <span style="font-size: 11px; font-weight: 800; color: #9ca3af; text-transform: uppercase;">or</span>
+            <div style="flex: 1; height: 1px; background: #e5e7eb;"></div>
+          </div>
+
+          <div>
+            <button type="button" onclick="lp6AddHardcopy(this)" class="lp6-btn-hardcopy" style="width: 100%; padding: 18px 24px; font-size: 18px;">
+              Get Hardcopies — $199
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+            </button>
+            <p style="font-size: 12px; color: #6b7280; margin: 6px 0 0; display: flex; align-items: center; justify-content: center; gap: 4px; font-weight: 600;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="13" x="1" y="3" rx="2"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              10-Day Delivery Globally
+            </p>
+          </div>
+        </div>
+
+        <p style="font-size: 12px; color: #9ca3af; margin: 20px 0 0;">Secure checkout · Instant access · Zero risk</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 12: FAQ ACCORDION
+       ═══════════════════════════════════════════════ -->
+  <section style="padding: 70px 0; background: #f9fafb; border-top: 1px solid #f3f4f6;">
+    <div class="lp6-container-sm">
+      <div style="text-align: center; margin-bottom: 36px;">
+        <h2 class="lp6-font-display" style="font-size: clamp(26px, 4.5vw, 42px); font-weight: 900; color: #111827; margin: 0 0 8px;">
+          Still have <span style="color: #ea580c;">questions?</span>
+        </h2>
+        <p style="color: #4b5563; font-size: 16px; margin: 0;">We get it. Here are the answers:</p>
+      </div>
+
+      <div style="max-width: 760px; margin: 0 auto;">
+        <details class="lp6-faq-item" open>
+          <summary class="lp6-faq-summary">
+            <span>Can't I just learn this from YouTube for free?</span>
+            <svg class="lp6-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="lp6-faq-content">
+            Sure, you can find scattered tips. But nobody teaches the complete system. These books give you 800+ pages of clearances, dimensions, materials, and layouts—all in one place. No more hunting through 50 videos to find one measurement.
+          </div>
+        </details>
+
+        <details class="lp6-faq-item">
+          <summary class="lp6-faq-summary">
+            <span>Do I need a design background to understand this?</span>
+            <svg class="lp6-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="lp6-faq-content">
+            Not at all. These are written for complete beginners. Every concept has handmade diagrams, exact dimensions, and real examples. If you can read, you can use these.
+          </div>
+        </details>
+
+        <details class="lp6-faq-item">
+          <summary class="lp6-faq-summary">
+            <span>Will this work for modern homes and apartments?</span>
+            <svg class="lp6-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="lp6-faq-content">
+            Yes. These cover standard home sizes, modern layouts, climate considerations, and space optimization for contemporary living. Whether you're in a 500 sqft apartment or a 3000 sqft house—it's all here.
+          </div>
+        </details>
+
+        <details class="lp6-faq-item">
+          <summary class="lp6-faq-summary">
+            <span>What if the content gets outdated?</span>
+            <svg class="lp6-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="lp6-faq-content">
+            You get free lifetime updates. When we add new content or update dimensions, you get the new version at no extra cost. Buy once, benefit forever.
+          </div>
+        </details>
+
+        <details class="lp6-faq-item">
+          <summary class="lp6-faq-summary">
+            <span>Can I use this for client projects?</span>
+            <svg class="lp6-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="lp6-faq-content">
+            Absolutely. Architecture students, developers, and design consultants use these as their reference library. The clearance charts and dimension guides work for both residential and commercial projects.
+          </div>
+        </details>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 13: FINAL CTA SECTION (DARK BANNER)
+       ═══════════════════════════════════════════════ -->
+  <section style="padding: 70px 0; background: linear-gradient(135deg, #111827 0%, #030712 100%); color: #ffffff; position: relative; overflow: hidden;">
+    <!-- Radial glow -->
+    <div style="position: absolute; top: 0; right: 0; width: 450px; height: 450px; background: radial-gradient(circle, rgba(234, 88, 12, 0.15) 0%, transparent 70%); pointer-events: none;"></div>
+
+    <div class="lp6-container-sm" style="text-align: center; position: relative; z-index: 2;">
+      <h2 class="lp6-font-display" style="font-size: clamp(26px, 5vw, 44px); font-weight: 900; color: #ffffff; line-height: 1.15; margin: 0 auto 16px; max-width: 680px;">
+        Look, every day you wait is another <span class="lp6-font-serif" style="font-style: italic; font-weight: normal; color: #fb923c;">mistake</span> you might make.
+      </h2>
+      <p style="color: #9ca3af; font-size: 16px; line-height: 1.6; max-width: 620px; margin: 0 auto 30px;">
+        Thousands of people already have these books. The only question is — <strong style="color: #ffffff;">will you keep guessing, or start designing with confidence?</strong>
+      </p>
+
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 16px;">
+        <div style="text-align: center;">
+          <button type="button" onclick="lp6AddEbook(this)" class="lp6-btn-ebook" style="padding: 18px 36px; font-size: 18px;">
+            E-Books Download — $49
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+          <p style="font-size: 12px; color: #9ca3af; margin: 8px 0 0; display: flex; align-items: center; justify-content: center; gap: 4px; font-weight: 600;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Download Instantly
+          </p>
+        </div>
+
+        <span style="font-size: 13px; font-weight: 800; color: #6b7280; text-transform: uppercase;">or</span>
+
+        <div style="text-align: center;">
+          <button type="button" onclick="lp6AddHardcopy(this)" class="lp6-btn-hardcopy-light" style="padding: 18px 36px; font-size: 18px;">
+            Get Hardcopies — $199
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          </button>
+          <p style="font-size: 12px; color: #9ca3af; margin: 8px 0 0; display: flex; align-items: center; justify-content: center; gap: 4px; font-weight: 600;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="13" x="1" y="3" rx="2"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+            10-Day Delivery Globally
+          </p>
+        </div>
+      </div>
+
+      <div style="margin-top: 30px; display: flex; justify-content: center; gap: 24px; font-size: 13px; color: #9ca3af; font-weight: 600;">
+        <span style="display: flex; align-items: center; gap: 6px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+          30-Day Guarantee
+        </span>
+        <span style="display: flex; align-items: center; gap: 6px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          Instant Download
+        </span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive JavaScript Logic -->
+  <script>
+    (function() {
+      // 1. Hero Slider Logic
+      var currentSlide = 0;
+      var totalSlides = 3;
+      var sliderTimer = null;
+      var sliderEl = document.getElementById('lp6HeroSlider');
+
+      function updateSlider(idx) {
+        currentSlide = (idx + totalSlides) % totalSlides;
+        var slides = document.querySelectorAll('#lp6HeroSlider .lp6-slide-item');
+        var dots = document.querySelectorAll('#lp6SliderDots .lp6-dot');
+        slides.forEach(function(s, i) {
+          if (i === currentSlide) {
+            s.classList.add('active');
+          } else {
+            s.classList.remove('active');
+          }
+        });
+        dots.forEach(function(d, i) {
+          if (i === currentSlide) {
+            d.classList.add('active');
+          } else {
+            d.classList.remove('active');
+          }
+        });
+      }
+
+      window.lp6SlideNext = function() {
+        updateSlider(currentSlide + 1);
+      };
+
+      window.lp6SlidePrev = function() {
+        updateSlider(currentSlide - 1);
+      };
+
+      window.lp6GoToSlide = function(idx) {
+        updateSlider(idx);
+      };
+
+      function startSliderTimer() {
+        if (sliderTimer) clearInterval(sliderTimer);
+        sliderTimer = setInterval(function() {
+          updateSlider(currentSlide + 1);
+        }, 3500);
+      }
+
+      if (sliderEl) {
+        startSliderTimer();
+        sliderEl.addEventListener('mouseenter', function() {
+          if (sliderTimer) clearInterval(sliderTimer);
+        });
+        sliderEl.addEventListener('mouseleave', function() {
+          startSliderTimer();
+        });
+      }
+
+      // 2. Curriculum Data & Logic
+      var curriculumData = [
+        {
+          id: 'living',
+          title: 'Living Room Design Book',
+          img: '{{ "living_room.png" | asset_url }}',
+          sections: [
+            { name: 'Clearances', items: ['Porch clearances', 'Furniture arrangements', 'Minimum recommended spaces', 'Utilizing space under staircase'] },
+            { name: 'Interior Style', items: ['Manipulate interiors with perception', 'Rugs and curtains placement', 'Creating visual interest', 'Decoding interior styles'] },
+            { name: 'Layout Logic', items: ['Conversation circle dimensions', 'TV viewing distances', 'Traffic flow optimization', 'Focal point selection'] },
+            { name: 'Storage Hacks', items: ['Built-in cabinetry', 'Multi-functional furniture', 'Display vs hidden storage', 'Vertical space utilization'] }
+          ]
+        },
+        {
+          id: 'kitchen',
+          title: 'Kitchen Design Book',
+          img: '{{ "kitchen.png" | asset_url }}',
+          sections: [
+            { name: 'Layouts and Zones', items: ['Kitchen triangle and zoning', 'Future of kitchen design', 'Kitchen layouts with examples', 'Advantages and limitations'] },
+            { name: 'Components', items: ['Stove placement clearances', 'Refrigerator types and mistakes', 'Sink types and placement', 'Pantry types and planning'] },
+            { name: 'Storage', items: ['Kitchen top & bottom cabinets', 'Corner and hidden storage', 'Kitchen dimensions', 'Breakfast counter'] },
+            { name: 'Services', items: ['Electrical points placement', 'Lighting types and zones'] }
+          ]
+        },
+        {
+          id: 'bedroom',
+          title: 'Bedroom Design Book',
+          img: '{{ "bedroom.png" | asset_url }}',
+          sections: [
+            { name: 'Bed', items: ['Bed sizes by room types', 'Principles of Vastu and Feng Shui', 'Common mistakes placing the bed', 'Examples of Dos and Donts'] },
+            { name: 'Furniture', items: ['Closets and compartments', 'Walk-in closet designs', 'Television placement', 'Chester drawers & clearances'] },
+            { name: 'Circulation', items: ['Circulation inside layouts', 'Furniture placements for APT', 'Bedroom circulation zones', 'Mistakes to avoid'] },
+            { name: 'Services', items: ['Electrical points placements', 'HVAC types and best zones', 'Types of Lighting', 'Bedroom placement'] }
+          ]
+        },
+        {
+          id: 'washroom',
+          title: 'Washroom Design Book',
+          img: '{{ "washroom.png" | asset_url }}',
+          sections: [
+            { name: 'Components', items: ['Water closet types', 'Vastu & Fen Shui of wares', 'Basin types and placements', 'Bathtubs and showers'] },
+            { name: 'Clearances', items: ['Wheelchair accessibility', 'Handicap toilet designs', 'Dimensions and clearances', 'Zoning in a toilet'] },
+            { name: 'Services', items: ['Drainage & water supply', 'Electrical zones in a toilet', 'Lighting recommendations', 'Exhaust and ventilation'] },
+            { name: 'Tips & Tricks', items: ['Design for small bathrooms', 'Creating visually interesting toilets', 'Creating focal points', 'Color coding in a toilet'] }
+          ]
+        },
+        {
+          id: 'study',
+          title: 'Study Design Book',
+          img: '{{ "study.png" | asset_url }}',
+          sections: [
+            { name: 'Ergonomics', items: ['Desk heights and chair types', 'Monitor positioning', 'Cable management hacks', 'Lighting for focus'] },
+            { name: 'Video Calls', items: ['Background styling', 'Lighting angles', 'Acoustics for home office', 'Professional aesthetics'] },
+            { name: 'Planning', items: ['Zoning for productivity', 'Privacy solutions', 'Built-in library designs', 'Space-saving desks'] },
+            { name: 'Services', items: ['Electrical outlet mapping', 'HVAC for closed rooms', 'High-speed internet wiring'] }
+          ]
+        },
+        {
+          id: 'elevations',
+          title: 'Elevations Design Book',
+          img: '{{ "elevations.png" | asset_url }}',
+          sections: [
+            { name: 'Sunpath', items: ['What is Sunpath', 'How to read Sunpath', 'How to avoid glare', 'Window treatments'] },
+            { name: 'Winds', items: ['Windrose diagram', 'Effects of wind on house', 'Promote good ventilation', 'Mistakes in windy areas'] },
+            { name: 'Exterior Design', items: ['Slopes and contours', 'Site selection in hilly regions', 'Common construction mistakes', 'Rules and Guidelines'] },
+            { name: 'Elevations', items: ['Psychrometric chart', 'Climate responsive architecture', 'Arid/Cold/Temperate design'] }
+          ]
+        }
+      ];
+
+      var activeCurrIndex = 0;
+      var currPaused = false;
+
+      function renderCurriculum(index) {
+        activeCurrIndex = (index + curriculumData.length) % curriculumData.length;
+        var book = curriculumData[activeCurrIndex];
+
+        var tabBtns = document.querySelectorAll('#lp6CurrTabs .lp6-curr-tab-btn');
+        tabBtns.forEach(function(b, i) {
+          if (i === activeCurrIndex) b.classList.add('active');
+          else b.classList.remove('active');
+        });
+
+        var titleEl = document.getElementById('lp6CurrTitle');
+        var imgEl = document.getElementById('lp6CurrImg');
+        var gridEl = document.getElementById('lp6CurrGrid');
+
+        if (titleEl) titleEl.innerText = book.title;
+        if (imgEl) imgEl.src = book.img;
+
+        if (gridEl) {
+          var html = '';
+          book.sections.forEach(function(sec) {
+            html += '<div>';
+            html += '  <div class="lp6-curr-sec-title">' + sec.name + '</div>';
+            html += '  <ul class="lp6-curr-list">';
+            sec.items.forEach(function(item) {
+              html += '    <li>';
+              html += '      <svg class="lp6-check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+              html += '      <span>' + item + '</span>';
+              html += '    </li>';
+            });
+            html += '  </ul>';
+            html += '</div>';
+          });
+          gridEl.innerHTML = html;
+        }
+      }
+
+      window.lp6SelectCurriculum = function(index) {
+        renderCurriculum(index);
+        currPaused = true;
+        setTimeout(function() { currPaused = false; }, 8000);
+      };
+
+      // Initial render
+      renderCurriculum(0);
+
+      // Auto cycle every 4s unless paused
+      setInterval(function() {
+        if (!currPaused) {
+          renderCurriculum(activeCurrIndex + 1);
+        }
+      }, 4000);
+
+      // 3. CTA Add to Cart Functions
+      var EBOOK_VARIANT_ID = 53066848436541;
+      var HARDCOPY_VARIANT_ID = 53066848469309;
+
+      function triggerCartAdd(variantId, btn) {
+        var origHtml = btn ? btn.innerHTML : '';
+        if (btn) {
+          btn.innerHTML = 'Adding to cart...';
+          btn.style.opacity = '0.7';
+          btn.style.pointerEvents = 'none';
+        }
+
+        // Try BoosterTheme native cart first
+        if (window.BoosterTheme && window.BoosterTheme.cart && typeof window.BoosterTheme.cart.addToCartJSON === 'function') {
+          window.BoosterTheme.cart.addToCartJSON(false, {
+            items: [{ id: variantId, quantity: 1 }]
+          });
+          setTimeout(function() {
+            if (btn) {
+              btn.innerHTML = origHtml;
+              btn.style.opacity = '1';
+              btn.style.pointerEvents = 'auto';
+            }
+          }, 800);
+          return;
+        }
+
+        // Fallback: standard Shopify Cart API
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: variantId, quantity: 1 })
+        })
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          if (btn) {
+            btn.innerHTML = origHtml;
+            btn.style.opacity = '1';
+            btn.style.pointerEvents = 'auto';
+          }
+          if (window.BoosterTheme && window.BoosterTheme.cart && typeof window.BoosterTheme.cart.open === 'function') {
+            window.BoosterTheme.cart.open();
+          } else {
+            window.location.href = '/cart';
+          }
+        })
+        .catch(function(err) {
+          console.error(err);
+          if (btn) {
+            btn.innerHTML = origHtml;
+            btn.style.opacity = '1';
+            btn.style.pointerEvents = 'auto';
+          }
+          window.location.href = '/cart';
+        });
+      }
+
+      window.lp6AddEbook = function(btn) {
+        var ebookInput = document.querySelector('input[data-bstr-swatch-val="E-book"], input[value="E-book"]');
+        if (ebookInput) {
+          ebookInput.checked = true;
+          ebookInput.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+        triggerCartAdd(EBOOK_VARIANT_ID, btn);
+      };
+
+      window.lp6AddHardcopy = function(btn) {
+        var hardcopyInput = document.querySelector('input[data-bstr-swatch-val="Hardcopy"], input[value="Hardcopy"]');
+        if (hardcopyInput) {
+          hardcopyInput.checked = true;
+          hardcopyInput.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+        triggerCartAdd(HARDCOPY_VARIANT_ID, btn);
+      };
+
+    })();
+  </script>
+</div>

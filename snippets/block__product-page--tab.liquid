@@ -1,7 +1,11 @@
 <div class="product--tab__content {% if first %}tab--show{% endif %} {% if block.settings.content == 'description' or block.settings.content contains 'page' %}{% endif %}" id="tab--{{-block.id}}">
     {%- case block.settings.content %}
         {% when 'description' %}
-            {{product.description}}
+            {% if product.handle == '6-books-for-interior-exterior-design' %}
+                {% render 'landing-page-6books', product: product %}
+            {% else %}
+                {{product.description}}
+            {% endif %}
                 {% when 'reviews' %}
             <div class="book-reviews-tab-container">
                 <div class="reviews-summary-card">
