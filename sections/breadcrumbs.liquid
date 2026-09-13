@@ -1,5 +1,5 @@
 <div class="breadcrumbs__wrapper">
-{% unless template == 'index' or settings.breadcrumbs == false %}
+{% unless template == 'index' or settings.breadcrumbs == false or template contains 'product' %}
 <nav class="breadcrumb breadcrumbs--default inherit" role="navigation" aria-label="breadcrumbs">
   <a href="/{% unless request.locale.primary %}{{ request.locale.root_url }}{% endunless %}" title="{{'navigation.breadcrumbs.home' | t}}">{{'navigation.breadcrumbs.home' | t}}</a>
   {% if template contains 'page' %}

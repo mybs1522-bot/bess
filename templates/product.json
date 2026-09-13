@@ -1,9 +1,5 @@
 {
   "sections": {
-    "breadcrumbs": {
-      "type": "breadcrumbs",
-      "settings": {}
-    },
     "page": {
       "type": "product-page__product",
       "blocks": {
@@ -148,7 +144,6 @@
     }
   },
   "order": [
-    "breadcrumbs",
     "page",
     "kitchenind_details",
     "inline_upsell",
