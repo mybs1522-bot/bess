@@ -14,11 +14,35 @@
 <h1 
 class="h-reset product__title product__title--{{block.id}} 
 font__family--{{-block.settings.fontFamily}} font__size--{{-block.settings.fontSize}} 
- {% if block.settings.noMargin or noMargin %}margin__bottom--reduced{%endif-%}" {{block.shopify_attributes}}>{{ product.title }}</h1>
+ {% if block.settings.noMargin or noMargin %}margin__bottom--reduced{%endif-%}" {{block.shopify_attributes}}>
+  {%- if product.title contains 'Interior' and product.title contains 'Exterior' -%}
+    <span class="product__title-prefix">6 Books For </span><span class="product__title-highlight">Interior &amp; Exterior Design</span>
+  {%- else -%}
+    {{ product.title }}
+  {%- endif -%}
+</h1>
 
-
-{% comment %}
-{% blockdef %}
-
-{% endblockdef %}
-{% endcomment %}
+<style>
+  .product__title-prefix {
+    font-weight: 500 !important;
+    color: #4b5563 !important;
+  }
+  .product__title-highlight {
+    font-weight: 900 !important;
+    color: #09090b !important;
+  }
+  @media (max-width: 768px) {
+    .product__title,
+    .product-page__title,
+    h1.product__title {
+      font-size: clamp(14px, 4.25vw, 17.5px) !important;
+      white-space: nowrap !important;
+      letter-spacing: -0.025em !important;
+      line-height: 1.25 !important;
+      display: block !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      margin-bottom: 6px !important;
+    }
+  }
+</style>

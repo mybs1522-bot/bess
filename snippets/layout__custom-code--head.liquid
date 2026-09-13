@@ -38,12 +38,29 @@ nav.breadcrumb {
   box-shadow: 0 4px 25px rgba(0, 0, 0, 0.04) !important;
 }
 
-.product__title,
-.product-page__title {
-  font-size: clamp(2rem, 3.5vw, 2.7rem) !important;
-  font-weight: 800 !important;
-  line-height: 1.12 !important;
-  margin-bottom: 10px !important;
+@media (min-width: 769px) {
+  .product__title,
+  .product-page__title {
+    font-size: clamp(2rem, 3.5vw, 2.7rem) !important;
+    font-weight: 800 !important;
+    line-height: 1.12 !important;
+    margin-bottom: 10px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .product__title,
+  .product-page__title,
+  h1.product__title {
+    font-size: clamp(14px, 4.25vw, 17.5px) !important;
+    white-space: nowrap !important;
+    letter-spacing: -0.025em !important;
+    line-height: 1.25 !important;
+    display: block !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    margin-bottom: 6px !important;
+  }
 }
 
 /* Primary Button (Add to Cart / Buy Box) */
