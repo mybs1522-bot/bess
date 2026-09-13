@@ -111,27 +111,6 @@
       "type": "section__kitchenind-landing",
       "settings": {}
     },
-    "inline_upsell": {
-      "type": "api__upsell--inline",
-      "blocks": {
-        "companion_books": {
-          "type": "priceSpecific",
-          "settings": {
-            "conditionType": "lt",
-            "condition": "50",
-            "upsellProduct1": "living-room-design-book",
-            "upsellProduct2": "bedroom-design-book",
-            "upsellProduct3": "washroom-design-book",
-            "heading": "Frequently Paired With This Book",
-            "subheading": "Complete your design collection"
-          }
-        }
-      },
-      "block_order": [
-        "companion_books"
-      ],
-      "settings": {}
-    },
     "recommended": {
       "type": "product-page__recommended",
       "settings": {
@@ -149,7 +128,6 @@
   "order": [
     "page",
     "kitchenind_details",
-    "inline_upsell",
     "recommended"
   ]
 }
