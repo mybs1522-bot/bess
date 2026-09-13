@@ -912,7 +912,7 @@ shopify-payment-terms {
   }
 }
 
-/* 12. Ultra-Smooth Product Gallery & Zero-Overlap System */
+/* 12. Ultra-Smooth Product Gallery & Dynamic Height System */
 @media (max-width: 789px) {
   .gallery.gallery__default {
     display: flex !important;
@@ -926,40 +926,42 @@ shopify-payment-terms {
   .slider--product__holder {
     position: relative !important;
     width: 100% !important;
-    max-height: none !important; /* Overrides broken JS cap preventing the 38px image overlap */
-    overflow: visible !important;
-    margin-bottom: 16px !important; /* Clean breathing room between main image and thumbnails */
+    overflow: hidden !important;
+    margin-bottom: 14px !important;
     padding: 0 !important;
+    transition: height 0.35s cubic-bezier(0.25, 1, 0.5, 1), max-height 0.35s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    will-change: height, max-height;
   }
 
   .slider--product {
     width: 100% !important;
-    height: auto !important;
+    height: 100% !important;
     max-height: none !important;
+    min-height: 0 !important;
     overflow-x: auto !important;
     overflow-y: hidden !important;
     scroll-snap-type: x mandatory !important;
     -webkit-overflow-scrolling: touch !important;
+    display: flex !important;
+    align-items: flex-start !important;
     border-radius: 16px !important;
-    background: #ffffff !important;
+    background: transparent !important;
   }
 
   .slide--product {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    display: block !important;
     width: 100% !important;
     flex: 0 0 100% !important;
-    scroll-snap-align: center !important;
+    scroll-snap-align: start !important;
     padding: 0 !important;
     box-sizing: border-box !important;
-    background: #ffffff !important;
+    background: transparent !important;
   }
 
   .slide--product img {
     width: 100% !important;
     height: auto !important;
-    max-height: 480px !important;
+    max-height: 500px !important;
     object-fit: contain !important;
     border-radius: 14px !important;
     display: block !important;

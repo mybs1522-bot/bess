@@ -121,8 +121,74 @@
                 }
             });
 
-            // Smooth Auto-Center Active Thumbnail on Mobile
+            // Dynamic Spacing & Smooth Height Animation on Mobile
+            const holder = document.querySelector('.slider--product__holder');
+            const slider = document.querySelector('[data-bstr-slide-holder]');
             const thumbHolder = document.querySelector('.gallery__thumbnails');
+
+            function updateGalleryHeight(targetIndex, animated = true) {
+                if (window.innerWidth >= 790) {
+                    if (holder) {
+                        holder.style.height = '';
+                        holder.style.maxHeight = '';
+                    }
+                    return;
+                }
+                if (!holder || !slider) return;
+
+                const slides = slider.querySelectorAll('[data-bstr-slide]');
+                if (!slides.length) return;
+
+                let index = targetIndex;
+                if (typeof index !== 'number' || index < 0 || index >= slides.length) {
+                    const slideWidth = slides[0].offsetWidth || slider.offsetWidth || 1;
+                    index = Math.round(slider.scrollLeft / slideWidth);
+                    index = Math.max(0, Math.min(index, slides.length - 1));
+                }
+
+                const activeSlide = slides[index];
+                if (!activeSlide) return;
+
+                const img = activeSlide.querySelector('img');
+                let imgHeight = 0;
+
+                if (img && img.offsetHeight > 50) {
+                    imgHeight = img.offsetHeight;
+                } else if (img && img.getAttribute('height') && img.getAttribute('width')) {
+                    const w = parseFloat(img.getAttribute('width'));
+                    const h = parseFloat(img.getAttribute('height'));
+                    const currentW = activeSlide.offsetWidth || slider.offsetWidth || (window.innerWidth - 28);
+                    imgHeight = Math.round((h / w) * currentW);
+                } else {
+                    imgHeight = 260;
+                }
+
+                const topBar = holder.querySelector('.arch-image-top-bar');
+                let topBarHeight = 0;
+                if (topBar) {
+                    const s = window.getComputedStyle(topBar);
+                    topBarHeight = topBar.offsetHeight + parseFloat(s.marginTop || 0) + parseFloat(s.marginBottom || 0);
+                }
+
+                const totalTargetHeight = imgHeight + topBarHeight;
+
+                if (!animated) {
+                    holder.style.transition = 'none';
+                } else {
+                    holder.style.transition = 'height 0.35s cubic-bezier(0.25, 1, 0.5, 1), max-height 0.35s cubic-bezier(0.25, 1, 0.5, 1)';
+                }
+
+                holder.style.height = totalTargetHeight + 'px';
+                holder.style.maxHeight = totalTargetHeight + 'px';
+
+                if (!animated) {
+                    requestAnimationFrame(() => {
+                        holder.style.transition = 'height 0.35s cubic-bezier(0.25, 1, 0.5, 1), max-height 0.35s cubic-bezier(0.25, 1, 0.5, 1)';
+                    });
+                }
+            }
+
+            // Smooth Auto-Center Active Thumbnail on Mobile
             if (thumbHolder) {
                 const centerActiveThumb = (target) => {
                     if (!target || window.innerWidth >= 790) return;
@@ -135,6 +201,8 @@
                         if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
                             const target = mutation.target;
                             if (target && target.classList && target.classList.contains('bstrSlider__thumb--active')) {
+                                const idx = parseInt(target.getAttribute('data-bstr-slider-thumb') || 0);
+                                updateGalleryHeight(idx, true);
                                 centerActiveThumb(target);
                             }
                         }
@@ -145,12 +213,50 @@
                     observer.observe(th, { attributes: true });
                 });
 
-                // Check initial active thumbnail
+                // Thumbnail click: immediate responsive trigger
+                document.querySelectorAll('.gallery__thumbnail').forEach((th, i) => {
+                    th.addEventListener('click', () => {
+                        updateGalleryHeight(i, true);
+                    });
+                });
+
+                // Check initial active thumbnail & height
                 const initialActive = thumbHolder.querySelector('.bstrSlider__thumb--active');
                 if (initialActive) {
-                    setTimeout(() => centerActiveThumb(initialActive), 100);
+                    const idx = parseInt(initialActive.getAttribute('data-bstr-slider-thumb') || 0);
+                    updateGalleryHeight(idx, false);
+                    setTimeout(() => {
+                        updateGalleryHeight(idx, false);
+                        centerActiveThumb(initialActive);
+                    }, 120);
+                } else {
+                    updateGalleryHeight(0, false);
                 }
             }
+
+            // Scroll swipe event on slider
+            if (slider) {
+                let scrollTimeout;
+                slider.addEventListener('scroll', () => {
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(() => {
+                        updateGalleryHeight(null, true);
+                    }, 50);
+                }, { passive: true });
+            }
+
+            // Recompute on resize or image load
+            window.addEventListener('resize', () => {
+                updateGalleryHeight(null, false);
+            });
+
+            document.querySelectorAll('.slide--product img').forEach(img => {
+                if (img.complete) {
+                    updateGalleryHeight(null, false);
+                } else {
+                    img.addEventListener('load', () => updateGalleryHeight(null, false));
+                }
+            });
         })(jQuery);
     });
 </script>

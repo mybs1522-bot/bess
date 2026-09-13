@@ -2053,10 +2053,17 @@ class ProductSlider extends BstrSlider {
                     let style = window.getComputedStyle(topBar);
                     extra = topBar.offsetHeight + parseFloat(style.marginTop || 0) + parseFloat(style.marginBottom || 0);
                 }
-                if(max) holder.style.maxHeight = `${max + extra}px`;
+                if(max) {
+                    holder.style.height = `${max + extra}px`;
+                    holder.style.maxHeight = `${max + extra}px`;
+                }
             }
         } else {
-            slider.closest('[data-bstr-ppslider]').style.maxHeight = null
+            let holder = slider.closest('[data-bstr-ppslider]');
+            if(holder){
+                holder.style.height = null;
+                holder.style.maxHeight = null;
+            }
         }
 
         let activeThumb = document.querySelector(`[data-bstr-slider-thumb="${current[0].index}"][data-bstr-slider-for="${id}"]`);
