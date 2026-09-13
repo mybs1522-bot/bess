@@ -55,6 +55,11 @@
                     <a class="nav__link nav__link--{{section.settings.hoverStyle}}" href="{{link.url}}">{% render 'header--link-tag' with link.title as text %}</a>
                     {{submenu}}
                 </span>
+                {% if forloop.first %}
+                <span class="nav__link__holder {% if request.path contains '6-books-for-interior-exterior-design' %}nav__link--active{% endif %}">
+                    <a class="nav__link nav__link--{{section.settings.hoverStyle}}" href="/products/6-books-for-interior-exterior-design">6 Books</a>
+                </span>
+                {% endif %}
             {% endfor %}
         </nav>
         <div class="header__element--width header__utility">
@@ -85,6 +90,11 @@
                     -->
                     {% endif %}
                 </span>
+                {% if forloop.first %}
+                <span class="nav__link__holder">
+                    <a class="nav__link {% if request.path contains '6-books-for-interior-exterior-design' %}nav__link--active{% endif %}" href="/products/6-books-for-interior-exterior-design">6 Books</a>
+                </span>
+                {% endif %}
             {% endfor %}
             <div class="mobile__navigation__footer">
                 {% render 'header__mobile--footer' %}
