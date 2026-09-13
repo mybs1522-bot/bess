@@ -45,6 +45,7 @@
     "reviewApp": "booster",
     "messenger": false,
     "messengerID": "",
+    "gdpr": false,
     "sections": {
       "top-info-bar": {
         "type": "top-info-bar",

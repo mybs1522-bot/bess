@@ -21,15 +21,4 @@
 
 {% comment %} Messenger Customer Chat permanently removed {% endcomment %}
 
-{% if settings.gdpr %}
-    <div id="bstr--notice" class="gdpr__holder">
-    <div class="gdpr__notice">
-        <div class="gdpr__text">
-        {{settings.gdprText}}
-        </div>
-        <div class="gdpr__buttons">
-        {% render 'button--onclick', text: settings.gdprAccept, style: 'data-gdpr-accept', type: 'primary' %}
-        </div>
-    </div>
-    </div>
-{% endif %}
+{% comment %} GDPR Cookie Notice permanently removed {% endcomment %}
