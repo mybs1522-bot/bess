@@ -30,6 +30,65 @@
     <span class="rating-dot-separator">•</span>
     <span class="rating-bestseller-badge">Verified Readers</span>
   </div>
+
+  <!-- Mobile Rating & Customer Proof Thumbnail Placeholder (Phone View) -->
+  <div class="mobile-rating-proof-placeholder">
+    <div class="proof-thumbnails-scroll" id="proofThumbnailsTrack">
+      <div class="proof-thumbnail-card proof-thumbnail-card--breakdown" onclick="openProofModal(0)" title="View 98% Recommend & Rating Breakdown">
+        <img 
+          src="{{ 'proof-rating-breakdown.png' | asset_url }}" 
+          alt="98% Recommend & Rating Breakdown" 
+          loading="lazy" 
+          width="135" 
+          height="80" 
+        />
+        <span class="proof-thumb-badge">98% Recommend</span>
+      </div>
+      <div class="proof-thumbnail-card" onclick="openProofModal(1)" title="View Real Reader Photos">
+        <img 
+          src="{{ 'proof-customer-photos-1.jpg' | asset_url }}" 
+          alt="Real Reader Photos - Set 1" 
+          loading="lazy" 
+          width="142" 
+          height="80" 
+        />
+        <span class="proof-thumb-badge">Reader Photos</span>
+      </div>
+      <div class="proof-thumbnail-card" onclick="openProofModal(2)" title="View Real Reader Photos">
+        <img 
+          src="{{ 'proof-customer-photos-2.jpg' | asset_url }}" 
+          alt="Real Reader Photos - Set 2" 
+          loading="lazy" 
+          width="142" 
+          height="80" 
+        />
+        <span class="proof-thumb-badge">Site Blueprints</span>
+      </div>
+      <div class="proof-thumbnail-card" onclick="openProofModal(3)" title="View Real Reader Photos">
+        <img 
+          src="{{ 'proof-customer-photos-3.jpg' | asset_url }}" 
+          alt="Real Reader Photos - Set 3" 
+          loading="lazy" 
+          width="142" 
+          height="80" 
+        />
+        <span class="proof-thumb-badge">Physical Books</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fullscreen Lightbox Modal for Tapping Any Proof Thumbnail -->
+  <div id="proofLightboxModal" class="proof-lightbox-modal" onclick="closeProofModal(event)">
+    <div class="proof-lightbox-content" onclick="event.stopPropagation();">
+      <button class="proof-lightbox-close" onclick="closeProofModal(event)" aria-label="Close">✕</button>
+      <img id="proofLightboxImg" src="" alt="Proof Preview" />
+      <div class="proof-lightbox-nav">
+        <button onclick="navProofModal(-1)" class="proof-nav-btn" aria-label="Previous">❮</button>
+        <span id="proofLightboxCounter">1 / 4</span>
+        <button onclick="navProofModal(1)" class="proof-nav-btn" aria-label="Next">❯</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -72,6 +131,46 @@
       }
     }, 50);
   }
+
+  var proofImages = [
+    "{{ 'proof-rating-breakdown.png' | asset_url }}",
+    "{{ 'proof-customer-photos-1.jpg' | asset_url }}",
+    "{{ 'proof-customer-photos-2.jpg' | asset_url }}",
+    "{{ 'proof-customer-photos-3.jpg' | asset_url }}"
+  ];
+  var currentProofIdx = 0;
+
+  function openProofModal(idx) {
+    currentProofIdx = idx;
+    var modal = document.getElementById('proofLightboxModal');
+    var img = document.getElementById('proofLightboxImg');
+    var counter = document.getElementById('proofLightboxCounter');
+    if (modal && img && counter) {
+      img.src = proofImages[idx];
+      counter.textContent = (idx + 1) + ' / ' + proofImages.length;
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeProofModal(event) {
+    if (event) event.stopPropagation();
+    var modal = document.getElementById('proofLightboxModal');
+    if (modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  }
+
+  function navProofModal(dir) {
+    currentProofIdx = (currentProofIdx + dir + proofImages.length) % proofImages.length;
+    var img = document.getElementById('proofLightboxImg');
+    var counter = document.getElementById('proofLightboxCounter');
+    if (img && counter) {
+      img.src = proofImages[currentProofIdx];
+      counter.textContent = (currentProofIdx + 1) + ' / ' + proofImages.length;
+    }
+  }
 </script>
 
 <style>
@@ -82,5 +181,156 @@
   .book-editorial-rating-wrapper:hover .rating-count-text {
     text-decoration: underline;
     color: #ea580c;
+  }
+
+  /* Mobile Rating & Proof Placeholder */
+  .mobile-rating-proof-placeholder {
+    display: none;
+    margin: 8px 0 6px 0;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  @media (max-width: 768px) {
+    .mobile-rating-proof-placeholder {
+      display: block !important;
+    }
+  }
+
+  .proof-thumbnails-scroll {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 2px 2px 6px 2px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .proof-thumbnails-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .proof-thumbnail-card {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1.5px solid #e2e8f0;
+    background: #ffffff;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    height: 72px;
+    width: 122px;
+  }
+  .proof-thumbnail-card:active {
+    transform: scale(0.96);
+  }
+
+  .proof-thumbnail-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .proof-thumbnail-card--breakdown img {
+    object-fit: contain;
+    padding: 3px;
+    background: #ffffff;
+  }
+
+  .proof-thumb-badge {
+    position: absolute;
+    bottom: 2px;
+    left: 2px;
+    right: 2px;
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    color: #ffffff;
+    font-size: 8.5px;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 4px;
+    padding: 2px 3px;
+    letter-spacing: 0.02em;
+    pointer-events: none;
+    line-height: 1.15;
+  }
+
+  /* Lightbox Modal */
+  .proof-lightbox-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999999;
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    box-sizing: border-box;
+  }
+  .proof-lightbox-content {
+    position: relative;
+    max-width: 96vw;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .proof-lightbox-content img {
+    max-width: 100%;
+    max-height: 76vh;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    background: #ffffff;
+    object-fit: contain;
+  }
+  .proof-lightbox-close {
+    position: absolute;
+    top: -42px;
+    right: 0;
+    background: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  .proof-lightbox-close:hover {
+    background: rgba(255, 255, 255, 0.45);
+  }
+  .proof-lightbox-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 12px;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .proof-nav-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  .proof-nav-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
   }
 </style>
