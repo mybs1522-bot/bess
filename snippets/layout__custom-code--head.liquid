@@ -483,9 +483,11 @@ shopify-payment-terms {
   display: flex !important;
   flex-direction: row !important;
   flex-wrap: nowrap !important;
-  align-items: center !important;
+  align-items: stretch !important;
   gap: 12px !important;
   width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 .quantity--input {
   display: inline-flex !important;
@@ -495,11 +497,16 @@ shopify-payment-terms {
   width: auto !important;
   min-width: 110px !important;
   max-width: 125px !important;
+  height: 52px !important;
+  min-height: 52px !important;
+  max-height: 52px !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
   background: #f4f4f5 !important;
   border: 1px solid #e4e4e7 !important;
   border-radius: 12px !important;
-  padding: 4px 6px !important;
-  height: 52px !important;
+  padding: 0 4px !important;
+  vertical-align: middle !important;
 }
 .quantity--input__button {
   width: 32px !important;
@@ -515,6 +522,9 @@ shopify-payment-terms {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
 }
 .quantity--input__button:hover {
   background: #e4e4e7 !important;
@@ -522,13 +532,19 @@ shopify-payment-terms {
 }
 .quantity--input__input {
   width: 36px !important;
+  height: 100% !important;
   border: none !important;
   background: transparent !important;
   text-align: center !important;
   font-weight: 800 !important;
   font-size: 16px !important;
   color: #09090b !important;
+  margin: 0 !important;
   padding: 0 !important;
+  line-height: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 .product__atc .button--addToCart,
 .product__atc .button--primary,
@@ -537,8 +553,11 @@ shopify-payment-terms {
   flex: 1 1 auto !important;
   min-width: 0 !important;
   width: auto !important;
-  min-height: 52px !important;
   height: 52px !important;
+  min-height: 52px !important;
+  max-height: 52px !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
   font-size: 15px !important;
   letter-spacing: 0.02em !important;
   display: inline-flex !important;
@@ -549,13 +568,20 @@ shopify-payment-terms {
   box-shadow: 0 4px 14px rgba(9, 9, 11, 0.12) !important;
   white-space: nowrap !important;
   padding: 0 16px !important;
+  line-height: 1 !important;
+  vertical-align: middle !important;
 }
 .atc-button-icon {
   display: inline-block !important;
   vertical-align: middle !important;
   flex-shrink: 0 !important;
-  margin-right: 4px !important;
+  margin: 0 !important;
   color: currentColor !important;
+}
+.product__atc button[data-buy-button] span[data-button-text] {
+  display: inline-block !important;
+  line-height: 1 !important;
+  margin: 0 !important;
 }
 .product__atc .checkout--dynamic {
   width: 100% !important;
@@ -576,15 +602,20 @@ shopify-payment-terms {
   }
   .product__atc-row {
     gap: 8px !important;
+    align-items: stretch !important;
+    margin: 0 !important;
   }
   .quantity--input {
-    min-width: 95px !important;
-    max-width: 105px !important;
+    min-width: 92px !important;
+    max-width: 100px !important;
     height: 48px !important;
-    padding: 2px 4px !important;
+    min-height: 48px !important;
+    max-height: 48px !important;
+    margin: 0 !important;
+    padding: 0 2px !important;
   }
   .quantity--input__button {
-    width: 28px !important;
+    width: 26px !important;
     font-size: 16px !important;
   }
   .quantity--input__input {
@@ -595,16 +626,17 @@ shopify-payment-terms {
   .product__atc .button--primary,
   .product__atc .button--secondary,
   .product__atc button[data-buy-button] {
-    min-height: 48px !important;
     height: 48px !important;
+    min-height: 48px !important;
+    max-height: 48px !important;
     font-size: 14px !important;
     gap: 6px !important;
     padding: 0 12px !important;
+    margin: 0 !important;
   }
   .atc-button-icon {
     width: 16px !important;
     height: 16px !important;
-    margin-right: 2px !important;
   }
 }
 
