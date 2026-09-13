@@ -890,4 +890,25 @@ shopify-payment-terms {
   pointer-events: none !important;
   opacity: 0 !important;
 }
+
+/* 11. Mobile Product Title & Row Spacing */
+@media (max-width: 768px) {
+  .product__row {
+    padding: 16px 14px !important;
+    margin: 10px auto 20px auto !important;
+    border-radius: 14px !important;
+  }
+  .product__title,
+  .product-page__title,
+  h1.product__title {
+    font-size: clamp(18px, 5.1vw, 22.5px) !important;
+    white-space: nowrap !important;
+    letter-spacing: -0.035em !important;
+    line-height: 1.25 !important;
+    display: block !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    margin-bottom: 8px !important;
+  }
+}
 </style>
