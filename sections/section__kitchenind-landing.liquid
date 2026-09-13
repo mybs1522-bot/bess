@@ -127,7 +127,7 @@
         {{ section.settings.banner_timer }}
       </span>
       {% endif %}
-      <a href="javascript:void(0)" onclick="window.openDigitalCheckout ? window.openDigitalCheckout() : window.scrollTo({top: 0, behavior: 'smooth'})" style="background: white; color: #ea580c; text-decoration: none; padding: 4px 14px; border-radius: 20px; font-size: 11px; text-transform: uppercase; font-weight: 900;">
+      <a href="#product-form" onclick="document.querySelector('[data-buy-button], .button--primary')?.click() || window.scrollTo({top: 0, behavior: 'smooth'});" style="background: white; color: #ea580c; text-decoration: none; padding: 4px 14px; border-radius: 20px; font-size: 11px; text-transform: uppercase; font-weight: 900;">
         {{ section.settings.banner_btn_text }}
       </a>
     </div>
@@ -167,7 +167,7 @@
 
       <!-- Hero Actions -->
       <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; align-items: center;">
-        <button onclick="window.openDigitalCheckout ? window.openDigitalCheckout() : window.scrollTo({top: 0, behavior: 'smooth'})" class="kitchen-btn-primary" style="font-size: 17px;">
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'}); document.querySelector('.sticky--atc__button, [data-buy-button], .button--primary')?.click();" class="kitchen-btn-primary" style="font-size: 17px;">
           {{ section.settings.hero_btn_primary }}
         </button>
         <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="kitchen-btn-secondary" style="font-size: 16px;">
