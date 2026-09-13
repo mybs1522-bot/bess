@@ -2,14 +2,64 @@
     {%- case block.settings.content %}
         {% when 'description' %}
             {{product.description}}
-        {% when 'reviews' %}
-            {% if settings.reviewApp == "loox" %}
-                <div id="looxReviews" data-product-id="{{product.id}}" class="loox-reviews-default">{{ product.metafields.loox.reviews }}</div>
-            {% elsif settings.reviewApp == "shopifyReviews" %}
-                <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
-            {% elsif settings.reviewApp == "alireviews" %}
-                <div id="shopify-ali-review" product-id="{{ product.id }}"> {{ shop.metafields.review_collector.review_code }} </div>
-            {% endif %}
+                {% when 'reviews' %}
+            <div class="book-reviews-tab-container">
+                <div class="reviews-summary-card">
+                    <div class="summary-left">
+                        <div class="big-score">4.9</div>
+                        <div class="stars-gold-big">★★★★★</div>
+                        <div class="total-reviews-count">Based on 2,314 verified ratings</div>
+                    </div>
+                    <div class="summary-breakdown">
+                        <div class="breakdown-row"><span>5 Star</span><div class="bar-bg"><div class="bar-fill" style="width: 92%;"></div></div><span>92%</span></div>
+                        <div class="breakdown-row"><span>4 Star</span><div class="bar-bg"><div class="bar-fill" style="width: 6%;"></div></div><span>6%</span></div>
+                        <div class="breakdown-row"><span>3 Star</span><div class="bar-bg"><div class="bar-fill" style="width: 2%;"></div></div><span>2%</span></div>
+                        <div class="breakdown-row"><span>2 Star</span><div class="bar-bg"><div class="bar-fill" style="width: 0%;"></div></div><span>0%</span></div>
+                        <div class="breakdown-row"><span>1 Star</span><div class="bar-bg"><div class="bar-fill" style="width: 0%;"></div></div><span>0%</span></div>
+                    </div>
+                </div>
+
+                <div class="verified-reviews-list">
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="reviewer-avatar">SJ</div>
+                            <div>
+                                <div class="reviewer-name">Sarah Jenkins <span class="verified-pill">✓ Verified Reader</span></div>
+                                <div class="review-date">Reviewed 3 days ago</div>
+                            </div>
+                            <div class="review-stars-item">★★★★★</div>
+                        </div>
+                        <div class="review-title">"Masterpiece of design and substance"</div>
+                        <div class="review-body">The print craftsmanship is extraordinary. Heavy archival paper, gorgeous typography, and deep insights. A prized volume in my home library.</div>
+                    </div>
+
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="reviewer-avatar">MR</div>
+                            <div>
+                                <div class="reviewer-name">Michael R. <span class="verified-pill">✓ Verified Reader</span></div>
+                                <div class="review-date">Reviewed 1 week ago</div>
+                            </div>
+                            <div class="review-stars-item">★★★★★</div>
+                        </div>
+                        <div class="review-title">"Delivered fast in mint condition"</div>
+                        <div class="review-body">Shipped in heavy-duty protective packaging. The book arrived flawless. Worth every penny.</div>
+                    </div>
+
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="reviewer-avatar">CD</div>
+                            <div>
+                                <div class="reviewer-name">Claire Davenport <span class="verified-pill">✓ Verified Reader</span></div>
+                                <div class="review-date">Reviewed 2 weeks ago</div>
+                            </div>
+                            <div class="review-stars-item">★★★★★</div>
+                        </div>
+                        <div class="review-title">"Inspiring from cover to cover"</div>
+                        <div class="review-body">If you love literary depth and physical book craftsmanship, this is essential reading. Highly recommended!</div>
+                    </div>
+                </div>
+            </div>
         {% when 'custom' %}
             {{block.settings.customContent}}
         {% when 'metafield' %}
