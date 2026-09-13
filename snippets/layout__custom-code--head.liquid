@@ -1,0 +1,254 @@
+<!-- Google Fonts for Editorial Bookstore -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* Editorial Bookstore Modern Styling */
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  background-color: #faf9f6 !important;
+}
+
+/* Product Page Title & Headings */
+.product__row h1,
+.product__row .product__title,
+.product__row .h-reset,
+.tab__holder .tab--product,
+.book-cover-title {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  letter-spacing: -0.02em;
+}
+
+.product__row {
+  max-width: 1140px !important;
+  margin: 30px auto 40px auto !important;
+  padding: 35px 30px !important;
+  background: #ffffff !important;
+  border: 1px solid #ede9df !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+}
+
+.product__title,
+.product-page__title {
+  font-size: 2.3rem !important;
+  font-weight: 700 !important;
+  color: #1a221f !important;
+  line-height: 1.18 !important;
+  margin-bottom: 8px !important;
+}
+
+/* Book Cover 3D Mockup when no image is uploaded */
+.book-cover-placeholder-wrap {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 10px;
+  width: 100%;
+}
+
+.book-cover-mockup {
+  position: relative;
+  width: 290px;
+  height: 430px;
+  background: linear-gradient(135deg, #0c4333 0%, #138867 50%, #083325 100%);
+  border-radius: 4px 14px 14px 4px;
+  border-left: 8px solid #062b1f;
+  box-shadow: -14px 18px 30px -6px rgba(0, 0, 0, 0.32), -4px 8px 14px -2px rgba(0, 0, 0, 0.18), inset 4px 0 10px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 24px;
+  color: #ffffff;
+  transition: transform 0.3s ease;
+  box-sizing: border-box;
+}
+
+.book-cover-mockup:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+.book-cover-spine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 14px;
+  background: linear-gradient(90deg, rgba(0,0,0,0.5) 0%, rgba(255,255,255,0.15) 50%, transparent 100%);
+  pointer-events: none;
+}
+
+.book-cover-badge {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #a3e6d2;
+  font-weight: 600;
+}
+
+.book-cover-title {
+  font-size: 26px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  color: #fdfdfc !important;
+  margin: 16px 0 8px 0 !important;
+}
+
+.book-cover-divider {
+  width: 45px;
+  height: 2px;
+  background: #dfb26b;
+  margin: 10px 0;
+}
+
+.book-cover-author {
+  font-size: 14px;
+  color: #d1eae2;
+  font-style: italic;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.book-cover-hint {
+  font-size: 12px;
+  color: #138867;
+  background: #ebf6f2;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-top: 16px;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* 3D Book Cover styling for real uploaded images */
+.gallery__default .slide--product img {
+  border-radius: 4px 12px 12px 4px !important;
+  box-shadow: -12px 16px 28px -6px rgba(0, 0, 0, 0.28), -4px 6px 12px -2px rgba(0, 0, 0, 0.16) !important;
+  border-left: 6px solid #138867 !important;
+  transition: transform 0.3s ease !important;
+  max-width: 360px !important;
+  margin: 0 auto !important;
+  display: block !important;
+}
+
+.gallery__default .slide--product img:hover {
+  transform: scale(1.02) !important;
+}
+
+/* Format & Edition Cards */
+.default-edition-pill {
+  margin: 16px 0 !important;
+}
+
+.swatches__title {
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  font-weight: 600 !important;
+  color: #555c58 !important;
+  margin-bottom: 8px !important;
+}
+
+.default-edition-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 18px;
+  background: #f7fbf9;
+  border: 2px solid #138867;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.edition-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a221f;
+}
+
+.edition-price {
+  font-size: 14px;
+  font-weight: 700;
+  color: #138867;
+}
+
+.edition-badge {
+  font-size: 10px;
+  background: #ebf6f2;
+  color: #138867;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+/* Tabs: Understated Editorial Tabs */
+.tab__container--product {
+  max-width: 1140px !important;
+  margin: 0 auto 50px auto !important;
+  background: #ffffff !important;
+  border: 1px solid #ede9df !important;
+  border-radius: 16px !important;
+  padding: 28px 36px !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.03) !important;
+}
+
+.tab__holder {
+  display: flex !important;
+  gap: 24px !important;
+  border-bottom: 2px solid #f0eee6 !important;
+  margin-bottom: 24px !important;
+  padding-bottom: 0 !important;
+}
+
+.tab--product {
+  padding: 10px 4px 14px 4px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #6a716d !important;
+  border-bottom: 3px solid transparent !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.tab--product:hover {
+  color: #138867 !important;
+}
+
+.tab--product.tab--active {
+  color: #138867 !important;
+  border-bottom: 3px solid #138867 !important;
+  background: transparent !important;
+}
+
+.product--tab__content {
+  font-size: 15px !important;
+  line-height: 1.8 !important;
+  color: #3b423e !important;
+}
+
+.book-specs-table {
+  width: 100%;
+  max-width: 650px;
+  border-collapse: collapse;
+}
+
+.book-specs-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #f0eee6;
+  font-size: 14px;
+}
+
+.book-specs-table td:first-child {
+  color: #727a75;
+  width: 180px;
+}
+
+.book-specs-table td:last-child {
+  color: #1a221f;
+  font-weight: 500;
+}
+</style>
