@@ -474,11 +474,17 @@ shopify-payment-terms {
 /* 4. Quantity and Add to Cart Button (Enforce single line on phone & desktop) */
 .product__atc {
   display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  margin: 20px 0 16px 0 !important;
+  width: 100% !important;
+}
+.product__atc-row {
+  display: flex !important;
   flex-direction: row !important;
   flex-wrap: nowrap !important;
   align-items: center !important;
   gap: 12px !important;
-  margin: 20px 0 16px 0 !important;
   width: 100% !important;
 }
 .quantity--input {
@@ -551,10 +557,24 @@ shopify-payment-terms {
   margin-right: 4px !important;
   color: currentColor !important;
 }
+.product__atc .checkout--dynamic {
+  width: 100% !important;
+  flex: 0 0 100% !important;
+  margin-top: 2px !important;
+}
+.product__atc .checkout--dynamic > div,
+.product__atc .checkout--dynamic iframe,
+.product__atc .shopify-payment-button,
+.product__atc .shopify-payment-button__button {
+  width: 100% !important;
+  border-radius: 12px !important;
+}
 
 @media (max-width: 480px) {
   .product__atc {
-    flex-wrap: nowrap !important;
+    gap: 8px !important;
+  }
+  .product__atc-row {
     gap: 8px !important;
   }
   .quantity--input {
