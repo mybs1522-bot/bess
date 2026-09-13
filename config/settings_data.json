@@ -9,6 +9,7 @@
  */
 {
   "current": {
+    "textLogo": "AVADA",
     "defaultLogo": "shopify://shop_images/bookstore1.png",
     "favicon": "shopify://shop_images/favicon-bs.png",
     "sFacebook": "#",
