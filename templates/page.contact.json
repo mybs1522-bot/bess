@@ -1,1 +1,11 @@
-{"sections":{"banner":{"type":"banner--contact","settings":{}},"contact":{"type":"contact","settings":{}},"content":{"type":"page--content","settings":{}}},"order":["banner","contact","content"]}
+{
+  "sections": {
+    "main_contact": {
+      "type": "section__architectural-contact",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main_contact"
+  ]
+}

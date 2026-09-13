@@ -1,0 +1,580 @@
+{% comment %}
+  Architectural Luxury Contact Page Section
+  Includes Shopify Native Contact Form, Email hello@avadalearn.com, and WhatsApp Button (+919198747810)
+{% endcomment %}
+
+<div class="arch-contact-wrapper">
+  <div class="arch-contact-container">
+    <!-- Header -->
+    <header class="arch-contact-header">
+      <span class="arch-contact-eyebrow">CLIENT SUPPORT &amp; INQUIRIES</span>
+      <h1 class="arch-contact-title">Get In Touch</h1>
+      <p class="arch-contact-lead">
+        Have questions about our architectural reference library, order delivery, or studio licensing? Our technical design support team is here to assist you.
+      </p>
+    </header>
+
+    <div class="arch-contact-grid">
+      <!-- Left Column: Direct Channels & WhatsApp -->
+      <div class="arch-contact-info">
+        <div class="arch-info-card">
+          <h2 class="arch-info-title">Direct Channels</h2>
+          <p class="arch-info-desc">
+            For fastest response, reach out via WhatsApp or email our support desk. We typically respond within minutes during business hours.
+          </p>
+
+          <!-- WhatsApp Channel Card -->
+          <div class="arch-channel-card arch-channel-card--whatsapp">
+            <div class="arch-channel-icon-wrap arch-channel-icon--whatsapp">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.392-10.416c-4.28 0-7.75 3.47-7.75 7.75 0 1.373.359 2.662.986 3.784l-1.047 3.827 3.931-1.031c1.077.589 2.31 0.92 3.88 0.92 4.28 0 7.75-3.47 7.75-7.75s-3.47-7.75-7.75-7.75z"/>
+              </svg>
+            </div>
+            <div class="arch-channel-content">
+              <span class="arch-channel-label">WHATSAPP INSTANT CHAT</span>
+              <div class="arch-channel-val">+91 91987 47810</div>
+              <p class="arch-channel-sub">Direct chat with our technical architectural desk.</p>
+              <a 
+                href="https://wa.me/919198747810?text=Hello%2C%20I%20have%20an%20inquiry%20regarding%20the%20Architectural%20Design%20Books." 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="arch-whatsapp-btn"
+              >
+                <span>Chat on WhatsApp</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Email Channel Card -->
+          <div class="arch-channel-card">
+            <div class="arch-channel-icon-wrap arch-channel-icon--email">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="arch-channel-content">
+              <span class="arch-channel-label">EMAIL SUPPORT</span>
+              <a href="mailto:hello@avadalearn.com" class="arch-channel-val arch-channel-link">
+                hello@avadalearn.com
+              </a>
+              <p class="arch-channel-sub">Orders, PDF download support &amp; studio licensing.</p>
+            </div>
+          </div>
+
+          <!-- Office & Response Times -->
+          <div class="arch-hours-box">
+            <div class="arch-hours-item">
+              <span class="arch-hours-dot"></span>
+              <div>
+                <strong>Support Desk Hours:</strong>
+                <span>Monday – Saturday: 9:00 AM – 7:00 PM (IST)</span>
+              </div>
+            </div>
+            <div class="arch-hours-item">
+              <span class="arch-hours-dot"></span>
+              <div>
+                <strong>Guaranteed Response:</strong>
+                <span>Within 2 to 4 business hours</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Contact Form -->
+      <div class="arch-contact-form-col">
+        <div class="arch-form-card">
+          <h2 class="arch-form-title">Send Us a Message</h2>
+          <p class="arch-form-sub">
+            Fill out the details below and our team will get back to you promptly.
+          </p>
+
+          {% form 'contact', id: 'archContactForm' %}
+            {% if form.posted_successfully? %}
+              <div class="arch-form-alert arch-form-alert--success">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <div>
+                  <strong>Message Sent Successfully!</strong>
+                  <p>Thank you for reaching out. We have received your inquiry and our support team will reply to your email shortly.</p>
+                </div>
+              </div>
+            {% endif %}
+
+            {% if form.errors %}
+              <div class="arch-form-alert arch-form-alert--error">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <div>
+                  <strong>Please correct the errors below:</strong>
+                  {{ form.errors | default_errors }}
+                </div>
+              </div>
+            {% endif %}
+
+            <div class="arch-form-fields">
+              <div class="arch-field-row">
+                <div class="arch-field-group">
+                  <label for="ContactFormName" class="arch-label">Full Name *</label>
+                  <input 
+                    type="text" 
+                    id="ContactFormName" 
+                    name="contact[name]" 
+                    class="arch-input" 
+                    placeholder="e.g. Marcus Sterling" 
+                    required 
+                    value="{% if form.name %}{{ form.name }}{% endif %}"
+                  />
+                </div>
+                <div class="arch-field-group">
+                  <label for="ContactFormEmail" class="arch-label">Email Address *</label>
+                  <input 
+                    type="email" 
+                    id="ContactFormEmail" 
+                    name="contact[email]" 
+                    class="arch-input" 
+                    placeholder="e.g. name@studio.com" 
+                    required 
+                    value="{% if form.email %}{{ form.email }}{% endif %}"
+                  />
+                </div>
+              </div>
+
+              <div class="arch-field-row">
+                <div class="arch-field-group">
+                  <label for="ContactFormPhone" class="arch-label">Phone / WhatsApp Number</label>
+                  <input 
+                    type="tel" 
+                    id="ContactFormPhone" 
+                    name="contact[phone]" 
+                    class="arch-input" 
+                    placeholder="e.g. +91 91987 47810" 
+                    value="{% if form.phone %}{{ form.phone }}{% endif %}"
+                  />
+                </div>
+                <div class="arch-field-group">
+                  <label for="ContactFormSubject" class="arch-label">Inquiry Topic</label>
+                  <select id="ContactFormSubject" name="contact[inquiry_type]" class="arch-select">
+                    <option value="General Inquiry">General Inquiry</option>
+                    <option value="Order &amp; Digital PDF Download Support">Order &amp; Digital PDF Download Support</option>
+                    <option value="Architectural Blueprint Questions">Architectural Blueprint Questions</option>
+                    <option value="Hardcover Shipping &amp; Tracking">Hardcover Shipping &amp; Tracking</option>
+                    <option value="Studio / Corporate Bulk Licensing">Studio / Corporate Bulk Licensing</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="arch-field-group">
+                <label for="ContactFormMessage" class="arch-label">How Can We Help You? *</label>
+                <textarea 
+                  rows="5" 
+                  id="ContactFormMessage" 
+                  name="contact[body]" 
+                  class="arch-textarea" 
+                  placeholder="Tell us about your project or inquiry..." 
+                  required
+                >{% if form.body %}{{ form.body }}{% endif %}</textarea>
+              </div>
+
+              <button type="submit" class="arch-submit-btn">
+                <span>Send Message</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          {% endform %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* ARCHITECTURAL CONTACT PAGE STYLING */
+.arch-contact-wrapper {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  color: #0f172a !important;
+  background-color: #f8fafc !important;
+  padding: 60px 0 90px;
+  min-height: 80vh;
+}
+
+.arch-contact-wrapper * {
+  box-sizing: border-box;
+}
+
+.arch-contact-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Header */
+.arch-contact-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 50px;
+}
+
+.arch-contact-eyebrow {
+  display: inline-block;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ea580c !important;
+  background: #ffedd5;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  border: 1px solid #fed7aa;
+  margin-bottom: 14px;
+}
+
+.arch-contact-title {
+  font-size: 44px !important;
+  font-weight: 900 !important;
+  line-height: 1.15 !important;
+  color: #09090b !important;
+  letter-spacing: -0.03em;
+  margin: 0 0 16px !important;
+}
+
+.arch-contact-lead {
+  font-size: 17px !important;
+  line-height: 1.65 !important;
+  color: #475569 !important;
+  margin: 0;
+}
+
+/* Grid */
+.arch-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 36px;
+  align-items: flex-start;
+}
+
+/* Info Column */
+.arch-info-card {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 36px 32px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+.arch-info-title {
+  font-size: 24px !important;
+  font-weight: 800 !important;
+  color: #09090b !important;
+  margin: 0 0 8px !important;
+}
+
+.arch-info-desc {
+  font-size: 14px !important;
+  line-height: 1.6;
+  color: #64748b !important;
+  margin: 0 0 28px !important;
+}
+
+/* Channel Cards */
+.arch-channel-card {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 20px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  margin-bottom: 18px;
+  transition: all 0.2s ease;
+}
+
+.arch-channel-card--whatsapp {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.arch-channel-icon-wrap {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.arch-channel-icon--whatsapp {
+  background: #25D366;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.arch-channel-icon--email {
+  background: #ffedd5;
+  color: #ea580c !important;
+  border: 1px solid #fed7aa;
+}
+
+.arch-channel-content {
+  flex: 1;
+}
+
+.arch-channel-label {
+  display: block;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #64748b !important;
+  margin-bottom: 4px;
+}
+
+.arch-channel-card--whatsapp .arch-channel-label {
+  color: #166534 !important;
+}
+
+.arch-channel-val {
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  color: #09090b !important;
+  margin-bottom: 4px;
+  display: inline-block;
+}
+
+.arch-channel-link {
+  color: #ea580c !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
+.arch-channel-link:hover {
+  color: #c2410c !important;
+  text-decoration: underline !important;
+}
+
+.arch-channel-sub {
+  font-size: 13px !important;
+  color: #64748b !important;
+  margin: 0 !important;
+  line-height: 1.45;
+}
+
+/* WhatsApp Button */
+.arch-whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  background: #25D366 !important;
+  color: #ffffff !important;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);
+}
+.arch-whatsapp-btn:hover {
+  background: #1eb854 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
+}
+
+/* Hours Box */
+.arch-hours-box {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.arch-hours-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px !important;
+  color: #475569 !important;
+  line-height: 1.45;
+}
+
+.arch-hours-item strong {
+  display: block;
+  color: #09090b !important;
+}
+
+.arch-hours-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #10b981;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+/* Form Column */
+.arch-form-card {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 40px 36px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+.arch-form-title {
+  font-size: 24px !important;
+  font-weight: 800 !important;
+  color: #09090b !important;
+  margin: 0 0 6px !important;
+}
+
+.arch-form-sub {
+  font-size: 14px !important;
+  color: #64748b !important;
+  margin: 0 0 28px !important;
+}
+
+.arch-form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.arch-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.arch-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.arch-label {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #1e293b !important;
+}
+
+.arch-input,
+.arch-select,
+.arch-textarea {
+  width: 100% !important;
+  padding: 12px 16px !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 10px !important;
+  font-size: 14px !important;
+  color: #0f172a !important;
+  background: #ffffff !important;
+  font-family: inherit !important;
+  transition: all 0.2s ease !important;
+}
+
+.arch-input:focus,
+.arch-select:focus,
+.arch-textarea:focus {
+  outline: none !important;
+  border-color: #ea580c !important;
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.15) !important;
+}
+
+.arch-textarea {
+  resize: vertical !important;
+  min-height: 120px !important;
+}
+
+.arch-submit-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  padding: 15px 32px !important;
+  border-radius: 10px !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  background: #ea580c !important;
+  color: #ffffff !important;
+  border: 1px solid #c2410c !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.28) !important;
+  margin-top: 8px;
+}
+.arch-submit-btn:hover {
+  background: #c2410c !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(234, 88, 12, 0.38) !important;
+}
+
+/* Alerts */
+.arch-form-alert {
+  padding: 16px 20px;
+  border-radius: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+.arch-form-alert--success {
+  background: #f0fdf4;
+  border: 1.5px solid #86efac;
+  color: #14532d;
+}
+
+.arch-form-alert--error {
+  background: #fef2f2;
+  border: 1.5px solid #fca5a5;
+  color: #7f1d1d;
+}
+
+.arch-form-alert strong {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 2px;
+}
+
+.arch-form-alert p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .arch-contact-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .arch-contact-wrapper {
+    padding: 40px 0 60px;
+  }
+  .arch-contact-title {
+    font-size: 32px !important;
+  }
+  .arch-field-row {
+    grid-template-columns: 1fr;
+  }
+  .arch-form-card,
+  .arch-info-card {
+    padding: 24px 20px;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Architectural Contact",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Architectural Contact",
+      "category": "Contact"
+    }
+  ]
+}
+{% endschema %}
