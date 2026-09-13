@@ -4,9 +4,9 @@
             {% if product.handle == '6-books-for-interior-exterior-design' %}
                 {% render 'landing-page-6books', product: product %}
             {% else %}
-                {{product.description}}
+                {% render 'book-about-editorial', product: product %}
             {% endif %}
-                {% when 'reviews' %}
+        {% when 'reviews' %}
             {% render 'product-page-reviews' %}
         {% when 'custom' %}
             {{block.settings.customContent}}
@@ -24,9 +24,3 @@
             {{page.content | replace: '%product%', product.title | replace: '%brand%', product.vendor | replace: '%price%', price | replace: '%prediscount%', prediscount}}
     {% endcase %}
 </div>
-
-{% comment %}
-{% blockdef %}
-
-{% endblockdef %}
-{% endcomment %}

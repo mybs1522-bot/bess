@@ -1,10 +1,32 @@
 <div class="product__review-stars {% if block.settings.noMargin or noMargin %}margin__bottom--reduced{%endif-%}" {{block.shopify_attributes}}>
-  <div class="book-editorial-rating-wrapper" onclick="document.querySelector('[onclick*=\'tab--\']:last-of-type')?.click();">
+  {% assign rating_count = "2,324" %}
+  {% assign score = "4.9" %}
+  {% case product.handle %}
+    {% when 'kitchen-design-book' %}
+      {% assign rating_count = "548" %}
+      {% assign score = "4.9" %}
+    {% when 'living-room-design-book' %}
+      {% assign rating_count = "512" %}
+      {% assign score = "4.9" %}
+    {% when 'bedroom-design-book' %}
+      {% assign rating_count = "426" %}
+      {% assign score = "4.9" %}
+    {% when 'washroom-design-book' %}
+      {% assign rating_count = "434" %}
+      {% assign score = "4.9" %}
+    {% when 'exterior-design-book' %}
+      {% assign rating_count = "396" %}
+      {% assign score = "4.8" %}
+    {% when '6-books-for-interior-exterior-design' %}
+      {% assign rating_count = "2,324" %}
+      {% assign score = "4.9" %}
+  {% endcase %}
+  <div class="book-editorial-rating-wrapper" onclick="document.querySelector('[onclick*=\'tab--\']:last-of-type')?.click();" style="cursor: pointer;">
     <div class="rating-stars-gold">
       <span>★</span><span>★</span><span>★</span><span>★</span><span class="star-half">★</span>
     </div>
-    <span class="rating-score-bold">4.9</span>
-    <span class="rating-count-text">(2,324&nbsp;ratings)</span>
+    <span class="rating-score-bold">{{ score }}</span>
+    <span class="rating-count-text">({{ rating_count }}&nbsp;ratings)</span>
     <span class="rating-dot-separator">•</span>
     <span class="rating-bestseller-badge">Verified Readers</span>
   </div>
