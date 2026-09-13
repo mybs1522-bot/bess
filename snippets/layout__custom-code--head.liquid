@@ -63,42 +63,89 @@ nav.breadcrumb {
   transform: translateY(-1px) !important;
 }
 
-/* Rating Stars */
+/* Rating Stars - Enforce single line across desktop & mobile */
 .book-editorial-rating-wrapper {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  margin: 6px 0 16px 0;
-  cursor: pointer;
-  user-select: none;
+  display: inline-flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: 7px !important;
+  margin: 6px 0 16px 0 !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  white-space: nowrap !important;
+  max-width: 100% !important;
 }
 .rating-stars-gold, .star-gold {
+  display: inline-flex !important;
+  align-items: center !important;
   color: #f59e0b !important;
-  font-size: 16px;
-  letter-spacing: 2px;
+  font-size: 15px !important;
+  letter-spacing: 1.5px !important;
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
 }
 .rating-score-bold {
-  font-weight: 800;
-  color: #09090b;
-  font-size: 15px;
+  font-weight: 800 !important;
+  color: #09090b !important;
+  font-size: 14.5px !important;
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
 }
 .rating-count-text {
-  color: #4b5563;
-  font-size: 13px;
-  text-decoration: underline;
+  color: #4b5563 !important;
+  font-size: 13px !important;
+  text-decoration: underline !important;
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
 }
 .rating-count-text:hover {
-  color: #ea580c;
+  color: #ea580c !important;
+}
+.rating-dot-separator {
+  color: #6b7280 !important;
+  font-size: 12px !important;
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
+  margin: 0 1px !important;
 }
 .rating-bestseller-badge {
-  font-size: 11px;
-  font-weight: 700;
-  color: #ea580c;
-  background: #ffedd5;
-  padding: 3px 10px;
-  border-radius: 12px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  color: #ea580c !important;
+  background: #ffedd5 !important;
+  padding: 3px 9px !important;
+  border-radius: 12px !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
+}
+
+@media (max-width: 480px) {
+  .product__row {
+    padding: 20px 14px !important;
+    margin: 10px auto 20px auto !important;
+  }
+  .book-editorial-rating-wrapper {
+    gap: 5px !important;
+    white-space: nowrap !important;
+    flex-wrap: nowrap !important;
+  }
+  .rating-stars-gold, .star-gold {
+    font-size: 13px !important;
+    letter-spacing: 1px !important;
+  }
+  .rating-score-bold {
+    font-size: 13.5px !important;
+  }
+  .rating-count-text {
+    font-size: 12px !important;
+  }
+  .rating-bestseller-badge {
+    font-size: 9.5px !important;
+    padding: 2px 7px !important;
+  }
 }
 
 /* Format & Edition Cards */
