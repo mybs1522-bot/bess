@@ -13,10 +13,10 @@
     "favicon": "shopify://shop_images/favicon-bs.png",
     "sFacebook": "#",
     "sInstagram": "#",
-    "sTwitter": "#",
-    "sYoutube": "#",
-    "sPinterest": "#",
-    "sTikTok": "#",
+    "sTwitter": "",
+    "sYoutube": "",
+    "sPinterest": "",
+    "sTikTok": "",
     "baseBorderRadius": 10,
     "baseText": "#111827",
     "baseTitle": "#09090b",
@@ -150,64 +150,18 @@
       "footer": {
         "type": "footer",
         "blocks": {
-          "fcefac73-60c2-4c39-82e3-141d743a2f79": {
-            "type": "footerImage",
-            "settings": {
-              "width": "1-5",
-              "horizontalAlignment": "start",
-              "verticalAlignment": "top",
-              "image": "shopify://shop_images/bookstore2.png",
-              "imageWidth": 100,
-              "url": ""
-            }
-          },
-          "0e188e08-01bf-4244-8aa3-997ce12eca05": {
-            "type": "footerText",
-            "settings": {
-              "width": "4",
-              "horizontalAlignment": "start",
-              "verticalAlignment": "top",
-              "heading": "Booster 6 revolution",
-              "text": "<p>This is a demo store created for Booster theme. If you wanted to shop the books in this website, you can go to the following website:<br/><a href=\"https://www.penguinrandomhouse.com/the-read-down/the-ultimate-book-list-for-pride-month/\" target=\"_blank\" title=\"https://www.penguinrandomhouse.com/the-read-down/the-ultimate-book-list-for-pride-month/\">- penguinrandomhouse.com<br/></a>- <a href=\"https://www.goodreads.com/\" target=\"_blank\" title=\"https://www.goodreads.com/\">goodreads<br/></a>- <a href=\"https://www.chapters.indigo.ca/\" target=\"_blank\" title=\"https://www.chapters.indigo.ca/\">chapters.indigo.ca<br/></a>- <a href=\"https://bookoutlet.ca/\" target=\"_blank\"><span style=\"text-decoration:underline\">bookoutlet</span></a></p>"
-            }
-          },
-          "79c988f6-1297-4df0-9e07-f6f74537046f": {
-            "type": "footerLinks",
-            "settings": {
-              "width": "1-5",
-              "horizontalAlignment": "start",
-              "verticalAlignment": "top",
-              "heading": "Links",
-              "links": "featured"
-            }
-          },
           "e279310c-0c43-4839-9668-d6f2b5b581f2": {
             "type": "footerSocial",
             "settings": {
-              "width": "auto",
-              "horizontalAlignment": "start",
-              "verticalAlignment": "top",
-              "heading": "Follow Us"
-            }
-          },
-          "fb352cef-2780-49b9-bcae-5ce1226e9ada": {
-            "type": "footerPayment",
-            "settings": {
-              "width": "auto",
-              "horizontalAlignment": "start",
-              "verticalAlignment": "bottom",
-              "heading": "",
-              "customIcons": true,
-              "icons": "afterpay, american_express, apple_pay, bitcoin, dankort, diners_club, discover,"
+              "width": "12",
+              "horizontalAlignment": "center",
+              "verticalAlignment": "middle",
+              "heading": ""
             }
           }
         },
         "block_order": [
-          "fcefac73-60c2-4c39-82e3-141d743a2f79",
-          "0e188e08-01bf-4244-8aa3-997ce12eca05",
-          "79c988f6-1297-4df0-9e07-f6f74537046f",
-          "e279310c-0c43-4839-9668-d6f2b5b581f2",
-          "fb352cef-2780-49b9-bcae-5ce1226e9ada"
+          "e279310c-0c43-4839-9668-d6f2b5b581f2"
         ],
         "settings": {
           "layout": "default",
@@ -322,6 +276,10 @@
         }
       }
     },
-    "content_for_index": []
+    "content_for_index": [],
+    "sSnapchat": "",
+    "sWhatsapp": "",
+    "sLinkedin": "",
+    "sTwitch": ""
   }
 }
