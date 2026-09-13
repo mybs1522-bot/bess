@@ -1,6 +1,7 @@
 {% comment %}
   Architectural & Interior Design Reference Library - Homepage Section
-  A sleek, ultra-premium editorial homepage showcasing brand mission, 6-book collection, and product catalog.
+  A sleek, ultra-premium editorial homepage with high contrast, crystal-clear readability,
+  brand mission, 6-book collection spotlight, and full product catalog.
 {% endcomment %}
 
 <div class="arch-hp-wrapper" id="arch-hp">
@@ -11,10 +12,10 @@
         <div class="arch-hero__content">
           <div class="arch-badge-row">
             <span class="arch-pill arch-pill--dark">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#ea580c" stroke="#ea580c" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
               <span>4.9 ★ Based on 2,324 Ratings</span>
             </span>
-            <span class="arch-pill arch-pill--amber">REFERENCE LIBRARY</span>
+            <span class="arch-pill arch-pill--amber">ARCHITECTURAL REFERENCE LIBRARY</span>
           </div>
 
           <h1 class="arch-hero__title">
@@ -26,12 +27,12 @@
           </p>
 
           <div class="arch-hero__actions">
-            <a href="/products/6-books-for-interior-exterior-design" class="arch-btn arch-btn--primary">
+            <a href="/products/6-books-for-interior-exterior-design" class="arch-btn arch-btn--primary arch-btn--pulse">
               <span>Get 6-Book Master Set — $49</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
             <a href="#catalog" class="arch-btn arch-btn--secondary">
-              <span>Browse Individual Volumes</span>
+              <span>Shop All Books ↓</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
             </a>
           </div>
@@ -64,14 +65,16 @@
         <div class="arch-hero__visual">
           <div class="arch-hero__card-stack">
             <div class="arch-hero__card-base">
-              <img 
-                src="{{ 'hero-collage.png' | asset_url }}" 
-                alt="Architectural Blueprint Reference Books Collection" 
-                class="arch-hero__main-img"
-                loading="eager"
-                width="640"
-                height="560"
-              />
+              <a href="/products/6-books-for-interior-exterior-design" style="display:block; text-decoration:none;">
+                <img 
+                  src="{{ 'hero-collage.png' | asset_url }}" 
+                  alt="Architectural Blueprint Reference Books Collection" 
+                  class="arch-hero__main-img"
+                  loading="eager"
+                  width="640"
+                  height="560"
+                />
+              </a>
               <div class="arch-hero__tag arch-hero__tag--top">
                 <span class="arch-dot"></span>
                 <span>Certified Millimeter Dimensions</span>
@@ -133,14 +136,14 @@
     </div>
   </section>
 
-  <!-- 3. MASTER COLLECTION SPOTLIGHT -->
+  <!-- 3. MASTER COLLECTION SPOTLIGHT (HIGH CONTRAST & CRYSTAL-CLEAR READABILITY) -->
   <section class="arch-spotlight">
     <div class="arch-container">
       <div class="arch-spotlight__card">
         <div class="arch-spotlight__content">
           <div class="arch-badge-row">
             <span class="arch-pill arch-pill--amber">FLAGSHIP MASTER COLLECTION</span>
-            <span class="arch-pill arch-pill--white">SAVE 67%</span>
+            <span class="arch-pill arch-pill--dark">SAVE 67% OFF</span>
           </div>
 
           <h2 class="arch-spotlight__title">
@@ -195,24 +198,26 @@
         </div>
 
         <div class="arch-spotlight__image">
-          <img 
-            src="{{ 'design-collage.png' | asset_url }}" 
-            alt="The Complete 6 Books for Interior and Exterior Design"
-            loading="lazy"
-            width="600"
-            height="500"
-          />
+          <a href="/products/6-books-for-interior-exterior-design" style="display:block; text-decoration:none;">
+            <img 
+              src="{{ 'design-collage.png' | asset_url }}" 
+              alt="The Complete 6 Books for Interior and Exterior Design"
+              loading="lazy"
+              width="600"
+              height="500"
+            />
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 4. CURATED CATALOG / ALL 6 VOLUMES -->
+  <!-- 4. CURATED CATALOG / ALL 6 VOLUMES (CHANGED TITLE TO "Shop Now") -->
   <section class="arch-catalog" id="catalog">
     <div class="arch-container">
       <div class="arch-section-header arch-section-header--center">
         <span class="arch-eyebrow">CURATED COLLECTION</span>
-        <h2 class="arch-section-title">Explore The Reference Volumes</h2>
+        <h2 class="arch-section-title">Shop Now</h2>
         <p class="arch-section-desc">
           Specialized manuals dedicated to each living zone. Available individually in instant digital download or hardcover format.
         </p>
@@ -222,7 +227,7 @@
         <!-- Vol 1: Living Area -->
         <article class="arch-card">
           <div class="arch-card__image-wrap">
-            <a href="/products/living-room-design-book">
+            <a href="/products/living-room-design-book" title="View Living Room Design Book">
               <img 
                 src="{{ 'living_room.png' | asset_url }}" 
                 alt="Living Room Design Book Cover" 
@@ -250,7 +255,7 @@
                 <span class="arch-card__val">$14.00</span>
                 <span class="arch-card__format">Digital / $39 Hardcover</span>
               </div>
-              <a href="/products/living-room-design-book" class="arch-card__btn" aria-label="View Living Room Design Book">
+              <a href="/products/living-room-design-book" class="arch-card__btn arch-card__btn--primary" aria-label="View Living Room Design Book">
                 <span>View Book</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
@@ -261,7 +266,7 @@
         <!-- Vol 2: Kitchen -->
         <article class="arch-card">
           <div class="arch-card__image-wrap">
-            <a href="/products/kitchen-design-book">
+            <a href="/products/kitchen-design-book" title="View Kitchen Design Book">
               <img 
                 src="{{ 'kitchen.png' | asset_url }}" 
                 alt="Kitchen Design Book Cover" 
@@ -289,7 +294,7 @@
                 <span class="arch-card__val">$14.00</span>
                 <span class="arch-card__format">Digital / $39 Hardcover</span>
               </div>
-              <a href="/products/kitchen-design-book" class="arch-card__btn" aria-label="View Kitchen Design Book">
+              <a href="/products/kitchen-design-book" class="arch-card__btn arch-card__btn--primary" aria-label="View Kitchen Design Book">
                 <span>View Book</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
@@ -300,7 +305,7 @@
         <!-- Vol 3: Bedroom -->
         <article class="arch-card">
           <div class="arch-card__image-wrap">
-            <a href="/products/bedroom-design-book">
+            <a href="/products/bedroom-design-book" title="View Bedroom Design Book">
               <img 
                 src="{{ 'bedroom.png' | asset_url }}" 
                 alt="Bedroom Design Book Cover" 
@@ -328,7 +333,7 @@
                 <span class="arch-card__val">$14.00</span>
                 <span class="arch-card__format">Digital / $39 Hardcover</span>
               </div>
-              <a href="/products/bedroom-design-book" class="arch-card__btn" aria-label="View Bedroom Design Book">
+              <a href="/products/bedroom-design-book" class="arch-card__btn arch-card__btn--primary" aria-label="View Bedroom Design Book">
                 <span>View Book</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
@@ -339,7 +344,7 @@
         <!-- Vol 4: Washroom -->
         <article class="arch-card">
           <div class="arch-card__image-wrap">
-            <a href="/products/washroom-design-book">
+            <a href="/products/washroom-design-book" title="View Washroom Design Book">
               <img 
                 src="{{ 'washroom.png' | asset_url }}" 
                 alt="Washroom Design Book Cover" 
@@ -367,7 +372,7 @@
                 <span class="arch-card__val">$14.00</span>
                 <span class="arch-card__format">Digital / $39 Hardcover</span>
               </div>
-              <a href="/products/washroom-design-book" class="arch-card__btn" aria-label="View Washroom Design Book">
+              <a href="/products/washroom-design-book" class="arch-card__btn arch-card__btn--primary" aria-label="View Washroom Design Book">
                 <span>View Book</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
@@ -378,7 +383,7 @@
         <!-- Vol 5: Exterior Elevations -->
         <article class="arch-card">
           <div class="arch-card__image-wrap">
-            <a href="/products/exterior-design-book">
+            <a href="/products/exterior-design-book" title="View Exterior Design Book">
               <img 
                 src="{{ 'elevations.png' | asset_url }}" 
                 alt="Exterior Design Book Cover" 
@@ -406,7 +411,7 @@
                 <span class="arch-card__val">$14.00</span>
                 <span class="arch-card__format">Digital / $39 Hardcover</span>
               </div>
-              <a href="/products/exterior-design-book" class="arch-card__btn" aria-label="View Exterior Design Book">
+              <a href="/products/exterior-design-book" class="arch-card__btn arch-card__btn--primary" aria-label="View Exterior Design Book">
                 <span>View Book</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
@@ -414,10 +419,10 @@
           </div>
         </article>
 
-        <!-- Vol 6: Space Planning & Master Bundle -->
+        <!-- Vol 6: The Master 6-Book Set -->
         <article class="arch-card arch-card--featured">
           <div class="arch-card__image-wrap">
-            <a href="/products/6-books-for-interior-exterior-design">
+            <a href="/products/6-books-for-interior-exterior-design" title="View 6 Books Master Set">
               <img 
                 src="{{ 'hero-collage.png' | asset_url }}" 
                 alt="6 Books Master Set Cover" 
@@ -446,7 +451,7 @@
                 <span class="arch-card__format">Digital / $199 Hardcover</span>
               </div>
               <a href="/products/6-books-for-interior-exterior-design" class="arch-card__btn arch-card__btn--primary" aria-label="View 6 Books Master Set">
-                <span>Get Bundle</span>
+                <span>View Book</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
             </div>
@@ -507,13 +512,13 @@
     </div>
   </section>
 
-  <!-- 6. TRUST & VALUE PILLARS -->
+  <!-- 6. TRUST & VALUE PILLARS (CLEAN ARCHITECTURAL LIGHT PALETTE WITH CRISP CONTRAST) -->
   <section class="arch-trust">
     <div class="arch-container">
       <div class="arch-trust__grid">
         <div class="arch-trust-item">
           <div class="arch-trust-item__icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
           </div>
           <div>
             <h4 class="arch-trust-item__title">Instant Digital Download</h4>
@@ -523,7 +528,7 @@
 
         <div class="arch-trust-item">
           <div class="arch-trust-item__icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
           </div>
           <div>
             <h4 class="arch-trust-item__title">Tracked Global Shipping</h4>
@@ -533,7 +538,7 @@
 
         <div class="arch-trust-item">
           <div class="arch-trust-item__icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
           <div>
             <h4 class="arch-trust-item__title">14-Day Money-Back Guarantee</h4>
@@ -543,7 +548,7 @@
 
         <div class="arch-trust-item">
           <div class="arch-trust-item__icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
           </div>
           <div>
             <h4 class="arch-trust-item__title">Lifetime Digital Updates</h4>
@@ -556,14 +561,18 @@
 </div>
 
 <style>
-/* ARCHITECTURAL HOMEPAGE STYLES */
+/* ARCHITECTURAL HOMEPAGE STYLES - CRYSTAL CLEAR READABILITY & HIGH CONTRAST */
 .arch-hp-wrapper {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  color: #0f172a;
-  background-color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  color: #0f172a !important;
+  background-color: #ffffff !important;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+}
+
+.arch-hp-wrapper * {
+  box-sizing: border-box;
 }
 
 .arch-container {
@@ -575,7 +584,7 @@
 /* 1. HERO SECTION */
 .arch-hero {
   padding: 60px 0 80px;
-  background: radial-gradient(circle at 80% 20%, #fef3c7 0%, #ffffff 50%);
+  background: linear-gradient(180deg, #fffbf5 0%, #ffffff 100%);
   border-bottom: 1px solid #f1f5f9;
 }
 
@@ -607,36 +616,30 @@
 }
 
 .arch-pill--dark {
-  background-color: #0f172a;
-  color: #f8fafc;
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
 }
 
 .arch-pill--amber {
-  background-color: #ffedd5;
-  color: #c2410c;
-  border: 1px solid #fed7aa;
-}
-
-.arch-pill--white {
-  background-color: #ffffff;
-  color: #0f172a;
-  border: 1px solid #e2e8f0;
+  background-color: #ffedd5 !important;
+  color: #c2410c !important;
+  border: 1px solid #fed7aa !important;
 }
 
 .arch-hero__title {
-  font-size: 48px;
-  line-height: 1.15;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: #09090b;
-  margin: 0 0 20px;
+  font-size: 48px !important;
+  line-height: 1.15 !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.03em !important;
+  color: #09090b !important;
+  margin: 0 0 20px !important;
 }
 
 .arch-hero__lead {
-  font-size: 18px;
-  line-height: 1.65;
-  color: #475569;
-  margin: 0 0 32px;
+  font-size: 18px !important;
+  line-height: 1.65 !important;
+  color: #334155 !important;
+  margin: 0 0 32px !important;
   max-width: 580px;
 }
 
@@ -652,35 +655,36 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 14px 26px;
+  padding: 14px 28px;
   border-radius: 8px;
   font-size: 15px;
   font-weight: 700;
-  text-decoration: none;
+  text-decoration: none !important;
   transition: all 0.2s ease;
   cursor: pointer;
 }
 
 .arch-btn--primary {
-  background-color: #ea580c;
+  background-color: #ea580c !important;
   color: #ffffff !important;
-  border: 1px solid #c2410c;
-  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.28);
+  border: 1px solid #c2410c !important;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.3) !important;
 }
 .arch-btn--primary:hover {
-  background-color: #c2410c;
+  background-color: #c2410c !important;
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(234, 88, 12, 0.35);
+  box-shadow: 0 6px 20px rgba(234, 88, 12, 0.4) !important;
 }
 
 .arch-btn--secondary {
-  background-color: #f8fafc;
+  background-color: #ffffff !important;
   color: #0f172a !important;
-  border: 1px solid #cbd5e1;
+  border: 1.5px solid #cbd5e1 !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04) !important;
 }
 .arch-btn--secondary:hover {
-  background-color: #e2e8f0;
-  border-color: #94a3b8;
+  background-color: #f1f5f9 !important;
+  border-color: #94a3b8 !important;
 }
 
 .arch-btn--lg {
@@ -703,16 +707,16 @@
 }
 
 .arch-metric__num {
-  font-size: 20px;
-  font-weight: 800;
-  color: #09090b;
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  color: #09090b !important;
   letter-spacing: -0.02em;
 }
 
 .arch-metric__label {
-  font-size: 12px;
-  color: #64748b;
-  font-weight: 500;
+  font-size: 12px !important;
+  color: #64748b !important;
+  font-weight: 600 !important;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -738,10 +742,10 @@
 .arch-hero__card-base {
   position: relative;
   border-radius: 16px;
-  background: #f8fafc;
+  background: #ffffff;
   border: 1px solid #e2e8f0;
   padding: 16px;
-  box-shadow: 0 20px 40px -15px rgba(0,0,0,0.12);
+  box-shadow: 0 20px 40px -15px rgba(0,0,0,0.1);
 }
 
 .arch-hero__main-img {
@@ -750,6 +754,10 @@
   display: block;
   border-radius: 10px;
   object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.arch-hero__main-img:hover {
+  transform: scale(1.02);
 }
 
 .arch-hero__tag {
@@ -759,13 +767,13 @@
   gap: 8px;
   padding: 8px 14px;
   border-radius: 8px;
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 12px !important;
+  font-weight: 700 !important;
   box-shadow: 0 8px 20px rgba(0,0,0,0.12);
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(8px);
   border: 1px solid #e2e8f0;
-  color: #0f172a;
+  color: #0f172a !important;
 }
 
 .arch-hero__tag--top {
@@ -793,7 +801,7 @@
   height: 16px;
   border-radius: 50%;
   background-color: #16a34a;
-  color: #fff;
+  color: #fff !important;
   font-size: 10px;
   font-weight: bold;
 }
@@ -818,27 +826,27 @@
 
 .arch-eyebrow {
   display: block;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.12em !important;
   text-transform: uppercase;
-  color: #ea580c;
+  color: #ea580c !important;
   margin-bottom: 12px;
 }
 
 .arch-section-title {
-  font-size: 38px;
-  line-height: 1.2;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: #09090b;
-  margin: 0;
+  font-size: 38px !important;
+  line-height: 1.2 !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.03em !important;
+  color: #09090b !important;
+  margin: 0 !important;
 }
 
 .arch-section-desc {
-  font-size: 16px;
-  color: #64748b;
-  margin-top: 14px;
+  font-size: 16px !important;
+  color: #475569 !important;
+  margin-top: 14px !important;
   line-height: 1.6;
 }
 
@@ -848,18 +856,18 @@
 }
 
 .arch-mission__lead {
-  font-size: 22px;
-  line-height: 1.55;
-  font-weight: 500;
-  color: #1e293b;
-  margin: 0 0 16px;
+  font-size: 22px !important;
+  line-height: 1.55 !important;
+  font-weight: 600 !important;
+  color: #0f172a !important;
+  margin: 0 0 16px !important;
 }
 
 .arch-mission__subtext {
-  font-size: 16px;
-  line-height: 1.7;
-  color: #64748b;
-  margin: 0;
+  font-size: 16px !important;
+  line-height: 1.7 !important;
+  color: #475569 !important;
+  margin: 0 !important;
 }
 
 .arch-pillars-grid {
@@ -881,29 +889,29 @@
 }
 
 .arch-pillar-card__index {
-  font-size: 14px;
-  font-weight: 800;
-  color: #ea580c;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  color: #ea580c !important;
   letter-spacing: 0.08em;
   margin-bottom: 16px;
 }
 
 .arch-pillar-card__title {
-  font-size: 20px;
-  font-weight: 700;
-  color: #09090b;
-  margin: 0 0 12px;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: #09090b !important;
+  margin: 0 0 12px !important;
   line-height: 1.3;
 }
 
 .arch-pillar-card__desc {
-  font-size: 14px;
-  line-height: 1.65;
-  color: #64748b;
-  margin: 0;
+  font-size: 14px !important;
+  line-height: 1.65 !important;
+  color: #475569 !important;
+  margin: 0 !important;
 }
 
-/* 3. MASTER COLLECTION SPOTLIGHT */
+/* 3. MASTER COLLECTION SPOTLIGHT (HIGH CONTRAST WHITE CONTAINER - ZERO BLACK ON BLACK) */
 .arch-spotlight {
   padding: 20px 0 90px;
 }
@@ -911,52 +919,52 @@
 .arch-spotlight__card {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
-  background: #09090b;
+  background: #ffffff !important;
   border-radius: 20px;
   padding: 56px 64px;
-  color: #f8fafc;
+  color: #0f172a !important;
   align-items: center;
   gap: 50px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
-  border: 1px solid #27272a;
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.08) !important;
+  border: 1.5px solid #e2e8f0 !important;
 }
 
 .arch-spotlight__title {
-  font-size: 34px;
-  line-height: 1.2;
-  font-weight: 800;
-  color: #ffffff;
-  margin: 16px 0 16px;
+  font-size: 34px !important;
+  line-height: 1.2 !important;
+  font-weight: 800 !important;
+  color: #09090b !important;
+  margin: 16px 0 16px !important;
   letter-spacing: -0.02em;
 }
 
 .arch-spotlight__desc {
-  font-size: 15px;
-  line-height: 1.65;
-  color: #a1a1aa;
-  margin: 0 0 28px;
+  font-size: 15px !important;
+  line-height: 1.65 !important;
+  color: #334155 !important;
+  margin: 0 0 28px !important;
 }
 
 .arch-spotlight__features {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 32px;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 0 32px !important;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
 .arch-spotlight__features li {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  font-size: 14px;
-  color: #e4e4e7;
-  line-height: 1.5;
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  font-size: 14px !important;
+  color: #1e293b !important;
+  line-height: 1.5 !important;
 }
 
 .arch-spotlight__features strong {
-  color: #ffffff;
+  color: #09090b !important;
 }
 
 .arch-spotlight__pricing-row {
@@ -964,10 +972,10 @@
   align-items: center;
   gap: 20px;
   margin-bottom: 32px;
-  padding: 16px 20px;
-  background: #18181b;
+  padding: 16px 22px;
+  background: #f8fafc !important;
   border-radius: 10px;
-  border: 1px solid #27272a;
+  border: 1px solid #e2e8f0 !important;
   width: fit-content;
 }
 
@@ -978,25 +986,26 @@
 }
 
 .arch-spotlight__amount {
-  font-size: 26px;
-  font-weight: 800;
-  color: #ffffff;
+  font-size: 26px !important;
+  font-weight: 800 !important;
+  color: #09090b !important;
 }
 
 .arch-spotlight__type {
-  font-size: 13px;
-  color: #a1a1aa;
+  font-size: 13px !important;
+  color: #475569 !important;
+  font-weight: 600 !important;
 }
 
 .arch-strike {
   text-decoration: line-through;
-  color: #71717a;
+  color: #94a3b8 !important;
   margin-left: 4px;
 }
 
 .arch-spotlight__separator {
-  font-size: 12px;
-  color: #71717a;
+  font-size: 12px !important;
+  color: #94a3b8 !important;
   text-transform: uppercase;
   font-weight: 700;
 }
@@ -1006,7 +1015,11 @@
   height: auto;
   border-radius: 12px;
   object-fit: cover;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  transition: transform 0.3s ease;
+}
+.arch-spotlight__image img:hover {
+  transform: scale(1.02);
 }
 
 /* 4. CURATED CATALOG / INDIVIDUAL VOLUMES */
@@ -1024,8 +1037,8 @@
 }
 
 .arch-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
   border-radius: 14px;
   overflow: hidden;
   display: flex;
@@ -1034,12 +1047,12 @@
 }
 .arch-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 32px -10px rgba(0,0,0,0.08);
+  box-shadow: 0 16px 32px -10px rgba(0,0,0,0.1) !important;
 }
 
 .arch-card--featured {
-  border-color: #fed7aa;
-  background: #fffbf5;
+  border: 1.5px solid #fed7aa !important;
+  background: #fffbf5 !important;
 }
 
 .arch-card__image-wrap {
@@ -1054,12 +1067,12 @@
 }
 
 .arch-card__image-wrap a {
-  display: block;
+  display: flex !important;
   width: 100%;
   height: 100%;
-  display: flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none !important;
 }
 
 .arch-card__image-wrap img {
@@ -1069,26 +1082,26 @@
   transition: transform 0.3s ease;
 }
 .arch-card:hover .arch-card__image-wrap img {
-  transform: scale(1.03);
+  transform: scale(1.04);
 }
 
 .arch-card__badge {
   position: absolute;
   top: 14px;
   left: 14px;
-  background: rgba(15, 23, 42, 0.85);
+  background: rgba(15, 23, 42, 0.9) !important;
   backdrop-filter: blur(4px);
-  color: #ffffff;
-  font-size: 11px;
-  font-weight: 700;
+  color: #ffffff !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
   letter-spacing: 0.06em;
   padding: 4px 10px;
   border-radius: 6px;
 }
 
 .arch-card__badge--amber {
-  background: #ea580c;
-  color: #fff;
+  background: #ea580c !important;
+  color: #ffffff !important;
 }
 
 .arch-card__body {
@@ -1106,38 +1119,38 @@
 }
 
 .arch-stars {
-  color: #ea580c;
-  font-size: 12px;
+  color: #ea580c !important;
+  font-size: 13px !important;
   letter-spacing: 1px;
 }
 
 .arch-rating-val {
-  font-size: 12px;
-  font-weight: 700;
-  color: #475569;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: #475569 !important;
 }
 
 .arch-card__title {
-  font-size: 19px;
-  font-weight: 700;
-  line-height: 1.3;
-  margin: 0 0 10px;
+  font-size: 19px !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  margin: 0 0 10px !important;
 }
 
 .arch-card__title a {
-  color: #0f172a;
-  text-decoration: none;
+  color: #0f172a !important;
+  text-decoration: none !important;
   transition: color 0.2s ease;
 }
 .arch-card__title a:hover {
-  color: #ea580c;
+  color: #ea580c !important;
 }
 
 .arch-card__desc {
-  font-size: 13px;
-  line-height: 1.6;
-  color: #64748b;
-  margin: 0 0 20px;
+  font-size: 13px !important;
+  line-height: 1.6 !important;
+  color: #475569 !important;
+  margin: 0 0 20px !important;
   flex: 1;
 }
 
@@ -1155,52 +1168,45 @@
 }
 
 .arch-card__from {
-  font-size: 11px;
-  color: #94a3b8;
+  font-size: 11px !important;
+  color: #94a3b8 !important;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700 !important;
   letter-spacing: 0.04em;
 }
 
 .arch-card__val {
-  font-size: 18px;
-  font-weight: 800;
-  color: #09090b;
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  color: #09090b !important;
 }
 
 .arch-card__format {
-  font-size: 11px;
-  color: #64748b;
+  font-size: 11px !important;
+  color: #64748b !important;
 }
 
 .arch-card__btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 9px 14px;
-  border-radius: 6px;
-  font-size: 13px;
-  font-weight: 700;
-  background: #f1f5f9;
-  color: #0f172a !important;
-  text-decoration: none;
-  border: 1px solid #cbd5e1;
-  transition: all 0.2s ease;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 10px 18px !important;
+  border-radius: 6px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+  background: #ea580c !important;
+  color: #ffffff !important;
+  border: 1px solid #c2410c !important;
+  box-shadow: 0 2px 6px rgba(234, 88, 12, 0.25) !important;
 }
 .arch-card__btn:hover {
-  background: #0f172a;
+  background: #c2410c !important;
   color: #ffffff !important;
-  border-color: #0f172a;
-}
-
-.arch-card__btn--primary {
-  background: #ea580c;
-  color: #ffffff !important;
-  border-color: #ea580c;
-}
-.arch-card__btn--primary:hover {
-  background: #c2410c;
-  border-color: #c2410c;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.35) !important;
 }
 
 /* 5. SITE TRANSFORMATION */
@@ -1223,16 +1229,16 @@
 }
 
 .arch-transform-title {
-  font-size: 32px;
-  font-weight: 800;
-  color: #09090b;
+  font-size: 32px !important;
+  font-weight: 800 !important;
+  color: #09090b !important;
   letter-spacing: -0.02em;
-  margin: 10px 0 14px;
+  margin: 10px 0 14px !important;
 }
 
 .arch-transform-desc {
-  font-size: 15px;
-  color: #64748b;
+  font-size: 15px !important;
+  color: #475569 !important;
   line-height: 1.6;
 }
 
@@ -1272,35 +1278,35 @@
 }
 
 .arch-transform-status {
-  font-size: 17px;
-  font-weight: 800;
-  margin: 0 0 18px;
+  font-size: 17px !important;
+  font-weight: 800 !important;
+  margin: 0 0 18px !important;
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
 .arch-transform-col--bad .arch-transform-status {
-  color: #b91c1c;
+  color: #b91c1c !important;
 }
 
 .arch-transform-col--good .arch-transform-status {
-  color: #15803d;
+  color: #15803d !important;
 }
 
 .arch-transform-col ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
 .arch-transform-col li {
-  font-size: 14px;
-  line-height: 1.6;
-  color: #475569;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  color: #334155 !important;
   position: relative;
   padding-left: 18px;
 }
@@ -1314,12 +1320,12 @@
 .arch-transform-col--bad li::before { color: #ef4444; }
 .arch-transform-col--good li::before { color: #16a34a; }
 
-/* 6. TRUST & VALUE PILLARS */
+/* 6. TRUST & VALUE PILLARS (CLEAN LIGHT ARCHITECTURAL LUXURY) */
 .arch-trust {
   padding: 48px 0;
-  background-color: #09090b;
-  color: #f8fafc;
-  border-top: 1px solid #27272a;
+  background-color: #f8fafc !important;
+  border-top: 1px solid #e2e8f0 !important;
+  border-bottom: 1px solid #e2e8f0 !important;
 }
 
 .arch-trust__grid {
@@ -1336,29 +1342,29 @@
 
 .arch-trust-item__icon {
   flex-shrink: 0;
-  width: 44px;
-  height: 44px;
-  border-radius: 8px;
-  background: #18181b;
-  border: 1px solid #27272a;
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  background: #fff7ed !important;
+  border: 1px solid #fed7aa !important;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ea580c;
+  color: #ea580c !important;
 }
 
 .arch-trust-item__title {
-  font-size: 15px;
-  font-weight: 700;
-  color: #ffffff;
-  margin: 0 0 6px;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #09090b !important;
+  margin: 0 0 6px !important;
 }
 
 .arch-trust-item__desc {
-  font-size: 13px;
-  color: #a1a1aa;
-  line-height: 1.5;
-  margin: 0;
+  font-size: 13px !important;
+  color: #475569 !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
 }
 
 /* RESPONSIVE DESIGN */
@@ -1390,10 +1396,10 @@
     padding: 36px 0 50px;
   }
   .arch-hero__title {
-    font-size: 32px;
+    font-size: 32px !important;
   }
   .arch-hero__lead {
-    font-size: 15px;
+    font-size: 15px !important;
   }
   .arch-hero__actions {
     flex-direction: column;
@@ -1419,7 +1425,7 @@
     left: 5px;
   }
   .arch-section-title {
-    font-size: 28px;
+    font-size: 28px !important;
   }
   .arch-mission {
     padding: 60px 0;
@@ -1453,7 +1459,7 @@
     padding: 32px 18px;
   }
   .arch-transform-title {
-    font-size: 24px;
+    font-size: 24px !important;
   }
   .arch-transform-grid {
     grid-template-columns: 1fr;
