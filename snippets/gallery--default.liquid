@@ -40,6 +40,11 @@
 {% endif %}
 
 <div class="slider--product__holder" data-bstr-ppslider="{{section.id}}">
+<div class="arch-image-top-bar">
+  <span class="arch-image-top-bar__text">
+    Made with Love <span class="arch-heart-emoji">❤️</span> for Home Owners, Interior Designers &amp; Architects
+  </span>
+</div>
 {% if product.images.size > 1 %}
     <button data-bstr-slider-button="-" class="slider__button hide-mobile" aria-label="Previous"><i class="uil uil-angle-left-b"></i></button>
     <button data-bstr-slider-button="+" class="slider__button slider__button--next hide-mobile" aria-label="Next"><i class="uil uil-angle-right-b"></i></button>
@@ -162,5 +167,53 @@
   
     .thumbnail--slide .uil-angle-right-b:before {
       transform: rotate(90deg);
+    }
+
+    .arch-image-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000000;
+      color: #ffffff !important;
+      padding: 8px 14px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+    .arch-image-top-bar__text {
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
+      line-height: 1.35;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+    .arch-heart-emoji {
+      display: inline-block;
+      font-size: 13px;
+      line-height: 1;
+    }
+    @media (max-width: 640px) {
+      .arch-image-top-bar {
+        padding: 7px 10px;
+        margin-bottom: 8px;
+        border-radius: 6px;
+      }
+      .arch-image-top-bar__text {
+        font-size: 11.5px;
+        letter-spacing: 0.01em;
+      }
+      .arch-heart-emoji {
+        font-size: 12px;
+      }
     }
   </style>

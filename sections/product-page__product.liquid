@@ -140,6 +140,13 @@ Checking for vertical gallery styles (additional gallery styles can be added her
 {% case section.settings.galleryStyle %}
   {% when 'verticalSingle' %}
     <div data-gallery-type="vSingle" class="col-12 {{size}} gallery__vertical hide-mobile {% if isAutoZoom %}zoom{% endif %}">
+      <div class="col-12" style="padding: 0 8px;">
+        <div class="arch-image-top-bar">
+          <span class="arch-image-top-bar__text">
+            Made with Love <span class="arch-heart-emoji">❤️</span> for Home Owners, Interior Designers &amp; Architects
+          </span>
+        </div>
+      </div>
       {% for image in product.images %}
         <div data-variants="{% for var in image.variants %}{{var.id}}|{% endfor %}" class="col-12">
           {% render 'image', size: '900x', src: image.src, alt: image.alt, class: imageClass %}
@@ -168,6 +175,13 @@ Checking for vertical gallery styles (additional gallery styles can be added her
     </div>
   {% when 'verticalDouble' %}
     <div data-gallery-type="vDouble" class="col-12 {{size}} gallery__vertical hide-mobile">
+      <div class="col-12" style="padding: 0 8px;">
+        <div class="arch-image-top-bar">
+          <span class="arch-image-top-bar__text">
+            Made with Love <span class="arch-heart-emoji">❤️</span> for Home Owners, Interior Designers &amp; Architects
+          </span>
+        </div>
+      </div>
       {% for image in product.images %}
         <div data-variants="{% for var in image.variants %}{{var.id}}|{% endfor %}" {% if forloop.first %}class="col-12 col-md-12 {% if isAutoZoom %}zoom{% endif %}"{%else%}class="col-12 col-md-6 {% if isAutoZoom %}zoom{% endif %}"{%endif%}>
           {% render 'image', size: '900x', src: image.src, alt: image.alt, class: imageClass %}
