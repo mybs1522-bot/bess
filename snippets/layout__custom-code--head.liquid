@@ -421,6 +421,32 @@ shopify-payment-terms {
   box-shadow: 0 2px 8px rgba(234, 88, 12, 0.35);
   text-transform: uppercase;
 }
+.luxury-card-badge.sold-out {
+  background: #64748b !important;
+  box-shadow: 0 2px 6px rgba(100, 116, 139, 0.25) !important;
+}
+.luxury-soldout-tag {
+  font-size: 10px;
+  font-weight: 700;
+  color: #dc2626;
+  background: #fee2e2;
+  padding: 2px 7px;
+  border-radius: 4px;
+  margin-left: 6px;
+  display: inline-block;
+  letter-spacing: 0.02em;
+  vertical-align: middle;
+}
+.luxury-swatch-card[data-swatch-soldout="true"] {
+  background: #fcfcfd;
+  border-color: #e5e7eb;
+}
+.luxury-swatch-card[data-swatch-soldout="true"]:hover {
+  border-color: #cbd5e1;
+  background: #f8fafc;
+  transform: none;
+  box-shadow: none;
+}
 .luxury-card-inner {
   display: flex;
   align-items: center;
