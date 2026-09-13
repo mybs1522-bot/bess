@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "page": {
@@ -44,7 +53,9 @@
         },
         "shop_pay": {
           "type": "productPageShopPay",
-          "settings": {}
+          "settings": {
+            "noMargin": false
+          }
         },
         "tab_synopsis": {
           "type": "productPageTab",
@@ -69,13 +80,6 @@
             "page": "",
             "customContent": "<p>Add custom content here!</p>"
           }
-        },
-        "trust_badges": {
-          "type": "productPageBadge",
-          "settings": {
-            "noMargin": false,
-            "imageAlt": ""
-          }
         }
       },
       "block_order": [
@@ -86,8 +90,7 @@
         "ppATC",
         "shop_pay",
         "tab_synopsis",
-        "tab_reviews",
-        "trust_badges"
+        "tab_reviews"
       ],
       "settings": {
         "view": "default",

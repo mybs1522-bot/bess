@@ -1,7 +1,3 @@
-{% comment %}
-  Kitchenind Landing Page Section - 100% Customizable in Shopify Theme Editor
-{% endcomment %}
-
 <div class="kitchenind-landing-wrapper">
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -114,67 +110,61 @@
     }
   </style>
 
-  {% if section.settings.enable_banner %}
   <!-- 1. Top Urgency Banner -->
   <div style="background: linear-gradient(90deg, #ea580c, #d97706, #ea580c); color: white; padding: 10px 16px; text-align: center; font-size: 13px; font-weight: 700;">
     <div style="max-width: 1140px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;">
       <span style="display: flex; align-items: center; gap: 8px;">
         <span style="width: 8px; height: 8px; background: white; border-radius: 50%; display: inline-block;"></span>
-        {{ section.settings.banner_text }}
+        LIMITED OFFER: GET THE COMPLETE KITCHEN DESIGN BOOK TODAY
       </span>
-      {% if section.settings.banner_timer != blank %}
       <span style="font-family: monospace; background: rgba(0,0,0,0.25); padding: 4px 10px; border-radius: 6px; font-size: 14px;">
-        {{ section.settings.banner_timer }}
+        04:36:27
       </span>
-      {% endif %}
       <a href="#product-form" onclick="document.querySelector('[data-buy-button], .button--primary')?.click() || window.scrollTo({top: 0, behavior: 'smooth'});" style="background: white; color: #ea580c; text-decoration: none; padding: 4px 14px; border-radius: 20px; font-size: 11px; text-transform: uppercase; font-weight: 900;">
-        {{ section.settings.banner_btn_text }}
+        Claim Offer
       </a>
     </div>
   </div>
-  {% endif %}
 
   <!-- 2. Hero Headline & Animated Showcase -->
   <section class="kitchen-section" style="background: linear-gradient(165deg, #fefcf9 0%, #fff8f0 25%, #ffffff 50%, #fef9f2 75%, #fffdf8 100%); text-align: center;">
     <div class="kitchen-container">
-      {% if section.settings.hero_badge != blank %}
       <div style="display: inline-flex; align-items: center; gap: 8px; background: #ffedd5; color: #ea580c; padding: 6px 16px; border-radius: 30px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px;">
-        {{ section.settings.hero_badge }}
+        ✨ Handmade Diagrams · Real Dimensions · No Guesswork
       </div>
-      {% endif %}
 
       <h1 style="font-size: clamp(2.2rem, 5vw, 4.2rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 20px; color: #09090b;">
-        {{ section.settings.hero_title }}<br>
-        <span class="premium-gradient">{{ section.settings.hero_title_gradient }}</span>
+        The Only Book You'll Refer To.<br>
+        <span class="premium-gradient">Design Best Kitchens Possible.</span>
       </h1>
 
       <p style="font-size: clamp(1rem, 2vw, 1.25rem); color: #4b5563; max-width: 720px; margin: 0 auto 36px auto; line-height: 1.6;">
-        {{ section.settings.hero_subtitle }}
+        One wrong decision can turn your <strong style="color: #ea580c;">dream kitchen</strong> into a daily frustration. This is the <em class="font-serif">one</em> book that guides you like a pro designer — for the price of a coffee.
       </p>
 
       <!-- Animated Video / GIF Container -->
       <div style="max-width: 900px; margin: 0 auto 36px auto; border-radius: 24px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); border: 1px solid #e5e7eb; position: relative; background: #09090b;">
-        {% if section.settings.hero_image != blank %}
-          <img src="{{ section.settings.hero_image | img_url: 'master' }}" alt="{{ section.settings.hero_title }}" style="width: 100%; height: auto; display: block;">
-        {% else %}
-          <img src="https://mir-s3-cdn-cf.behance.net/project_modules/hd/e73fbd127166603.613c3c5346de6.gif" alt="Design the best kitchens possible — animated showcase" style="width: 100%; height: auto; display: block;" />
-        {% endif %}
+        <img 
+          src="https://mir-s3-cdn-cf.behance.net/project_modules/hd/e73fbd127166603.613c3c5346de6.gif" 
+          alt="Design the best kitchens possible — animated showcase"
+          style="width: 100%; height: auto; display: block;"
+        />
         <div style="position: absolute; inset-inline: 0; bottom: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 60%, transparent 100%); padding: 30px 20px 20px 20px; color: white;">
-          <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.3em; font-weight: 700; color: #fed7aa; margin-bottom: 4px;">{{ section.settings.hero_overlay_badge }}</p>
-          <h3 style="font-size: clamp(1.2rem, 3vw, 2.2rem); font-weight: 900; margin: 0;">{{ section.settings.hero_overlay_heading }}</h3>
+          <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.3em; font-weight: 700; color: #fed7aa; margin-bottom: 4px;">THE KITCHEN DESIGN BOOK</p>
+          <h3 style="font-size: clamp(1.2rem, 3vw, 2.2rem); font-weight: 900; margin: 0;">Every Dimension. <span class="font-serif" style="color: #fed7aa; font-style: italic; font-weight: 400;">Every Detail.</span></h3>
         </div>
       </div>
 
       <!-- Hero Actions -->
       <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; align-items: center;">
         <button onclick="window.scrollTo({top: 0, behavior: 'smooth'}); document.querySelector('.sticky--atc__button, [data-buy-button], .button--primary')?.click();" class="kitchen-btn-primary" style="font-size: 17px;">
-          {{ section.settings.hero_btn_primary }}
+          Get the Kitchen Book Now →
         </button>
         <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="kitchen-btn-secondary" style="font-size: 16px;">
-          {{ section.settings.hero_btn_secondary }}
+          📦 Get Hardcopy Edition →
         </button>
       </div>
-      <p style="font-size: 12px; color: #6b7280; margin-top: 14px;">{{ section.settings.hero_guarantee_text }}</p>
+      <p style="font-size: 12px; color: #6b7280; margin-top: 14px;">⚡ Instant Digital Download · Lifetime Access · 30-Day Guarantee</p>
     </div>
   </section>
 
@@ -182,23 +172,24 @@
   <section class="kitchen-section" style="background: #f9fafb; border-top: 1px solid #e5e7eb; border-bottom: 1px solid #e5e7eb;">
     <div class="kitchen-container">
       <div style="text-align: center; max-width: 760px; margin: 0 auto 40px auto;">
-        <p style="color: #ea580c; font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.25em; margin-bottom: 10px;">{{ section.settings.inside_badge }}</p>
+        <p style="color: #ea580c; font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.25em; margin-bottom: 10px;">INSIDE THE BOOK</p>
         <h2 style="font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 900; line-height: 1.15; margin-bottom: 14px;">
-          {{ section.settings.inside_title }}
+          Handmade Diagrams That Explain <span class="premium-gradient">Every Detail</span> of Your Kitchen
         </h2>
         <p style="color: #4b5563; font-size: 16px; line-height: 1.6;">
-          {{ section.settings.inside_subtitle }}
+          Hand-drawn, pro-verified pages that help you <strong>plan perfectly</strong> — from layouts and clearances to modules and storage.
         </p>
       </div>
 
       <div style="max-width: 920px; margin: 0 auto; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.12); border: 1px solid #e5e7eb; position: relative;">
-        {% if section.settings.inside_image != blank %}
-          <img src="{{ section.settings.inside_image | img_url: 'master' }}" alt="Every chapter of the Kitchen Design Book" style="width: 100%; height: auto; display: block;">
-        {% else %}
-          <img src="{{ 'kitchen-book.png' | asset_url }}" alt="Every chapter of the Kitchen Design Book" style="width: 100%; height: auto; display: block;" onerror="this.src='https://d1yei2z3i6k35z.cloudfront.net/13138299/685712e3dfc75_Your-Numbered-Points-Title-Comes-Right-Here1.jpg'" />
-        {% endif %}
+        <img 
+          src="{{ 'kitchen-book.png' | asset_url }}" 
+          alt="Every chapter of the Kitchen Design Book — 150 hand-drawn pages"
+          style="width: 100%; height: auto; display: block;"
+          onerror="this.src='https://d1yei2z3i6k35z.cloudfront.net/13138299/685712e3dfc75_Your-Numbered-Points-Title-Comes-Right-Here1.jpg'"
+        />
         <div style="position: absolute; top: 16px; left: 16px; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); padding: 8px 18px; border-radius: 30px; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.15em; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-          {{ section.settings.inside_image_badge }}
+          ✨ 150 Pages · Every Chapter
         </div>
       </div>
     </div>
@@ -207,19 +198,20 @@
   <!-- 4. Book Cover Reveal Section -->
   <section class="kitchen-section" style="text-align: center; background: #ffffff;">
     <div class="kitchen-container" style="max-width: 800px;">
-      <p style="color: #ea580c; font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.25em; margin-bottom: 10px;">{{ section.settings.reveal_badge }}</p>
+      <p style="color: #ea580c; font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.25em; margin-bottom: 10px;">THE BOOK THAT CHANGES EVERYTHING</p>
       <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900; line-height: 1.15; margin-bottom: 30px;">
-        {{ section.settings.reveal_title }}
+        Meet the <span class="premium-gradient">One Book</span> Recommended for Designers &amp; Homeowners Alike
       </h2>
       <div style="max-width: 440px; margin: 0 auto;">
-        {% if section.settings.reveal_image != blank %}
-          <img src="{{ section.settings.reveal_image | img_url: 'master' }}" alt="Kitchen Design Book Preview" style="width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); border: 1px solid #e5e7eb; display: block;">
-        {% else %}
-          <img src="{{ 'nono.jpg' | asset_url }}" alt="Kitchen Design Book Preview" style="width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); border: 1px solid #e5e7eb; display: block;" onerror="this.src='https://d1yei2z3i6k35z.cloudfront.net/13138299/685712e3dfc75_Your-Numbered-Points-Title-Comes-Right-Here1.jpg'" />
-        {% endif %}
+        <img 
+          src="{{ 'nono.jpg' | asset_url }}" 
+          alt="Kitchen Design Book — Inside Preview"
+          style="width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); border: 1px solid #e5e7eb; display: block;"
+          onerror="this.src='https://d1yei2z3i6k35z.cloudfront.net/13138299/685712e3dfc75_Your-Numbered-Points-Title-Comes-Right-Here1.jpg'"
+        />
       </div>
       <p style="color: #6b7280; font-size: 15px; margin-top: 24px; font-style: italic;">
-        {{ section.settings.reveal_caption }}
+        150 pages. Hand-drawn diagrams. Verified clearances. The one resource on every designer's desk.
       </p>
     </div>
   </section>
@@ -228,33 +220,35 @@
   <section class="kitchen-section" style="background: #fafaf9; border-top: 1px solid #e5e7eb;">
     <div class="kitchen-container">
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: start;">
+        <!-- Left: Summary & Guarantee Checks -->
         <div>
           <h2 style="font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 900; line-height: 1.1; margin-bottom: 16px;">
-            {{ section.settings.curriculum_title }}
+            What's <span style="color: #ea580c;">Inside</span> Book
           </h2>
           <p style="color: #4b5563; font-size: 16px; margin-bottom: 30px; line-height: 1.6;">
-            {{ section.settings.curriculum_subtitle }}
+            We don't give you vibes. We give you blueprints. 150 pages of high-density precision.
           </p>
           <div style="display: flex; flex-direction: column; gap: 12px;">
             <div style="display: flex; align-items: center; gap: 12px; background: white; padding: 14px 18px; border-radius: 14px; border: 1px solid #e5e7eb;">
               <span style="color: #10b981; font-weight: 900; font-size: 18px;">✓</span>
-              <span style="font-weight: 600; font-size: 14px;">{{ section.settings.curriculum_feature_1 }}</span>
+              <span style="font-weight: 600; font-size: 14px;">Instant PDF Download</span>
             </div>
             <div style="display: flex; align-items: center; gap: 12px; background: white; padding: 14px 18px; border-radius: 14px; border: 1px solid #e5e7eb;">
               <span style="color: #10b981; font-weight: 900; font-size: 18px;">✓</span>
-              <span style="font-weight: 600; font-size: 14px;">{{ section.settings.curriculum_feature_2 }}</span>
+              <span style="font-weight: 600; font-size: 14px;">Lifetime Updates Included</span>
             </div>
             <div style="display: flex; align-items: center; gap: 12px; background: white; padding: 14px 18px; border-radius: 14px; border: 1px solid #e5e7eb;">
               <span style="color: #10b981; font-weight: 900; font-size: 18px;">✓</span>
-              <span style="font-weight: 600; font-size: 14px;">{{ section.settings.curriculum_feature_3 }}</span>
+              <span style="font-weight: 600; font-size: 14px;">Comprehensive Guide (Zero Fluff)</span>
             </div>
             <div style="display: flex; align-items: center; gap: 12px; background: white; padding: 14px 18px; border-radius: 14px; border: 1px solid #e5e7eb;">
               <span style="color: #10b981; font-weight: 900; font-size: 18px;">✓</span>
-              <span style="font-weight: 600; font-size: 14px;">{{ section.settings.curriculum_feature_4 }}</span>
+              <span style="font-weight: 600; font-size: 14px;">Direct Author Design Support</span>
             </div>
           </div>
         </div>
 
+        <!-- Right: Chapter Curriculum Grid -->
         <div style="background: white; border-radius: 24px; padding: 36px; border: 1px solid #e5e7eb; box-shadow: 0 15px 35px rgba(0,0,0,0.06);">
           <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 28px; border-bottom: 1px solid #f3f4f6; padding-bottom: 18px;">
             <div style="width: 48px; height: 48px; border-radius: 14px; background: #ffedd5; display: flex; align-items: center; justify-content: center; font-size: 24px;">
@@ -268,20 +262,40 @@
 
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px;">
             <div>
-              <h4 style="font-size: 12px; font-weight: 800; color: #ea580c; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px;">{{ section.settings.chapter_1_title }}</h4>
-              <div style="font-size: 13px; color: #4b5563; line-height: 1.8; white-space: pre-line;">{{ section.settings.chapter_1_items }}</div>
+              <h4 style="font-size: 12px; font-weight: 800; color: #ea580c; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px;">Layouts &amp; Zones</h4>
+              <ul style="list-style: none; padding: 0; margin: 0; font-size: 13px; color: #4b5563; line-height: 1.8;">
+                <li>• Kitchen triangle &amp; zoning</li>
+                <li>• Future of kitchen design</li>
+                <li>• Kitchen layouts with examples</li>
+                <li>• Advantages &amp; limitations</li>
+              </ul>
             </div>
             <div>
-              <h4 style="font-size: 12px; font-weight: 800; color: #ea580c; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px;">{{ section.settings.chapter_2_title }}</h4>
-              <div style="font-size: 13px; color: #4b5563; line-height: 1.8; white-space: pre-line;">{{ section.settings.chapter_2_items }}</div>
+              <h4 style="font-size: 12px; font-weight: 800; color: #ea580c; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px;">Components</h4>
+              <ul style="list-style: none; padding: 0; margin: 0; font-size: 13px; color: #4b5563; line-height: 1.8;">
+                <li>• Stove placement clearances</li>
+                <li>• Refrigerator mistakes to avoid</li>
+                <li>• Sink placement &amp; plumbing</li>
+                <li>• Pantry types &amp; planning</li>
+              </ul>
             </div>
             <div>
-              <h4 style="font-size: 12px; font-weight: 800; color: #ea580c; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px;">{{ section.settings.chapter_3_title }}</h4>
-              <div style="font-size: 13px; color: #4b5563; line-height: 1.8; white-space: pre-line;">{{ section.settings.chapter_3_items }}</div>
+              <h4 style="font-size: 12px; font-weight: 800; color: #ea580c; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px;">Storage Science</h4>
+              <ul style="list-style: none; padding: 0; margin: 0; font-size: 13px; color: #4b5563; line-height: 1.8;">
+                <li>• Top &amp; bottom cabinet heights</li>
+                <li>• Corner &amp; hidden storage hacks</li>
+                <li>• Exact standard dimensions</li>
+                <li>• Breakfast counter clearances</li>
+              </ul>
             </div>
             <div>
-              <h4 style="font-size: 12px; font-weight: 800; color: #ea580c; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px;">{{ section.settings.chapter_4_title }}</h4>
-              <div style="font-size: 13px; color: #4b5563; line-height: 1.8; white-space: pre-line;">{{ section.settings.chapter_4_items }}</div>
+              <h4 style="font-size: 12px; font-weight: 800; color: #ea580c; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px;">Services &amp; Power</h4>
+              <ul style="list-style: none; padding: 0; margin: 0; font-size: 13px; color: #4b5563; line-height: 1.8;">
+                <li>• Electrical point placement</li>
+                <li>• Task lighting vs ambient zones</li>
+                <li>• Ventilation &amp; chimney ducting</li>
+                <li>• Appliance clearance zones</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -289,32 +303,32 @@
     </div>
   </section>
 
-  <!-- 6. Emotional Toll (Pain Points) -->
+  <!-- 6. The Emotional Toll of Bad Design (Pain Points) -->
   <section class="kitchen-section" style="background: #09090b; color: white;">
     <div class="kitchen-container" style="max-width: 900px;">
       <div style="text-align: center; margin-bottom: 40px;">
         <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; margin-bottom: 10px;">
-          {{ section.settings.pain_title }}
+          The <span style="color: #f97316;">Emotional Toll</span> of Bad Design
         </h2>
-        <p style="color: #9ca3af; font-size: 16px;">{{ section.settings.pain_subtitle }}</p>
+        <p style="color: #9ca3af; font-size: 16px;">One wrong clearance. A lifetime of regret.</p>
       </div>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
         <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 20px; display: flex; align-items: center; gap: 16px;">
           <span style="font-size: 32px;">😫</span>
-          <p style="font-size: 14px; margin: 0; color: #e5e7eb; font-weight: 500;">{{ section.settings.pain_1 }}</p>
+          <p style="font-size: 14px; margin: 0; color: #e5e7eb; font-weight: 500;">Cabinet door hits the fridge. One small clearance miss. ₹2 lakh gone.</p>
         </div>
         <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 20px; display: flex; align-items: center; gap: 16px;">
           <span style="font-size: 32px;">💸</span>
-          <p style="font-size: 14px; margin: 0; color: #e5e7eb; font-weight: 500;">{{ section.settings.pain_2 }}</p>
+          <p style="font-size: 14px; margin: 0; color: #e5e7eb; font-weight: 500;">Pinterest vibes look great — until the workflow feels clunky every time you cook.</p>
         </div>
         <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 20px; display: flex; align-items: center; gap: 16px;">
           <span style="font-size: 32px;">😤</span>
-          <p style="font-size: 14px; margin: 0; color: #e5e7eb; font-weight: 500;">{{ section.settings.pain_3 }}</p>
+          <p style="font-size: 14px; margin: 0; color: #e5e7eb; font-weight: 500;">Contractors want blueprints. Designers charge ₹2.5 lakh. You're stuck guessing.</p>
         </div>
         <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 20px; display: flex; align-items: center; gap: 16px;">
           <span style="font-size: 32px;">🧠</span>
-          <p style="font-size: 14px; margin: 0; color: #e5e7eb; font-weight: 500;">{{ section.settings.pain_4 }}</p>
+          <p style="font-size: 14px; margin: 0; color: #e5e7eb; font-weight: 500;">You have the vision. You're missing the exact numbers that make it work.</p>
         </div>
       </div>
     </div>
@@ -326,31 +340,31 @@
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items: center;">
         <div>
           <h2 style="font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 900; line-height: 1.1; margin-bottom: 24px;">
-            {{ section.settings.story_title }}
+            From <span style="color: #ea580c; font-style: italic;" class="font-serif">Design Regret</span> to Construction Pride
           </h2>
           <div style="display: flex; flex-direction: column; gap: 20px;">
             <div style="background: #fff7ed; border: 1px solid #fed7aa; border-radius: 16px; padding: 20px;">
               <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
                 <span style="font-size: 20px;">🏠</span>
                 <div>
-                  <strong style="font-size: 15px; color: #111827;">{{ section.settings.story_1_name }}</strong>
-                  <span style="font-size: 11px; color: #ea580c; text-transform: uppercase; font-weight: 700; margin-left: 6px;">{{ section.settings.story_1_role }}</span>
+                  <strong style="font-size: 15px; color: #111827;">Neha S.</strong>
+                  <span style="font-size: 11px; color: #ea580c; text-transform: uppercase; font-weight: 700; margin-left: 6px;">Renovated in 2023</span>
                 </div>
               </div>
-              <p style="font-size: 13px; color: #6b7280; font-style: italic; margin-bottom: 6px;">"{{ section.settings.story_1_before }}"</p>
-              <p style="font-size: 14px; color: #111827; font-weight: 600; margin: 0;">"{{ section.settings.story_1_after }}"</p>
+              <p style="font-size: 13px; color: #6b7280; font-style: italic; margin-bottom: 6px;">"I was crying in my unfinished kitchen because the island was 4 inches too close to the stove. I felt like a failure."</p>
+              <p style="font-size: 14px; color: #111827; font-weight: 600; margin: 0;">"I found this book, moved the island by 5 inches, and saved my ₹10 lakh renovation. It's now my favorite room."</p>
             </div>
 
             <div style="background: #fff7ed; border: 1px solid #fed7aa; border-radius: 16px; padding: 20px;">
               <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
                 <span style="font-size: 20px;">📐</span>
                 <div>
-                  <strong style="font-size: 15px; color: #111827;">{{ section.settings.story_2_name }}</strong>
-                  <span style="font-size: 11px; color: #ea580c; text-transform: uppercase; font-weight: 700; margin-left: 6px;">{{ section.settings.story_2_role }}</span>
+                  <strong style="font-size: 15px; color: #111827;">Karan D.</strong>
+                  <span style="font-size: 11px; color: #ea580c; text-transform: uppercase; font-weight: 700; margin-left: 6px;">Architect</span>
                 </div>
               </div>
-              <p style="font-size: 13px; color: #6b7280; font-style: italic; margin-bottom: 6px;">"{{ section.settings.story_2_before }}"</p>
-              <p style="font-size: 14px; color: #111827; font-weight: 600; margin: 0;">"{{ section.settings.story_2_after }}"</p>
+              <p style="font-size: 13px; color: #6b7280; font-style: italic; margin-bottom: 6px;">"Tired of looking up standard clearances in 500-page manuals every time a client asked a simple question."</p>
+              <p style="font-size: 14px; color: #111827; font-weight: 600; margin: 0;">"This single book stays on my desk. It has everything I need in 10 seconds. My clients think I'm a genius."</p>
             </div>
           </div>
         </div>
@@ -372,12 +386,12 @@
       <div style="width: 70px; height: 70px; border-radius: 50%; background: #dcfce7; color: #16a34a; font-size: 36px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; border: 3px solid #86efac;">
         🛡️
       </div>
-      <h3 style="font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 900; margin-bottom: 16px; color: #065f46;">{{ section.settings.promise_title }}</h3>
+      <h3 style="font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 900; margin-bottom: 16px; color: #065f46;">Our No-Regret Promise</h3>
       <p style="font-size: 16px; color: #1f2937; line-height: 1.7; margin-bottom: 12px;">
-        {{ section.settings.promise_text }}
+        If you ever feel the need to open <em class="font-serif">any other</em> kitchen design book after reading this one, <strong style="text-decoration: underline; text-decoration-color: #f97316;">just write to us, and we'll happily refund your money.</strong>
       </p>
       <p style="font-size: 15px; color: #374151;">
-        {{ section.settings.promise_subtext }}
+        That's how confident we are that this will be the <strong>only kitchen design resource you'll ever need.</strong>
       </p>
     </div>
   </section>
@@ -387,39 +401,51 @@
     <div class="kitchen-container">
       <div style="text-align: center; margin-bottom: 40px;">
         <p style="color: #ea580c; font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.25em; margin-bottom: 10px;">READER REVIEWS</p>
-        <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900;">{{ section.settings.testimonials_title }}</h2>
+        <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900;">Trusted by 50,000+ Readers Worldwide</h2>
       </div>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
         <div class="kitchen-card">
           <div style="color: #f59e0b; font-size: 16px; margin-bottom: 8px;">★★★★★</div>
-          <p style="font-size: 14px; color: #374151; line-height: 1.6; margin-bottom: 14px;">"{{ section.settings.test_1_quote }}"</p>
+          <p style="font-size: 14px; color: #374151; line-height: 1.6; margin-bottom: 14px;">
+            "I redesigned my entire kitchen using just this book. The rules alone saved me from buying cabinets that would have been completely wrong."
+          </p>
           <div style="border-top: 1px solid #f3f4f6; padding-top: 12px;">
-            <strong style="font-size: 14px; display: block; color: #111827;">{{ section.settings.test_1_author }}</strong>
+            <strong style="font-size: 14px; display: block; color: #111827;">Priya Sharma</strong>
+            <span style="font-size: 12px; color: #6b7280;">Homeowner · Mumbai, India</span>
           </div>
         </div>
 
         <div class="kitchen-card">
           <div style="color: #f59e0b; font-size: 16px; margin-bottom: 8px;">★★★★★</div>
-          <p style="font-size: 14px; color: #374151; line-height: 1.6; margin-bottom: 14px;">"{{ section.settings.test_2_quote }}"</p>
+          <p style="font-size: 14px; color: #374151; line-height: 1.6; margin-bottom: 14px;">
+            "The step-by-step guides for kitchen layouts are incredible. I saved ₹1.5 lakh doing it myself instead of hiring a designer."
+          </p>
           <div style="border-top: 1px solid #f3f4f6; padding-top: 12px;">
-            <strong style="font-size: 14px; display: block; color: #111827;">{{ section.settings.test_2_author }}</strong>
+            <strong style="font-size: 14px; display: block; color: #111827;">Rahul Mehta</strong>
+            <span style="font-size: 12px; color: #6b7280;">DIY Enthusiast · Bengaluru, India</span>
           </div>
         </div>
 
         <div class="kitchen-card">
           <div style="color: #f59e0b; font-size: 16px; margin-bottom: 8px;">★★★★★</div>
-          <p style="font-size: 14px; color: #374151; line-height: 1.6; margin-bottom: 14px;">"{{ section.settings.test_3_quote }}"</p>
+          <p style="font-size: 14px; color: #374151; line-height: 1.6; margin-bottom: 14px;">
+            "Even as a pro, I keep this book as a reference. The kitchen clearance charts are the most comprehensive I have ever found."
+          </p>
           <div style="border-top: 1px solid #f3f4f6; padding-top: 12px;">
-            <strong style="font-size: 14px; display: block; color: #111827;">{{ section.settings.test_3_author }}</strong>
+            <strong style="font-size: 14px; display: block; color: #111827;">Sneha Iyer</strong>
+            <span style="font-size: 12px; color: #6b7280;">Interior Designer · Chennai, India</span>
           </div>
         </div>
 
         <div class="kitchen-card">
           <div style="color: #f59e0b; font-size: 16px; margin-bottom: 8px;">★★★★★</div>
-          <p style="font-size: 14px; color: #374151; line-height: 1.6; margin-bottom: 14px;">"{{ section.settings.test_4_quote }}"</p>
+          <p style="font-size: 14px; color: #374151; line-height: 1.6; margin-bottom: 14px;">
+            "The material selection guides saved me from making several expensive mistakes at the tile shop. Best money I ever spent."
+          </p>
           <div style="border-top: 1px solid #f3f4f6; padding-top: 12px;">
-            <strong style="font-size: 14px; display: block; color: #111827;">{{ section.settings.test_4_author }}</strong>
+            <strong style="font-size: 14px; display: block; color: #111827;">Ankit Verma</strong>
+            <span style="font-size: 12px; color: #6b7280;">DIY Renovator · Delhi, India</span>
           </div>
         </div>
       </div>
@@ -431,50 +457,79 @@
     <div class="kitchen-container" style="max-width: 800px;">
       <div style="text-align: center; margin-bottom: 40px;">
         <p style="color: #ea580c; font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.25em; margin-bottom: 10px;">CLEAR ANSWERS</p>
-        <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900;">{{ section.settings.faq_title }}</h2>
+        <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900;">Frequently Asked Questions</h2>
       </div>
 
       <div style="background: white; border-radius: 20px; padding: 24px 32px; border: 1px solid #e5e7eb; box-shadow: 0 4px 20px rgba(0,0,0,0.03);">
         <div class="kitchen-faq-item active">
           <div class="kitchen-faq-question" onclick="this.parentElement.classList.toggle('active');">
-            <span>{{ section.settings.faq_q1 }}</span>
+            <span>Can't I just learn this from YouTube for free?</span>
             <span class="kitchen-faq-icon">▾</span>
           </div>
-          <div class="kitchen-faq-answer">{{ section.settings.faq_a1 }}</div>
+          <div class="kitchen-faq-answer">
+            Sure, you can find scattered tips. But nobody teaches the complete system. This book gives you complete clearances, dimensions, materials, and layouts for kitchens—all in one structured place.
+          </div>
         </div>
 
         <div class="kitchen-faq-item">
           <div class="kitchen-faq-question" onclick="this.parentElement.classList.toggle('active');">
-            <span>{{ section.settings.faq_q2 }}</span>
+            <span>Do I need a design background to understand this?</span>
             <span class="kitchen-faq-icon">▾</span>
           </div>
-          <div class="kitchen-faq-answer">{{ section.settings.faq_a2 }}</div>
+          <div class="kitchen-faq-answer">
+            Not at all. This is written for complete beginners. Every concept has handmade diagrams, exact dimensions, and real examples. If you can read, you can use this.
+          </div>
         </div>
 
         <div class="kitchen-faq-item">
           <div class="kitchen-faq-question" onclick="this.parentElement.classList.toggle('active');">
-            <span>{{ section.settings.faq_q3 }}</span>
+            <span>Will this work for modern homes and apartments?</span>
             <span class="kitchen-faq-icon">▾</span>
           </div>
-          <div class="kitchen-faq-answer">{{ section.settings.faq_a3 }}</div>
+          <div class="kitchen-faq-answer">
+            Yes. It covers standard home sizes, modern layouts, and space optimization for contemporary living. Whether you're in a 500 sqft apartment or a massive home—it's all here.
+          </div>
         </div>
 
         <div class="kitchen-faq-item">
           <div class="kitchen-faq-question" onclick="this.parentElement.classList.toggle('active');">
-            <span>{{ section.settings.faq_q4 }}</span>
+            <span>What if the content gets outdated?</span>
             <span class="kitchen-faq-icon">▾</span>
           </div>
-          <div class="kitchen-faq-answer">{{ section.settings.faq_a4 }}</div>
+          <div class="kitchen-faq-answer">
+            You get free lifetime updates. When we add new content or update dimensions, you get the new version at no extra cost. Buy once, benefit forever.
+          </div>
         </div>
 
         <div class="kitchen-faq-item">
           <div class="kitchen-faq-question" onclick="this.parentElement.classList.toggle('active');">
-            <span>{{ section.settings.faq_q5 }}</span>
+            <span>Can I use this for client projects?</span>
             <span class="kitchen-faq-icon">▾</span>
           </div>
-          <div class="kitchen-faq-answer">{{ section.settings.faq_a5 }}</div>
+          <div class="kitchen-faq-answer">
+            Absolutely. Kitchen designers, developers, and consultants use this as their reference manual. The clearance charts work for all levels of professional work.
+          </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- 11. Final Closing CTA -->
+  <section class="kitchen-section" style="background: #09090b; color: white; text-align: center;">
+    <div class="kitchen-container" style="max-width: 720px;">
+      <h2 style="font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; line-height: 1.1; margin-bottom: 20px;">
+        Claim Your Copy<br>
+        <span style="color: #f97316;">for the price of a coffee.</span>
+      </h2>
+      <p style="font-size: 16px; color: #9ca3af; margin-bottom: 30px;">
+        Detailed Handmade Diagrams. Verified Clearances. Lifetime Free Updates.
+      </p>
+      <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'}); document.querySelector('.sticky--atc__button, [data-buy-button], .button--primary')?.click();" class="kitchen-btn-primary" style="background: #ea580c; font-size: 18px;">
+          Get the Kitchen Book Now →
+        </button>
+      </div>
+      <p style="font-size: 12px; color: #6b7280; margin-top: 14px;">Instant PDF Download · 30-Day Money-Back Guarantee</p>
     </div>
   </section>
 </div>
@@ -482,507 +537,7 @@
 {% schema %}
 {
   "name": "Kitchenind Landing Page",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Top Urgency Banner"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_banner",
-      "label": "Enable Top Banner",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "banner_text",
-      "label": "Banner Text",
-      "default": "LIMITED OFFER: GET THE COMPLETE KITCHEN DESIGN BOOK TODAY"
-    },
-    {
-      "type": "text",
-      "id": "banner_timer",
-      "label": "Banner Timer Display",
-      "default": "04:36:27"
-    },
-    {
-      "type": "text",
-      "id": "banner_btn_text",
-      "label": "Banner Button Text",
-      "default": "Claim Offer"
-    },
-    {
-      "type": "header",
-      "content": "Hero Showcase"
-    },
-    {
-      "type": "text",
-      "id": "hero_badge",
-      "label": "Hero Badge",
-      "default": "✨ Handmade Diagrams · Real Dimensions · No Guesswork"
-    },
-    {
-      "type": "text",
-      "id": "hero_title",
-      "label": "Hero Title Line 1",
-      "default": "The Only Book You'll Refer To."
-    },
-    {
-      "type": "text",
-      "id": "hero_title_gradient",
-      "label": "Hero Title Line 2 (Orange)",
-      "default": "Design Best Kitchens Possible."
-    },
-    {
-      "type": "textarea",
-      "id": "hero_subtitle",
-      "label": "Hero Subtitle",
-      "default": "One wrong decision can turn your dream kitchen into a daily frustration. This is the one book that guides you like a pro designer — for the price of a coffee."
-    },
-    {
-      "type": "image_picker",
-      "id": "hero_image",
-      "label": "Custom Hero Showcase Image (Optional)"
-    },
-    {
-      "type": "text",
-      "id": "hero_overlay_badge",
-      "label": "Hero Overlay Tag",
-      "default": "THE KITCHEN DESIGN BOOK"
-    },
-    {
-      "type": "text",
-      "id": "hero_overlay_heading",
-      "label": "Hero Overlay Heading",
-      "default": "Every Dimension. Every Detail."
-    },
-    {
-      "type": "text",
-      "id": "hero_btn_primary",
-      "label": "Primary Button Label",
-      "default": "Get the Kitchen Book Now →"
-    },
-    {
-      "type": "text",
-      "id": "hero_btn_secondary",
-      "label": "Secondary Button Label",
-      "default": "📦 Get Hardcopy Edition →"
-    },
-    {
-      "type": "text",
-      "id": "hero_guarantee_text",
-      "label": "Hero Guarantee Microcopy",
-      "default": "⚡ Instant Digital Download · Lifetime Access · 30-Day Guarantee"
-    },
-    {
-      "type": "header",
-      "content": "Inside The Book"
-    },
-    {
-      "type": "text",
-      "id": "inside_badge",
-      "label": "Badge",
-      "default": "INSIDE THE BOOK"
-    },
-    {
-      "type": "text",
-      "id": "inside_title",
-      "label": "Title",
-      "default": "Handmade Diagrams That Explain Every Detail of Your Kitchen"
-    },
-    {
-      "type": "textarea",
-      "id": "inside_subtitle",
-      "label": "Subtitle",
-      "default": "Hand-drawn, pro-verified pages that help you plan perfectly — from layouts and clearances to modules and storage."
-    },
-    {
-      "type": "image_picker",
-      "id": "inside_image",
-      "label": "Spread Image (Optional)"
-    },
-    {
-      "type": "text",
-      "id": "inside_image_badge",
-      "label": "Image Badge",
-      "default": "✨ 150 Pages · Every Chapter"
-    },
-    {
-      "type": "header",
-      "content": "Book Reveal Section"
-    },
-    {
-      "type": "text",
-      "id": "reveal_badge",
-      "label": "Badge",
-      "default": "THE BOOK THAT CHANGES EVERYTHING"
-    },
-    {
-      "type": "text",
-      "id": "reveal_title",
-      "label": "Title",
-      "default": "Meet the One Book Recommended for Designers & Homeowners Alike"
-    },
-    {
-      "type": "image_picker",
-      "id": "reveal_image",
-      "label": "Reveal Image (Optional)"
-    },
-    {
-      "type": "text",
-      "id": "reveal_caption",
-      "label": "Caption",
-      "default": "150 pages. Hand-drawn diagrams. Verified clearances. The one resource on every designer's desk."
-    },
-    {
-      "type": "header",
-      "content": "Curriculum & Blueprint Breakdown"
-    },
-    {
-      "type": "text",
-      "id": "curriculum_title",
-      "label": "Curriculum Title",
-      "default": "What's Inside Book"
-    },
-    {
-      "type": "textarea",
-      "id": "curriculum_subtitle",
-      "label": "Curriculum Subtitle",
-      "default": "We don't give you vibes. We give you blueprints. 150 pages of high-density precision."
-    },
-    {
-      "type": "text",
-      "id": "curriculum_feature_1",
-      "label": "Feature 1",
-      "default": "Instant PDF Download"
-    },
-    {
-      "type": "text",
-      "id": "curriculum_feature_2",
-      "label": "Feature 2",
-      "default": "Lifetime Updates Included"
-    },
-    {
-      "type": "text",
-      "id": "curriculum_feature_3",
-      "label": "Feature 3",
-      "default": "Comprehensive Guide (Zero Fluff)"
-    },
-    {
-      "type": "text",
-      "id": "curriculum_feature_4",
-      "label": "Feature 4",
-      "default": "Direct Author Design Support"
-    },
-    {
-      "type": "text",
-      "id": "chapter_1_title",
-      "label": "Chapter 1 Title",
-      "default": "Layouts & Zones"
-    },
-    {
-      "type": "textarea",
-      "id": "chapter_1_items",
-      "label": "Chapter 1 Items",
-      "default": "• Kitchen triangle & zoning
-• Future of kitchen design
-• Kitchen layouts with examples
-• Advantages & limitations"
-    },
-    {
-      "type": "text",
-      "id": "chapter_2_title",
-      "label": "Chapter 2 Title",
-      "default": "Components"
-    },
-    {
-      "type": "textarea",
-      "id": "chapter_2_items",
-      "label": "Chapter 2 Items",
-      "default": "• Stove placement clearances
-• Refrigerator mistakes to avoid
-• Sink placement & plumbing
-• Pantry types & planning"
-    },
-    {
-      "type": "text",
-      "id": "chapter_3_title",
-      "label": "Chapter 3 Title",
-      "default": "Storage Science"
-    },
-    {
-      "type": "textarea",
-      "id": "chapter_3_items",
-      "label": "Chapter 3 Items",
-      "default": "• Top & bottom cabinet heights
-• Corner & hidden storage hacks
-• Exact standard dimensions
-• Breakfast counter clearances"
-    },
-    {
-      "type": "text",
-      "id": "chapter_4_title",
-      "label": "Chapter 4 Title",
-      "default": "Services & Power"
-    },
-    {
-      "type": "textarea",
-      "id": "chapter_4_items",
-      "label": "Chapter 4 Items",
-      "default": "• Electrical point placement
-• Task lighting vs ambient zones
-• Ventilation & chimney ducting
-• Appliance clearance zones"
-    },
-    {
-      "type": "header",
-      "content": "Pain Points & Emotional Toll"
-    },
-    {
-      "type": "text",
-      "id": "pain_title",
-      "label": "Pain Section Title",
-      "default": "The Emotional Toll of Bad Design"
-    },
-    {
-      "type": "text",
-      "id": "pain_subtitle",
-      "label": "Pain Section Subtitle",
-      "default": "One wrong clearance. A lifetime of regret."
-    },
-    {
-      "type": "text",
-      "id": "pain_1",
-      "label": "Pain Point 1",
-      "default": "Cabinet door hits the fridge. One small clearance miss. ₹2 lakh gone."
-    },
-    {
-      "type": "text",
-      "id": "pain_2",
-      "label": "Pain Point 2",
-      "default": "Pinterest vibes look great — until the workflow feels clunky every time you cook."
-    },
-    {
-      "type": "text",
-      "id": "pain_3",
-      "label": "Pain Point 3",
-      "default": "Contractors want blueprints. Designers charge ₹2.5 lakh. You're stuck guessing."
-    },
-    {
-      "type": "text",
-      "id": "pain_4",
-      "label": "Pain Point 4",
-      "default": "You have the vision. You're missing the exact numbers that make it work."
-    },
-    {
-      "type": "header",
-      "content": "Transformation Stories"
-    },
-    {
-      "type": "text",
-      "id": "story_title",
-      "label": "Section Title",
-      "default": "From Design Regret to Construction Pride"
-    },
-    {
-      "type": "text",
-      "id": "story_1_name",
-      "label": "Story 1 Name",
-      "default": "Neha S."
-    },
-    {
-      "type": "text",
-      "id": "story_1_role",
-      "label": "Story 1 Role",
-      "default": "Renovated in 2023"
-    },
-    {
-      "type": "textarea",
-      "id": "story_1_before",
-      "label": "Story 1 Before",
-      "default": "I was crying in my unfinished kitchen because the island was 4 inches too close to the stove. I felt like a failure."
-    },
-    {
-      "type": "textarea",
-      "id": "story_1_after",
-      "label": "Story 1 After",
-      "default": "I found this book, moved the island by 5 inches, and saved my ₹10 lakh renovation. It's now my favorite room."
-    },
-    {
-      "type": "text",
-      "id": "story_2_name",
-      "label": "Story 2 Name",
-      "default": "Karan D."
-    },
-    {
-      "type": "text",
-      "id": "story_2_role",
-      "label": "Story 2 Role",
-      "default": "Architect"
-    },
-    {
-      "type": "textarea",
-      "id": "story_2_before",
-      "label": "Story 2 Before",
-      "default": "Tired of looking up standard clearances in 500-page manuals every time a client asked a simple question."
-    },
-    {
-      "type": "textarea",
-      "id": "story_2_after",
-      "label": "Story 2 After",
-      "default": "This single book stays on my desk. It has everything I need in 10 seconds. My clients think I'm a genius."
-    },
-    {
-      "type": "header",
-      "content": "No-Regret Promise"
-    },
-    {
-      "type": "text",
-      "id": "promise_title",
-      "label": "Promise Title",
-      "default": "Our No-Regret Promise"
-    },
-    {
-      "type": "textarea",
-      "id": "promise_text",
-      "label": "Promise Text",
-      "default": "If you ever feel the need to open any other kitchen design book after reading this one, just write to us, and we'll happily refund your money."
-    },
-    {
-      "type": "textarea",
-      "id": "promise_subtext",
-      "label": "Promise Subtext",
-      "default": "That's how confident we are that this will be the only kitchen design resource you'll ever need."
-    },
-    {
-      "type": "header",
-      "content": "Reader Reviews & Testimonials"
-    },
-    {
-      "type": "text",
-      "id": "testimonials_title",
-      "label": "Section Title",
-      "default": "Trusted by 50,000+ Readers Worldwide"
-    },
-    {
-      "type": "text",
-      "id": "test_1_author",
-      "label": "Testimonial 1 Author",
-      "default": "Priya Sharma · Homeowner · Mumbai, India"
-    },
-    {
-      "type": "textarea",
-      "id": "test_1_quote",
-      "label": "Testimonial 1 Quote",
-      "default": "I redesigned my entire kitchen using just this book. The rules alone saved me from buying cabinets that would have been completely wrong."
-    },
-    {
-      "type": "text",
-      "id": "test_2_author",
-      "label": "Testimonial 2 Author",
-      "default": "Rahul Mehta · DIY Enthusiast · Bengaluru, India"
-    },
-    {
-      "type": "textarea",
-      "id": "test_2_quote",
-      "label": "Testimonial 2 Quote",
-      "default": "The step-by-step guides for kitchen layouts are incredible. I saved ₹1.5 lakh doing it myself instead of hiring a designer."
-    },
-    {
-      "type": "text",
-      "id": "test_3_author",
-      "label": "Testimonial 3 Author",
-      "default": "Sneha Iyer · Interior Designer · Chennai, India"
-    },
-    {
-      "type": "textarea",
-      "id": "test_3_quote",
-      "label": "Testimonial 3 Quote",
-      "default": "Even as a pro, I keep this book as a reference. The kitchen clearance charts are the most comprehensive I have ever found."
-    },
-    {
-      "type": "text",
-      "id": "test_4_author",
-      "label": "Testimonial 4 Author",
-      "default": "Ankit Verma · DIY Renovator · Delhi, India"
-    },
-    {
-      "type": "textarea",
-      "id": "test_4_quote",
-      "label": "Testimonial 4 Quote",
-      "default": "The material selection guides saved me from making several expensive mistakes at the tile shop. Best money I ever spent."
-    },
-    {
-      "type": "header",
-      "content": "Frequently Asked Questions"
-    },
-    {
-      "type": "text",
-      "id": "faq_title",
-      "label": "FAQ Title",
-      "default": "Frequently Asked Questions"
-    },
-    {
-      "type": "text",
-      "id": "faq_q1",
-      "label": "Question 1",
-      "default": "Can't I just learn this from YouTube for free?"
-    },
-    {
-      "type": "textarea",
-      "id": "faq_a1",
-      "label": "Answer 1",
-      "default": "Sure, you can find scattered tips. But nobody teaches the complete system. This book gives you complete clearances, dimensions, materials, and layouts for kitchens—all in one structured place."
-    },
-    {
-      "type": "text",
-      "id": "faq_q2",
-      "label": "Question 2",
-      "default": "Do I need a design background to understand this?"
-    },
-    {
-      "type": "textarea",
-      "id": "faq_a2",
-      "label": "Answer 2",
-      "default": "Not at all. This is written for complete beginners. Every concept has handmade diagrams, exact dimensions, and real examples. If you can read, you can use this."
-    },
-    {
-      "type": "text",
-      "id": "faq_q3",
-      "label": "Question 3",
-      "default": "Will this work for modern homes and apartments?"
-    },
-    {
-      "type": "textarea",
-      "id": "faq_a3",
-      "label": "Answer 3",
-      "default": "Yes. It covers standard home sizes, modern layouts, and space optimization for contemporary living. Whether you're in a 500 sqft apartment or a massive home—it's all here."
-    },
-    {
-      "type": "text",
-      "id": "faq_q4",
-      "label": "Question 4",
-      "default": "What if the content gets outdated?"
-    },
-    {
-      "type": "textarea",
-      "id": "faq_a4",
-      "label": "Answer 4",
-      "default": "You get free lifetime updates. When we add new content or update dimensions, you get the new version at no extra cost. Buy once, benefit forever."
-    },
-    {
-      "type": "text",
-      "id": "faq_q5",
-      "label": "Question 5",
-      "default": "Can I use this for client projects?"
-    },
-    {
-      "type": "textarea",
-      "id": "faq_a5",
-      "label": "Answer 5",
-      "default": "Absolutely. Kitchen designers, developers, and consultants use this as their reference manual. The clearance charts work for all levels of professional work."
-    }
-  ],
+  "settings": [],
   "presets": [
     {
       "name": "Kitchenind Landing Page"
