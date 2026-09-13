@@ -207,4 +207,310 @@ h1, h2, h3, h4,
   color: #ea580c;
   background: #ffedd5;
 }
+
+/* ========================================================
+   ULTRA-PREMIUM PRODUCT STYLES
+   ======================================================== */
+
+/* 1. Architectural Eyebrow Pill */
+.product-luxury-eyebrow {
+  margin-bottom: 12px;
+}
+.eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #f4f4f5;
+  color: #27272a;
+  border: 1px solid #e4e4e7;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  text-transform: uppercase;
+}
+.eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  background: #ea580c;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px rgba(234, 88, 12, 0.7);
+  animation: pulse-dot 2s infinite ease-in-out;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.85); }
+}
+
+/* 2. Luxury Price & Savings Pill */
+.product__price--holder {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin: 12px 0 18px 0 !important;
+  flex-wrap: wrap !important;
+}
+.product__price {
+  font-size: 2.1rem !important;
+  font-weight: 900 !important;
+  color: #09090b !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+  letter-spacing: -0.03em !important;
+  line-height: 1 !important;
+}
+.product__price--old {
+  font-size: 1.25rem !important;
+  color: #9ca3af !important;
+  text-decoration: line-through !important;
+  font-weight: 500 !important;
+  margin-left: 2px !important;
+}
+.tag.tag--sale {
+  display: inline-flex !important;
+  align-items: center !important;
+  background: #ecfdf5 !important;
+  color: #059669 !important;
+  border: 1px solid #a7f3d0 !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.05em !important;
+  padding: 4px 10px !important;
+  border-radius: 9999px !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.08) !important;
+}
+
+/* 3. Luxury Swatches (Cards) */
+.luxury-swatches-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 16px 0 20px 0;
+  width: 100%;
+}
+.luxury-swatch-card {
+  position: relative;
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 14px 18px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+}
+.luxury-swatch-card:hover {
+  border-color: #fdba74;
+  background: #fffdfa;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(234, 88, 12, 0.06);
+}
+.luxury-swatch-card.swatch--active {
+  border-color: #ea580c !important;
+  background: #fffbf7 !important;
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.15), 0 8px 20px rgba(234, 88, 12, 0.08) !important;
+}
+.luxury-card-badge {
+  position: absolute;
+  top: -10px;
+  right: 16px;
+  background: linear-gradient(135deg, #ea580c, #c2410c);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  box-shadow: 0 2px 8px rgba(234, 88, 12, 0.35);
+  text-transform: uppercase;
+}
+.luxury-card-inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  pointer-events: none;
+}
+.luxury-card-radio {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+  background: #ffffff;
+}
+.luxury-swatch-card.swatch--active .luxury-card-radio {
+  border-color: #ea580c;
+  background: #ea580c;
+}
+.radio-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ffffff;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.2s ease;
+}
+.luxury-swatch-card.swatch--active .radio-dot {
+  opacity: 1;
+  transform: scale(1);
+}
+.luxury-card-content {
+  flex-grow: 1;
+}
+.luxury-card-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+.luxury-card-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: #09090b;
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.01em;
+}
+.luxury-card-price {
+  font-size: 16px;
+  font-weight: 800;
+  color: #ea580c;
+  font-family: 'Space Grotesk', sans-serif;
+}
+.luxury-card-subtitle {
+  display: block;
+  font-size: 12.5px;
+  color: #6b7280;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/* 4. Quantity and Add to Cart Button */
+.product__atc {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin: 20px 0 16px 0 !important;
+  flex-wrap: wrap !important;
+}
+.quantity--input {
+  display: inline-flex !important;
+  align-items: center !important;
+  background: #f4f4f5 !important;
+  border: 1px solid #e4e4e7 !important;
+  border-radius: 12px !important;
+  padding: 4px 6px !important;
+  height: 52px !important;
+}
+.quantity--input__button {
+  width: 36px !important;
+  height: 100% !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #52525b !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  border-radius: 8px !important;
+  transition: background 0.15s ease !important;
+}
+.quantity--input__button:hover {
+  background: #e4e4e7 !important;
+  color: #09090b !important;
+}
+.quantity--input__input {
+  width: 42px !important;
+  border: none !important;
+  background: transparent !important;
+  text-align: center !important;
+  font-weight: 800 !important;
+  font-size: 16px !important;
+  color: #09090b !important;
+}
+.product__atc .button--primary,
+.product__atc .button--secondary {
+  flex-grow: 1 !important;
+  min-height: 52px !important;
+  font-size: 15px !important;
+  letter-spacing: 0.02em !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 14px rgba(9, 9, 11, 0.12) !important;
+}
+
+/* 5. Luxury Trust Bar */
+.product-luxury-trust-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  background: #fafaf9;
+  border: 1px solid #f0ede6;
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin: 18px 0 24px 0;
+}
+@media (max-width: 640px) {
+  .product-luxury-trust-bar {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+.luxury-trust-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.luxury-trust-icon {
+  font-size: 18px;
+  line-height: 1.2;
+  flex-shrink: 0;
+}
+.luxury-trust-text strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #09090b;
+  margin-bottom: 2px;
+}
+.luxury-trust-text span {
+  display: block;
+  font-size: 11px;
+  color: #71717a;
+  line-height: 1.3;
+}
+
+/* 6. Gallery Polish */
+.gallery__thumbnails {
+  display: flex !important;
+  gap: 10px !important;
+  padding: 8px 2px !important;
+  scrollbar-width: thin !important;
+}
+.gallery__thumbnail {
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  border: 2px solid transparent !important;
+  transition: all 0.2s ease !important;
+  opacity: 0.7 !important;
+  cursor: pointer !important;
+}
+.gallery__thumbnail:hover {
+  opacity: 1 !important;
+}
+.gallery__thumbnail.bstrSlider__thumb--active {
+  border-color: #ea580c !important;
+  opacity: 1 !important;
+  box-shadow: 0 0 0 2px rgba(234, 88, 12, 0.2) !important;
+}
+.slide--product img {
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+}
 </style>

@@ -69,14 +69,43 @@
                 {% else %}
                 {% assign useImages = false %}
                 {% endif %}
+                <div class="luxury-swatches-grid">
                 {% for value in product_option.values %}
                     {% assign vars = avvars | where: optix, value %}
+                    {% assign var = vars | first %}
                     {% if colorArray contains product_option_lc or imageArray contains product_option_lc %}
                         <span class="lazyload swatch--color" {%-render 'swatch__custom-finder', value: value, colorImages: colorImages, useImages: useImages, ix: ix -%} data-swatch-option="{{value| escape}}" data-swatch-index="{{product.id}}-{{index}}" {% if vars.size == 0 %}data-swatch-soldout="true"{% endif %}></span>
                     {% else %}
-                        <span data-swatch-option="{{value| escape}}" data-swatch-index="{{product.id}}-{{index}}" {% if vars.size == 0 %}data-swatch-soldout="true"{% endif %}>{{value| escape}}</span>
+                        <div class="luxury-swatch-card {% if value == 'Hardcopy' or value contains 'Hard' %}is-popular{% endif %}" data-swatch-option="{{value| escape}}" data-swatch-index="{{product.id}}-{{index}}" {% if vars.size == 0 %}data-swatch-soldout="true"{% endif %}>
+                            {% if value == 'Hardcopy' or value contains 'Hard' %}
+                                <div class="luxury-card-badge">★ BEST VALUE</div>
+                            {% endif %}
+                            <div class="luxury-card-inner">
+                                <div class="luxury-card-radio">
+                                    <span class="radio-dot"></span>
+                                </div>
+                                <div class="luxury-card-content">
+                                    <div class="luxury-card-top-row">
+                                        <span class="luxury-card-title">{{value | escape}}</span>
+                                        {% if var %}
+                                            <span class="luxury-card-price">{{ var.price | money }}</span>
+                                        {% endif %}
+                                    </div>
+                                    <span class="luxury-card-subtitle">
+                                        {% if value == 'E-book' or value contains 'Digital' or value contains 'PDF' %}
+                                            ⚡ Instant PDF Access · 800+ Pages
+                                        {% elsif value == 'Hardcopy' or value contains 'Hard' %}
+                                            📦 Deluxe Printed Book + Free Digital PDF
+                                        {% else %}
+                                            Full Access Edition
+                                        {% endif %}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                     {% endif %}
                 {% endfor %}
+                </div>
         {% endcase %}
         </div>
     {% endfor %}

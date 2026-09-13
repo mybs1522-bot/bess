@@ -2,15 +2,6 @@
     <button data-thumbnail_slide="-" class="thumbnail--slide hide-mobile" aria-label="Previous"><i class="uil uil-angle-left-b"></i></button>
 {% endif %}
 <div class="gallery__thumbnails hidden-scroll">
-    </p>
-                </div>
-                <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 12px; font-size: 11px; color: #a3e6d2;">
-                    Collector's Release
-                </div>
-            </div>
-            <p class="book-cover-hint">Upload your book cover image in Shopify Admin &rarr; Products</p>
-        </div>
-    {% endif %}
     {% for image in product.images %}
         <span class="gallery__thumbnail {% if forloop.first %}bstrSlider__thumb--active{%endif%}" data-media-type="image" data-bstr-slider-for="{{section.id}}" data-bstr-slider-thumb="{{forloop.index0}}"
         {% if section.settings.autoChange %}data-bstr-slider-thumb-hover{% endif %}
@@ -66,14 +57,6 @@
             <p class="book-cover-hint" style="color: #ea580c; background: #fff7ed; border: 1px solid #fed7aa; margin-top: 14px; font-weight: 700; font-size: 12px; display: inline-block; padding: 6px 16px; border-radius: 20px;">
               ✨ 150 Pages · Handmade Diagrams · Real Dimensions
             </p>
-        </div>
-    {% endif %}</p>
-                </div>
-                <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 12px; font-size: 11px; color: #a3e6d2;">
-                    Collector's Release
-                </div>
-            </div>
-            <p class="book-cover-hint">Upload your book cover image in Shopify Admin &rarr; Products</p>
         </div>
     {% endif %}
     {% for image in product.images %}
