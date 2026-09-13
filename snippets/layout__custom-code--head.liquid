@@ -445,45 +445,71 @@ h1, h2, h3, h4,
   box-shadow: 0 4px 14px rgba(9, 9, 11, 0.12) !important;
 }
 
-/* 5. Luxury Trust Bar */
+/* 5. Luxury Trust Bar (Exact Screenshot Style) */
 .product-luxury-trust-bar {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  background: #fafaf9;
-  border: 1px solid #f0ede6;
-  border-radius: 14px;
-  padding: 14px 16px;
-  margin: 18px 0 24px 0;
+  display: flex !important;
+  align-items: stretch !important;
+  justify-content: space-between !important;
+  border-top: 1px solid #e5e7eb !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  padding: 16px 0 !important;
+  margin: 22px 0 24px 0 !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  width: 100% !important;
+}
+.luxury-trust-item {
+  flex: 1 1 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  padding: 0 12px !important;
+  border-right: 1px solid #e5e7eb !important;
+}
+.luxury-trust-item:last-child {
+  border-right: none !important;
+}
+.luxury-trust-icon-svg {
+  width: 18px !important;
+  height: 18px !important;
+  margin: 0 auto 6px auto !important;
+  display: block !important;
+  stroke: #059669 !important;
+  color: #059669 !important;
+}
+.luxury-trust-heading {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #111827 !important;
+  margin-bottom: 2px !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.01em !important;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+}
+.luxury-trust-sub {
+  font-size: 11px !important;
+  font-weight: 400 !important;
+  color: #6b7280 !important;
+  line-height: 1.3 !important;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
 }
 @media (max-width: 640px) {
   .product-luxury-trust-bar {
-    grid-template-columns: 1fr;
-    gap: 10px;
+    flex-direction: column !important;
+    gap: 14px !important;
+    padding: 14px 0 !important;
   }
-}
-.luxury-trust-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-}
-.luxury-trust-icon {
-  font-size: 18px;
-  line-height: 1.2;
-  flex-shrink: 0;
-}
-.luxury-trust-text strong {
-  display: block;
-  font-size: 12px;
-  font-weight: 700;
-  color: #09090b;
-  margin-bottom: 2px;
-}
-.luxury-trust-text span {
-  display: block;
-  font-size: 11px;
-  color: #71717a;
-  line-height: 1.3;
+  .luxury-trust-item {
+    border-right: none !important;
+    border-bottom: 1px solid #f3f4f6 !important;
+    padding-bottom: 12px !important;
+  }
+  .luxury-trust-item:last-child {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+  }
 }
 
 /* 6. Gallery Polish */
