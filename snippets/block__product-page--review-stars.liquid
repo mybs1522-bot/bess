@@ -34,17 +34,7 @@
   <!-- Mobile Rating & Customer Proof Thumbnail Placeholder (Phone View) -->
   <div class="mobile-rating-proof-placeholder">
     <div class="proof-thumbnails-scroll" id="proofThumbnailsTrack">
-      <div class="proof-thumbnail-card proof-thumbnail-card--breakdown" onclick="openProofModal(0)" title="View 98% Recommend & Rating Breakdown">
-        <img 
-          src="{{ 'proof-rating-breakdown.png' | asset_url }}" 
-          alt="98% Recommend & Rating Breakdown" 
-          loading="lazy" 
-          width="135" 
-          height="80" 
-        />
-        <span class="proof-thumb-badge">98% Recommend</span>
-      </div>
-      <div class="proof-thumbnail-card" onclick="openProofModal(1)" title="View Real Reader Photos">
+      <div class="proof-thumbnail-card" onclick="openProofModal(0)" title="View Real Reader Photos">
         <img 
           src="{{ 'proof-customer-photos-1.jpg' | asset_url }}" 
           alt="Real Reader Photos - Set 1" 
@@ -54,7 +44,7 @@
         />
         <span class="proof-thumb-badge">Reader Photos</span>
       </div>
-      <div class="proof-thumbnail-card" onclick="openProofModal(2)" title="View Real Reader Photos">
+      <div class="proof-thumbnail-card" onclick="openProofModal(1)" title="View Real Reader Photos">
         <img 
           src="{{ 'proof-customer-photos-2.jpg' | asset_url }}" 
           alt="Real Reader Photos - Set 2" 
@@ -64,7 +54,7 @@
         />
         <span class="proof-thumb-badge">Site Blueprints</span>
       </div>
-      <div class="proof-thumbnail-card" onclick="openProofModal(3)" title="View Real Reader Photos">
+      <div class="proof-thumbnail-card" onclick="openProofModal(2)" title="View Real Reader Photos">
         <img 
           src="{{ 'proof-customer-photos-3.jpg' | asset_url }}" 
           alt="Real Reader Photos - Set 3" 
@@ -84,7 +74,7 @@
       <img id="proofLightboxImg" src="" alt="Proof Preview" />
       <div class="proof-lightbox-nav">
         <button onclick="navProofModal(-1)" class="proof-nav-btn" aria-label="Previous">❮</button>
-        <span id="proofLightboxCounter">1 / 4</span>
+        <span id="proofLightboxCounter">1 / 3</span>
         <button onclick="navProofModal(1)" class="proof-nav-btn" aria-label="Next">❯</button>
       </div>
     </div>
@@ -133,7 +123,6 @@
   }
 
   var proofImages = [
-    "{{ 'proof-rating-breakdown.png' | asset_url }}",
     "{{ 'proof-customer-photos-1.jpg' | asset_url }}",
     "{{ 'proof-customer-photos-2.jpg' | asset_url }}",
     "{{ 'proof-customer-photos-3.jpg' | asset_url }}"
@@ -233,11 +222,6 @@
     height: 100%;
     object-fit: cover;
     display: block;
-  }
-  .proof-thumbnail-card--breakdown img {
-    object-fit: contain;
-    padding: 3px;
-    background: #ffffff;
   }
 
   .proof-thumb-badge {
