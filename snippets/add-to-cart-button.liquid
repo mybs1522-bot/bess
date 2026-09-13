@@ -5,7 +5,9 @@
 {% assign type = settings[type] %}
 {%- assign icon = button | append: 'Icon' -%}
 {%- assign icon = settings[icon] -%}
-{% if price == 0 and settings.freeShipping  %}
+{% if is_buy_now %}
+    {% assign text = 'Buy Now' %}
+{% elsif price == 0 and settings.freeShipping  %}
     {% assign text = settings.freeShippingText %}
 {% else %}
     {% if text == blank %}
@@ -29,10 +31,13 @@ button--{{-type}} button--{{-color-}}__{{-type}}
 {%- else -%}
 {% assign style = color | append: 'ButtonStyle' %}
 button--{{-settings[style]}} button--{{-color-}}__{{-settings[style]}}
-{%- endunless %} {{class-}}"
+{%- endunless %} {% if is_buy_now %}button--buy-now{% endif %} {{class-}}"
 
 {% unless disabled %}
-    {% if settings.ajaxType == "disabled" %}
+    {% if is_buy_now %}
+        type="button"
+        onclick="executeDirectBuyNow(event, this);"
+    {% elsif settings.ajaxType == "disabled" %}
         type="submit"
     {% else %}
         type="button"
@@ -43,7 +48,13 @@ button--{{-settings[style]}} button--{{-color-}}__{{-settings[style]}}
         {% endif %}
     {% endif %}
 {% endunless -%}>
-{% unless icon == 'none' %}
+{% if is_buy_now %}
+<svg class="buy-now-button-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-right: 6px; flex-shrink: 0;">
+  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+  <line x1="3" y1="6" x2="21" y2="6"></line>
+  <path d="M16 10a4 4 0 0 1-8 0"></path>
+</svg>
+{% elsif icon != 'none' %}
 {% render 'get-icon' with icon as icon %}
 {% else %}
 <svg class="atc-button-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -51,6 +62,6 @@ button--{{-settings[style]}} button--{{-color-}}__{{-settings[style]}}
   <circle cx="20" cy="21" r="1"></circle>
   <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
 </svg>
-{% endunless %}
+{% endif %}
 <span data-button-text>{{- text -}}</span> 
 </button>

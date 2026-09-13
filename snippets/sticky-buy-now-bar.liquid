@@ -21,18 +21,16 @@
         </div>
       </div>
 
-      <!-- Pricing Line -->
+      <!-- Pricing Line: Crossed out Compare Price first, then Sale Price bigger, no Digital Edition badge -->
       <div class="arch-sticky-bar__meta">
         <div class="arch-sticky-bar__pricing">
-          <span class="arch-sticky-bar__price" id="archStickyPrice">
-            {{ product.selected_or_first_available_variant.price | money }}
+          {% assign sticky_curr_var = product.selected_or_first_available_variant %}
+          <span class="arch-sticky-bar__compare" id="archStickyCompare" {% unless sticky_curr_var.compare_at_price > sticky_curr_var.price %}style="display:none;"{% endunless %}>
+            {{ sticky_curr_var.compare_at_price | money }}
           </span>
-          {% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
-            <span class="arch-sticky-bar__compare" id="archStickyCompare">
-              {{ product.selected_or_first_available_variant.compare_at_price | money }}
-            </span>
-          {% endif %}
-          <span class="arch-sticky-bar__tag">Digital Edition</span>
+          <span class="arch-sticky-bar__price" id="archStickyPrice">
+            {{ sticky_curr_var.price | money }}
+          </span>
         </div>
       </div>
 
@@ -183,36 +181,27 @@
 
 .arch-sticky-bar__pricing {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: 8px;
+  line-height: 1;
+}
+
+.arch-sticky-bar__compare {
+  font-family: 'Space Grotesk', -apple-system, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #94a3b8;
+  text-decoration: line-through;
   line-height: 1;
 }
 
 .arch-sticky-bar__price {
   font-family: 'Space Grotesk', -apple-system, sans-serif;
-  font-size: 18px;
+  font-size: 21px;
   font-weight: 800;
   color: #ea580c;
   letter-spacing: -0.01em;
-}
-
-.arch-sticky-bar__compare {
-  font-size: 13px;
-  font-weight: 600;
-  color: #94a3b8;
-  text-decoration: line-through;
-}
-
-.arch-sticky-bar__tag {
-  font-size: 10px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: #059669;
-  background: #ecfdf5;
-  padding: 3px 8px;
-  border-radius: 9999px;
-  border: 1px solid #a7f3d0;
+  line-height: 1;
 }
 
 /* Action Button: BLACK & BIGGER */
@@ -300,22 +289,20 @@
     font-size: 11px;
   }
   .arch-sticky-bar__pricing {
-    gap: 7px;
+    gap: 8px;
     align-items: baseline;
   }
+  .arch-sticky-bar__compare {
+    font-size: 16px;
+    font-weight: 600;
+    color: #94a3b8;
+    text-decoration: line-through;
+  }
   .arch-sticky-bar__price {
-    font-size: 22px !important;
+    font-size: 24px !important;
     font-weight: 900 !important;
     letter-spacing: -0.02em;
     line-height: 1;
-  }
-  .arch-sticky-bar__compare {
-    font-size: 13px;
-  }
-  .arch-sticky-bar__tag {
-    font-size: 9.5px;
-    padding: 2px 7px;
-    font-weight: 800;
   }
   .arch-sticky-bar__action {
     flex: 0 0 auto;
@@ -380,12 +367,21 @@
     const elH = document.getElementById('archStickyHours');
     const elM = document.getElementById('archStickyMinutes');
     const elS = document.getElementById('archStickySeconds');
+    const atcH = document.getElementById('mainAtcHours');
+    const atcM = document.getElementById('mainAtcMinutes');
+    const atcS = document.getElementById('mainAtcSeconds');
 
     const pad = n => (n < 10 ? '0' + n : '' + n);
+    const hStr = pad(h);
+    const mStr = pad(m);
+    const sStr = pad(s);
 
-    if (elH) elH.textContent = pad(h);
-    if (elM) elM.textContent = pad(m);
-    if (elS) elS.textContent = pad(s);
+    if (elH) elH.textContent = hStr;
+    if (elM) elM.textContent = mStr;
+    if (elS) elS.textContent = sStr;
+    if (atcH) atcH.textContent = hStr;
+    if (atcM) atcM.textContent = mStr;
+    if (atcS) atcS.textContent = sStr;
   }
 
   setInterval(updateTimer, 1000);
@@ -444,7 +440,19 @@
         const stickyPrice = document.getElementById('archStickyPrice');
         if (stickyPrice && text) stickyPrice.textContent = text;
       }
-    }, 100);
+      const mainCompare = document.querySelector('.product__price--old') ||
+                          document.querySelector('.price--compare') ||
+                          document.querySelector('.product-page__compare-price');
+      const stickyCompare = document.getElementById('archStickyCompare');
+      if (stickyCompare) {
+        if (mainCompare && mainCompare.innerText.trim()) {
+          stickyCompare.textContent = mainCompare.innerText.trim().split('\n')[0];
+          stickyCompare.style.display = 'inline-block';
+        } else {
+          stickyCompare.style.display = 'none';
+        }
+      }
+    }, 120);
   }
 
   /* 4. EXECUTE BUY NOW ACTION (Direct 1-Click to Checkout) */
