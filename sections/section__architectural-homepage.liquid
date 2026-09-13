@@ -11,11 +11,13 @@
       <div class="arch-hero__grid">
         <div class="arch-hero__content">
           <div class="arch-badge-row">
-            <span class="arch-pill arch-pill--dark">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="#ea580c" stroke="#ea580c" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-              <span>4.9 ★ Based on 2,324 Ratings</span>
+            <span class="arch-pill arch-pill--dark" style="background-color: #0f172a !important; color: #ffffff !important; border: 1px solid #1e293b !important;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="2" style="flex-shrink: 0; vertical-align: middle;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <span class="arch-pill__label" style="color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; font-weight: 700 !important;">4.9 ★ Based on 2,324 Ratings</span>
             </span>
-            <span class="arch-pill arch-pill--amber">ARCHITECTURAL REFERENCE LIBRARY</span>
+            <span class="arch-pill arch-pill--amber" style="background-color: #ffedd5 !important; color: #c2410c !important; border: 1px solid #fed7aa !important;">
+              <span class="arch-pill__label" style="color: #c2410c !important; -webkit-text-fill-color: #c2410c !important; font-weight: 700 !important;">ARCHITECTURAL REFERENCE LIBRARY</span>
+            </span>
           </div>
 
           <h1 class="arch-hero__title">
@@ -142,8 +144,12 @@
       <div class="arch-spotlight__card">
         <div class="arch-spotlight__content">
           <div class="arch-badge-row">
-            <span class="arch-pill arch-pill--amber">FLAGSHIP MASTER COLLECTION</span>
-            <span class="arch-pill arch-pill--dark">SAVE 67% OFF</span>
+            <span class="arch-pill arch-pill--amber" style="background-color: #ffedd5 !important; color: #c2410c !important; border: 1px solid #fed7aa !important;">
+              <span class="arch-pill__label" style="color: #c2410c !important; -webkit-text-fill-color: #c2410c !important; font-weight: 700 !important;">FLAGSHIP MASTER COLLECTION</span>
+            </span>
+            <span class="arch-pill arch-pill--dark" style="background-color: #0f172a !important; color: #ffffff !important; border: 1px solid #1e293b !important;">
+              <span class="arch-pill__label" style="color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; font-weight: 700 !important;">SAVE 67% OFF</span>
+            </span>
           </div>
 
           <h2 class="arch-spotlight__title">
@@ -606,24 +612,43 @@
 .arch-pill {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   padding: 6px 14px;
   border-radius: 999px;
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  line-height: 1.2;
 }
 
 .arch-pill--dark {
   background-color: #0f172a !important;
-  color: #f8fafc !important;
+  color: #ffffff !important;
+  border: 1px solid #1e293b !important;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12) !important;
+}
+
+.arch-pill--dark,
+.arch-pill--dark *,
+.arch-pill--dark span,
+.arch-pill--dark .arch-pill__label {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
 }
 
 .arch-pill--amber {
   background-color: #ffedd5 !important;
   color: #c2410c !important;
   border: 1px solid #fed7aa !important;
+}
+
+.arch-pill--amber,
+.arch-pill--amber *,
+.arch-pill--amber span,
+.arch-pill--amber .arch-pill__label {
+  color: #c2410c !important;
+  -webkit-text-fill-color: #c2410c !important;
 }
 
 .arch-hero__title {
