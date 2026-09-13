@@ -1,0 +1,547 @@
+<div class="kitchenind-landing-wrapper">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    .kitchenind-landing-wrapper {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: #111827;
+      background: #ffffff;
+      line-height: 1.5;
+    }
+    .kitchenind-landing-wrapper h1,
+    .kitchenind-landing-wrapper h2,
+    .kitchenind-landing-wrapper h3,
+    .kitchenind-landing-wrapper .font-display {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .kitchenind-landing-wrapper .font-serif {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+    .kitchenind-landing-wrapper .premium-gradient {
+      background: linear-gradient(135deg, #ea580c 0%, #d97706 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .kitchen-btn-primary {
+      background: #09090b;
+      color: #ffffff !important;
+      font-weight: 700;
+      border-radius: 16px;
+      padding: 16px 32px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      cursor: pointer;
+      border: none;
+    }
+    .kitchen-btn-primary:hover {
+      transform: translateY(-2px);
+      background: #ea580c;
+    }
+    .kitchen-btn-secondary {
+      background: #ffffff;
+      color: #111827 !important;
+      border: 2px solid #e5e7eb;
+      font-weight: 700;
+      border-radius: 16px;
+      padding: 14px 28px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .kitchen-btn-secondary:hover {
+      border-color: #f97316;
+      transform: translateY(-2px);
+    }
+    .kitchen-container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .kitchen-section {
+      padding: 70px 0;
+    }
+    .kitchen-card {
+      background: #ffffff;
+      border: 1px solid #f3f4f6;
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    }
+    .kitchen-faq-item {
+      border-bottom: 1px solid #e5e7eb;
+      padding: 18px 0;
+    }
+    .kitchen-faq-question {
+      font-weight: 700;
+      font-size: 17px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #111827;
+    }
+    .kitchen-faq-answer {
+      color: #4b5563;
+      font-size: 15px;
+      line-height: 1.7;
+      margin-top: 10px;
+      display: none;
+    }
+    .kitchen-faq-item.active .kitchen-faq-answer {
+      display: block;
+    }
+    .kitchen-faq-item.active .kitchen-faq-icon {
+      transform: rotate(180deg);
+    }
+    .kitchen-faq-icon {
+      transition: transform 0.2s ease;
+      font-size: 18px;
+      color: #f97316;
+    }
+  </style>
+
+  <!-- 1. Top Urgency Banner -->
+  <div style="background: linear-gradient(90deg, #ea580c, #d97706, #ea580c); color: white; padding: 10px 16px; text-align: center; font-size: 13px; font-weight: 700;">
+    <div style="max-width: 1140px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;">
+      <span style="display: flex; align-items: center; gap: 8px;">
+        <span style="width: 8px; height: 8px; background: white; border-radius: 50%; display: inline-block;"></span>
+        LIMITED PIVOT SALE: GET THE KITCHEN BOOK FOR ₹299
+      </span>
+      <span style="font-family: monospace; background: rgba(0,0,0,0.25); padding: 4px 10px; border-radius: 6px; font-size: 14px;">
+        04:36:27
+      </span>
+      <a href="#product-form" onclick="document.querySelector('[data-buy-button], .button--primary')?.click() || window.scrollTo({top: 0, behavior: 'smooth'});" style="background: white; color: #ea580c; text-decoration: none; padding: 4px 14px; border-radius: 20px; font-size: 11px; text-transform: uppercase; font-weight: 900;">
+        Claim Offer
+      </a>
+    </div>
+  </div>
+
+  <!-- 2. Hero Headline & Animated Showcase -->
+  <section class="kitchen-section" style="background: linear-gradient(165deg, #fefcf9 0%, #fff8f0 25%, #ffffff 50%, #fef9f2 75%, #fffdf8 100%); text-align: center;">
+    <div class="kitchen-container">
+      <div style="display: inline-flex; align-items: center; gap: 8px; background: #ffedd5; color: #ea580c; padding: 6px 16px; border-radius: 30px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px;">
+        ✨ Handmade Diagrams · Real Dimensions · No Guesswork
+      </div>
+
+      <h1 style="font-size: clamp(2.2rem, 5vw, 4.2rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 20px; color: #09090b;">
+        The Only Book You'll Refer To.<br>
+        <span class="premium-gradient">Design Best Kitchens Possible.</span>
+      </h1>
+
+      <p style="font-size: clamp(1rem, 2vw, 1.25rem); color: #4b5563; max-width: 720px; margin: 0 auto 36px auto; line-height: 1.6;">
+        One wrong decision can turn your <strong style="color: #ea580c;">dream kitchen</strong> into a daily frustration. This is the <em class="font-serif">one</em> book that guides you like a pro designer — for the price of a coffee.
+      </p>
+
+      <!-- Animated Video / GIF Container -->
+      <div style="max-width: 900px; margin: 0 auto 36px auto; border-radius: 24px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); border: 1px solid #e5e7eb; position: relative; background: #09090b;">
+        <img 
+          src="https://mir-s3-cdn-cf.behance.net/project_modules/hd/e73fbd127166603.613c3c5346de6.gif" 
+          alt="Design the best kitchens possible — animated showcase"
+          style="width: 100%; height: auto; display: block;"
+        />
+        <div style="position: absolute; inset-inline: 0; bottom: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 60%, transparent 100%); padding: 30px 20px 20px 20px; color: white;">
+          <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.3em; font-weight: 700; color: #fed7aa; margin-bottom: 4px;">THE KITCHEN DESIGN BOOK</p>
+          <h3 style="font-size: clamp(1.2rem, 3vw, 2.2rem); font-weight: 900; margin: 0;">Every Dimension. <span class="font-serif" style="color: #fed7aa; font-style: italic; font-weight: 400;">Every Detail.</span></h3>
+        </div>
+      </div>
+
+      <!-- Hero Actions -->
+      <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; align-items: center;">
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'}); document.querySelector('.sticky--atc__button, [data-buy-button], .button--primary')?.click();" class="kitchen-btn-primary" style="font-size: 17px;">
+          Get the Kitchen Book — ₹299 →
+        </button>
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="kitchen-btn-secondary" style="font-size: 16px;">
+          📦 Get Hardcopy — ₹999 →
+        </button>
+      </div>
+      <p style="font-size: 12px; color: #6b7280; margin-top: 14px;">⚡ Instant Digital Download · Lifetime Access · 30-Day Guarantee</p>
+    </div>
+  </section>
+
+  <!-- 3. Inside The Book — Handmade Diagrams Showcase -->
+  <section class="kitchen-section" style="background: #f9fafb; border-top: 1px solid #e5e7eb; border-bottom: 1px solid #e5e7eb;">
+    <div class="kitchen-container">
+      <div style="text-align: center; max-width: 760px; margin: 0 auto 40px auto;">
+        <p style="color: #ea580c; font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.25em; margin-bottom: 10px;">INSIDE THE BOOK</p>
+        <h2 style="font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 900; line-height: 1.15; margin-bottom: 14px;">
+          Handmade Diagrams That Explain <span class="premium-gradient">Every Detail</span> of Your Kitchen
+        </h2>
+        <p style="color: #4b5563; font-size: 16px; line-height: 1.6;">
+          Hand-drawn, pro-verified pages that help you <strong>plan perfectly</strong> — from layouts and clearances to modules and storage.
+        </p>
+      </div>
+
+      <div style="max-width: 920px; margin: 0 auto; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.12); border: 1px solid #e5e7eb; position: relative;">
+        <img 
+          src="{{ 'kitchen-book.png' | asset_url }}" 
+          alt="Every chapter of the Kitchen Design Book — 150 hand-drawn pages"
+          style="width: 100%; height: auto; display: block;"
+          onerror="this.src='https://d1yei2z3i6k35z.cloudfront.net/13138299/685712e3dfc75_Your-Numbered-Points-Title-Comes-Right-Here1.jpg'"
+        />
+        <div style="position: absolute; top: 16px; left: 16px; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); padding: 8px 18px; border-radius: 30px; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.15em; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+          ✨ 150 Pages · Every Chapter
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Book Cover Reveal Section -->
+  <section class="kitchen-section" style="text-align: center; background: #ffffff;">
+    <div class="kitchen-container" style="max-width: 800px;">
+      <p style="color: #ea580c; font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.25em; margin-bottom: 10px;">THE BOOK THAT CHANGES EVERYTHING</p>
+      <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900; line-height: 1.15; margin-bottom: 30px;">
+        Meet the <span class="premium-gradient">One Book</span> Recommended for Designers &amp; Homeowners Alike
+      </h2>
+      <div style="max-width: 440px; margin: 0 auto;">
+        <img 
+          src="{{ 'nono.jpg' | asset_url }}" 
+          alt="Kitchen Design Book — Inside Preview"
+          style="width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); border: 1px solid #e5e7eb; display: block;"
+          onerror="this.src='https://d1yei2z3i6k35z.cloudfront.net/13138299/685712e3dfc75_Your-Numbered-Points-Title-Comes-Right-Here1.jpg'"
+        />
+      </div>
+      <p style="color: #6b7280; font-size: 15px; margin-top: 24px; font-style: italic;">
+        150 pages. Hand-drawn diagrams. Verified clearances. The one resource on every designer's desk.
+      </p>
+    </div>
+  </section>
+
+  <!-- 5. What's Inside Book (Curriculum Breakdown) -->
+  <section class="kitchen-section" style="background: #fafaf9; border-top: 1px solid #e5e7eb;">
+    <div class="kitchen-container">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: start;">
+        <!-- Left: Summary & Guarantee Checks -->
+        <div>
+          <h2 style="font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 900; line-height: 1.1; margin-bottom: 16px;">
+            What's <span style="color: #ea580c;">Inside</span> Book
+          </h2>
+          <p style="color: #4b5563; font-size: 16px; margin-bottom: 30px; line-height: 1.6;">
+            We don't give you vibes. We give you blueprints. 150 pages of high-density precision.
+          </p>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; align-items: center; gap: 12px; background: white; padding: 14px 18px; border-radius: 14px; border: 1px solid #e5e7eb;">
+              <span style="color: #10b981; font-weight: 900; font-size: 18px;">✓</span>
+              <span style="font-weight: 600; font-size: 14px;">Instant PDF Download</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px; background: white; padding: 14px 18px; border-radius: 14px; border: 1px solid #e5e7eb;">
+              <span style="color: #10b981; font-weight: 900; font-size: 18px;">✓</span>
+              <span style="font-weight: 600; font-size: 14px;">Lifetime Updates Included</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px; background: white; padding: 14px 18px; border-radius: 14px; border: 1px solid #e5e7eb;">
+              <span style="color: #10b981; font-weight: 900; font-size: 18px;">✓</span>
+              <span style="font-weight: 600; font-size: 14px;">Comprehensive Guide (Zero Fluff)</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px; background: white; padding: 14px 18px; border-radius: 14px; border: 1px solid #e5e7eb;">
+              <span style="color: #10b981; font-weight: 900; font-size: 18px;">✓</span>
+              <span style="font-weight: 600; font-size: 14px;">Direct Author Design Support</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Chapter Curriculum Grid -->
+        <div style="background: white; border-radius: 24px; padding: 36px; border: 1px solid #e5e7eb; box-shadow: 0 15px 35px rgba(0,0,0,0.06);">
+          <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 28px; border-bottom: 1px solid #f3f4f6; padding-bottom: 18px;">
+            <div style="width: 48px; height: 48px; border-radius: 14px; background: #ffedd5; display: flex; align-items: center; justify-content: center; font-size: 24px;">
+              👨‍🍳
+            </div>
+            <div>
+              <h3 style="font-size: 22px; font-weight: 800; margin: 0; color: #111827;">Kitchen Design Book</h3>
+              <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: #ea580c; font-weight: 700; margin: 4px 0 0 0;">COMPLETE SPECIFICATIONS</p>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px;">
+            <div>
+              <h4 style="font-size: 12px; font-weight: 800; color: #ea580c; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px;">Layouts &amp; Zones</h4>
+              <ul style="list-style: none; padding: 0; margin: 0; font-size: 13px; color: #4b5563; line-height: 1.8;">
+                <li>• Kitchen triangle &amp; zoning</li>
+                <li>• Future of kitchen design</li>
+                <li>• Kitchen layouts with examples</li>
+                <li>• Advantages &amp; limitations</li>
+              </ul>
+            </div>
+            <div>
+              <h4 style="font-size: 12px; font-weight: 800; color: #ea580c; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px;">Components</h4>
+              <ul style="list-style: none; padding: 0; margin: 0; font-size: 13px; color: #4b5563; line-height: 1.8;">
+                <li>• Stove placement clearances</li>
+                <li>• Refrigerator mistakes to avoid</li>
+                <li>• Sink placement &amp; plumbing</li>
+                <li>• Pantry types &amp; planning</li>
+              </ul>
+            </div>
+            <div>
+              <h4 style="font-size: 12px; font-weight: 800; color: #ea580c; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px;">Storage Science</h4>
+              <ul style="list-style: none; padding: 0; margin: 0; font-size: 13px; color: #4b5563; line-height: 1.8;">
+                <li>• Top &amp; bottom cabinet heights</li>
+                <li>• Corner &amp; hidden storage hacks</li>
+                <li>• Exact standard dimensions</li>
+                <li>• Breakfast counter clearances</li>
+              </ul>
+            </div>
+            <div>
+              <h4 style="font-size: 12px; font-weight: 800; color: #ea580c; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px;">Services &amp; Power</h4>
+              <ul style="list-style: none; padding: 0; margin: 0; font-size: 13px; color: #4b5563; line-height: 1.8;">
+                <li>• Electrical point placement</li>
+                <li>• Task lighting vs ambient zones</li>
+                <li>• Ventilation &amp; chimney ducting</li>
+                <li>• Appliance clearance zones</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. The Emotional Toll of Bad Design (Pain Points) -->
+  <section class="kitchen-section" style="background: #09090b; color: white;">
+    <div class="kitchen-container" style="max-width: 900px;">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; margin-bottom: 10px;">
+          The <span style="color: #f97316;">Emotional Toll</span> of Bad Design
+        </h2>
+        <p style="color: #9ca3af; font-size: 16px;">One wrong clearance. A lifetime of regret.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+        <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 20px; display: flex; align-items: center; gap: 16px;">
+          <span style="font-size: 32px;">😫</span>
+          <p style="font-size: 14px; margin: 0; color: #e5e7eb; font-weight: 500;">Cabinet door hits the fridge. One small clearance miss. ₹2 lakh gone.</p>
+        </div>
+        <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 20px; display: flex; align-items: center; gap: 16px;">
+          <span style="font-size: 32px;">💸</span>
+          <p style="font-size: 14px; margin: 0; color: #e5e7eb; font-weight: 500;">Pinterest vibes look great — until the workflow feels clunky every time you cook.</p>
+        </div>
+        <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 20px; display: flex; align-items: center; gap: 16px;">
+          <span style="font-size: 32px;">😤</span>
+          <p style="font-size: 14px; margin: 0; color: #e5e7eb; font-weight: 500;">Contractors want blueprints. Designers charge ₹2.5 lakh. You're stuck guessing.</p>
+        </div>
+        <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 20px; display: flex; align-items: center; gap: 16px;">
+          <span style="font-size: 32px;">🧠</span>
+          <p style="font-size: 14px; margin: 0; color: #e5e7eb; font-weight: 500;">You have the vision. You're missing the exact numbers that make it work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Transformation Stories -->
+  <section class="kitchen-section" style="background: #ffffff;">
+    <div class="kitchen-container">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items: center;">
+        <div>
+          <h2 style="font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 900; line-height: 1.1; margin-bottom: 24px;">
+            From <span style="color: #ea580c; font-style: italic;" class="font-serif">Design Regret</span> to Construction Pride
+          </h2>
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="background: #fff7ed; border: 1px solid #fed7aa; border-radius: 16px; padding: 20px;">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                <span style="font-size: 20px;">🏠</span>
+                <div>
+                  <strong style="font-size: 15px; color: #111827;">Neha S.</strong>
+                  <span style="font-size: 11px; color: #ea580c; text-transform: uppercase; font-weight: 700; margin-left: 6px;">Renovated in 2023</span>
+                </div>
+              </div>
+              <p style="font-size: 13px; color: #6b7280; font-style: italic; margin-bottom: 6px;">"I was crying in my unfinished kitchen because the island was 4 inches too close to the stove. I felt like a failure."</p>
+              <p style="font-size: 14px; color: #111827; font-weight: 600; margin: 0;">"I found this book, moved the island by 5 inches, and saved my ₹10 lakh renovation. It's now my favorite room."</p>
+            </div>
+
+            <div style="background: #fff7ed; border: 1px solid #fed7aa; border-radius: 16px; padding: 20px;">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                <span style="font-size: 20px;">📐</span>
+                <div>
+                  <strong style="font-size: 15px; color: #111827;">Karan D.</strong>
+                  <span style="font-size: 11px; color: #ea580c; text-transform: uppercase; font-weight: 700; margin-left: 6px;">Architect</span>
+                </div>
+              </div>
+              <p style="font-size: 13px; color: #6b7280; font-style: italic; margin-bottom: 6px;">"Tired of looking up standard clearances in 500-page manuals every time a client asked a simple question."</p>
+              <p style="font-size: 14px; color: #111827; font-weight: 600; margin: 0;">"This single book stays on my desk. It has everything I need in 10 seconds. My clients think I'm a genius."</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center;">
+          <img 
+            src="https://d1yei2z3i6k35z.cloudfront.net/13138299/685713307fcf9_Your-Numbered-Points-Title-Comes-Right-Here-3-1.png" 
+            alt="Kitchen Design Book Preview" 
+            style="width: 100%; max-width: 480px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.12); border: 1px solid #e5e7eb; display: inline-block;"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. No-Regret 100% Refund Promise -->
+  <section class="kitchen-section" style="background: #f0fdf4; border-top: 1px solid #bbf7d0; border-bottom: 1px solid #bbf7d0; text-align: center;">
+    <div class="kitchen-container" style="max-width: 680px;">
+      <div style="width: 70px; height: 70px; border-radius: 50%; background: #dcfce7; color: #16a34a; font-size: 36px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; border: 3px solid #86efac;">
+        🛡️
+      </div>
+      <h3 style="font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 900; margin-bottom: 16px; color: #065f46;">Our No-Regret Promise</h3>
+      <p style="font-size: 16px; color: #1f2937; line-height: 1.7; margin-bottom: 12px;">
+        If you ever feel the need to open <em class="font-serif">any other</em> kitchen design book after reading this one, <strong style="text-decoration: underline; text-decoration-color: #f97316;">just write to us, and we'll happily refund your money.</strong>
+      </p>
+      <p style="font-size: 15px; color: #374151;">
+        That's how confident we are that this will be the <strong>only kitchen design resource you'll ever need.</strong>
+      </p>
+    </div>
+  </section>
+
+  <!-- 9. Testimonials Section -->
+  <section class="kitchen-section" style="background: #ffffff;">
+    <div class="kitchen-container">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <p style="color: #ea580c; font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.25em; margin-bottom: 10px;">READER REVIEWS</p>
+        <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900;">Trusted by 50,000+ Readers Worldwide</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+        <div class="kitchen-card">
+          <div style="color: #f59e0b; font-size: 16px; margin-bottom: 8px;">★★★★★</div>
+          <p style="font-size: 14px; color: #374151; line-height: 1.6; margin-bottom: 14px;">
+            "I redesigned my entire kitchen using just this book. The rules alone saved me from buying cabinets that would have been completely wrong."
+          </p>
+          <div style="border-top: 1px solid #f3f4f6; padding-top: 12px;">
+            <strong style="font-size: 14px; display: block; color: #111827;">Priya Sharma</strong>
+            <span style="font-size: 12px; color: #6b7280;">Homeowner · Mumbai, India</span>
+          </div>
+        </div>
+
+        <div class="kitchen-card">
+          <div style="color: #f59e0b; font-size: 16px; margin-bottom: 8px;">★★★★★</div>
+          <p style="font-size: 14px; color: #374151; line-height: 1.6; margin-bottom: 14px;">
+            "The step-by-step guides for kitchen layouts are incredible. I saved ₹1.5 lakh doing it myself instead of hiring a designer."
+          </p>
+          <div style="border-top: 1px solid #f3f4f6; padding-top: 12px;">
+            <strong style="font-size: 14px; display: block; color: #111827;">Rahul Mehta</strong>
+            <span style="font-size: 12px; color: #6b7280;">DIY Enthusiast · Bengaluru, India</span>
+          </div>
+        </div>
+
+        <div class="kitchen-card">
+          <div style="color: #f59e0b; font-size: 16px; margin-bottom: 8px;">★★★★★</div>
+          <p style="font-size: 14px; color: #374151; line-height: 1.6; margin-bottom: 14px;">
+            "Even as a pro, I keep this book as a reference. The kitchen clearance charts are the most comprehensive I have ever found."
+          </p>
+          <div style="border-top: 1px solid #f3f4f6; padding-top: 12px;">
+            <strong style="font-size: 14px; display: block; color: #111827;">Sneha Iyer</strong>
+            <span style="font-size: 12px; color: #6b7280;">Interior Designer · Chennai, India</span>
+          </div>
+        </div>
+
+        <div class="kitchen-card">
+          <div style="color: #f59e0b; font-size: 16px; margin-bottom: 8px;">★★★★★</div>
+          <p style="font-size: 14px; color: #374151; line-height: 1.6; margin-bottom: 14px;">
+            "The material selection guides saved me from making several expensive mistakes at the tile shop. Best money I ever spent."
+          </p>
+          <div style="border-top: 1px solid #f3f4f6; padding-top: 12px;">
+            <strong style="font-size: 14px; display: block; color: #111827;">Ankit Verma</strong>
+            <span style="font-size: 12px; color: #6b7280;">DIY Renovator · Delhi, India</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Frequently Asked Questions (FAQ) -->
+  <section class="kitchen-section" style="background: #fafaf9; border-top: 1px solid #e5e7eb;">
+    <div class="kitchen-container" style="max-width: 800px;">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <p style="color: #ea580c; font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.25em; margin-bottom: 10px;">CLEAR ANSWERS</p>
+        <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900;">Frequently Asked Questions</h2>
+      </div>
+
+      <div style="background: white; border-radius: 20px; padding: 24px 32px; border: 1px solid #e5e7eb; box-shadow: 0 4px 20px rgba(0,0,0,0.03);">
+        <div class="kitchen-faq-item active">
+          <div class="kitchen-faq-question" onclick="this.parentElement.classList.toggle('active');">
+            <span>Can't I just learn this from YouTube for free?</span>
+            <span class="kitchen-faq-icon">▾</span>
+          </div>
+          <div class="kitchen-faq-answer">
+            Sure, you can find scattered tips. But nobody teaches the complete system. This book gives you complete clearances, dimensions, materials, and layouts for kitchens—all in one structured place.
+          </div>
+        </div>
+
+        <div class="kitchen-faq-item">
+          <div class="kitchen-faq-question" onclick="this.parentElement.classList.toggle('active');">
+            <span>Do I need a design background to understand this?</span>
+            <span class="kitchen-faq-icon">▾</span>
+          </div>
+          <div class="kitchen-faq-answer">
+            Not at all. This is written for complete beginners. Every concept has handmade diagrams, exact dimensions, and real examples. If you can read, you can use this.
+          </div>
+        </div>
+
+        <div class="kitchen-faq-item">
+          <div class="kitchen-faq-question" onclick="this.parentElement.classList.toggle('active');">
+            <span>Will this work for modern homes and apartments?</span>
+            <span class="kitchen-faq-icon">▾</span>
+          </div>
+          <div class="kitchen-faq-answer">
+            Yes. It covers standard home sizes, modern layouts, and space optimization for contemporary living. Whether you're in a 500 sqft apartment or a massive home—it's all here.
+          </div>
+        </div>
+
+        <div class="kitchen-faq-item">
+          <div class="kitchen-faq-question" onclick="this.parentElement.classList.toggle('active');">
+            <span>What if the content gets outdated?</span>
+            <span class="kitchen-faq-icon">▾</span>
+          </div>
+          <div class="kitchen-faq-answer">
+            You get free lifetime updates. When we add new content or update dimensions, you get the new version at no extra cost. Buy once, benefit forever.
+          </div>
+        </div>
+
+        <div class="kitchen-faq-item">
+          <div class="kitchen-faq-question" onclick="this.parentElement.classList.toggle('active');">
+            <span>Can I use this for client projects?</span>
+            <span class="kitchen-faq-icon">▾</span>
+          </div>
+          <div class="kitchen-faq-answer">
+            Absolutely. Kitchen designers, developers, and consultants use this as their reference manual. The clearance charts work for all levels of professional work.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. Final Closing CTA -->
+  <section class="kitchen-section" style="background: #09090b; color: white; text-align: center;">
+    <div class="kitchen-container" style="max-width: 720px;">
+      <h2 style="font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; line-height: 1.1; margin-bottom: 20px;">
+        Claim Your Copy<br>
+        <span style="color: #f97316;">for the price of a coffee.</span>
+      </h2>
+      <p style="font-size: 16px; color: #9ca3af; margin-bottom: 30px;">
+        Detailed Handmade Diagrams. Verified Clearances. Lifetime Free Updates.
+      </p>
+      <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'}); document.querySelector('.sticky--atc__button, [data-buy-button], .button--primary')?.click();" class="kitchen-btn-primary" style="background: #ea580c; font-size: 18px;">
+          Get the Kitchen Book — ₹299 →
+        </button>
+      </div>
+      <p style="font-size: 12px; color: #6b7280; margin-top: 14px;">Instant PDF Download · 30-Day Money-Back Guarantee</p>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Kitchenind Landing Page",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Kitchenind Landing Page"
+    }
+  ]
+}
+{% endschema %}

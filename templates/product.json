@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "breadcrumbs": {
@@ -36,7 +27,7 @@
           "settings": {
             "noMargin": false,
             "color": "rgba(0,0,0,0)",
-            "newPriceColor": "#138867",
+            "newPriceColor": "#ea580c",
             "oldPriceColor": "#8c918e",
             "fontFamily": "base",
             "fontSize": "medium"
@@ -57,20 +48,18 @@
         },
         "shop_pay": {
           "type": "productPageShopPay",
-          "settings": {
-            "noMargin": false
-          }
+          "settings": {}
         },
         "tab_synopsis": {
           "type": "productPageTab",
           "settings": {
             "showInline": false,
-            "heading": "Synopsis",
+            "heading": "About The Book",
             "content": "description",
             "metafieldNS": "global",
             "metafieldKey": "",
             "page": "",
-            "customContent": "<p>Add custom content here!</p>"
+            "customContent": "<p>150 pages. Hand-drawn diagrams. Verified clearances. The one resource on every designer's desk.</p>"
           }
         },
         "tab_specs": {
@@ -82,7 +71,7 @@
             "metafieldNS": "global",
             "metafieldKey": "",
             "page": "",
-            "customContent": "<div style=\"line-height: 1.8; font-size: 14px;\">\n<p><strong>Format Options:</strong> Hardcover, Paperback, eBook, Audiobook</p>\n<p><strong>Language:</strong> English</p>\n<p><strong>Condition:</strong> Brand New / First Edition</p>\n<p><strong>Guarantee:</strong> 30-Day Hassle-Free Returns</p>\n</div>"
+            "customContent": "<div style=\"line-height: 1.8; font-size: 14px; color: #374151;\"><p><strong>Title:</strong> The Kitchen Design Book: Every Dimension. Every Detail.</p><p><strong>Page Count:</strong> 150 Precision Hand-Drawn Pages</p><p><strong>Format:</strong> Digital eBook (High-Res PDF) &amp; Optional Physical Hardcopy</p><p><strong>Compatibility:</strong> Mobile, Tablet, Desktop &amp; Printable Blueprints</p><p><strong>Includes:</strong> Working Triangle Rules, Cabinet Height Guides, Aisle Clearances, Electrical &amp; Lighting Layouts</p><p><strong>Guarantee:</strong> 30-Day 100% No-Regret Money-Back Guarantee</p><p><strong>Updates:</strong> Free Lifetime Digital Updates Included</p></div>"
           }
         },
         "tab_author": {
@@ -94,7 +83,7 @@
             "metafieldNS": "global",
             "metafieldKey": "",
             "page": "",
-            "customContent": "<div style=\"line-height: 1.8; font-size: 14px;\"><p>Discover the inspiration and craft behind the writing. Full biographical notes and author interview highlights.</p></div>"
+            "customContent": "<div style=\"line-height: 1.8; font-size: 14px;\"><p>Written by professional architects and interior space planners with over 15 years of residential design experience.</p></div>"
           }
         },
         "tab_reviews": {
@@ -145,6 +134,10 @@
         "imageStickyPosition": 80
       }
     },
+    "kitchenind_details": {
+      "type": "section__kitchenind-landing",
+      "settings": {}
+    },
     "inline_upsell": {
       "type": "api__upsell--inline",
       "blocks": {
@@ -183,6 +176,7 @@
   "order": [
     "breadcrumbs",
     "page",
+    "kitchenind_details",
     "inline_upsell",
     "recommended"
   ]
