@@ -232,12 +232,12 @@
           "ef5b8aeb-a188-49f2-b46f-fd44bb34c984": {
             "type": "freeShippingBar",
             "settings": {
-              "enabled": true,
-              "enabledMobile": true,
+              "enabled": false,
+              "enabledMobile": false,
               "align": "auto",
               "freeText": "Only %AMOUNT% more for free shipping!",
               "gotFreeText": "You are eligible for free shipping!",
-              "barHeight": 8
+              "barHeight": 0
             }
           }
         },
@@ -245,8 +245,8 @@
           "ef5b8aeb-a188-49f2-b46f-fd44bb34c984"
         ],
         "settings": {
-          "enabled": true,
-          "enabledMobile": true,
+          "enabled": false,
+          "enabledMobile": false,
           "layout": "default",
           "height": 40,
           "fontSize": "font__size--small",
