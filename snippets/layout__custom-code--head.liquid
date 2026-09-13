@@ -891,7 +891,30 @@ shopify-payment-terms {
   opacity: 0 !important;
 }
 
-/* 11. Mobile Product Title & Row Spacing */
+/* 11. Product Title 2-Line Layout & Spacing */
+.product__title,
+.product-page__title,
+h1.product__title {
+  white-space: normal !important;
+  line-height: 1.18 !important;
+  margin-bottom: 12px !important;
+}
+.product__title-prefix {
+  display: block !important;
+  font-size: 26px !important;
+  font-weight: 700 !important;
+  color: #374151 !important;
+  line-height: 1.22 !important;
+  margin-bottom: 3px !important;
+}
+.product__title-highlight {
+  display: block !important;
+  font-size: 34px !important;
+  font-weight: 900 !important;
+  color: #000000 !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.025em !important;
+}
 @media (max-width: 768px) {
   .product__row {
     padding: 16px 14px !important;
@@ -901,14 +924,26 @@ shopify-payment-terms {
   .product__title,
   .product-page__title,
   h1.product__title {
-    font-size: clamp(18px, 5.1vw, 22.5px) !important;
-    white-space: nowrap !important;
-    letter-spacing: -0.035em !important;
-    line-height: 1.25 !important;
+    white-space: normal !important;
+    line-height: 1.18 !important;
+    margin-bottom: 10px !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+  }
+  .product__title-prefix {
+    font-size: clamp(20px, 5.8vw, 24px) !important;
+    font-weight: 700 !important;
+    color: #374151 !important;
+    margin-bottom: 2px !important;
     display: block !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-    margin-bottom: 8px !important;
+  }
+  .product__title-highlight {
+    font-size: clamp(24px, 7.2vw, 30px) !important;
+    font-weight: 900 !important;
+    color: #000000 !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.025em !important;
+    display: block !important;
   }
 }
 

@@ -16,33 +16,61 @@ class="h-reset product__title product__title--{{block.id}}
 font__family--{{-block.settings.fontFamily}} font__size--{{-block.settings.fontSize}} 
  {% if block.settings.noMargin or noMargin %}margin__bottom--reduced{%endif-%}" {{block.shopify_attributes}}>
   {%- if product.title contains 'Interior' and product.title contains 'Exterior' -%}
-    <span class="product__title-prefix">6 Books For </span><span class="product__title-highlight">Interior &amp; Exterior Design</span>
+    <span class="product__title-prefix">6 Books For</span>
+    <span class="product__title-highlight">Interior &amp; Exterior Design</span>
   {%- else -%}
     {{ product.title }}
   {%- endif -%}
 </h1>
 
 <style>
+  .product__title,
+  .product-page__title,
+  h1.product__title {
+    white-space: normal !important;
+    line-height: 1.18 !important;
+    margin-bottom: 12px !important;
+  }
   .product__title-prefix {
-    font-weight: 600 !important;
-    color: #4b5563 !important;
+    display: block !important;
+    font-size: 26px !important;
+    font-weight: 700 !important;
+    color: #374151 !important;
+    line-height: 1.22 !important;
+    margin-bottom: 3px !important;
   }
   .product__title-highlight {
+    display: block !important;
+    font-size: 34px !important;
     font-weight: 900 !important;
     color: #000000 !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.025em !important;
   }
   @media (max-width: 768px) {
     .product__title,
     .product-page__title,
     h1.product__title {
-      font-size: clamp(18px, 5.1vw, 22.5px) !important;
-      white-space: nowrap !important;
-      letter-spacing: -0.035em !important;
-      line-height: 1.25 !important;
+      white-space: normal !important;
+      line-height: 1.18 !important;
+      margin-bottom: 10px !important;
+      overflow: visible !important;
+      text-overflow: unset !important;
+    }
+    .product__title-prefix {
+      font-size: clamp(20px, 5.8vw, 24px) !important;
+      font-weight: 700 !important;
+      color: #374151 !important;
+      margin-bottom: 2px !important;
       display: block !important;
-      overflow: hidden !important;
-      text-overflow: ellipsis !important;
-      margin-bottom: 8px !important;
+    }
+    .product__title-highlight {
+      font-size: clamp(24px, 7.2vw, 30px) !important;
+      font-weight: 900 !important;
+      color: #000000 !important;
+      line-height: 1.15 !important;
+      letter-spacing: -0.025em !important;
+      display: block !important;
     }
   }
 </style>
