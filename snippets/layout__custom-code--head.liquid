@@ -729,8 +729,8 @@ shopify-payment-terms {
   height: 18px !important;
   margin: 0 auto 6px auto !important;
   display: block !important;
-  stroke: #059669 !important;
-  color: #059669 !important;
+  stroke: #ea580c !important;
+  color: #ea580c !important;
 }
 .luxury-trust-heading {
   font-size: 13px !important;
@@ -750,18 +750,46 @@ shopify-payment-terms {
 }
 @media (max-width: 640px) {
   .product-luxury-trust-bar {
-    flex-direction: column !important;
-    gap: 14px !important;
-    padding: 14px 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    gap: 4px !important;
+    padding: 12px 0 !important;
+    margin: 16px 0 20px 0 !important;
   }
   .luxury-trust-item {
-    border-right: none !important;
-    border-bottom: 1px solid #f3f4f6 !important;
-    padding-bottom: 12px !important;
-  }
-  .luxury-trust-item:last-child {
+    flex: 1 1 0 !important;
+    padding: 0 4px !important;
+    border-right: 1px solid #e5e7eb !important;
     border-bottom: none !important;
     padding-bottom: 0 !important;
+  }
+  .luxury-trust-item:last-child {
+    border-right: none !important;
+  }
+  .luxury-trust-icon-svg {
+    width: 17px !important;
+    height: 17px !important;
+    margin: 0 auto 4px auto !important;
+  }
+  .luxury-trust-heading {
+    font-size: 11px !important;
+    margin-bottom: 2px !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.01em !important;
+  }
+  .luxury-trust-sub {
+    font-size: 9px !important;
+    line-height: 1.25 !important;
+  }
+}
+@media (max-width: 360px) {
+  .luxury-trust-heading {
+    font-size: 10px !important;
+  }
+  .luxury-trust-sub {
+    font-size: 8px !important;
   }
 }
 
