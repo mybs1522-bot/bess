@@ -1,24 +1,4 @@
 <div class="mini-reviews-slider-container" id="miniReviewsSlider">
-  <div class="mini-slider-header">
-    <div class="mini-slider-header-left">
-      <div class="mini-slider-stars">★★★★★</div>
-      <div class="mini-slider-title">Reviews from Home Owners, Tenants, Interior Designers &amp; Architects</div>
-    </div>
-    <div class="mini-slider-nav">
-      <button type="button" class="mini-slider-arrow prev" id="miniSliderPrev" aria-label="Previous review">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="15 18 9 12 15 6"></polyline>
-        </svg>
-      </button>
-      <span class="mini-slider-counter" id="miniSliderCounter">1 / 24</span>
-      <button type="button" class="mini-slider-arrow next" id="miniSliderNext" aria-label="Next review">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="9 18 15 12 9 6"></polyline>
-        </svg>
-      </button>
-    </div>
-  </div>
-
   <div class="mini-slider-track-wrap" id="miniSliderTrackWrap">
     <div class="mini-slider-track" id="miniSliderTrack">
 
@@ -456,12 +436,26 @@
 
     </div>
   </div>
+
+  <div class="mini-slider-nav-bottom">
+    <button type="button" class="mini-slider-arrow prev" id="miniSliderPrev" aria-label="Previous review">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <button type="button" class="mini-slider-arrow next" id="miniSliderNext" aria-label="Next review">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+  </div>
 </div>
 
 <style>
 .mini-reviews-slider-container {
+  position: relative;
   width: 100%;
-  margin: 16px 0 14px 0;
+  margin: 14px 0 12px 0;
   padding: 14px 16px;
   background: #ffffff;
   border: 1px solid #e2e8f0;
@@ -471,50 +465,22 @@
   font-family: inherit;
 }
 
-.mini-slider-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #f1f5f9;
-  margin-bottom: 10px;
-}
-
-.mini-slider-header-left {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.mini-slider-stars {
-  color: #eab308;
-  font-size: 13px;
-  letter-spacing: 1.5px;
-  line-height: 1;
-}
-
-.mini-slider-title {
-  font-size: 11.5px;
-  font-weight: 600;
-  color: #334155;
-  line-height: 1.35;
-  letter-spacing: -0.01em;
-}
-
-.mini-slider-nav {
+.mini-slider-nav-bottom {
+  position: absolute;
+  bottom: 12px;
+  right: 14px;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  flex-shrink: 0;
+  gap: 5px;
+  z-index: 2;
 }
 
 .mini-slider-arrow {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   padding: 0;
   border-radius: 50%;
   border: 1px solid #e2e8f0;
@@ -529,15 +495,6 @@
   background: #f8fafc;
   border-color: #cbd5e1;
   color: #0f172a;
-}
-
-.mini-slider-counter {
-  font-size: 11px;
-  font-weight: 600;
-  color: #64748b;
-  min-width: 38px;
-  text-align: center;
-  font-variant-numeric: tabular-nums;
 }
 
 .mini-slider-track-wrap {
@@ -568,7 +525,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  min-height: 102px;
+  min-height: 98px;
   justify-content: space-between;
 }
 
@@ -630,9 +587,9 @@
 .mini-card-author {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 8px;
   margin-top: 2px;
+  padding-right: 58px;
 }
 
 .mini-author-name {
@@ -653,10 +610,7 @@
 @media (max-width: 480px) {
   .mini-reviews-slider-container {
     padding: 12px 14px;
-    margin: 14px 0 12px 0;
-  }
-  .mini-slider-title {
-    font-size: 11px;
+    margin: 12px 0 10px 0;
   }
   .mini-card-quote {
     font-size: 12px;
@@ -676,7 +630,6 @@
     var wrap = document.getElementById('miniSliderTrackWrap');
     var prevBtn = document.getElementById('miniSliderPrev');
     var nextBtn = document.getElementById('miniSliderNext');
-    var counter = document.getElementById('miniSliderCounter');
     var slides = track ? track.querySelectorAll('.mini-review-slide') : [];
     var total = slides.length;
     if (!total) return;
@@ -694,9 +647,6 @@
         currentIndex = index;
       }
       track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
-      if (counter) {
-        counter.textContent = (currentIndex + 1) + ' / ' + total;
-      }
     }
 
     function nextSlide() {
@@ -748,27 +698,28 @@
       isHovered = false;
     });
 
-    // Touch swipe support
+    // Touch swipe & Mouse drag support
     var startX = 0;
     var currentX = 0;
-    var isSwiping = false;
+    var isDragging = false;
 
+    // Touch
     wrap.addEventListener('touchstart', function(e) {
       if (e.touches.length === 1) {
         startX = e.touches[0].clientX;
         currentX = startX;
-        isSwiping = true;
+        isDragging = true;
         isHovered = true;
       }
     }, { passive: true });
 
     wrap.addEventListener('touchmove', function(e) {
-      if (!isSwiping) return;
+      if (!isDragging) return;
       currentX = e.touches[0].clientX;
     }, { passive: true });
 
     wrap.addEventListener('touchend', function() {
-      if (!isSwiping) return;
+      if (!isDragging) return;
       var diffX = startX - currentX;
       var threshold = 40;
       if (diffX > threshold) {
@@ -778,7 +729,37 @@
         prevSlide();
         resetAutoplay();
       }
-      isSwiping = false;
+      isDragging = false;
+      setTimeout(function() {
+        isHovered = false;
+      }, 1000);
+    });
+
+    // Mouse drag
+    wrap.addEventListener('mousedown', function(e) {
+      startX = e.clientX;
+      currentX = startX;
+      isDragging = true;
+      isHovered = true;
+    });
+
+    window.addEventListener('mousemove', function(e) {
+      if (!isDragging) return;
+      currentX = e.clientX;
+    });
+
+    window.addEventListener('mouseup', function() {
+      if (!isDragging) return;
+      var diffX = startX - currentX;
+      var threshold = 40;
+      if (diffX > threshold) {
+        nextSlide();
+        resetAutoplay();
+      } else if (diffX < -threshold) {
+        prevSlide();
+        resetAutoplay();
+      }
+      isDragging = false;
       setTimeout(function() {
         isHovered = false;
       }, 1000);
