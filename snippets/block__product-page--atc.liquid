@@ -1,22 +1,7 @@
 <div class="product__atc {% if block.settings.noMargin or noMargin %}margin__bottom--reduced{%endif-%}" {{block.shopify_attributes}}>
     {% if product.available %}
         <input style="display: none;" name="id" data-bstr-variant-input="{{product.id}}" value="{{product.selected_or_first_available_variant.id}}">
-        <!-- Urgency Countdown Timer Directly Above Buy Now Button -->
-        <div class="arch-atc-timer-box">
-          <div class="arch-atc-timer-inner">
-            <div class="arch-atc-timer-left">
-              <span class="arch-timer-pulse-dot"></span>
-              <span class="arch-atc-timer-label">Flash Offer Ends In:</span>
-            </div>
-            <div class="arch-atc-timer-right">
-              <span class="arch-atc-clock-unit"><strong id="mainAtcHours">07</strong><small>H</small></span><!--
-              --><span class="arch-atc-clock-sep">:</span><!--
-              --><span class="arch-atc-clock-unit"><strong id="mainAtcMinutes">37</strong><small>M</small></span><!--
-              --><span class="arch-atc-clock-sep">:</span><!--
-              --><span class="arch-atc-clock-unit"><strong id="mainAtcSeconds">40</strong><small>S</small></span>
-            </div>
-          </div>
-        </div>
+
 
         <div class="product__atc-row">
             <div class="quantity--input">
@@ -213,105 +198,12 @@ document.addEventListener('booster:initialized', (e)=>{
 {% endif %}
 
 <style>
-/* ─── Urgency Countdown Timer Above Buy Now Button ─── */
-.arch-atc-timer-box {
-  width: 100%;
-  margin-bottom: 12px;
-  box-sizing: border-box;
-}
-
-.arch-atc-timer-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  background: #fff7ed;
-  border: 1px solid #fed7aa;
-  padding: 8px 14px;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(234, 88, 12, 0.06);
-  box-sizing: border-box;
-}
-
-.arch-atc-timer-left {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.arch-atc-timer-label {
-  font-family: 'Space Grotesk', -apple-system, sans-serif;
-  font-size: 11px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: #9a3412;
-}
-
-.arch-atc-timer-right {
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-  font-family: 'Space Grotesk', -apple-system, monospace;
-}
-
-.arch-atc-clock-unit {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 1.5px;
-  background: #ffedd5;
-  border: 1px solid #fed7aa;
-  border-radius: 5px;
-  padding: 2px 6px;
-}
-
-.arch-atc-clock-unit strong {
-  font-size: 13px;
-  font-weight: 800;
-  color: #c2410c;
-  min-width: 16px;
-  text-align: center;
-  line-height: 1;
-}
-
-.arch-atc-clock-unit small {
-  font-size: 8.5px;
-  font-weight: 800;
-  color: #9a3412;
-  text-transform: uppercase;
-  line-height: 1;
-}
-
-.arch-atc-clock-sep {
-  font-size: 12px;
-  font-weight: 800;
-  color: #ea580c;
-  opacity: 0.8;
-  margin: 0 1px;
-}
-
 .button--buy-now {
   cursor: pointer;
   transition: all 0.2s ease;
 }
 .button--buy-now:hover {
   transform: translateY(-1px);
-}
-
-@media (max-width: 480px) {
-  .arch-atc-timer-inner {
-    padding: 7px 10px;
-    gap: 6px;
-  }
-  .arch-atc-timer-label {
-    font-size: 9.5px;
-  }
-  .arch-atc-clock-unit {
-    padding: 2px 4px;
-  }
-  .arch-atc-clock-unit strong {
-    font-size: 12px;
-  }
 }
 </style>
 
@@ -361,38 +253,4 @@ window.executeDirectBuyNow = function(e, btn) {
     window.location.href = '/checkout';
   });
 };
-
-/* Instant init for Main ATC Urgency Timer */
-(function() {
-  const DURATION_SECONDS = 7 * 3600 + 37 * 60 + 40;
-  const STORAGE_KEY = 'arch_evergreen_deadline_v1';
-
-  function initMainTimer() {
-    let stored = localStorage.getItem(STORAGE_KEY);
-    const now = Date.now();
-    let deadline;
-    if (!stored || isNaN(parseInt(stored, 10)) || parseInt(stored, 10) <= now) {
-      deadline = now + DURATION_SECONDS * 1000;
-      localStorage.setItem(STORAGE_KEY, deadline);
-    } else {
-      deadline = parseInt(stored, 10);
-    }
-
-    const diff = Math.max(0, Math.floor((deadline - now) / 1000));
-    const h = Math.floor(diff / 3600);
-    const m = Math.floor((diff % 3600) / 60);
-    const s = diff % 60;
-    const pad = n => (n < 10 ? '0' + n : '' + n);
-
-    const atcH = document.getElementById('mainAtcHours');
-    const atcM = document.getElementById('mainAtcMinutes');
-    const atcS = document.getElementById('mainAtcSeconds');
-    if (atcH) atcH.textContent = pad(h);
-    if (atcM) atcM.textContent = pad(m);
-    if (atcS) atcS.textContent = pad(s);
-  }
-
-  initMainTimer();
-  setInterval(initMainTimer, 1000);
-})();
 </script>
