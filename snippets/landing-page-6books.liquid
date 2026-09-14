@@ -47,6 +47,48 @@
         <p class="lp6-solution-text">
           We created 6 practical, step-by-step books that don't just inspire, they <span class="lp6-text-orange">guide you like a</span> <span class="lp6-text-green">professional designer</span>.
         </p>
+
+        <!-- 6 Books in small size with consistent zoom ripple animation -->
+        <div class="lp6-mini-books-ripple-wrap">
+          <div class="lp6-mini-books-track">
+            <div class="lp6-mini-book-item" style="--ripple-delay: 0s;" onclick="lp6SelectCurriculum(0)">
+              <div class="lp6-mini-book-cover">
+                <img src="{{ 'living_room.png' | asset_url }}" alt="Living Room Design Book" loading="lazy" width="90" height="125" />
+              </div>
+              <span class="lp6-mini-book-name">Living</span>
+            </div>
+            <div class="lp6-mini-book-item" style="--ripple-delay: 0.25s;" onclick="lp6SelectCurriculum(1)">
+              <div class="lp6-mini-book-cover">
+                <img src="{{ 'kitchen.png' | asset_url }}" alt="Kitchen Design Book" loading="lazy" width="90" height="125" />
+              </div>
+              <span class="lp6-mini-book-name">Kitchen</span>
+            </div>
+            <div class="lp6-mini-book-item" style="--ripple-delay: 0.5s;" onclick="lp6SelectCurriculum(2)">
+              <div class="lp6-mini-book-cover">
+                <img src="{{ 'bedroom.png' | asset_url }}" alt="Bedroom Design Book" loading="lazy" width="90" height="125" />
+              </div>
+              <span class="lp6-mini-book-name">Bedroom</span>
+            </div>
+            <div class="lp6-mini-book-item" style="--ripple-delay: 0.75s;" onclick="lp6SelectCurriculum(3)">
+              <div class="lp6-mini-book-cover">
+                <img src="{{ 'washroom.png' | asset_url }}" alt="Washroom Design Book" loading="lazy" width="90" height="125" />
+              </div>
+              <span class="lp6-mini-book-name">Washroom</span>
+            </div>
+            <div class="lp6-mini-book-item" style="--ripple-delay: 1.0s;" onclick="lp6SelectCurriculum(4)">
+              <div class="lp6-mini-book-cover">
+                <img src="{{ 'study.png' | asset_url }}" alt="Study Design Book" loading="lazy" width="90" height="125" />
+              </div>
+              <span class="lp6-mini-book-name">Study</span>
+            </div>
+            <div class="lp6-mini-book-item" style="--ripple-delay: 1.25s;" onclick="lp6SelectCurriculum(5)">
+              <div class="lp6-mini-book-cover">
+                <img src="{{ 'elevations.png' | asset_url }}" alt="Exteriors &amp; Landscapes Design Book" loading="lazy" width="90" height="125" />
+              </div>
+              <span class="lp6-mini-book-name">Exteriors</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -499,6 +541,91 @@
 
 .lp6-text-green {
   color: #059669;
+}
+
+/* Mini 6 Books Ripple Animation */
+.lp6-mini-books-ripple-wrap {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px dashed #e2e8f0;
+}
+
+.lp6-mini-books-track {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: clamp(6px, 1.8vw, 14px);
+  padding: 8px 4px 4px 4px;
+}
+
+.lp6-mini-book-item {
+  flex: 0 0 clamp(44px, 12.5vw, 76px);
+  width: clamp(44px, 12.5vw, 76px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.lp6-mini-book-cover {
+  width: 100%;
+  aspect-ratio: 1 / 1.38;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  border: 1.5px solid #e2e8f0;
+  background: #ffffff;
+  animation: lp6ZoomRipple 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation-delay: var(--ripple-delay, 0s);
+  will-change: transform, box-shadow;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.lp6-mini-book-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.lp6-mini-book-name {
+  font-size: clamp(9px, 2.2vw, 11px);
+  font-weight: 700;
+  color: #475569;
+  margin-top: 5px;
+  text-align: center;
+  line-height: 1.15;
+  transition: color 0.2s ease;
+}
+
+@keyframes lp6ZoomRipple {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+    border-color: #e2e8f0;
+  }
+  20% {
+    transform: scale(1.12) translateY(-6px);
+    box-shadow: 0 12px 22px rgba(234, 88, 12, 0.28), 0 3px 8px rgba(0, 0, 0, 0.1);
+    border-color: #ea580c;
+  }
+  40% {
+    transform: scale(1) translateY(0);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+    border-color: #e2e8f0;
+  }
+}
+
+.lp6-mini-book-item:hover .lp6-mini-book-cover {
+  animation-play-state: paused;
+  transform: scale(1.18) translateY(-8px);
+  box-shadow: 0 14px 26px rgba(234, 88, 12, 0.35);
+  border-color: #ea580c;
+}
+
+.lp6-mini-book-item:hover .lp6-mini-book-name {
+  color: #ea580c;
 }
 
 /* 2. Video Section */
