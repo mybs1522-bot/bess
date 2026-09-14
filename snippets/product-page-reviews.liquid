@@ -445,7 +445,6 @@
           return copy.filter(function(r) { return r.s === 3; });
         }
         if (currentSort === 'highest') {
-          // Primarily 5-star reviews, with top helpful critical reviews integrated so authentic feedback is visible
           var fives = copy.filter(function(r) { return r.s === 5; });
           var fours = copy.filter(function(r) { return r.s === 4; });
           var threes = copy.filter(function(r) { return r.s === 3; });
@@ -469,11 +468,121 @@
         return copy;
       }
 
+      function renderPage(page) {
+        currentPage = page;
+        var data = getSortedReviews();
+        var totalPages = Math.ceil(data.length / REVIEWS_PER_PAGE);
+        if (currentPage < 1) currentPage = 1;
+        if (currentPage > totalPages) currentPage = totalPages;
+
+        var startIdx = (currentPage - 1) * REVIEWS_PER_PAGE;
+        var endIdx = Math.min(startIdx + REVIEWS_PER_PAGE, data.length);
+        var pageItems = data.slice(startIdx, endIdx);
+
+        // Update count header
+        var countEl = document.getElementById('bstrRevHeaderCount');
+        if (countEl) {
+          countEl.innerText = 'Showing ' + (startIdx + 1) + '–' + endIdx + ' of ' + data.length + ' Reviews';
+        }
+
+        // Render reviews HTML
+        var container = document.getElementById('bstrReviewsContainer');
+        if (container) {
+          var html = '';
+          pageItems.forEach(function(r) {
+            var inits = r.name.split(' ').map(function(w){return w[0];}).join('');
+            var edText = r.ed === 1 ? "Hardcopy Collector's Edition" : "Digital Complete Collection";
+            html += '<div class="bstr-rev-card">';
+            html += '  <div class="bstr-rev-card-header">';
+            html += '    <div class="bstr-rev-author-info">';
+            html += '      <div class="bstr-rev-avatar">' + inits + '</div>';
+            html += '      <div>';
+            html += '        <div class="bstr-rev-author-name">';
+            html += '          <span>' + r.name + '</span>';
+            html += '          <span class="bstr-rev-verified-pill">';
+            html += '            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+            html += '            Verified Reader';
+            html += '          </span>';
+            html += '        </div>';
+            html += '        <div class="bstr-rev-meta">' + edText + ' · ' + r.loc + ' · ' + r.d + '</div>';
+            html += '      </div>';
+            html += '    </div>';
+            html += '    <div class="bstr-rev-stars-item">' + renderStars(r.s) + '</div>';
+            html += '  </div>';
+            html += '  <div class="bstr-rev-title">"' + r.t + '"</div>';
+            html += '  <div class="bstr-rev-body">' + r.b + '</div>';
+            html += '  <div class="bstr-rev-card-footer">';
+            html += '    <span>Reviewed on ' + r.d + '</span>';
+            html += '    <button type="button" class="bstr-rev-helpful-btn" onclick="this.innerHTML=\'✓ Helpful (' + (r.h + 1) + ')\'">👍 Helpful (' + r.h + ')</button>';
+            html += '  </div>';
+            html += '</div>';
+          });
+          container.innerHTML = html;
+        }
+
+        // Render Pagination
+        renderPagination(totalPages);
+      }
+
+      function renderPagination(totalPages) {
+        var pagEl = document.getElementById('bstrRevPagination');
+        if (!pagEl) return;
+
+        var html = '';
+        
+        // Prev button
+        html += '<button type="button" class="bstr-rev-page-btn" ' + (currentPage === 1 ? 'disabled' : '') + ' onclick="bstrGoToPage(' + (currentPage - 1) + ')">← Prev</button>';
+
+        // Pages numbers (smart window)
+        var maxButtons = 7;
+        var startPage = Math.max(1, currentPage - 2);
+        var endPage = Math.min(totalPages, startPage + 4);
+        if (endPage - startPage < 4) {
+          startPage = Math.max(1, endPage - 4);
+        }
+
+        if (startPage > 1) {
+          html += '<button type="button" class="bstr-rev-page-btn" onclick="bstrGoToPage(1)">1</button>';
+          if (startPage > 2) html += '<span class="bstr-rev-dots">...</span>';
+        }
+
+        for (var p = startPage; p <= endPage; p++) {
+          html += '<button type="button" class="bstr-rev-page-btn ' + (p === currentPage ? 'active' : '') + '" onclick="bstrGoToPage(' + p + ')">' + p + '</button>';
+        }
+
+        if (endPage < totalPages) {
+          if (endPage < totalPages - 1) html += '<span class="bstr-rev-dots">...</span>';
+          html += '<button type="button" class="bstr-rev-page-btn" onclick="bstrGoToPage(' + totalPages + ')">' + totalPages + '</button>';
+        }
+
+        // Next button
+        html += '<button type="button" class="bstr-rev-page-btn" ' + (currentPage === totalPages ? 'disabled' : '') + ' onclick="bstrGoToPage(' + (currentPage + 1) + ')">Next →</button>';
+
+        pagEl.innerHTML = html;
+      }
+
+      window.bstrGoToPage = function(p) {
+        renderPage(p);
+        var comp = document.getElementById('bstr-reviews-component');
+        if (comp) {
+          var y = comp.getBoundingClientRect().top + window.pageYOffset - 80;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      };
+
+      window.bstrChangeSort = function(val) {
+        currentSort = val;
+        renderPage(1);
+      };
+
       window.bstrFilterRating = function(star) {
         var sel = document.getElementById('bstrRevSortSelect');
         if (star === 3) {
           currentSort = 'critical';
           if (sel) sel.value = 'critical';
+        } else if (star === 5) {
+          currentSort = 'highest';
+          if (sel) sel.value = 'highest';
         } else {
           currentSort = 'recent';
           if (sel) sel.value = 'recent';
@@ -485,7 +594,7 @@
           window.scrollTo({ top: y, behavior: 'smooth' });
         }
       };
-      
+
       // Initial render
       renderPage(1);
     })();
