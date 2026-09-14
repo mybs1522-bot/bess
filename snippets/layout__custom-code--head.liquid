@@ -1115,80 +1115,33 @@ shopify-accelerated-checkout .shopify-payment-button__more-options,
 </style>
 
 <script>
-/* Global Currency Format Enforcement: Replace any Rs. / Rs with ₹ */
+/* Safe Currency Clean: replace Rs. with ₹ on load and booster events */
 (function() {
-  function replaceRsInTextNode(node) {
-    if (!node) return;
-    if (node.nodeType === Node.TEXT_NODE && node.nodeValue) {
-      if (/Rs/i.test(node.nodeValue)) {
-        node.nodeValue = node.nodeValue.replace(/Rs\.\s*/g, '₹').replace(/Rs\s*/g, '₹');
-      }
-    } else if (node.nodeType === Node.ELEMENT_NODE) {
-      if (node.tagName === 'SCRIPT' || node.tagName === 'STYLE' || node.tagName === 'NOSCRIPT') return;
-      if (node.shadowRoot) {
-        replaceRsInSubtree(node.shadowRoot);
-      }
-      for (let child = node.firstChild; child; child = child.nextSibling) {
-        replaceRsInTextNode(child);
-      }
-    }
-  }
-
-  function replaceRsInSubtree(root) {
-    if (!root) return;
-    const walker = document.createTreeWalker(
-      root,
-      NodeFilter.SHOW_TEXT,
-      {
-        acceptNode: function(node) {
-          if (!node.nodeValue) return NodeFilter.FILTER_REJECT;
-          const parent = node.parentElement;
-          if (parent && (parent.tagName === 'SCRIPT' || parent.tagName === 'STYLE')) {
-            return NodeFilter.FILTER_REJECT;
-          }
-          return (/Rs/i.test(node.nodeValue)) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+  function cleanRupees() {
+    try {
+      var walker = document.createTreeWalker(
+        document.body || document.documentElement,
+        NodeFilter.SHOW_TEXT,
+        null,
+        false
+      );
+      var node;
+      while ((node = walker.nextNode())) {
+        if (node.nodeValue && /Rs/i.test(node.nodeValue)) {
+          var parent = node.parentElement;
+          if (parent && (parent.tagName === 'SCRIPT' || parent.tagName === 'STYLE')) continue;
+          node.nodeValue = node.nodeValue.replace(/Rs\.\s*/g, '₹').replace(/Rs\s*/g, '₹');
         }
       }
-    );
-
-    let textNode;
-    while ((textNode = walker.nextNode())) {
-      textNode.nodeValue = textNode.nodeValue.replace(/Rs\.\s*/g, '₹').replace(/Rs\s*/g, '₹');
-    }
-  }
-
-  function cleanAllRupees() {
-    replaceRsInSubtree(document.body || document.documentElement);
-    document.querySelectorAll('shopify-payment-terms, [data-shopify]').forEach(function(el) {
-      if (el.shadowRoot) replaceRsInSubtree(el.shadowRoot);
-    });
+    } catch(e) {}
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', cleanAllRupees);
+    document.addEventListener('DOMContentLoaded', cleanRupees);
   } else {
-    cleanAllRupees();
+    cleanRupees();
   }
-
-  const rsObserver = new MutationObserver(function(mutations) {
-    for (let i = 0; i < mutations.length; i++) {
-      const m = mutations[i];
-      if (m.type === 'childList') {
-        for (let j = 0; j < m.addedNodes.length; j++) {
-          replaceRsInTextNode(m.addedNodes[j]);
-        }
-      } else if (m.type === 'characterData') {
-        if (m.target && m.target.nodeValue && /Rs/i.test(m.target.nodeValue)) {
-          m.target.nodeValue = m.target.nodeValue.replace(/Rs\.\s*/g, '₹').replace(/Rs\s*/g, '₹');
-        }
-      }
-    }
-  });
-
-  rsObserver.observe(document.documentElement, {
-    childList: true,
-    subtree: true,
-    characterData: true
-  });
+  document.addEventListener('booster:content:update', cleanRupees);
+  document.addEventListener('booster:currency:changed', cleanRupees);
 })();
 </script>

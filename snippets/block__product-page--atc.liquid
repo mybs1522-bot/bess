@@ -515,11 +515,5 @@ window.executeDirectBuyNow = function(e, btn) {
       setTimeout(syncPillPrice, 100);
     }
   });
-
-  const mainPriceNode = document.querySelector('[data-product-price]');
-  if (mainPriceNode && window.MutationObserver) {
-    const pObs = new MutationObserver(syncPillPrice);
-    pObs.observe(mainPriceNode, { childList: true, subtree: true, characterData: true });
-  }
 })();
 </script>
