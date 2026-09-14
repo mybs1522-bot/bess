@@ -1112,6 +1112,83 @@ shopify-accelerated-checkout .shopify-payment-button__more-options,
   margin: 0 !important;
   padding: 0 !important;
   pointer-events: none !important;
-  opacity: 0 !important;
-}
 </style>
+
+<script>
+/* Global Currency Format Enforcement: Replace any Rs. / Rs with ₹ */
+(function() {
+  function replaceRsInTextNode(node) {
+    if (!node) return;
+    if (node.nodeType === Node.TEXT_NODE && node.nodeValue) {
+      if (/Rs/i.test(node.nodeValue)) {
+        node.nodeValue = node.nodeValue.replace(/Rs\.\s*/g, '₹').replace(/Rs\s*/g, '₹');
+      }
+    } else if (node.nodeType === Node.ELEMENT_NODE) {
+      if (node.tagName === 'SCRIPT' || node.tagName === 'STYLE' || node.tagName === 'NOSCRIPT') return;
+      if (node.shadowRoot) {
+        replaceRsInSubtree(node.shadowRoot);
+      }
+      for (let child = node.firstChild; child; child = child.nextSibling) {
+        replaceRsInTextNode(child);
+      }
+    }
+  }
+
+  function replaceRsInSubtree(root) {
+    if (!root) return;
+    const walker = document.createTreeWalker(
+      root,
+      NodeFilter.SHOW_TEXT,
+      {
+        acceptNode: function(node) {
+          if (!node.nodeValue) return NodeFilter.FILTER_REJECT;
+          const parent = node.parentElement;
+          if (parent && (parent.tagName === 'SCRIPT' || parent.tagName === 'STYLE')) {
+            return NodeFilter.FILTER_REJECT;
+          }
+          return (/Rs/i.test(node.nodeValue)) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+        }
+      }
+    );
+
+    let textNode;
+    while ((textNode = walker.nextNode())) {
+      textNode.nodeValue = textNode.nodeValue.replace(/Rs\.\s*/g, '₹').replace(/Rs\s*/g, '₹');
+    }
+  }
+
+  function cleanAllRupees() {
+    replaceRsInSubtree(document.body || document.documentElement);
+    document.querySelectorAll('shopify-payment-terms, [data-shopify]').forEach(function(el) {
+      if (el.shadowRoot) replaceRsInSubtree(el.shadowRoot);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', cleanAllRupees);
+  } else {
+    cleanAllRupees();
+  }
+
+  const rsObserver = new MutationObserver(function(mutations) {
+    for (let i = 0; i < mutations.length; i++) {
+      const m = mutations[i];
+      if (m.type === 'childList') {
+        for (let j = 0; j < m.addedNodes.length; j++) {
+          replaceRsInTextNode(m.addedNodes[j]);
+        }
+      } else if (m.type === 'characterData') {
+        if (m.target && m.target.nodeValue && /Rs/i.test(m.target.nodeValue)) {
+          m.target.nodeValue = m.target.nodeValue.replace(/Rs\.\s*/g, '₹').replace(/Rs\s*/g, '₹');
+        }
+      }
+    }
+  });
+
+  rsObserver.observe(document.documentElement, {
+    childList: true,
+    subtree: true,
+    characterData: true
+  });
+})();
+</script>

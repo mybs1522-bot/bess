@@ -25,11 +25,12 @@
       <div class="arch-sticky-bar__meta">
         <div class="arch-sticky-bar__pricing">
           {% assign sticky_curr_var = product.selected_or_first_available_variant %}
-          <span class="arch-sticky-bar__compare" id="archStickyCompare" {% unless sticky_curr_var.compare_at_price > sticky_curr_var.price %}style="display:none;"{% endunless %}>
-            {{ sticky_curr_var.compare_at_price | money }}
+          {% assign sticky_double_price = sticky_curr_var.price | times: 2 %}
+          <span class="arch-sticky-bar__compare" id="archStickyCompare">
+            {{ sticky_double_price | money | replace: 'Rs. ', '₹' | replace: 'Rs.', '₹' | replace: 'Rs ', '₹' }}
           </span>
           <span class="arch-sticky-bar__price" id="archStickyPrice">
-            {{ sticky_curr_var.price | money }}
+            {{ sticky_curr_var.price | money | replace: 'Rs. ', '₹' | replace: 'Rs.', '₹' | replace: 'Rs ', '₹' }}
           </span>
         </div>
       </div>
@@ -435,21 +436,24 @@
       const mainPrice = document.querySelector('.product__price .price--regular') ||
                         document.querySelector('.product__price') ||
                         document.querySelector('.product-page__price');
+      let text = '';
       if (mainPrice) {
-        const text = mainPrice.innerText.trim().split('\n')[0];
+        text = mainPrice.innerText.trim().split('\n')[0].replace(/Rs\.?\s*/g, '₹');
         const stickyPrice = document.getElementById('archStickyPrice');
         if (stickyPrice && text) stickyPrice.textContent = text;
       }
-      const mainCompare = document.querySelector('.product__price--old') ||
-                          document.querySelector('.price--compare') ||
-                          document.querySelector('.product-page__compare-price');
+      
       const stickyCompare = document.getElementById('archStickyCompare');
-      if (stickyCompare) {
-        if (mainCompare && mainCompare.innerText.trim()) {
-          stickyCompare.textContent = mainCompare.innerText.trim().split('\n')[0];
-          stickyCompare.style.display = 'inline-block';
-        } else {
-          stickyCompare.style.display = 'none';
+      if (stickyCompare && text) {
+        const match = text.match(/[\d,.]+/);
+        if (match) {
+          const rawNum = parseFloat(match[0].replace(/,/g, ''));
+          if (!isNaN(rawNum) && rawNum > 0) {
+            const doubled = rawNum * 2;
+            const fmt = (doubled % 1 === 0) ? Math.round(doubled).toString() : doubled.toFixed(2);
+            stickyCompare.textContent = text.replace(match[0], fmt);
+            stickyCompare.style.display = 'inline-block';
+          }
         }
       }
     }, 120);

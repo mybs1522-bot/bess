@@ -175,32 +175,29 @@
     {% assign sale = false %}
     {% assign currsale = false %}
     {% endif %}
-    <span data-product-price="{{product.id}}" class="product__price {% if currsale %}{% unless current_variant.price >= current_variant.compare_at_price %}product__price--sale{% endunless %}{% endif %} jsPrice">
+    {% assign doubled_compare = current_variant.price | times: 2 %}
+    <span data-product-price="{{product.id}}" class="product__price product__price--sale jsPrice">
     {% if settings.currencyFormat == 'money_with_currency_format' %}
-        {{ current_variant.price | money_with_currency | strip_html }}
+        {{ current_variant.price | money_with_currency | strip_html | replace: 'Rs. ', '₹' | replace: 'Rs.', '₹' | replace: 'Rs ', '₹' }}
     {% else %}
-        {{ current_variant.price | money | strip_html }}
+        {{ current_variant.price | money | strip_html | replace: 'Rs. ', '₹' | replace: 'Rs.', '₹' | replace: 'Rs ', '₹' }}
     {% endif %}
     </span>
-    {% unless current_variant.price >= current_variant.compare_at_price %}
-        <span data-product-price-sale="{{product.id}}" class="product__price--old jsPrice">{% if currsale %}{{ current_variant.compare_at_price | money | strip_html }}{% endif %}</span>
+    <span data-product-price-sale="{{product.id}}" class="product__price--old jsPrice">{{ doubled_compare | money | strip_html | replace: 'Rs. ', '₹' | replace: 'Rs.', '₹' | replace: 'Rs ', '₹' }}</span>
     {% if sale %}
     {%- unless s_type == 'none' or sale == false %}
-    <span data-tag-product="{{product.id}}" data-tag-type="{{s_type}}" class="tag tag--sale {% unless currsale %}hide{% endunless %} {% if s_type == 'amount' %}jsPrice{% endif %}">
-    {% if currsale %}
+    <span data-tag-product="{{product.id}}" data-tag-type="{{s_type}}" class="tag tag--sale {% if s_type == 'amount' %}jsPrice{% endif %}">
         {%- case s_type %}
             {% when 'percent' %}
-                {{ current_variant.price | minus: current_variant.compare_at_price | times: 100 | divided_by: current_variant.compare_at_price }}% {{'general.tags.off'|t}}
+                50% {{'general.tags.off'|t}}
             {% when 'amount' %}
-                {{ current_variant.compare_at_price | minus: current_variant.price | money | strip_html }}
+                {{ doubled_compare | minus: current_variant.price | money | strip_html | replace: 'Rs. ', '₹' | replace: 'Rs.', '₹' | replace: 'Rs ', '₹' }}
             {% when 'text' %}
                 {{'general.tags.sale' | t}}
         {%- endcase -%}
-    {% endif %}
     </span>
     {%- endunless -%}
     {% endif %}
-    {% endunless %}
     </div>
     
     {% comment %}
