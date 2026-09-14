@@ -123,7 +123,41 @@
         height: 18px;
       }
     }
+
+    .product-architectural-pillars-strip {
+      width: 100%;
+      margin: 12px 0 16px 0;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .product-architectural-pillars-img {
+      width: 100%;
+      max-width: 480px;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+    @media (max-width: 640px) {
+      .product-architectural-pillars-strip {
+        margin: 8px 0 14px 0;
+      }
+      .product-architectural-pillars-img {
+        max-width: 100%;
+      }
+    }
     </style>
+
+    <div class="product-architectural-pillars-strip">
+      <img 
+        src="{{ 'architectural-4-pillars.png' | asset_url }}" 
+        alt="Space Planning, Tips Tricks &amp; Ideas, History of Architecture, Don'ts and Do's"
+        class="product-architectural-pillars-img"
+        loading="lazy"
+        width="1024"
+        height="309"
+      >
+    </div>
     {% endif %}
 
     <div 
