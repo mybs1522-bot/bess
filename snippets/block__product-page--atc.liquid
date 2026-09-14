@@ -2,6 +2,29 @@
     {% if product.available %}
         <input style="display: none;" name="id" data-bstr-variant-input="{{product.id}}" value="{{product.selected_or_first_available_variant.id}}">
 
+        <!-- Transparent Pill Urgency Timer Just Above Buy Now Button -->
+        {% assign atc_var = product.selected_or_first_available_variant %}
+        {% assign atc_compare = atc_var.compare_at_price | money_without_trailing_zeros %}
+        {% assign atc_price = atc_var.price | money_without_trailing_zeros %}
+        {% if atc_compare == blank or atc_compare == '$0' %}{% assign atc_compare = '$99' %}{% endif %}
+        {% if atc_price == blank or atc_price == '$0' %}{% assign atc_price = '$49' %}{% endif %}
+
+        <div class="arch-pill-timer-wrap">
+          <div class="arch-pill-timer">
+            <div class="arch-pill-price-group">
+              <span class="arch-pill-price-cut">{{ atc_compare }}</span>
+              <span class="arch-pill-price-active">{{ atc_price }}</span>
+            </div>
+            <span class="arch-pill-label">OFFER ENDS IN:</span>
+            <div class="arch-pill-clock-wrap" aria-live="polite">
+              <span class="arch-pill-clock-unit"><strong id="atcPillHours">02</strong><small>H</small></span><!--
+              --><span class="arch-pill-clock-sep">:</span><!--
+              --><span class="arch-pill-clock-unit"><strong id="atcPillMinutes">57</strong><small>M</small></span><!--
+              --><span class="arch-pill-clock-sep">:</span><!--
+              --><span class="arch-pill-clock-unit"><strong id="atcPillSeconds">24</strong><small>S</small></span>
+            </div>
+          </div>
+        </div>
 
         <div class="product__atc-row">
             <div class="quantity--input">
@@ -198,6 +221,150 @@ document.addEventListener('booster:initialized', (e)=>{
 {% endif %}
 
 <style>
+/* ─── Transparent Pill Urgency Timer Above Buy Now ─── */
+.arch-pill-timer-wrap {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  margin-bottom: 10px !important;
+}
+
+.arch-pill-timer {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-wrap: nowrap !important;
+  white-space: nowrap !important;
+  gap: 8px !important;
+  background: transparent !important;
+  border: 1.5px solid #18181b !important;
+  border-radius: 9999px !important;
+  padding: 6px 14px !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  line-height: 1 !important;
+}
+
+.arch-pill-price-group {
+  display: inline-flex !important;
+  align-items: baseline !important;
+  gap: 5px !important;
+}
+
+.arch-pill-price-cut {
+  color: #71717a !important;
+  text-decoration: line-through !important;
+  font-size: 13.5px !important;
+  font-weight: 500 !important;
+}
+
+.arch-pill-price-active {
+  color: #09090b !important;
+  font-size: 17px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.arch-pill-label {
+  color: #09090b !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  margin-left: 2px !important;
+}
+
+.arch-pill-clock-wrap {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 2px !important;
+}
+
+.arch-pill-clock-unit {
+  display: inline-flex !important;
+  align-items: baseline !important;
+  gap: 1.5px !important;
+  background: #18181b !important;
+  color: #ffffff !important;
+  border-radius: 4px !important;
+  padding: 2px 5.5px !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+.arch-pill-clock-unit strong {
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  min-width: 14px !important;
+  text-align: center !important;
+  line-height: 1 !important;
+  font-family: 'Space Grotesk', -apple-system, monospace !important;
+}
+
+.arch-pill-clock-unit small {
+  font-size: 8.5px !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  line-height: 1 !important;
+  text-transform: uppercase !important;
+}
+
+.arch-pill-clock-sep {
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  color: #18181b !important;
+  margin: 0 1px !important;
+  line-height: 1 !important;
+}
+
+@media (max-width: 480px) {
+  .arch-pill-timer {
+    padding: 5px 10px !important;
+    gap: 5px !important;
+  }
+  .arch-pill-price-cut {
+    font-size: 12px !important;
+  }
+  .arch-pill-price-active {
+    font-size: 15px !important;
+  }
+  .arch-pill-label {
+    font-size: 10.5px !important;
+    letter-spacing: 0.02em !important;
+  }
+  .arch-pill-clock-unit {
+    padding: 2px 4px !important;
+  }
+  .arch-pill-clock-unit strong {
+    font-size: 11px !important;
+    min-width: 12px !important;
+  }
+  .arch-pill-clock-unit small {
+    font-size: 8px !important;
+  }
+  .arch-pill-clock-sep {
+    font-size: 10.5px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .arch-pill-timer {
+    gap: 4px !important;
+    padding: 5px 6px !important;
+  }
+  .arch-pill-price-cut {
+    font-size: 11px !important;
+  }
+  .arch-pill-price-active {
+    font-size: 13.5px !important;
+  }
+  .arch-pill-label {
+    font-size: 9.5px !important;
+  }
+}
+
 .button--buy-now {
   cursor: pointer;
   transition: all 0.2s ease;
@@ -253,4 +420,42 @@ window.executeDirectBuyNow = function(e, btn) {
     window.location.href = '/checkout';
   });
 };
+
+/* Instant init for ATC Transparent Pill Urgency Timer */
+(function() {
+  const DURATION_SECONDS = 7 * 3600 + 37 * 60 + 40;
+  const STORAGE_KEY = 'arch_evergreen_deadline_v1';
+
+  function initPillTimer() {
+    let stored = localStorage.getItem(STORAGE_KEY);
+    const now = Date.now();
+    let deadline;
+    if (!stored || isNaN(parseInt(stored, 10)) || parseInt(stored, 10) <= now) {
+      deadline = now + DURATION_SECONDS * 1000;
+      localStorage.setItem(STORAGE_KEY, deadline);
+    } else {
+      deadline = parseInt(stored, 10);
+    }
+
+    const diff = Math.max(0, Math.floor((deadline - now) / 1000));
+    const h = Math.floor(diff / 3600);
+    const m = Math.floor((diff % 3600) / 60);
+    const s = diff % 60;
+    const pad = n => (n < 10 ? '0' + n : '' + n);
+
+    const elH = document.getElementById('atcPillHours');
+    const elM = document.getElementById('atcPillMinutes');
+    const elS = document.getElementById('atcPillSeconds');
+    if (elH) elH.textContent = pad(h);
+    if (elM) elM.textContent = pad(m);
+    if (elS) elS.textContent = pad(s);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPillTimer);
+  } else {
+    initPillTimer();
+  }
+  setInterval(initPillTimer, 1000);
+})();
 </script>
