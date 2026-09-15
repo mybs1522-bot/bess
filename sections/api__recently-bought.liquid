@@ -1,7 +1,9 @@
 {
 "names": {{settings.recentlyBoughtNamesList | json}},
-{%- if settings.recentlyBoughtCollection != blank -%}
+{%- if settings.recentlyBoughtCollection != blank and collections[settings.recentlyBoughtCollection].products.size > 0 -%}
 {%- assign selected = collections[settings.recentlyBoughtCollection].products | where: "available", true -%}
+{%- elsif collections['all'].products.size > 0 -%}
+{%- assign selected = collections['all'].products | where: "available", true -%}
 {%- else -%}
 {%- assign selected = collection.products | where: "available", true -%}
 {% endif %}

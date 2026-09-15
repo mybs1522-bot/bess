@@ -1278,3 +1278,219 @@ body.is-digital-selected [id^="delivery__"] {
   document.addEventListener('booster:content:update', syncHardcopyDelivery);
 })();
 </script>
+
+<style>
+/* ══════════════════════════════════════════════════════════════
+   PURCHASE NOTIFICATION - MODERN SLIM PILL (NO PRICES)
+   ══════════════════════════════════════════════════════════════ */
+#recently-bought--holder,
+.recently-bought--holder {
+  min-height: unset !important;
+  height: auto !important;
+  width: auto !important;
+  max-width: min(390px, calc(100vw - 32px)) !important;
+  border-radius: 9999px !important;
+  padding: 6px 16px 6px 7px !important;
+  background: rgba(255, 255, 255, 0.96) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.12), 0 4px 12px -2px rgba(0, 0, 0, 0.06) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  bottom: 24px !important;
+  left: 24px !important;
+  right: auto !important;
+  z-index: 99999 !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, margin 0.2s ease !important;
+  box-sizing: border-box !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+
+#recently-bought--holder:hover {
+  transform: translateY(-3px) scale(1.01) !important;
+  box-shadow: 0 14px 34px -4px rgba(0, 0, 0, 0.16), 0 6px 16px -2px rgba(0, 0, 0, 0.08) !important;
+  margin-bottom: 0 !important;
+}
+
+/* Rounded image thumbnail / avatar */
+#recently-bought--holder .recently-bought--img-ratio {
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  max-width: 40px !important;
+  border-radius: 50% !important;
+  flex-shrink: 0 !important;
+  position: relative !important;
+  overflow: hidden !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
+  border: 1.5px solid #f97316 !important;
+  background: #fff7ed !important;
+}
+
+#recently-bought--holder .recently-bought--img {
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+#recently-bought--holder .recently-bought--img img {
+  position: static !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  border-radius: 50% !important;
+}
+
+/* Info container */
+#recently-bought--holder .recently-bought--info {
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  min-width: 0 !important;
+  line-height: 1.28 !important;
+  justify-content: center !important;
+}
+
+/* Buyer name & verified badge */
+#recently-bought--holder .recently-bought--who {
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: #0f172a !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+}
+
+#recently-bought--holder .recently-bought--who::after {
+  content: "✓";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 13px;
+  height: 13px;
+  background: #10b981;
+  color: #ffffff;
+  font-size: 8.5px;
+  font-weight: 900;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Book / product purchased */
+#recently-bought--holder .recently-bought--what {
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-size: 11.5px !important;
+  font-weight: 600 !important;
+  color: #ea580c !important;
+  margin: 1px 0 0 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 210px !important;
+}
+
+/* Timestamp */
+#recently-bought--holder .recently-bought--when {
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-size: 10px !important;
+  font-weight: 500 !important;
+  color: #94a3b8 !important;
+  margin: 1px 0 0 0 !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+#recently-bought--holder .recently-bought--when::before {
+  content: "•";
+  font-size: 11px;
+  color: #10b981;
+}
+
+/* Completely remove/hide prices as requested */
+#recently-bought--holder .recently-bought--price,
+.recently-bought--price {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  border: none !important;
+}
+
+/* Mobile pill responsiveness */
+@media (max-width: 768px) {
+  #recently-bought--holder,
+  .recently-bought--holder {
+    bottom: 82px !important;
+    left: 14px !important;
+    right: auto !important;
+    padding: 5px 14px 5px 6px !important;
+    gap: 8px !important;
+    max-width: calc(100vw - 28px) !important;
+  }
+  #recently-bought--holder .recently-bought--img-ratio {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    max-width: 36px !important;
+  }
+  #recently-bought--holder .recently-bought--who {
+    font-size: 11.5px !important;
+  }
+  #recently-bought--holder .recently-bought--what {
+    font-size: 10.5px !important;
+    max-width: 175px !important;
+  }
+  #recently-bought--holder .recently-bought--when {
+    font-size: 9.5px !important;
+  }
+}
+</style>
+
+<script>
+(function() {
+  function onBoosterReady(theme) {
+    if (theme && theme.recentlyBought) {
+      setTimeout(function() {
+        try {
+          theme.recentlyBought.render();
+        } catch(e) {}
+      }, 12000);
+    }
+  }
+
+  document.addEventListener('booster:loaded', function(e) {
+    if (e && e.detail && e.detail.BoosterTheme) {
+      window.BoosterTheme = e.detail.BoosterTheme;
+      onBoosterReady(window.BoosterTheme);
+    }
+  });
+
+  document.addEventListener('booster:initialized', function(e) {
+    if (e && e.detail && e.detail.BoosterTheme) {
+      window.BoosterTheme = e.detail.BoosterTheme;
+      onBoosterReady(window.BoosterTheme);
+    }
+  });
+})();
+</script>
