@@ -41,9 +41,7 @@
 
       <div class="pe-statement-block">
         <h3 class="pe-statement-heading">
-          Handmade Diagrams.<br>
-          Real Dimensions.<br>
-          No Guesswork. <mark class="pe-mark-yellow">No Regrets.</mark>
+          Handmade Diagrams. Real Dimensions. No Guesswork. <mark class="pe-mark-yellow">No Regrets.</mark>
         </h3>
         <p class="pe-statement-lead">
           Let's be honest: designing a home is not just picking tiles and cabinets. It's <strong>the heart of your life</strong>, and one wrong decision can turn your dream home into a daily frustration.
@@ -123,12 +121,13 @@
       margin-top: 8px;
     }
     .pe-statement-heading {
-      font-size: clamp(21px, 3vw, 28px);
+      font-size: clamp(16px, 2.2vw, 24px);
       font-weight: 900;
       color: #0f172a;
       line-height: 1.25;
       letter-spacing: -0.025em;
       margin: 0 0 12px 0;
+      white-space: nowrap;
     }
     .pe-mark-yellow {
       display: inline-block;
@@ -189,7 +188,12 @@
         white-space: nowrap;
       }
       .pe-statement-heading {
-        font-size: 20px;
+        font-size: clamp(9px, 2.85vw, 12.5px);
+        white-space: nowrap;
+      }
+      .pe-mark-yellow {
+        padding: 1px 5px;
+        border-radius: 4px;
       }
       .pe-statement-lead {
         font-size: 13px;
