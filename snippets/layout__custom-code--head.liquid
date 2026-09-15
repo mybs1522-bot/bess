@@ -1112,6 +1112,47 @@ shopify-accelerated-checkout .shopify-payment-button__more-options,
   margin: 0 !important;
   padding: 0 !important;
   pointer-events: none !important;
+}
+
+/* Hardcopy Delivery dynamic visibility */
+body:not(.is-hardcopy-selected) [data-hardcopy-delivery-item="true"],
+body.is-digital-selected [data-hardcopy-delivery-item="true"] {
+  display: none !important;
+}
+
+body.is-hardcopy-selected [data-hardcopy-delivery-item="true"] {
+  display: flex !important;
+}
+
+div.lp6-feature-item[data-hardcopy-delivery-item="true"] {
+  display: block !important;
+}
+body:not(.is-hardcopy-selected) div.lp6-feature-item[data-hardcopy-delivery-item="true"],
+body.is-digital-selected div.lp6-feature-item[data-hardcopy-delivery-item="true"] {
+  display: none !important;
+}
+
+/* 3 Columns in features grid when hardcopy delivery is hidden */
+.lp6-features-grid.lp6-features-3col {
+  grid-template-columns: repeat(3, 1fr) !important;
+  max-width: 660px !important;
+}
+@media (max-width: 680px) {
+  .lp6-features-grid.lp6-features-3col {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+@media (max-width: 480px) {
+  .lp6-features-grid.lp6-features-3col {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Also hide any legacy Booster delivery blocks if hardcopy not selected */
+body:not(.is-hardcopy-selected) [id^="delivery__"],
+body.is-digital-selected [id^="delivery__"] {
+  display: none !important;
+}
 </style>
 
 <script>
@@ -1143,5 +1184,97 @@ shopify-accelerated-checkout .shopify-payment-button__more-options,
   }
   document.addEventListener('booster:content:update', cleanRupees);
   document.addEventListener('booster:currency:changed', cleanRupees);
+})();
+
+/* Dynamic Hardcopy Delivery Visibility */
+(function() {
+  function syncHardcopyDelivery() {
+    try {
+      var isHardcopy = false;
+
+      // 1. Check active swatch cards
+      var activeSwatches = document.querySelectorAll('.luxury-swatch-card.swatch--active, [data-swatch-option].swatch--active');
+      for (var i = 0; i < activeSwatches.length; i++) {
+        var opt = (activeSwatches[i].getAttribute('data-swatch-option') || '').toLowerCase();
+        if (opt.indexOf('hard') !== -1) {
+          isHardcopy = true;
+          break;
+        }
+      }
+
+      // 2. Fallback check variant inputs / select / title
+      if (!isHardcopy) {
+        var selectedTitle = document.querySelector('[data-swatch-selected-name]');
+        if (selectedTitle && selectedTitle.textContent.toLowerCase().indexOf('hard') !== -1) {
+          isHardcopy = true;
+        }
+      }
+
+      // Update body classes
+      if (isHardcopy) {
+        document.body.classList.add('is-hardcopy-selected');
+        document.body.classList.remove('is-digital-selected');
+      } else {
+        document.body.classList.remove('is-hardcopy-selected');
+        document.body.classList.add('is-digital-selected');
+      }
+
+      // Directly toggle hardcopy-specific items
+      var deliveryItems = document.querySelectorAll('[data-hardcopy-delivery-item="true"]');
+      deliveryItems.forEach(function(el) {
+        el.style.setProperty('display', isHardcopy ? '' : 'none', 'important');
+      });
+
+      // Update About section features grid layout
+      var featuresGrid = document.querySelector('.lp6-features-grid');
+      if (featuresGrid) {
+        if (isHardcopy) {
+          featuresGrid.classList.remove('lp6-features-3col');
+        } else {
+          featuresGrid.classList.add('lp6-features-3col');
+        }
+      }
+
+      // Update About section CTA note text
+      var ctaNote = document.getElementById('lp6-cta-delivery-note');
+      if (ctaNote) {
+        ctaNote.textContent = isHardcopy
+          ? 'Instant Digital Download + Tracked Global Delivery'
+          : 'Instant Digital Download · Lifetime Free Updates';
+      }
+
+      // Update refund subtitle in trust bar
+      var refundSub = document.querySelector('.luxury-trust-refund-sub');
+      if (refundSub) {
+        refundSub.textContent = isHardcopy
+          ? 'Hassle-free refunds on physical editions'
+          : '30-day money-back satisfaction guarantee';
+      }
+    } catch(e) {}
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', syncHardcopyDelivery);
+  } else {
+    syncHardcopyDelivery();
+  }
+
+  // Listen to user interactions and theme events
+  document.addEventListener('click', function(e) {
+    if (e.target && e.target.closest && e.target.closest('.luxury-swatch-card, [data-swatch-option], .product__swatches')) {
+      setTimeout(syncHardcopyDelivery, 30);
+      setTimeout(syncHardcopyDelivery, 200);
+    }
+  });
+
+  document.addEventListener('change', function(e) {
+    if (e.target && (e.target.matches('select[data-swatch-index], input[name="id"], input[data-bstr-variant-input]'))) {
+      setTimeout(syncHardcopyDelivery, 30);
+    }
+  });
+
+  document.addEventListener('booster:variant:select', syncHardcopyDelivery);
+  document.addEventListener('booster:swatch:render', syncHardcopyDelivery);
+  document.addEventListener('booster:content:update', syncHardcopyDelivery);
 })();
 </script>
