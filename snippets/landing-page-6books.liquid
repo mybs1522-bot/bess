@@ -189,36 +189,42 @@
                 <img src="{{ 'living_room.png' | asset_url }}" alt="Living Room Design Book" loading="lazy" width="90" height="125" />
               </div>
               <span class="lp6-mini-book-name">Living</span>
+              <span class="lp6-mini-book-pages">140+ Pages</span>
             </div>
             <div class="lp6-mini-book-item" style="--ripple-delay: 0.25s;" onclick="lp6SelectCurriculum(1)">
               <div class="lp6-mini-book-cover">
                 <img src="{{ 'kitchen.png' | asset_url }}" alt="Kitchen Design Book" loading="lazy" width="90" height="125" />
               </div>
               <span class="lp6-mini-book-name">Kitchen</span>
+              <span class="lp6-mini-book-pages">165+ Pages</span>
             </div>
             <div class="lp6-mini-book-item" style="--ripple-delay: 0.5s;" onclick="lp6SelectCurriculum(2)">
               <div class="lp6-mini-book-cover">
                 <img src="{{ 'bedroom.png' | asset_url }}" alt="Bedroom Design Book" loading="lazy" width="90" height="125" />
               </div>
               <span class="lp6-mini-book-name">Bedroom</span>
+              <span class="lp6-mini-book-pages">135+ Pages</span>
             </div>
             <div class="lp6-mini-book-item" style="--ripple-delay: 0.75s;" onclick="lp6SelectCurriculum(3)">
               <div class="lp6-mini-book-cover">
                 <img src="{{ 'washroom.png' | asset_url }}" alt="Washroom Design Book" loading="lazy" width="90" height="125" />
               </div>
               <span class="lp6-mini-book-name">Washroom</span>
+              <span class="lp6-mini-book-pages">120+ Pages</span>
             </div>
             <div class="lp6-mini-book-item" style="--ripple-delay: 1.0s;" onclick="lp6SelectCurriculum(4)">
               <div class="lp6-mini-book-cover">
                 <img src="{{ 'study.png' | asset_url }}" alt="Study Design Book" loading="lazy" width="90" height="125" />
               </div>
               <span class="lp6-mini-book-name">Study</span>
+              <span class="lp6-mini-book-pages">130+ Pages</span>
             </div>
             <div class="lp6-mini-book-item" style="--ripple-delay: 1.25s;" onclick="lp6SelectCurriculum(5)">
               <div class="lp6-mini-book-cover">
                 <img src="{{ 'elevations.png' | asset_url }}" alt="Exteriors &amp; Landscapes Design Book" loading="lazy" width="90" height="125" />
               </div>
               <span class="lp6-mini-book-name">Exteriors</span>
+              <span class="lp6-mini-book-pages">150+ Pages</span>
             </div>
           </div>
         </div>
@@ -765,6 +771,17 @@
   transition: color 0.2s ease;
 }
 
+.lp6-mini-book-pages {
+  font-size: clamp(7.5px, 1.8vw, 9.5px);
+  font-weight: 600;
+  color: #64748b;
+  margin-top: 2px;
+  text-align: center;
+  line-height: 1.15;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
 @keyframes lp6ZoomRipple {
   0%, 100% {
     transform: scale(1) translateY(0);
@@ -791,6 +808,10 @@
 }
 
 .lp6-mini-book-item:hover .lp6-mini-book-name {
+  color: #ea580c;
+}
+
+.lp6-mini-book-item:hover .lp6-mini-book-pages {
   color: #ea580c;
 }
 

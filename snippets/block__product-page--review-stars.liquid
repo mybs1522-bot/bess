@@ -39,36 +39,42 @@
           <img src="{{ 'living_room.png' | asset_url }}" alt="Living Room Book" loading="lazy" width="70" height="98" />
         </div>
         <span class="top-rating-book-name">Living</span>
+        <span class="top-rating-book-pages">140+ Pages</span>
       </div>
       <div class="top-rating-book-item" style="--ripple-delay: 0.25s;" onclick="scrollToCurriculum(1)">
         <div class="top-rating-book-cover">
           <img src="{{ 'kitchen.png' | asset_url }}" alt="Kitchen Book" loading="lazy" width="70" height="98" />
         </div>
         <span class="top-rating-book-name">Kitchen</span>
+        <span class="top-rating-book-pages">165+ Pages</span>
       </div>
       <div class="top-rating-book-item" style="--ripple-delay: 0.5s;" onclick="scrollToCurriculum(2)">
         <div class="top-rating-book-cover">
           <img src="{{ 'bedroom.png' | asset_url }}" alt="Bedroom Book" loading="lazy" width="70" height="98" />
         </div>
         <span class="top-rating-book-name">Bedroom</span>
+        <span class="top-rating-book-pages">135+ Pages</span>
       </div>
       <div class="top-rating-book-item" style="--ripple-delay: 0.75s;" onclick="scrollToCurriculum(3)">
         <div class="top-rating-book-cover">
           <img src="{{ 'washroom.png' | asset_url }}" alt="Washroom Book" loading="lazy" width="70" height="98" />
         </div>
         <span class="top-rating-book-name">Washroom</span>
+        <span class="top-rating-book-pages">120+ Pages</span>
       </div>
       <div class="top-rating-book-item" style="--ripple-delay: 1.0s;" onclick="scrollToCurriculum(4)">
         <div class="top-rating-book-cover">
           <img src="{{ 'study.png' | asset_url }}" alt="Study Book" loading="lazy" width="70" height="98" />
         </div>
         <span class="top-rating-book-name">Study</span>
+        <span class="top-rating-book-pages">130+ Pages</span>
       </div>
       <div class="top-rating-book-item" style="--ripple-delay: 1.25s;" onclick="scrollToCurriculum(5)">
         <div class="top-rating-book-cover">
           <img src="{{ 'elevations.png' | asset_url }}" alt="Exteriors &amp; Landscapes Book" loading="lazy" width="70" height="98" />
         </div>
         <span class="top-rating-book-name">Exteriors</span>
+        <span class="top-rating-book-pages">150+ Pages</span>
       </div>
     </div>
   </div>
@@ -192,6 +198,17 @@
     transition: color 0.2s ease;
   }
 
+  .top-rating-book-pages {
+    font-size: clamp(7.5px, 1.8vw, 9.5px);
+    font-weight: 600;
+    color: #64748b;
+    margin-top: 2px;
+    text-align: center;
+    line-height: 1.15;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+  }
+
   @keyframes topBookZoomRipple {
     0%, 100% {
       transform: scale(1) translateY(0);
@@ -218,6 +235,10 @@
   }
 
   .top-rating-book-item:hover .top-rating-book-name {
+    color: #ea580c;
+  }
+
+  .top-rating-book-item:hover .top-rating-book-pages {
     color: #ea580c;
   }
 </style>
