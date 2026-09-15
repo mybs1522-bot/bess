@@ -413,9 +413,11 @@
     if (rect.top <= triggerOffset) {
       bar.classList.add('arch-sticky-bar--visible');
       bar.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('has-arch-sticky-bar');
     } else {
       bar.classList.remove('arch-sticky-bar--visible');
       bar.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('has-arch-sticky-bar');
     }
   }
 

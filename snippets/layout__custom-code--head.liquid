@@ -1299,14 +1299,19 @@ body.is-digital-selected [id^="delivery__"] {
   display: flex !important;
   align-items: center !important;
   gap: 10px !important;
-  bottom: 92px !important;
+  bottom: 24px !important;
   left: 24px !important;
   right: auto !important;
   z-index: 100000 !important;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, margin 0.2s ease !important;
+  transition: bottom 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, margin 0.2s ease !important;
   box-sizing: border-box !important;
   text-decoration: none !important;
   cursor: pointer !important;
+}
+
+body.has-arch-sticky-bar #recently-bought--holder,
+body:has(.arch-sticky-bar--visible) #recently-bought--holder {
+  bottom: 92px !important;
 }
 
 #recently-bought--holder:hover {
@@ -1441,12 +1446,16 @@ body.is-digital-selected [id^="delivery__"] {
 @media (max-width: 768px) {
   #recently-bought--holder,
   .recently-bought--holder {
-    bottom: 82px !important;
+    bottom: 20px !important;
     left: 14px !important;
     right: auto !important;
     padding: 5px 14px 5px 6px !important;
     gap: 8px !important;
     max-width: calc(100vw - 28px) !important;
+  }
+  body.has-arch-sticky-bar #recently-bought--holder,
+  body:has(.arch-sticky-bar--visible) #recently-bought--holder {
+    bottom: 86px !important;
   }
   #recently-bought--holder .recently-bought--img-ratio {
     width: 36px !important;
