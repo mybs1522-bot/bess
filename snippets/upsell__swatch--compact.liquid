@@ -24,14 +24,18 @@
 
 {% endif %}
 
-{% capture vArray %}{ {%- for variant in product.variants -%}{%- if variant.featured_image != nil and imageOptions -%}
+{% capture vArray %}{ {%- for variant in product.variants -%}
+{%- assign var_double_price = variant.price | times: 2 -%}
+{%- assign var_double_price_money = var_double_price | money | strip_html | replace: 'Rs. ', '₹' | replace: 'Rs.', '₹' | replace: 'Rs ', '₹' -%}
+{%- assign var_price_money = variant.price | money | strip_html | replace: 'Rs. ', '₹' | replace: 'Rs.', '₹' | replace: 'Rs ', '₹' -%}
+{%- if variant.featured_image != nil and imageOptions -%}
 {%- assign img = variant.featured_image | img_url: '100x100' -%}
 {%- for ix in optionIndex -%}
 {%- assign idx = ix | plus: 0 -%}
 {%- assign option = variant.options[idx] | handleize -%}
 {%- assign colorImages = colorImages | append: idx | append: '##'  | append: option | append: '##' | append: img | append: "," -%}
 {%- endfor -%}
-{%-endif-%}"{{variant.id}}": {"available": {{variant.available | json}} ,"id": {{variant.id | json}}, "price_raw": {{variant.price}}, "sale_raw": {{variant.compare_at_price | default: false}}, "price": {{variant.price | money | strip_html | json}}, "sale": {{variant.compare_at_price | money | strip_html | json}}, "options": {{variant.options | json }} }{%- unless forloop.last -%},{% endunless -%}{%- endfor -%}}{%- endcapture %}
+{%-endif-%}"{{variant.id}}": {"available": {{variant.available | json}} ,"id": {{variant.id | json}}, "price_raw": {{variant.price}}, "sale_raw": {{var_double_price}}, "price": {{var_price_money | json}}, "sale": {{var_double_price_money | json}}, "options": {{variant.options | json }} }{%- unless forloop.last -%},{% endunless -%}{%- endfor -%}}{%- endcapture %}
 
 <noscript data-bstr-preselect="{{product.selected_or_first_available_variant.id}}" data-bstr-swatch="{{product.id}}">
 {{vArray}}

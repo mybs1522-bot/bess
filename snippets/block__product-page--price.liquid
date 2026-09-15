@@ -271,7 +271,7 @@
     <span data-tag-product="{{product.id}}" data-tag-type="{{s_type}}" class="tag tag--sale {% if s_type == 'amount' %}jsPrice{% endif %}">
         {%- case s_type %}
             {% when 'percent' %}
-                50% {{'general.tags.off'|t}}
+                -50% {{'general.tags.off'|t}}
             {% when 'amount' %}
                 {{ doubled_compare | minus: current_variant.price | money | strip_html | replace: 'Rs. ', '₹' | replace: 'Rs.', '₹' | replace: 'Rs ', '₹' }}
             {% when 'text' %}
@@ -281,6 +281,100 @@
     {%- endunless -%}
     {% endif %}
     </div>
+
+    <script>
+    (function() {
+      function updateDoubledCutPrice() {
+        var priceEls = document.querySelectorAll('[data-product-price="{{product.id}}"]');
+        var cutPriceEls = document.querySelectorAll('[data-product-price-sale="{{product.id}}"]');
+        var tagEls = document.querySelectorAll('[data-tag-product="{{product.id}}"]');
+        if (!priceEls.length || !cutPriceEls.length) return;
+
+        priceEls.forEach(function(priceEl, index) {
+          var cutPriceEl = cutPriceEls[index] || cutPriceEls[0];
+          if (!cutPriceEl) return;
+          var priceText = priceEl.textContent.trim();
+          var match = priceText.match(/([^\d.,\s]*)\s*([\d.,]+)\s*([^\d.,\s]*)/);
+          if (match) {
+            var prefix = match[1] || '';
+            var numStr = match[2];
+            var suffix = match[3] || '';
+            
+            var cleanNumStr = numStr;
+            if (cleanNumStr.indexOf(',') !== -1 && cleanNumStr.indexOf('.') !== -1) {
+              if (cleanNumStr.lastIndexOf('.') > cleanNumStr.lastIndexOf(',')) {
+                cleanNumStr = cleanNumStr.replace(/,/g, '');
+              } else {
+                cleanNumStr = cleanNumStr.replace(/\./g, '').replace(',', '.');
+              }
+            } else if (cleanNumStr.indexOf(',') !== -1) {
+              var parts = cleanNumStr.split(',');
+              if (parts[1] && parts[1].length === 2) {
+                cleanNumStr = cleanNumStr.replace(',', '.');
+              } else {
+                cleanNumStr = cleanNumStr.replace(/,/g, '');
+              }
+            }
+            
+            var numVal = parseFloat(cleanNumStr);
+            if (!isNaN(numVal) && numVal > 0) {
+              var doubledVal = numVal * 2;
+              var hasDecimals = numStr.includes('.') || numStr.includes(',');
+              var decCount = hasDecimals ? (cleanNumStr.split('.')[1] ? cleanNumStr.split('.')[1].length : 2) : 0;
+              
+              var formattedDoubled;
+              if (numStr.includes(',') && !numStr.includes('.')) {
+                formattedDoubled = doubledVal.toFixed(decCount).replace('.', ',');
+              } else {
+                formattedDoubled = doubledVal.toLocaleString('en-US', {
+                  minimumFractionDigits: decCount,
+                  maximumFractionDigits: decCount
+                });
+              }
+              
+              var newCutPriceText = prefix + formattedDoubled + (suffix ? ' ' + suffix : '');
+              if (cutPriceEl.textContent.trim() !== newCutPriceText) {
+                cutPriceEl.textContent = newCutPriceText;
+              }
+              cutPriceEl.classList.remove('hide');
+            }
+          }
+        });
+
+        tagEls.forEach(function(tagEl) {
+          if (tagEl.dataset.tagType === 'percent' || !tagEl.dataset.tagType) {
+            if (tagEl.textContent.trim() !== '-50% OFF') {
+              tagEl.textContent = '-50% OFF';
+            }
+          }
+          tagEl.classList.remove('hide');
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', updateDoubledCutPrice);
+      } else {
+        updateDoubledCutPrice();
+      }
+      window.addEventListener('load', updateDoubledCutPrice);
+
+      ['booster:variant:select', 'booster:price:update', 'booster:swatch:update', 'booster:content:update'].forEach(function(evt) {
+        document.addEventListener(evt, function() { setTimeout(updateDoubledCutPrice, 10); });
+      });
+
+      var isUpdating = false;
+      var observer = new MutationObserver(function() {
+        if (isUpdating) return;
+        isUpdating = true;
+        updateDoubledCutPrice();
+        setTimeout(function() { isUpdating = false; }, 50);
+      });
+
+      document.querySelectorAll('[data-product-price="{{product.id}}"], [data-product-price-sale="{{product.id}}"]').forEach(function(el) {
+        observer.observe(el, { characterData: true, childList: true, subtree: true });
+      });
+    })();
+    </script>
     
     {% comment %}
     {% blockdef %}
