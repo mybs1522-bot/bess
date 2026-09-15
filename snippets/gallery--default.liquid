@@ -160,7 +160,10 @@
                 const img = activeSlide.querySelector('img');
                 let imgHeight = 0;
 
-                if (img && img.offsetHeight > 50) {
+                if (img && img.naturalWidth && img.naturalHeight) {
+                    const currentW = activeSlide.offsetWidth || slider.offsetWidth || (window.innerWidth - 100);
+                    imgHeight = Math.round((img.naturalHeight / img.naturalWidth) * currentW);
+                } else if (img && img.offsetHeight > 50) {
                     imgHeight = img.offsetHeight;
                 } else if (img && img.getAttribute('height') && img.getAttribute('width')) {
                     const w = parseFloat(img.getAttribute('width'));
@@ -182,7 +185,7 @@
                 holder.style.height = totalTargetHeight + 'px';
                 holder.style.maxHeight = totalTargetHeight + 'px';
                 if (thumbHolder) {
-                    thumbHolder.style.maxHeight = totalTargetHeight + 'px';
+                    thumbHolder.style.maxHeight = Math.max(totalTargetHeight, 280) + 'px';
                 }
 
                 if (!animated) {
