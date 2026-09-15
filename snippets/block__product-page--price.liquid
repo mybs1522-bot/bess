@@ -24,7 +24,7 @@
     {% if product.handle == '6-books-for-interior-exterior-design' %}
     <div class="product-editorial-block">
       <h2 class="pe-headline-primary">
-        Books You Can Refer to Design Kitchens, Living Spaces, Bedrooms, Washrooms, Study &amp; Exteriors
+        <span class="pe-headline-light">Books You Can Refer to Design</span> <strong class="pe-headline-books">Kitchens, Living Spaces, Bedrooms, Washrooms, Study &amp; Exteriors</strong>
       </h2>
 
       <div class="pe-statement-block">
@@ -57,11 +57,17 @@
     }
     .pe-headline-primary {
       font-size: clamp(17px, 2.4vw, 24px);
-      font-weight: 900;
-      color: #0f172a;
       line-height: 1.35;
       letter-spacing: -0.025em;
-      margin: 0 0 12px 0;
+      margin: 0 0 14px 0;
+    }
+    .pe-headline-light {
+      font-weight: 500;
+      color: #334155;
+    }
+    .pe-headline-books {
+      font-weight: 900;
+      color: #0f172a;
     }
     .pe-highlight-beige {
       display: inline-block;
