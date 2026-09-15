@@ -1,95 +1,100 @@
-{% if product.images.size > 5 %}
-    <button data-thumbnail_slide="-" class="thumbnail--slide hide-mobile" aria-label="Previous"><i class="uil uil-angle-left-b"></i></button>
-{% endif %}
-<div class="gallery__thumbnails hidden-scroll">
-    {% for image in product.images %}
-        <span class="gallery__thumbnail {% if forloop.first %}bstrSlider__thumb--active{%endif%}" data-media-type="image" data-bstr-slider-for="{{section.id}}" data-bstr-slider-thumb="{{forloop.index0}}"
-        {% if section.settings.autoChange %}data-bstr-slider-thumb-hover{% endif %}
-            >
-            <img height="{{image.height}}" width="{{image.width}}" src="{{image.src|img_url: '200x'}}" alt="Thumbnail for {{image.alt}}">
-        </span>
-        {% assign currentIndex = forloop.index0 | plus: 1 %}
-    {% endfor %}
-    {% for media in product.media %}
-        {% case media.media_type %}
-            {% when 'image' %}
-                {% continue %}
-            {% when 'external_video' %}
-                <span data-media-type="{{media.id}}" class="gallery__thumbnail" data-bstr-slider-for="{{section.id}}" data-bstr-slider-thumb="{{currentIndex}}"
-                {% if section.settings.autoChange %}data-bstr-slider-thumb-hover{% endif %}>
-                    {% render 'image', size: '200x', src: media, alt: media.alt %}
-                </span>
-                {% assign currentIndex = currentIndex | plus: 1 %}
-            {% when 'video' %}
-                <span data-media-type="{{media.id}}" class="gallery__thumbnail" data-bstr-slider-for="{{section.id}}" data-bstr-slider-thumb="{{currentIndex}}"
-                {% if section.settings.autoChange %}data-bstr-slider-thumb-hover{% endif %}>
-                    {% render 'image', size: '200x', src: media, alt: media.alt %}
-                </span>
-                {% assign currentIndex = currentIndex | plus: 1 %}
-            {% when 'model' %}
-                <span data-media-type="{{media.id}}" class="gallery__thumbnail" data-bstr-slider-for="{{section.id}}" data-bstr-slider-thumb="{{currentIndex}}"
-                {% if section.settings.autoChange %}data-bstr-slider-thumb-hover{% endif %}>
-                    {% render 'image', size: '200x', src: media, alt: media.alt %}
-                </span>
-                {% assign currentIndex = currentIndex | plus: 1 %}
-    {% endcase %}
-    {% endfor %}
-</div>
-{% if product.images.size > 5 %}
-    <button data-thumbnail_slide="+" class="thumbnail--slide thumbnail--slide-next hide-mobile" aria-label="Next"><i class="uil uil-angle-right-b"></i></button>
-{% endif %}
-
-<div class="slider--product__holder" data-bstr-ppslider="{{section.id}}">
 <div class="arch-image-top-bar">
   <span class="arch-image-top-bar__text">
     Made with <span class="arch-heart-emoji">❤️</span> for Home Owners, Interior Designers &amp; Architects
   </span>
 </div>
-{% if product.images.size > 1 %}
-    <button data-bstr-slider-button="-" class="slider__button hide-mobile" aria-label="Previous"><i class="uil uil-angle-left-b"></i></button>
-    <button data-bstr-slider-button="+" class="slider__button slider__button--next hide-mobile" aria-label="Next"><i class="uil uil-angle-right-b"></i></button>
-{% endif %}
-<div class="slider--product" data-bstr-slider-height="auto" data-bstr-slider-orientation="horizontal" data-bstr-slide-holder="1" data-bstr-slider-current="0">
-    {% if product.images.size == 0 and product.media.size == 0 %}
-        <div class="slide--product book-cover-placeholder-wrap" data-bstr-slide style="text-align: center;">
-            <img 
-                src="{{ 'kitchen-book.png' | asset_url }}" 
-                alt="{{ product.title }}" 
-                class="lazyload" 
-                style="max-width: 360px; width: 100%; border-radius: 14px; box-shadow: -10px 18px 35px rgba(0,0,0,0.25); border-left: 6px solid #ea580c; display: block; margin: 0 auto; transition: transform 0.3s ease;"
-                onerror="this.src='https://d1yei2z3i6k35z.cloudfront.net/13138299/685712e3dfc75_Your-Numbered-Points-Title-Comes-Right-Here1.jpg'"
-            />
-            <p class="book-cover-hint" style="color: #ea580c; background: #fff7ed; border: 1px solid #fed7aa; margin-top: 14px; font-weight: 700; font-size: 12px; display: inline-block; padding: 6px 16px; border-radius: 20px;">
-              ✨ 150 Pages · Handmade Diagrams · Real Dimensions
-            </p>
-        </div>
+
+<div class="gallery__main-row">
+  <div class="slider--product__holder" data-bstr-ppslider="{{section.id}}">
+    {% if product.images.size > 1 %}
+        <button data-bstr-slider-button="-" class="slider__button hide-mobile" aria-label="Previous"><i class="uil uil-angle-left-b"></i></button>
+        <button data-bstr-slider-button="+" class="slider__button slider__button--next hide-mobile" aria-label="Next"><i class="uil uil-angle-right-b"></i></button>
     {% endif %}
-    {% for image in product.images %}
-        <div data-variants="|{% for var in image.variants %}{{var.options| join: '#' | escape}}|{% endfor %}" class="slide--product {% if isAutoZoom %}zoom{% endif %}" data-bstr-slide>
-            <img height="{{image.height}}" width="{{image.width}}" loading="lazy"  class="lazyload {% if isAutoZoom %}image-zoom{% endif %}" alt="{{image.alt | escape}}" src="{{ image.src | img_url: '1280x' }}" data-zoom="{{ image | img_url: '1024x1024', scale: 2 }}">
-        </div>
-    {% endfor %}
-    {% for media in product.media %}
-        {% case media.media_type %}
-            {% when 'image' %}
-                {% continue %}
-            {% when 'external_video' %}
-                <div class="external__holder slide--product" data-bstr-slide data-media-holder="{{media.id}}" style="padding-top: {{ 1 | divided_by: media.aspect_ratio | times: 100}}%;">
-                    {% capture med %}{{ media | external_video_tag: class: 'gallery__external lazyload' }}{% endcapture %}
-                    {{med | replace_first: 'src', 'data-src'}}
-                </div>
-            {% when 'video' %}
-                <div class="video__holder slide--product" data-bstr-slide data-media-holder="{{media.id}}">
-                    {% capture med %}{{ media | video_tag: class: 'gallery__video lazyload' }}{% endcapture %}
-                    {{med | replace_first: 'src', 'data-src' | replace_first: 'poster=', 'controls=true poster='}}
-                </div>
-            {% when 'model' %}
-                <div class="video__holder model__holder slide--product" data-bstr-slide data-media-holder="{{media.id}}">
-                    {{ media | model_viewer_tag }}
-                </div>
-        {% endcase %}
-    {% endfor %}
+    <div class="slider--product" data-bstr-slider-height="auto" data-bstr-slider-orientation="horizontal" data-bstr-slide-holder="1" data-bstr-slider-current="0">
+        {% if product.images.size == 0 and product.media.size == 0 %}
+            <div class="slide--product book-cover-placeholder-wrap" data-bstr-slide style="text-align: center;">
+                <img 
+                    src="{{ 'kitchen-book.png' | asset_url }}" 
+                    alt="{{ product.title }}" 
+                    class="lazyload" 
+                    style="max-width: 360px; width: 100%; border-radius: 14px; box-shadow: -10px 18px 35px rgba(0,0,0,0.25); border-left: 6px solid #ea580c; display: block; margin: 0 auto; transition: transform 0.3s ease;"
+                    onerror="this.src='https://d1yei2z3i6k35z.cloudfront.net/13138299/685712e3dfc75_Your-Numbered-Points-Title-Comes-Right-Here1.jpg'"
+                />
+                <p class="book-cover-hint" style="color: #ea580c; background: #fff7ed; border: 1px solid #fed7aa; margin-top: 14px; font-weight: 700; font-size: 12px; display: inline-block; padding: 6px 16px; border-radius: 20px;">
+                  ✨ 150 Pages · Handmade Diagrams · Real Dimensions
+                </p>
+            </div>
+        {% endif %}
+        {% for image in product.images %}
+            <div data-variants="|{% for var in image.variants %}{{var.options| join: '#' | escape}}|{% endfor %}" class="slide--product {% if isAutoZoom %}zoom{% endif %}" data-bstr-slide>
+                <img height="{{image.height}}" width="{{image.width}}" loading="lazy"  class="lazyload {% if isAutoZoom %}image-zoom{% endif %}" alt="{{image.alt | escape}}" src="{{ image.src | img_url: '1280x' }}" data-zoom="{{ image | img_url: '1024x1024', scale: 2 }}">
+            </div>
+        {% endfor %}
+        {% for media in product.media %}
+            {% case media.media_type %}
+                {% when 'image' %}
+                    {% continue %}
+                {% when 'external_video' %}
+                    <div class="external__holder slide--product" data-bstr-slide data-media-holder="{{media.id}}" style="padding-top: {{ 1 | divided_by: media.aspect_ratio | times: 100}}%;">
+                        {% capture med %}{{ media | external_video_tag: class: 'gallery__external lazyload' }}{% endcapture %}
+                        {{med | replace_first: 'src', 'data-src'}}
+                    </div>
+                {% when 'video' %}
+                    <div class="video__holder slide--product" data-bstr-slide data-media-holder="{{media.id}}">
+                        {% capture med %}{{ media | video_tag: class: 'gallery__video lazyload' }}{% endcapture %}
+                        {{med | replace_first: 'src', 'data-src' | replace_first: 'poster=', 'controls=true poster='}}
+                    </div>
+                {% when 'model' %}
+                    <div class="video__holder model__holder slide--product" data-bstr-slide data-media-holder="{{media.id}}">
+                        {{ media | model_viewer_tag }}
+                    </div>
+            {% endcase %}
+        {% endfor %}
     </div>
+  </div>
+
+  <div class="gallery__thumbnails-side">
+    {% if product.images.size > 5 %}
+        <button data-thumbnail_slide="-" class="thumbnail--slide thumbnail--slide-up hide-mobile" aria-label="Previous"><i class="uil uil-angle-up"></i></button>
+    {% endif %}
+    <div class="gallery__thumbnails hidden-scroll">
+        {% for image in product.images %}
+            <span class="gallery__thumbnail {% if forloop.first %}bstrSlider__thumb--active{%endif%}" data-media-type="image" data-bstr-slider-for="{{section.id}}" data-bstr-slider-thumb="{{forloop.index0}}"
+            {% if section.settings.autoChange %}data-bstr-slider-thumb-hover{% endif %}
+                >
+                <img height="{{image.height}}" width="{{image.width}}" src="{{image.src|img_url: '200x'}}" alt="Thumbnail for {{image.alt}}">
+            </span>
+            {% assign currentIndex = forloop.index0 | plus: 1 %}
+        {% endfor %}
+        {% for media in product.media %}
+            {% case media.media_type %}
+                {% when 'image' %}
+                    {% continue %}
+                {% when 'external_video' %}
+                    <span data-media-type="{{media.id}}" class="gallery__thumbnail" data-bstr-slider-for="{{section.id}}" data-bstr-slider-thumb="{{currentIndex}}"
+                    {% if section.settings.autoChange %}data-bstr-slider-thumb-hover{% endif %}>
+                        {% render 'image', size: '200x', src: media, alt: media.alt %}
+                    </span>
+                    {% assign currentIndex = currentIndex | plus: 1 %}
+                {% when 'video' %}
+                    <span data-media-type="{{media.id}}" class="gallery__thumbnail" data-bstr-slider-for="{{section.id}}" data-bstr-slider-thumb="{{currentIndex}}"
+                    {% if section.settings.autoChange %}data-bstr-slider-thumb-hover{% endif %}>
+                        {% render 'image', size: '200x', src: media, alt: media.alt %}
+                    </span>
+                    {% assign currentIndex = currentIndex | plus: 1 %}
+                {% when 'model' %}
+                    <span data-media-type="{{media.id}}" class="gallery__thumbnail" data-bstr-slider-for="{{section.id}}" data-bstr-slider-thumb="{{currentIndex}}"
+                    {% if section.settings.autoChange %}data-bstr-slider-thumb-hover{% endif %}>
+                        {% render 'image', size: '200x', src: media, alt: media.alt %}
+                    </span>
+                    {% assign currentIndex = currentIndex | plus: 1 %}
+            {% endcase %}
+        {% endfor %}
+    </div>
+    {% if product.images.size > 5 %}
+        <button data-thumbnail_slide="+" class="thumbnail--slide thumbnail--slide-down hide-mobile" aria-label="Next"><i class="uil uil-angle-down"></i></button>
+    {% endif %}
+  </div>
 </div>
 
 <script defer="defer">
@@ -132,6 +137,9 @@
                         holder.style.height = '';
                         holder.style.maxHeight = '';
                     }
+                    if (thumbHolder) {
+                        thumbHolder.style.maxHeight = '';
+                    }
                     return;
                 }
                 if (!holder || !slider) return;
@@ -157,20 +165,13 @@
                 } else if (img && img.getAttribute('height') && img.getAttribute('width')) {
                     const w = parseFloat(img.getAttribute('width'));
                     const h = parseFloat(img.getAttribute('height'));
-                    const currentW = activeSlide.offsetWidth || slider.offsetWidth || (window.innerWidth - 28);
+                    const currentW = activeSlide.offsetWidth || slider.offsetWidth || (window.innerWidth - 100);
                     imgHeight = Math.round((h / w) * currentW);
                 } else {
-                    imgHeight = 260;
+                    imgHeight = 280;
                 }
 
-                const topBar = holder.querySelector('.arch-image-top-bar');
-                let topBarHeight = 0;
-                if (topBar) {
-                    const s = window.getComputedStyle(topBar);
-                    topBarHeight = topBar.offsetHeight + parseFloat(s.marginTop || 0) + parseFloat(s.marginBottom || 0);
-                }
-
-                const totalTargetHeight = imgHeight + topBarHeight;
+                const totalTargetHeight = imgHeight;
 
                 if (!animated) {
                     holder.style.transition = 'none';
@@ -180,6 +181,9 @@
 
                 holder.style.height = totalTargetHeight + 'px';
                 holder.style.maxHeight = totalTargetHeight + 'px';
+                if (thumbHolder) {
+                    thumbHolder.style.maxHeight = totalTargetHeight + 'px';
+                }
 
                 if (!animated) {
                     requestAnimationFrame(() => {
@@ -188,12 +192,12 @@
                 }
             }
 
-            // Smooth Auto-Center Active Thumbnail on Mobile
+            // Smooth Auto-Center Active Thumbnail in Vertical Column
             if (thumbHolder) {
                 const centerActiveThumb = (target) => {
-                    if (!target || window.innerWidth >= 790) return;
-                    const scrollTarget = target.offsetLeft - (thumbHolder.offsetWidth / 2) + (target.offsetWidth / 2);
-                    thumbHolder.scrollTo({ left: Math.max(0, scrollTarget), behavior: 'smooth' });
+                    if (!target) return;
+                    const scrollTarget = target.offsetTop - (thumbHolder.offsetHeight / 2) + (target.offsetHeight / 2);
+                    thumbHolder.scrollTo({ top: Math.max(0, scrollTarget), behavior: 'smooth' });
                 };
 
                 const observer = new MutationObserver((mutations) => {
