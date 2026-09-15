@@ -84,7 +84,7 @@
       <div id="quickbuy__modal" class="modal"><div onclick="closeModal(event)" class="overlay"></div><div class="content"></div></div>
 
       {% if settings.recentlyBought %}
-        <a id="recently-bought--holder" class="recently-bought--holder {% unless settings.recentlyBoughtMobile -%}hide-mobile{%-endunless-%}">
+        <a id="recently-bought--holder" class="recently-bought--holder" aria-label="Recent purchase notification">
           <div class="recently-bought--img-ratio"><div class="recently-bought--img"><img src=""></div></div>
           <div class="recently-bought--info">
             <div class="recently-bought--who"></div>
