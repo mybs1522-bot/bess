@@ -22,105 +22,167 @@
     {% assign s_type = settings.saleType | default: 'percent' %}
 
     {% if product.handle == '6-books-for-interior-exterior-design' %}
-    <div class="book-pointers-container">
-      <div class="book-pointer-item">
-        <span class="book-pointer-icon-wrap" aria-hidden="true">
-          <svg class="book-pointer-tick-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="10" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
-            <path d="M8 12.2L10.8 15L16 9.5" stroke="#059669" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-        <span class="book-pointer-text"><strong>Handmade Visual Standards:</strong> Over 800 hand-drawn blueprints, ergonomic clearances, and interior dimensions.</span>
+    <div class="product-editorial-block">
+      <h2 class="pe-headline-primary">
+        You Refer to Design<br>
+        <span class="pe-highlight-beige">Best Interiors &amp; Exteriors</span><br>
+        <span class="pe-highlight-beige">Possible</span>
+      </h2>
+
+      <div class="pe-dash-indicator" aria-hidden="true">
+        <span class="pe-dash dark"></span>
+        <span class="pe-dash dark"></span>
+        <span class="pe-dash dark"></span>
+        <span class="pe-dash green"></span>
       </div>
-      <div class="book-pointer-item">
-        <span class="book-pointer-icon-wrap" aria-hidden="true">
-          <svg class="book-pointer-tick-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="10" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
-            <path d="M8 12.2L10.8 15L16 9.5" stroke="#059669" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-        <span class="book-pointer-text"><strong>Comprehensive 6-Volume Set:</strong> Dedicated editions for <strong>Kitchens</strong>, <strong>Bathrooms</strong>, <strong>Living Spaces</strong>, <strong>Bedrooms</strong>, and <strong>Landscapes</strong>.</span>
-      </div>
-      <div class="book-pointer-item">
-        <span class="book-pointer-icon-wrap" aria-hidden="true">
-          <svg class="book-pointer-tick-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="10" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
-            <path d="M8 12.2L10.8 15L16 9.5" stroke="#059669" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-        <span class="book-pointer-text"><strong>Site-Ready Practical Execution:</strong> Real-world dimensional rules and exact layouts to eliminate costly contractor mistakes.</span>
-      </div>
-      <div class="book-pointer-item">
-        <span class="book-pointer-icon-wrap" aria-hidden="true">
-          <svg class="book-pointer-tick-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="10" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
-            <path d="M8 12.2L10.8 15L16 9.5" stroke="#059669" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-        <span class="book-pointer-text"><strong>Free Lifetime Updates:</strong> Receive all upcoming monthly volume additions, revisions, and instant digital access.</span>
+
+      <p class="pe-subhead-tagline">
+        Handmade diagrams. Real dimensions. Zero guesswork.
+      </p>
+
+      <div class="pe-statement-block">
+        <h3 class="pe-statement-heading">
+          Handmade Diagrams.<br>
+          Real Dimensions.<br>
+          No Guesswork. <mark class="pe-mark-yellow">No Regrets.</mark>
+        </h3>
+        <p class="pe-statement-lead">
+          Let's be honest: designing a home is not just picking tiles and cabinets. It's <strong>the heart of your life</strong>, and one wrong decision can turn your dream home into a daily frustration.
+        </p>
+
+        <div class="pe-solution-card">
+          <p class="pe-solution-eyebrow">But here's the good news:</p>
+          <p class="pe-solution-text">
+            We created 6 practical, step-by-step books that don't just inspire, they <span class="pe-text-orange">guide you like a</span> <span class="pe-text-green">professional designer</span>.
+          </p>
+        </div>
       </div>
     </div>
 
     <style>
-    .book-pointers-container {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 8px;
-      margin-bottom: 18px;
+    .product-editorial-block {
+      margin: 8px 0 18px 0;
+      text-align: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      box-sizing: border-box;
+      width: 100%;
     }
-    .book-pointer-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 11px;
+    .pe-headline-primary {
+      font-size: clamp(22px, 3.2vw, 30px);
+      font-weight: 900;
+      color: #0f172a;
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+      margin: 0 0 12px 0;
     }
-    .book-pointer-icon-wrap {
-      flex-shrink: 0;
-      display: inline-flex;
+    .pe-highlight-beige {
+      display: inline-block;
+      background: #fef08a;
+      color: #0f172a;
+      padding: 2px 10px;
+      border-radius: 6px;
+      margin: 2px 0;
+    }
+    .pe-dash-indicator {
+      display: flex;
       align-items: center;
       justify-content: center;
-      margin-top: 2px;
+      gap: 7px;
+      margin: 12px 0;
     }
-    .book-pointer-tick-icon {
-      width: 20px;
-      height: 20px;
-      display: block;
-      filter: drop-shadow(0 1px 2px rgba(5, 150, 105, 0.12));
+    .pe-dash {
+      display: inline-block;
+      width: 22px;
+      height: 4px;
+      border-radius: 999px;
     }
-    .book-pointer-text {
-      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      font-size: 14.5px;
+    .pe-dash.dark {
+      background: #334155;
+    }
+    .pe-dash.green {
+      background: #10b981;
+    }
+    .pe-subhead-tagline {
+      font-size: 14px;
       font-weight: 500;
-      line-height: 1.48;
-      color: #374151;
+      color: #475569;
+      margin: 0 0 20px 0;
       letter-spacing: -0.01em;
     }
-    .book-pointer-text strong {
+    .pe-statement-block {
+      margin-top: 8px;
+    }
+    .pe-statement-heading {
+      font-size: clamp(21px, 3vw, 28px);
+      font-weight: 900;
+      color: #0f172a;
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+      margin: 0 0 12px 0;
+    }
+    .pe-mark-yellow {
+      display: inline-block;
+      background: #facc15;
+      color: #0f172a;
+      padding: 2px 10px;
+      border-radius: 6px;
+    }
+    .pe-statement-lead {
+      font-size: 14px;
+      line-height: 1.55;
+      color: #475569;
+      max-width: 520px;
+      margin: 0 auto 16px auto;
+    }
+    .pe-statement-lead strong {
       font-weight: 700;
-      color: #111827;
+      color: #0f172a;
+    }
+    .pe-solution-card {
+      background: #fdfbf7;
+      border: 1px solid #ede5d8;
+      border-radius: 14px;
+      padding: 14px 18px;
+      max-width: 520px;
+      margin: 0 auto 14px auto;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+    }
+    .pe-solution-eyebrow {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #0f172a;
+      margin: 0 0 5px 0;
+    }
+    .pe-solution-text {
+      font-size: 15px;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.4;
+      margin: 0;
+    }
+    .pe-text-orange {
+      color: #ea580c;
+    }
+    .pe-text-green {
+      color: #059669;
     }
     @media (max-width: 640px) {
-      .product__review-stars {
-        margin-bottom: 2px !important;
+      .pe-headline-primary {
+        font-size: 22px;
       }
-      .book-editorial-rating-wrapper {
-        margin-bottom: 6px !important;
+      .pe-statement-heading {
+        font-size: 20px;
       }
-      .book-pointers-container {
-        gap: 10px;
-        margin-top: 6px;
-        margin-bottom: 15px;
+      .pe-statement-lead {
+        font-size: 13px;
       }
-      .book-pointer-item {
-        gap: 10px;
+      .pe-solution-text {
+        font-size: 14px;
       }
-      .book-pointer-text {
-        font-size: 13.5px !important;
-        line-height: 1.42 !important;
-      }
-      .book-pointer-tick-icon {
-        width: 18px;
-        height: 18px;
+      .pe-solution-card {
+        padding: 12px 14px;
       }
     }
 
