@@ -34,23 +34,35 @@
             </div>
             {% render 'add-to-cart-button', type: 'secondary', price: product.price, text: 'Buy Now', is_buy_now: true %}
         </div>
-        {% if settings.dynamicCheckout %}
-            <div data-dynamic-button="{{product.id}}"  class="col-12 no-gap checkout--dynamic">
-            {{ form | payment_button }}
-            {% comment %} {% if additional_checkout_buttons %}
-                {{ content_for_additional_checkout_buttons }}
-            {% endif %} {% endcomment %}
-            </div>
-            <div class="product__shoppay-installments" style="margin-top: 8px; margin-bottom: 2px; text-align: center; width: 100%;">
-              {{ form | payment_terms }}
-            </div>
-        {% endif %}
+        {% comment %} Dynamic checkout removed - only Buy Now button is displayed {% endcomment %}
     {% else %}
         {% render 'sold-out-button', disabled: 'disabled' %}
     {%endif%}
 </div>
 
 <style>
+/* Remove/hide dynamic checkout button (Buy it now / Shop Pay / PayPal) and installments completely */
+.checkout--dynamic,
+[data-dynamic-button],
+.shopify-payment-button,
+.shopify-payment-button__button,
+shopify-accelerated-checkout,
+.product__shoppay-installments,
+.hide-non-dollar-btn,
+body.non-dollar-currency .checkout--dynamic,
+body.non-dollar-currency [data-dynamic-button],
+body.non-dollar-currency .shopify-payment-button,
+body.non-dollar-currency .product__shoppay-installments {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+}
+
 /* Remove More Payment Options */
 .shopify-payment-button__more-options,
 [data-testid="MorePaymentOptionsButton"],
@@ -497,23 +509,76 @@ window.executeDirectBuyNow = function(e, btn) {
     pillCut.textContent = source.replace(match[0], formattedNum);
   }
 
+  function checkCurrencyAndToggleDynamicButton() {
+    var isDollar = true;
+    
+    if (window.Shopify && window.Shopify.currency && window.Shopify.currency.active) {
+      var activeCur = (window.Shopify.currency.active || '').toUpperCase();
+      var dollarCurrencies = ['USD', 'CAD', 'AUD', 'NZD', 'SGD', 'HKD'];
+      isDollar = dollarCurrencies.indexOf(activeCur) !== -1;
+    } else {
+      var priceEl = document.querySelector('[data-product-price], .product__price, .arch-pill-price-active');
+      if (priceEl) {
+        var txt = (priceEl.textContent || '').trim();
+        if (txt.includes('₹') || txt.includes('Rs') || txt.includes('€') || txt.includes('£') || txt.includes('AED') || txt.includes('¥')) {
+          isDollar = false;
+        } else if (txt.includes('$') || txt.includes('USD')) {
+          isDollar = true;
+        }
+      }
+    }
+
+    var dynamicBtns = document.querySelectorAll('.checkout--dynamic, [data-dynamic-button], .product__shoppay-installments');
+    if (isDollar) {
+      document.body.classList.remove('non-dollar-currency');
+      dynamicBtns.forEach(function(el) {
+        el.classList.remove('hide-non-dollar-btn');
+        if (el.style.display === 'none') el.style.display = '';
+      });
+    } else {
+      document.body.classList.add('non-dollar-currency');
+      dynamicBtns.forEach(function(el) {
+        el.classList.add('hide-non-dollar-btn');
+        el.style.display = 'none';
+      });
+    }
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() {
       initPillTimer();
       syncPillPrice();
+      checkCurrencyAndToggleDynamicButton();
     });
   } else {
     initPillTimer();
     syncPillPrice();
+    checkCurrencyAndToggleDynamicButton();
   }
   setInterval(initPillTimer, 1000);
 
-  document.addEventListener('booster:currency:changed', syncPillPrice);
-  document.addEventListener('booster:content:update', syncPillPrice);
+  document.addEventListener('booster:currency:changed', function() {
+    syncPillPrice();
+    checkCurrencyAndToggleDynamicButton();
+  });
+  document.addEventListener('booster:content:update', function() {
+    syncPillPrice();
+    checkCurrencyAndToggleDynamicButton();
+  });
   document.addEventListener('change', function(e) {
-    if (e.target && (e.target.matches('[data-swatch-index]') || e.target.name === 'id')) {
-      setTimeout(syncPillPrice, 100);
+    if (e.target && (e.target.matches('[data-swatch-index]') || e.target.name === 'id' || e.target.matches('[data-currency-selector]'))) {
+      setTimeout(function() {
+        syncPillPrice();
+        checkCurrencyAndToggleDynamicButton();
+      }, 100);
     }
   });
+
+  var currencyCheckAttempts = 0;
+  var currencyCheckTimer = setInterval(function() {
+    checkCurrencyAndToggleDynamicButton();
+    currencyCheckAttempts++;
+    if (currencyCheckAttempts > 25) clearInterval(currencyCheckTimer);
+  }, 200);
 })();
 </script>
