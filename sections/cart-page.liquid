@@ -20,12 +20,18 @@
     {% assign totalAmount = 0 %}
     {% for item in cart.items %}
     {% assign product = item.variant %}
+    {% assign item_vtitle = item.variant.title | downcase %}
+    {% assign is_ebook_item = false %}
+    {% if item_vtitle contains 'e-book' or item_vtitle contains 'ebook' or item.variant.requires_shipping == false %}
+      {% assign is_ebook_item = true %}
+    {% endif %}
     <div class="col-12 cart__item">
         <div class="col-11 col-md-4 cart__info">
             <a class="card__img--container minicart__image" href="{{ item.url | within: collections.all }}">
                 <div class="card__img--ratio">
                     <div class="card__img">
-                        {% render 'image', src: item, alt: item.title | escape , size: 'medium' %}
+                        {% assign item_alt = item.title | escape %}
+                        {% render 'image', src: item, alt: item_alt, size: 'medium' %}
                     </div>
                 </div>
             </a>
@@ -42,19 +48,27 @@
 
                 <div class="col-12 no-gap hide-desktop cart__qtyTotal--holder">
                     <div class="col-12 no-gap cart__quantity start">
-                        <div class="quantity--input">
+                        <div class="quantity--input" {% if is_ebook_item %}data-is-ebook="true"{% endif %}>
                             <button class="quantity--input__button quantity--input__incr"
                                 onclick="cartPage.quantityHandler(event, false)">-</button>
                             <!--
 --><input class="quantity--input__input" value={{item.quantity}} data-qty-input data-qty-int-input data-variant-id={{item.key}}
                                 onchange="cartPage.updateQuantity(event)"
                                 type="number" min="0"
-                                {% if item.variant.inventory_management %}max="{{ item.variant.inventory_quantity}}"
+                                {% if is_ebook_item %}max="1" readonly
+                                {% elsif item.variant.inventory_management %}max="{{ item.variant.inventory_quantity}}"
                                 {% endif%}>
                             <!--
---><button class="quantity--input__button quantity--input__decr"
+-->{% if is_ebook_item %}
+                                <button class="quantity--input__button quantity--input__decr" disabled style="opacity: 0.35; cursor: not-allowed; pointer-events: none;" title="Max 1 copy of digital eBook per order" type="button">+</button>
+                            {% else %}
+                                <button class="quantity--input__button quantity--input__decr"
                                 onclick="cartPage.quantityHandler(event, true)">+</button>
+                            {% endif %}
                         </div>
+                        {% if is_ebook_item %}
+                            <span style="display: block; font-size: 11px; font-weight: 700; color: #0284c7; margin-top: 4px;">Digital eBook (Max 1)</span>
+                        {% endif %}
                     </div>
                     <div class="col-12 no-gap cart__ptotal start unflex">
                         {%- if item.original_line_price != item.line_price -%}{{ item.original_line_price | money | strip_html }}{%- endif -%}
@@ -84,20 +98,24 @@
             {% endif %}
         </div>
         <div class="col-5 col-md-5 cart__qtyTotal--holder hide-mobile">
-            <div class="col-12 col-md-7 cart__quantity center">
-                <div class="quantity--input">
+                <div class="quantity--input" {% if is_ebook_item %}data-is-ebook="true"{% endif %}>
                     <button class="quantity--input__button quantity--input__incr"
                         onclick="cartPage.quantityHandler(event, false)">-</button>
                     <!--
 --><input class="quantity--input__input" value={{item.quantity}} data-qty-input data-variant-id={{item.key}}
                         name="updates[]" id="updates_{{item.key}}" data-qty-int-input onchange="cartPage.updateQuantity(event)" type="number"
-                        min="0" {% if item.variant.inventory_policy != "continue" %}max="{{ item.variant.inventory_quantity}}"
-                        {% endif%}>
+                        min="0" {% if is_ebook_item %}max="1" readonly{% elsif item.variant.inventory_policy != "continue" %}max="{{ item.variant.inventory_quantity}}"{% endif%}>
                     <!--
---><button class="quantity--input__button quantity--input__decr"
+-->{% if is_ebook_item %}
+                        <button class="quantity--input__button quantity--input__decr" disabled style="opacity: 0.35; cursor: not-allowed; pointer-events: none;" title="Max 1 copy of digital eBook per order" type="button">+</button>
+                    {% else %}
+                        <button class="quantity--input__button quantity--input__decr"
                         onclick="cartPage.quantityHandler(event, true)">+</button>
+                    {% endif %}
                 </div>
-            </div>
+                {% if is_ebook_item %}
+                    <span style="display: block; font-size: 11px; font-weight: 700; color: #0284c7; margin-top: 4px; text-align: center;">Digital eBook (Max 1)</span>
+                {% endif %}
             <div class="col-12 col-md-5 cart__ptotal center unflex">
                 {%- if item.original_line_price != item.line_price -%}
                     <div class="cart-item__discounted-prices">

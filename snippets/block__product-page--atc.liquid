@@ -63,6 +63,20 @@ body.non-dollar-currency .product__shoppay-installments {
   opacity: 0 !important;
 }
 
+/* Digital eBook fixed quantity of 1 (hide product page quantity picker when eBook is selected) */
+body:not(.is-hardcopy-selected) .product__atc-row .quantity--input,
+body.is-digital-selected .product__atc-row .quantity--input {
+  display: none !important;
+}
+
+body:not(.is-hardcopy-selected) .product__atc-row .button--buy-now,
+body:not(.is-hardcopy-selected) .product__atc-row [data-buy-button],
+body.is-digital-selected .product__atc-row .button--buy-now,
+body.is-digital-selected .product__atc-row [data-buy-button] {
+  flex: 1 1 100% !important;
+  width: 100% !important;
+}
+
 /* Remove More Payment Options */
 .shopify-payment-button__more-options,
 [data-testid="MorePaymentOptionsButton"],
@@ -435,6 +449,40 @@ window.executeDirectBuyNow = function(e, btn) {
   }
   if (!variantId) {
     variantId = '{{ product.selected_or_first_available_variant.id }}';
+  const knownEbooks = ['53066848436541', '53066507551037', '53066560110909', '53066560143677', '53066560241981', '53066560209213'];
+  const isEbook = knownEbooks.indexOf(String(variantId)) !== -1 ||
+                  (!document.body.classList.contains('is-hardcopy-selected'));
+
+  if (isEbook) {
+    qty = 1;
+    // Check if eBook is already in cart before adding (prevent duplicate)
+    fetch('/cart.js', { headers: { 'Accept': 'application/json' } })
+      .then(function(res) { return res.json(); })
+      .then(function(cart) {
+        const alreadyInCart = cart.items && cart.items.some(function(it) {
+          return String(it.variant_id) === String(variantId);
+        });
+        if (alreadyInCart) {
+          // Already in cart with at least 1, proceed directly to checkout without incrementing
+          window.location.href = '/checkout';
+          return;
+        }
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: variantId, quantity: 1 })
+        })
+        .then(function() {
+          window.location.href = '/checkout';
+        })
+        .catch(function() {
+          window.location.href = '/checkout';
+        });
+      })
+      .catch(function() {
+        window.location.href = '/checkout';
+      });
+    return;
   }
 
   fetch('/cart/add.js', {

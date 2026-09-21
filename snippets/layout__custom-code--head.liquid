@@ -1623,4 +1623,174 @@ body:has(.arch-sticky-bar--visible) #recently-bought--holder {
     }
   });
 })();
+
+/* ══════════════════════════════════════════════════════════════
+   E-BOOK CART RULE: SAME EBOOK CANNOT BE ADDED TWICE IN CART
+   ══════════════════════════════════════════════════════════════ */
+(function() {
+  var KNOWN_EBOOK_VARIANTS = [
+    '53066848436541', // 6 Books Collection E-Book
+    '53066507551037', // Kitchen Design Book E-Book
+    '53066560110909', // Living room Design Book E-Book
+    '53066560143677', // Bedroom Design Book E-Book
+    '53066560241981', // Washroom Design Book E-Book
+    '53066560209213'  // Exterior Design Book E-Book
+  ];
+
+  function isEbookVariantId(varId) {
+    if (!varId) return false;
+    return KNOWN_EBOOK_VARIANTS.indexOf(String(varId)) !== -1;
+  }
+
+  function isEbookItem(item) {
+    if (!item) return false;
+    if (isEbookVariantId(item.id || item.variant_id)) return true;
+    if (item.requires_shipping === false) return true;
+    var title = (item.title || item.variant_title || '').toLowerCase();
+    return title.indexOf('e-book') !== -1 || title.indexOf('ebook') !== -1;
+  }
+
+  // Toast notification for duplicate eBook attempt
+  function showEbookCartToast(message) {
+    var existing = document.getElementById('ebook-duplicate-toast');
+    if (existing) existing.remove();
+
+    var toast = document.createElement('div');
+    toast.id = 'ebook-duplicate-toast';
+    toast.innerHTML = '<div style="display:flex;align-items:center;gap:12px;">' +
+      '<span style="font-size:22px;flex-shrink:0;">📘</span>' +
+      '<div style="flex:1;">' +
+        '<div style="font-weight:800;font-size:13.5px;color:#0f172a;margin-bottom:2px;">Already In Your Cart</div>' +
+        '<div style="font-size:12.5px;color:#475569;line-height:1.35;">' + (message || 'This digital eBook is already in your cart (maximum 1 copy per order).') + '</div>' +
+      '</div>' +
+    '</div>';
+    toast.style.cssText = 'position:fixed;bottom:24px;right:24px;z-index:99999999;background:#ffffff;border:1.5px solid #38bdf8;border-left:4px solid #0284c7;padding:14px 18px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.12);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;max-width:360px;transform:translateY(20px);opacity:0;transition:all 0.25s cubic-bezier(0.16, 1, 0.3, 1);pointer-events:auto;';
+    document.body.appendChild(toast);
+    requestAnimationFrame(function() {
+      toast.style.transform = 'translateY(0)';
+      toast.style.opacity = '1';
+    });
+    setTimeout(function() {
+      toast.style.transform = 'translateY(20px)';
+      toast.style.opacity = '0';
+      setTimeout(function() { if (toast.parentNode) toast.parentNode.removeChild(toast); }, 300);
+    }, 4500);
+  }
+
+  // 1. Sanitize cart items: if any eBook has quantity > 1, auto-correct to 1
+  function sanitizeCart() {
+    fetch('/cart.js', { headers: { 'Accept': 'application/json' } })
+      .then(function(res) { return res.json(); })
+      .then(function(cart) {
+        if (!cart || !cart.items) return;
+        var updates = {};
+        var changed = false;
+        cart.items.forEach(function(item) {
+          if (isEbookItem(item) && item.quantity > 1) {
+            updates[item.key] = 1;
+            changed = true;
+          }
+        });
+        if (changed) {
+          fetch('/cart/update.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ updates: updates })
+          }).then(function() {
+            if (window.BoosterTheme && window.BoosterTheme.cart) {
+              window.BoosterTheme.cart.dispatchListeners({ change: true });
+            }
+          });
+        }
+      })
+      .catch(function() {});
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', sanitizeCart);
+  } else {
+    sanitizeCart();
+  }
+  document.addEventListener('booster:cart:update', sanitizeCart);
+  window.addEventListener('storage', function(e) {
+    if (e.key === 'bstr:cart:update') sanitizeCart();
+  });
+
+  // 2. Intercept global fetch for /cart/add.js & /cart/add
+  var originalFetch = window.fetch;
+  window.fetch = function() {
+    var args = arguments;
+    var url = args[0] ? (typeof args[0] === 'string' ? args[0] : args[0].url) : '';
+    if (url && (url.indexOf('/cart/add.js') !== -1 || url.indexOf('/cart/add') !== -1)) {
+      var options = args[1] || {};
+      var method = (options.method || 'GET').toUpperCase();
+      if (method === 'POST' && options.body) {
+        try {
+          var payload = typeof options.body === 'string' ? JSON.parse(options.body) : null;
+          if (payload) {
+            var itemsToCheck = payload.items || (payload.id ? [{ id: payload.id, quantity: payload.quantity || 1 }] : []);
+            var hasEbook = false;
+            itemsToCheck.forEach(function(it) {
+              if (isEbookVariantId(it.id)) {
+                hasEbook = true;
+                if (it.quantity > 1) it.quantity = 1;
+              }
+            });
+            if (hasEbook) {
+              if (payload.items) {
+                payload.items = itemsToCheck;
+              } else if (payload.id) {
+                payload.quantity = 1;
+              }
+              options.body = JSON.stringify(payload);
+            }
+          }
+        } catch (e) {}
+      }
+    }
+    return originalFetch.apply(this, args);
+  };
+
+  // 3. Hook Booster Theme cart before-add event: 'booster:cart:b*add'
+  function hookBoosterTheme(theme) {
+    if (!theme || !theme.events) return;
+    theme.events.on('booster:cart:b*add', function(data) {
+      var varId = null;
+      if (data.json && data.json.items && data.json.items.length) {
+        varId = data.json.items[0].id;
+      } else if (data.form) {
+        var inp = data.form.querySelector('[name="id"]');
+        if (inp) varId = inp.value;
+      }
+      if (!varId && document.querySelector('[data-bstr-variant-input]')) {
+        varId = document.querySelector('[data-bstr-variant-input]').value;
+      }
+
+      if (isEbookVariantId(varId)) {
+        var minicart = theme.cart && theme.cart.minicart && theme.cart.minicart.data;
+        var inCart = false;
+        if (minicart && minicart.items) {
+          if (Array.isArray(minicart.items)) {
+            inCart = minicart.items.some(function(i) { return String(i.id || i.variant_id) === String(varId); });
+          } else {
+            inCart = Boolean(minicart.items[varId]);
+          }
+        }
+        if (inCart) {
+          showEbookCartToast();
+          if (theme.cart && theme.cart.open) theme.cart.open();
+          return { prevent: true };
+        }
+      }
+    });
+  }
+
+  document.addEventListener('booster:loaded', function(e) {
+    if (e && e.detail && e.detail.BoosterTheme) hookBoosterTheme(e.detail.BoosterTheme);
+  });
+  document.addEventListener('booster:initialized', function(e) {
+    if (e && e.detail && e.detail.BoosterTheme) hookBoosterTheme(e.detail.BoosterTheme);
+  });
+  if (window.BoosterTheme) hookBoosterTheme(window.BoosterTheme);
+})();
 </script>

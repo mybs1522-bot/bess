@@ -488,24 +488,34 @@
       variantId = '{{ product.selected_or_first_available_variant.id }}';
     }
 
-    // Direct checkout payload
-    fetch('/cart/add.js', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id: variantId, quantity: 1 })
-    })
-    .then(function() {
-      window.location.href = '/checkout';
-    })
-    .catch(function() {
-      // Fallback
-      const mainForm = document.querySelector('form[action*="/cart/add"]');
-      if (mainForm) {
-        mainForm.submit();
-      } else {
-        window.location.href = '/cart/' + variantId + ':1';
-      }
-    });
+    // Check if variant already exists in cart before adding (prevent duplicate eBook)
+    fetch('/cart.js', { headers: { 'Accept': 'application/json' } })
+      .then(function(r) { return r.json(); })
+      .then(function(cart) {
+        var alreadyInCart = cart.items && cart.items.some(function(it) {
+          return String(it.variant_id) === String(variantId);
+        });
+        if (alreadyInCart) {
+          // Already in cart with at least 1, proceed straight to checkout
+          window.location.href = '/checkout';
+          return;
+        }
+        // Direct checkout payload
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: variantId, quantity: 1 })
+        })
+        .then(function() {
+          window.location.href = '/checkout';
+        })
+        .catch(function() {
+          window.location.href = '/checkout';
+        });
+      })
+      .catch(function() {
+        window.location.href = '/checkout';
+      });
   };
 
 })();

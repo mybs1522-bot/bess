@@ -33,12 +33,23 @@
             {%- endif -%}
 
             {%- for discount in item.discounts -%}{{- discount.title -}}{%- endfor -%}
-          </span>
-          <div class="quantity--input">
+          {% assign item_vtitle = item.variant.title | downcase %}
+          {% assign is_ebook_item = false %}
+          {% if item_vtitle contains 'e-book' or item_vtitle contains 'ebook' or item.variant.requires_shipping == false %}
+            {% assign is_ebook_item = true %}
+          {% endif %}
+          <div class="quantity--input" {% if is_ebook_item %}data-is-ebook="true"{% endif %}>
             <button class="quantity--input__button quantity--input__incr" onclick="BoosterTheme.cart.quantityHandler(event, false)">-</button><!--
-            --><input class="quantity--input__input" value={{item.quantity}} data-qty-input data-qty-int-input data-variant-id={{item.key}} onchange="BoosterTheme.cart.updateQuantity(event)" type="number" min="0" {% if item.variant.inventory_policy != "continue" %}max="{{ item.variant.inventory_quantity}}"{% endif%}><!--
-            --><button class="quantity--input__button quantity--input__decr" onclick="BoosterTheme.cart.quantityHandler(event, true)">+</button>
+            --><input class="quantity--input__input" value={{item.quantity}} data-qty-input data-qty-int-input data-variant-id={{item.key}} onchange="BoosterTheme.cart.updateQuantity(event)" type="number" min="0" {% if is_ebook_item %}max="1" readonly{% elsif item.variant.inventory_policy != "continue" %}max="{{ item.variant.inventory_quantity}}"{% endif%}><!--
+            {% if is_ebook_item %}
+              --><button class="quantity--input__button quantity--input__decr" disabled style="opacity: 0.35; cursor: not-allowed; pointer-events: none;" title="Max 1 copy of digital eBook per order" type="button">+</button>
+            {% else %}
+              --><button class="quantity--input__button quantity--input__decr" onclick="BoosterTheme.cart.quantityHandler(event, true)">+</button>
+            {% endif %}
           </div>
+          {% if is_ebook_item %}
+            <span style="display: block; font-size: 11px; font-weight: 700; color: #0284c7; margin-top: 4px; letter-spacing: 0.01em;">Digital eBook (Max 1 per order)</span>
+          {% endif %}
         </div>
         <span class="minicart__trash" onclick="BoosterTheme.cart.removeFromCart(this, '{{item.variant_id}}')">{% render 'get-icon', icon: 'trash' %}</span>
       </div>
