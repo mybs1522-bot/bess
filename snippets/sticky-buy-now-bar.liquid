@@ -403,6 +403,13 @@
     const bar = document.getElementById('arch-sticky-buy-bar');
     if (!bar) return;
 
+    if (document.body.classList.contains('is-hardcopy-selected')) {
+      bar.classList.remove('arch-sticky-bar--visible');
+      bar.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('has-arch-sticky-bar');
+      return;
+    }
+
     const aboutEl = getAboutSection();
     if (!aboutEl) return;
 

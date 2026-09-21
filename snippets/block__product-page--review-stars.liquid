@@ -34,42 +34,42 @@
   <!-- 6 Books Showcase with Zoom Ripple Animation -->
   <div class="top-rating-books-ripple-wrap">
     <div class="top-rating-books-track">
-      <div class="top-rating-book-item" style="--ripple-delay: 0s;" onclick="scrollToCurriculum(0)">
+      <div class="top-rating-book-item" onclick="scrollToCurriculum(0)">
         <div class="top-rating-book-cover">
           <img src="{{ 'living_room.png' | asset_url }}" alt="Living Room Book" loading="lazy" width="70" height="98" />
         </div>
         <span class="top-rating-book-name">Living</span>
         <span class="top-rating-book-pages">140+ Pages</span>
       </div>
-      <div class="top-rating-book-item" style="--ripple-delay: 0.25s;" onclick="scrollToCurriculum(1)">
+      <div class="top-rating-book-item" onclick="scrollToCurriculum(1)">
         <div class="top-rating-book-cover">
           <img src="{{ 'kitchen.png' | asset_url }}" alt="Kitchen Book" loading="lazy" width="70" height="98" />
         </div>
         <span class="top-rating-book-name">Kitchen</span>
         <span class="top-rating-book-pages">165+ Pages</span>
       </div>
-      <div class="top-rating-book-item" style="--ripple-delay: 0.5s;" onclick="scrollToCurriculum(2)">
+      <div class="top-rating-book-item" onclick="scrollToCurriculum(2)">
         <div class="top-rating-book-cover">
           <img src="{{ 'bedroom.png' | asset_url }}" alt="Bedroom Book" loading="lazy" width="70" height="98" />
         </div>
         <span class="top-rating-book-name">Bedroom</span>
         <span class="top-rating-book-pages">135+ Pages</span>
       </div>
-      <div class="top-rating-book-item" style="--ripple-delay: 0.75s;" onclick="scrollToCurriculum(3)">
+      <div class="top-rating-book-item" onclick="scrollToCurriculum(3)">
         <div class="top-rating-book-cover">
           <img src="{{ 'washroom.png' | asset_url }}" alt="Washroom Book" loading="lazy" width="70" height="98" />
         </div>
         <span class="top-rating-book-name">Washroom</span>
         <span class="top-rating-book-pages">120+ Pages</span>
       </div>
-      <div class="top-rating-book-item" style="--ripple-delay: 1.0s;" onclick="scrollToCurriculum(4)">
+      <div class="top-rating-book-item" onclick="scrollToCurriculum(4)">
         <div class="top-rating-book-cover">
           <img src="{{ 'study.png' | asset_url }}" alt="Study Book" loading="lazy" width="70" height="98" />
         </div>
         <span class="top-rating-book-name">Study</span>
         <span class="top-rating-book-pages">130+ Pages</span>
       </div>
-      <div class="top-rating-book-item" style="--ripple-delay: 1.25s;" onclick="scrollToCurriculum(5)">
+      <div class="top-rating-book-item" onclick="scrollToCurriculum(5)">
         <div class="top-rating-book-cover">
           <img src="{{ 'elevations.png' | asset_url }}" alt="Exteriors &amp; Landscapes Book" loading="lazy" width="70" height="98" />
         </div>
@@ -175,10 +175,7 @@
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
     border: 1.5px solid #e2e8f0;
     background: #ffffff;
-    animation: topBookZoomRipple 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    animation-delay: var(--ripple-delay, 0s);
-    will-change: transform, box-shadow;
-    transition: border-color 0.2s ease, transform 0.2s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
 
   .top-rating-book-cover img {
@@ -209,29 +206,9 @@
     transition: color 0.2s ease;
   }
 
-  @keyframes topBookZoomRipple {
-    0%, 100% {
-      transform: scale(1) translateY(0);
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
-      border-color: #e2e8f0;
-    }
-    20% {
-      transform: scale(1.12) translateY(-5px);
-      box-shadow: 0 10px 20px rgba(234, 88, 12, 0.28), 0 3px 6px rgba(0, 0, 0, 0.1);
-      border-color: #ea580c;
-    }
-    40% {
-      transform: scale(1) translateY(0);
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
-      border-color: #e2e8f0;
-    }
-  }
-
   .top-rating-book-item:hover .top-rating-book-cover {
-    animation-play-state: paused;
-    transform: scale(1.18) translateY(-7px);
-    box-shadow: 0 14px 26px rgba(234, 88, 12, 0.35);
     border-color: #ea580c;
+    box-shadow: 0 4px 12px rgba(234, 88, 12, 0.2);
   }
 
   .top-rating-book-item:hover .top-rating-book-name {
