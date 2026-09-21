@@ -475,8 +475,14 @@
       btn.style.opacity = '0.85';
       btn.style.pointerEvents = 'none';
       const textSpan = btn.querySelector('.arch-sticky-btn__text');
-      if (textSpan) textSpan.textContent = 'Redirecting...';
+      if (textSpan) textSpan.textContent = 'Redirecting to Checkout...';
     }
+
+    function goToCheckout() {
+      window.location.href = '/checkout';
+    }
+
+    var failsafeTimer = setTimeout(goToCheckout, 1800);
 
     // Get current active variant ID
     let variantId = null;
@@ -492,29 +498,35 @@
     fetch('/cart.js', { headers: { 'Accept': 'application/json' } })
       .then(function(r) { return r.json(); })
       .then(function(cart) {
-        var alreadyInCart = cart.items && cart.items.some(function(it) {
-          return String(it.variant_id) === String(variantId);
+        var alreadyInCart = cart && cart.items && cart.items.some(function(it) {
+          return String(it.variant_id) === String(variantId) || String(it.id) === String(variantId);
         });
+
         if (alreadyInCart) {
           // Already in cart with at least 1, proceed straight to checkout
-          window.location.href = '/checkout';
+          clearTimeout(failsafeTimer);
+          goToCheckout();
           return;
         }
+
         // Direct checkout payload
         fetch('/cart/add.js', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({ id: variantId, quantity: 1 })
         })
         .then(function() {
-          window.location.href = '/checkout';
+          clearTimeout(failsafeTimer);
+          goToCheckout();
         })
         .catch(function() {
-          window.location.href = '/checkout';
+          clearTimeout(failsafeTimer);
+          goToCheckout();
         });
       })
       .catch(function() {
-        window.location.href = '/checkout';
+        clearTimeout(failsafeTimer);
+        goToCheckout();
       });
   };
 
