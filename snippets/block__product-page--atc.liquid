@@ -458,7 +458,7 @@ window.executeDirectBuyNow = function(e, btn) {
   // Safety fallback: ensure navigation to checkout within 1.8s regardless of network
   var failsafeTimer = setTimeout(goToCheckout, 1800);
 
-  var knownEbooks = ['53066848436541', '53066507551037', '53066560110909', '53066560143677', '53066560241981', '53066560209213'];
+  var knownEbooks = ['53066848436541', '53066507551037', '53066560110909', '53066560143677', '53066560241981', '53066560209213', '53132766019901'];
   var isEbook = knownEbooks.indexOf(String(variantId)) !== -1 ||
                 (!document.body.classList.contains('is-hardcopy-selected'));
 
