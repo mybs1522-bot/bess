@@ -140,14 +140,7 @@ Checking for vertical gallery styles (additional gallery styles can be added her
 {% case section.settings.galleryStyle %}
   {% when 'verticalSingle' %}
     <div data-gallery-type="vSingle" class="col-12 {{size}} gallery__vertical hide-mobile {% if isAutoZoom %}zoom{% endif %}">
-      <div class="col-12" style="padding: 0 8px;">
-        <div class="arch-image-top-bar" style="background: transparent; color: #1e293b !important; box-shadow: none; padding: 0 0 12px 0; display: block; text-align: left;">
-          <span class="arch-image-top-bar__text" style="color: #1e293b !important; -webkit-text-fill-color: #1e293b !important; font-size: 14px; text-transform: none; text-align: left; display: block;">
-            <strong>Hello Home Owners/Tenants, Interior Designers & Architects</strong><br>
-            Before Designing or Renovating A Home &mdash; Know What Actually Can Go Wrong
-          </span>
-        </div>
-      </div>
+
       {% for image in product.images %}
         <div data-variants="{% for var in image.variants %}{{var.id}}|{% endfor %}" class="col-12">
           {% render 'image', size: '900x', src: image.src, alt: image.alt, class: imageClass %}
@@ -176,14 +169,7 @@ Checking for vertical gallery styles (additional gallery styles can be added her
     </div>
   {% when 'verticalDouble' %}
     <div data-gallery-type="vDouble" class="col-12 {{size}} gallery__vertical hide-mobile">
-      <div class="col-12" style="padding: 0 8px;">
-        <div class="arch-image-top-bar" style="background: transparent; color: #1e293b !important; box-shadow: none; padding: 0 0 12px 0; display: block; text-align: left;">
-          <span class="arch-image-top-bar__text" style="color: #1e293b !important; -webkit-text-fill-color: #1e293b !important; font-size: 14px; text-transform: none; text-align: left; display: block;">
-            <strong>Hello Home Owners/Tenants, Interior Designers & Architects</strong><br>
-            Before Designing or Renovating A Home &mdash; Know What Actually Can Go Wrong
-          </span>
-        </div>
-      </div>
+
       {% for image in product.images %}
         <div data-variants="{% for var in image.variants %}{{var.id}}|{% endfor %}" {% if forloop.first %}class="col-12 col-md-12 {% if isAutoZoom %}zoom{% endif %}"{%else%}class="col-12 col-md-6 {% if isAutoZoom %}zoom{% endif %}"{%endif%}>
           {% render 'image', size: '900x', src: image.src, alt: image.alt, class: imageClass %}
