@@ -15,12 +15,7 @@
 class="h-reset product__title product__title--{{block.id}} 
 font__family--{{-block.settings.fontFamily}} font__size--{{-block.settings.fontSize}} 
  {% if block.settings.noMargin or noMargin %}margin__bottom--reduced{%endif-%}" {{block.shopify_attributes}}>
-  {%- if product.title contains 'Interior' and product.title contains 'Exterior' -%}
-    <span class="product__title-prefix">6 Books For</span>
-    <span class="product__title-highlight">Interior &amp; Exterior Design</span>
-  {%- else -%}
-    {{ product.title }}
-  {%- endif -%}
+  {{ product.title | default: 'Complete Interiors & Exteriors Design Series | 6 Books' }}
 </h1>
 
 <style>
@@ -28,8 +23,13 @@ font__family--{{-block.settings.fontFamily}} font__size--{{-block.settings.fontS
   .product-page__title,
   h1.product__title {
     white-space: normal !important;
-    line-height: 1.15 !important;
+    word-break: normal !important;
+    line-height: 1.18 !important;
     margin-bottom: 14px !important;
+    font-size: 34px !important;
+    font-weight: 800 !important;
+    color: #111827 !important;
+    letter-spacing: -0.02em !important;
   }
   .product__title-prefix {
     display: block !important;
@@ -39,7 +39,6 @@ font__family--{{-block.settings.fontFamily}} font__size--{{-block.settings.fontS
     line-height: 1.18 !important;
     letter-spacing: -0.015em !important;
     margin-bottom: 4px !important;
-    white-space: nowrap !important;
   }
   .product__title-highlight {
     display: block !important;
@@ -48,17 +47,17 @@ font__family--{{-block.settings.fontFamily}} font__size--{{-block.settings.fontS
     color: #000000 !important;
     line-height: 1.1 !important;
     letter-spacing: -0.03em !important;
-    white-space: nowrap !important;
   }
   @media (max-width: 768px) {
     .product__title,
     .product-page__title,
     h1.product__title {
       white-space: normal !important;
-      line-height: 1.14 !important;
+      line-height: 1.18 !important;
       margin-bottom: 12px !important;
       overflow: visible !important;
       text-overflow: unset !important;
+      font-size: clamp(22px, 6.2vw, 28px) !important;
     }
     .product__title-prefix {
       font-size: clamp(23px, 6.6vw, 28px) !important;
@@ -66,7 +65,6 @@ font__family--{{-block.settings.fontFamily}} font__size--{{-block.settings.fontS
       color: #374151 !important;
       margin-bottom: 3px !important;
       display: block !important;
-      white-space: nowrap !important;
       letter-spacing: -0.02em !important;
       line-height: 1.15 !important;
     }
@@ -77,7 +75,6 @@ font__family--{{-block.settings.fontFamily}} font__size--{{-block.settings.fontS
       line-height: 1.12 !important;
       letter-spacing: -0.035em !important;
       display: block !important;
-      white-space: nowrap !important;
     }
   }
 </style>

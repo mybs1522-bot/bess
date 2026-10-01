@@ -946,8 +946,13 @@ body.non-dollar-currency .product__shoppay-installments {
 .product-page__title,
 h1.product__title {
   white-space: normal !important;
-  line-height: 1.15 !important;
+  word-break: normal !important;
+  line-height: 1.18 !important;
   margin-bottom: 14px !important;
+  font-size: 34px !important;
+  font-weight: 800 !important;
+  color: #111827 !important;
+  letter-spacing: -0.02em !important;
 }
 .product__title-prefix {
   display: block !important;
@@ -957,7 +962,6 @@ h1.product__title {
   line-height: 1.18 !important;
   letter-spacing: -0.015em !important;
   margin-bottom: 4px !important;
-  white-space: nowrap !important;
 }
 .product__title-highlight {
   display: block !important;
@@ -966,7 +970,6 @@ h1.product__title {
   color: #000000 !important;
   line-height: 1.1 !important;
   letter-spacing: -0.03em !important;
-  white-space: nowrap !important;
 }
 @media (max-width: 768px) {
   .product__row {
@@ -978,10 +981,11 @@ h1.product__title {
   .product-page__title,
   h1.product__title {
     white-space: normal !important;
-    line-height: 1.14 !important;
+    line-height: 1.18 !important;
     margin-bottom: 12px !important;
     overflow: visible !important;
     text-overflow: unset !important;
+    font-size: clamp(22px, 6.2vw, 28px) !important;
   }
   .product__title-prefix {
     font-size: clamp(23px, 6.6vw, 28px) !important;
@@ -989,7 +993,6 @@ h1.product__title {
     color: #374151 !important;
     margin-bottom: 3px !important;
     display: block !important;
-    white-space: nowrap !important;
     letter-spacing: -0.02em !important;
     line-height: 1.15 !important;
   }
@@ -1000,7 +1003,6 @@ h1.product__title {
     line-height: 1.12 !important;
     letter-spacing: -0.035em !important;
     display: block !important;
-    white-space: nowrap !important;
   }
 }
 
