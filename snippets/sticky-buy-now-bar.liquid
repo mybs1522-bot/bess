@@ -6,53 +6,83 @@
 
 <div id="arch-sticky-buy-bar" class="arch-sticky-bar" aria-hidden="true">
   <div class="arch-sticky-bar__inner">
-    
-    <!-- Left: Evergreen Urgency Timer (ABOVE) & Pricing (BELOW) -->
-    <div class="arch-sticky-bar__info">
-      
-      <!-- Evergreen Countdown Timer (Placed ABOVE Price) -->
-      <div class="arch-sticky-timer">
-        <span class="arch-timer-pulse-dot"></span>
-        <span class="arch-timer-label">Offer ends in:</span>
-        <div class="arch-timer-display">
-          <span class="arch-timer-box" id="archStickyHours">07</span><span class="arch-timer-sep">:</span><!--
-          --><span class="arch-timer-box" id="archStickyMinutes">37</span><span class="arch-timer-sep">:</span><!--
-          --><span class="arch-timer-box" id="archStickySeconds">40</span>
+    {% if product.handle == '6-books-for-interior-exterior-design' %}
+      <div class="arch-sticky-bar__dual-container">
+        <!-- Left: Urgency Timer & Title -->
+        <div class="arch-sticky-bar__dual-info">
+          <div class="arch-sticky-timer">
+            <span class="arch-timer-pulse-dot"></span>
+            <span class="arch-timer-label">Offer ends in:</span>
+            <div class="arch-timer-display">
+              <span class="arch-timer-box" id="archStickyHours">07</span><span class="arch-timer-sep">:</span><!--
+              --><span class="arch-timer-box" id="archStickyMinutes">37</span><span class="arch-timer-sep">:</span><!--
+              --><span class="arch-timer-box" id="archStickySeconds">40</span>
+            </div>
+          </div>
+          <div class="arch-sticky-bar__dual-title">
+            Complete 6-Book Collection
+          </div>
+        </div>
+
+        <!-- Right: Dual Buttons E-Book $49 & Hardcopy $199 -->
+        <div class="arch-sticky-bar__dual-btns">
+          <button type="button" class="arch-sticky-btn arch-sticky-btn--ebook" onclick="buyStickyDirect('53066848436541', this)">
+            <span class="arch-sticky-btn__title">📱 E-Book</span>
+            <span class="arch-sticky-btn__tag">$49</span>
+          </button>
+          <button type="button" class="arch-sticky-btn arch-sticky-btn--hardcopy" onclick="buyStickyDirect('53067294572861', this)">
+            <span class="arch-sticky-btn__title">📦 Hardcopy</span>
+            <span class="arch-sticky-btn__tag">$199</span>
+          </button>
         </div>
       </div>
-
-      <!-- Pricing Line: Crossed out Compare Price first, then Sale Price slightly bigger -->
-      <div class="arch-sticky-bar__meta">
-        <div class="arch-sticky-bar__pricing">
-          {% assign sticky_curr_var = product.selected_or_first_available_variant %}
-          {% assign sticky_double_price = sticky_curr_var.price | times: 2 %}
-          <span class="arch-sticky-bar__compare" id="archStickyCompare">
-            {{ sticky_double_price | money | replace: 'Rs. ', '₹' | replace: 'Rs.', '₹' | replace: 'Rs ', '₹' }}
-          </span>
-          <span class="arch-sticky-bar__price" id="archStickyPrice">
-            {{ sticky_curr_var.price | money | replace: 'Rs. ', '₹' | replace: 'Rs.', '₹' | replace: 'Rs ', '₹' }}
-          </span>
+    {% else %}
+      <!-- Left: Evergreen Urgency Timer (ABOVE) & Pricing (BELOW) -->
+      <div class="arch-sticky-bar__info">
+        
+        <!-- Evergreen Countdown Timer (Placed ABOVE Price) -->
+        <div class="arch-sticky-timer">
+          <span class="arch-timer-pulse-dot"></span>
+          <span class="arch-timer-label">Offer ends in:</span>
+          <div class="arch-timer-display">
+            <span class="arch-timer-box" id="archStickyHours">07</span><span class="arch-timer-sep">:</span><!--
+            --><span class="arch-timer-box" id="archStickyMinutes">37</span><span class="arch-timer-sep">:</span><!--
+            --><span class="arch-timer-box" id="archStickySeconds">40</span>
+          </div>
         </div>
+
+        <!-- Pricing Line: Crossed out Compare Price first, then Sale Price slightly bigger -->
+        <div class="arch-sticky-bar__meta">
+          <div class="arch-sticky-bar__pricing">
+            {% assign sticky_curr_var = product.selected_or_first_available_variant %}
+            {% assign sticky_double_price = sticky_curr_var.price | times: 2 %}
+            <span class="arch-sticky-bar__compare" id="archStickyCompare">
+              {{ sticky_double_price | money | replace: 'Rs. ', '₹' | replace: 'Rs.', '₹' | replace: 'Rs ', '₹' }}
+            </span>
+            <span class="arch-sticky-bar__price" id="archStickyPrice">
+              {{ sticky_curr_var.price | money | replace: 'Rs. ', '₹' | replace: 'Rs.', '₹' | replace: 'Rs ', '₹' }}
+            </span>
+          </div>
+        </div>
+
       </div>
 
-    </div>
-
-    <!-- Right: Bigger, Premium Black Buy Now Action Button -->
-    <div class="arch-sticky-bar__action">
-      <button type="button" id="archStickyBuyBtn" class="arch-sticky-btn" onclick="executeStickyBuyNow(this)">
-        <svg class="arch-sticky-btn__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <path d="M16 10a4 4 0 0 1-8 0"></path>
-        </svg>
-        <span class="arch-sticky-btn__text">Buy Now</span>
-        <svg class="arch-sticky-btn__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-          <polyline points="12 5 19 12 12 19"></polyline>
-        </svg>
-      </button>
-    </div>
-
+      <!-- Right: Bigger, Premium Black Buy Now Action Button -->
+      <div class="arch-sticky-bar__action">
+        <button type="button" id="archStickyBuyBtn" class="arch-sticky-btn" onclick="executeStickyBuyNow(this)">
+          <svg class="arch-sticky-btn__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="arch-sticky-btn__text">Buy Now</span>
+          <svg class="arch-sticky-btn__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </div>
+    {% endif %}
   </div>
 </div>
 
@@ -329,6 +359,149 @@
     height: 15px;
   }
 }
+
+/* ─── DUAL BUTTON LAYOUT (6-Books Product) ─── */
+.arch-sticky-bar__dual-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 16px;
+}
+
+.arch-sticky-bar__dual-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  flex: 1;
+  min-width: 0;
+}
+
+.arch-sticky-bar__dual-title {
+  font-family: 'Space Grotesk', -apple-system, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #18181b;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.arch-sticky-bar__dual-btns {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* Shared dual button base */
+.arch-sticky-btn--ebook,
+.arch-sticky-btn--hardcopy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 10px 22px;
+  min-height: 52px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  white-space: nowrap;
+  font-family: 'Space Grotesk', -apple-system, sans-serif;
+  min-width: 120px;
+}
+
+/* E-Book: dark/black */
+.arch-sticky-btn--ebook {
+  background: #09090b !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+.arch-sticky-btn--ebook:hover {
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  background: #18181b !important;
+}
+.arch-sticky-btn--ebook:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Hardcopy: orange accent */
+.arch-sticky-btn--hardcopy {
+  background: #ea580c !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.3);
+}
+.arch-sticky-btn--hardcopy:hover {
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 6px 20px rgba(234, 88, 12, 0.45);
+  background: #c2410c !important;
+}
+.arch-sticky-btn--hardcopy:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Button text rows */
+.arch-sticky-btn__title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+
+.arch-sticky-btn__tag {
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+/* ─── DUAL BUTTON MOBILE ─── */
+@media (max-width: 640px) {
+  .arch-sticky-bar__dual-container {
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+  }
+  .arch-sticky-bar__dual-info {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .arch-sticky-bar__dual-title {
+    font-size: 12px;
+    display: none;
+  }
+  .arch-sticky-bar__dual-btns {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+  }
+  .arch-sticky-btn--ebook,
+  .arch-sticky-btn--hardcopy {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 14px;
+    min-height: 48px;
+    border-radius: 10px;
+  }
+  .arch-sticky-btn__title {
+    font-size: 12px;
+  }
+  .arch-sticky-btn__tag {
+    font-size: 16px;
+  }
+}
 </style>
 
 <script>
@@ -402,13 +575,6 @@
   function handleScrollVisibility() {
     const bar = document.getElementById('arch-sticky-buy-bar');
     if (!bar) return;
-
-    if (document.body.classList.contains('is-hardcopy-selected')) {
-      bar.classList.remove('arch-sticky-bar--visible');
-      bar.setAttribute('aria-hidden', 'true');
-      document.body.classList.remove('has-arch-sticky-bar');
-      return;
-    }
 
     const aboutEl = getAboutSection();
     if (!aboutEl) return;
@@ -510,6 +676,56 @@
         }
 
         // Direct checkout payload
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ id: variantId, quantity: 1 })
+        })
+        .then(function() {
+          clearTimeout(failsafeTimer);
+          goToCheckout();
+        })
+        .catch(function() {
+          clearTimeout(failsafeTimer);
+          goToCheckout();
+        });
+      })
+      .catch(function() {
+        clearTimeout(failsafeTimer);
+        goToCheckout();
+      });
+  };
+
+  /* 5. DUAL-BUTTON DIRECT BUY (E-Book / Hardcopy → Checkout) */
+  window.buyStickyDirect = function(variantId, btn) {
+    if (btn) {
+      btn.style.opacity = '0.8';
+      btn.style.pointerEvents = 'none';
+      var titleEl = btn.querySelector('.arch-sticky-btn__title');
+      if (titleEl) titleEl.textContent = 'Redirecting...';
+      var tagEl = btn.querySelector('.arch-sticky-btn__tag');
+      if (tagEl) tagEl.textContent = '...';
+    }
+
+    function goToCheckout() {
+      window.location.href = '/checkout';
+    }
+
+    var failsafeTimer = setTimeout(goToCheckout, 1800);
+
+    fetch('/cart.js', { headers: { 'Accept': 'application/json' } })
+      .then(function(r) { return r.json(); })
+      .then(function(cart) {
+        var alreadyInCart = cart && cart.items && cart.items.some(function(it) {
+          return String(it.variant_id) === String(variantId) || String(it.id) === String(variantId);
+        });
+
+        if (alreadyInCart) {
+          clearTimeout(failsafeTimer);
+          goToCheckout();
+          return;
+        }
+
         fetch('/cart/add.js', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },

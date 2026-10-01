@@ -1279,8 +1279,6 @@ body.is-digital-selected [id^="delivery__"] {
 /* When Hardcopy is selected: remove timer and sticky button at bottom */
 body.is-hardcopy-selected .arch-pill-timer-wrap,
 body.is-hardcopy-selected .arch-sticky-timer,
-body.is-hardcopy-selected #arch-sticky-buy-bar,
-body.is-hardcopy-selected .arch-sticky-bar,
 body.is-hardcopy-selected .sticky--mobile,
 body.is-hardcopy-selected .sticky--container,
 body.is-hardcopy-selected [data-countdown],
@@ -1395,7 +1393,7 @@ body.is-hardcopy-selected .minicart__timer {
         el.style.setProperty('display', isHardcopy ? 'none' : '', 'important');
       });
 
-      var stickyBars = document.querySelectorAll('#arch-sticky-buy-bar, .sticky--mobile, .sticky--container');
+      var stickyBars = document.querySelectorAll('.sticky--mobile, .sticky--container');
       stickyBars.forEach(function(el) {
         el.style.setProperty('display', isHardcopy ? 'none' : '', 'important');
         if (isHardcopy) {
