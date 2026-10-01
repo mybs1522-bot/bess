@@ -931,14 +931,44 @@ body.non-dollar-currency .product__shoppay-installments {
   opacity: 0 !important;
 }
 
-/* 10. Hide/Suppress GDPR Cookie notice */
+/* 10. Hide/Suppress All Cookie Consent & Privacy Banners */
+#shopify-pc__banner,
+.shopify-pc__banner,
+#shopify-pc__container,
+.shopify-pc__container,
+#shopify-privacy-banner,
+.shopify-privacy-banner,
+shopify-privacy-banner,
+shopify-customer-privacy,
+div[id*="shopify-pc"],
+div[class*="shopify-pc"],
+div[class*="shopify-privacy"],
+div[id*="shopify-privacy"],
+iframe[id*="shopify-pc"],
+iframe[title*="Cookie consent" i],
+iframe[title*="cookie" i],
+iframe[src*="privacy" i],
+iframe[src*="consent" i],
 #bstr--notice,
 .gdpr__holder,
-.gdpr__notice {
+.gdpr__notice,
+[data-shopify-privacy-banner],
+.shopify-pc,
+.shopify-pc__modal,
+.shopify-pc__wrapper {
   display: none !important;
   visibility: hidden !important;
-  pointer-events: none !important;
   opacity: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  top: -99999px !important;
+  left: -99999px !important;
+  width: 0 !important;
+  height: 0 !important;
+  max-width: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  z-index: -99999 !important;
 }
 
 /* 11. Product Title 2-Line Layout & Hero Typography */
@@ -1795,5 +1825,74 @@ body:has(.arch-sticky-bar--visible) #recently-bought--holder {
     if (e && e.detail && e.detail.BoosterTheme) hookBoosterTheme(e.detail.BoosterTheme);
   });
   if (window.BoosterTheme) hookBoosterTheme(window.BoosterTheme);
+})();
+
+/* Automatically suppress and eliminate Shopify Customer Privacy & Cookie Consent banners */
+(function() {
+  var cookieSelectors = [
+    '#shopify-pc__banner',
+    '.shopify-pc__banner',
+    '#shopify-pc__container',
+    '.shopify-pc__container',
+    '#shopify-privacy-banner',
+    '.shopify-privacy-banner',
+    'shopify-privacy-banner',
+    'shopify-customer-privacy',
+    'iframe[title*="Cookie consent" i]',
+    'iframe[title*="cookie" i]',
+    'iframe[src*="privacy" i]',
+    'iframe[src*="consent" i]',
+    'div[id*="shopify-pc"]',
+    'div[class*="shopify-pc"]',
+    'div[id*="shopify-privacy"]',
+    'div[class*="shopify-privacy"]',
+    '#bstr--notice',
+    '.gdpr__holder',
+    '.gdpr__notice',
+    '[data-shopify-privacy-banner]'
+  ];
+
+  function purgeBanners() {
+    for (var i = 0; i < cookieSelectors.length; i++) {
+      try {
+        var found = document.querySelectorAll(cookieSelectors[i]);
+        for (var j = 0; j < found.length; j++) {
+          var node = found[j];
+          if (node && node.parentNode) {
+            node.parentNode.removeChild(node);
+          }
+        }
+      } catch (e) {}
+    }
+  }
+
+  // Run on initial parse
+  purgeBanners();
+
+  // Continuously remove if injected dynamically
+  if (window.MutationObserver) {
+    var observer = new MutationObserver(function() {
+      purgeBanners();
+    });
+    if (document.documentElement) {
+      observer.observe(document.documentElement, { childList: true, subtree: true });
+    }
+  }
+
+  // Pre-emptively register tracking consent with Shopify Privacy API so banner does not render
+  function autoConsent() {
+    if (window.Shopify && window.Shopify.customerPrivacy && typeof window.Shopify.customerPrivacy.setTrackingConsent === 'function') {
+      try {
+        window.Shopify.customerPrivacy.setTrackingConsent(true, function() {});
+      } catch (e) {}
+    }
+  }
+
+  autoConsent();
+  document.addEventListener('shopify:privacy:loaded', autoConsent);
+  window.addEventListener('load', function() {
+    purgeBanners();
+    autoConsent();
+  });
 })();
 </script>
