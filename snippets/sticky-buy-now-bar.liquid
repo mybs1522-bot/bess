@@ -639,14 +639,31 @@
     const bar = document.getElementById('arch-sticky-buy-bar');
     if (!bar) return;
 
-    const aboutEl = getAboutSection();
-    if (!aboutEl) return;
-
-    const rect = aboutEl.getBoundingClientRect();
-    // Show when top of About section enters upper 75% of viewport
     const triggerOffset = window.innerHeight * 0.75;
+    let shouldShowBar = false;
 
-    if (rect.top <= triggerOffset) {
+    // 1. Check if we are in the new Editorial Sales Section
+    let inEditorial = false;
+    var editorialSection = document.getElementById('editorial-sales-section');
+    if (editorialSection) {
+      var eRect = editorialSection.getBoundingClientRect();
+      inEditorial = eRect.top <= triggerOffset && eRect.bottom > 0;
+      if (inEditorial) {
+        shouldShowBar = true;
+      }
+    }
+
+    // 2. Check if we are past the About section (original trigger)
+    const aboutEl = getAboutSection();
+    if (aboutEl) {
+      const rect = aboutEl.getBoundingClientRect();
+      if (rect.top <= triggerOffset) {
+        shouldShowBar = true;
+      }
+    }
+
+    // 3. Toggle entire bar visibility
+    if (shouldShowBar) {
       bar.classList.add('arch-sticky-bar--visible');
       bar.setAttribute('aria-hidden', 'false');
       document.body.classList.add('has-arch-sticky-bar');
@@ -656,23 +673,16 @@
       document.body.classList.remove('has-arch-sticky-bar');
     }
 
-    // Toggle dual vs single mode for 6-books product
+    // 4. Toggle Dual vs Single mode
     var dualEl = document.getElementById('archStickyDual');
     var singleEl = document.getElementById('archStickySingle');
     if (dualEl && singleEl) {
-      var editorialSection = document.getElementById('editorial-sales-section');
-      if (editorialSection) {
-        var eRect = editorialSection.getBoundingClientRect();
-        // Editorial section is "in view" when its top has scrolled past 75% of viewport
-        // AND its bottom hasn't scrolled past the top of the viewport
-        var inEditorial = eRect.top <= triggerOffset && eRect.bottom > 0;
-        if (inEditorial) {
-          dualEl.style.display = 'flex';
-          singleEl.style.display = 'none';
-        } else {
-          dualEl.style.display = 'none';
-          singleEl.style.display = 'flex';
-        }
+      if (inEditorial) {
+        dualEl.style.display = 'flex';
+        singleEl.style.display = 'none';
+      } else {
+        dualEl.style.display = 'none';
+        singleEl.style.display = 'flex';
       }
     }
   }
