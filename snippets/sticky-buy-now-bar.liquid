@@ -7,16 +7,17 @@
 <div id="arch-sticky-buy-bar" class="arch-sticky-bar" aria-hidden="true">
   <div class="arch-sticky-bar__inner">
     {% if product.handle == '6-books-for-interior-exterior-design' %}
-      <div class="arch-sticky-bar__dual-container">
+      <!-- DUAL MODE: Shown only when scrolling through editorial section -->
+      <div class="arch-sticky-bar__dual-container" id="archStickyDual" style="display:none;">
         <!-- Left: Urgency Timer & Title -->
         <div class="arch-sticky-bar__dual-info">
-          <div class="arch-sticky-timer">
+          <div class="arch-sticky-timer arch-sticky-timer--dual">
             <span class="arch-timer-pulse-dot"></span>
             <span class="arch-timer-label">Offer ends in:</span>
             <div class="arch-timer-display">
-              <span class="arch-timer-box" id="archStickyHours">07</span><span class="arch-timer-sep">:</span><!--
-              --><span class="arch-timer-box" id="archStickyMinutes">37</span><span class="arch-timer-sep">:</span><!--
-              --><span class="arch-timer-box" id="archStickySeconds">40</span>
+              <span class="arch-timer-box arch-timer-hours-sync">07</span><span class="arch-timer-sep">:</span><!--
+              --><span class="arch-timer-box arch-timer-mins-sync">37</span><span class="arch-timer-sep">:</span><!--
+              --><span class="arch-timer-box arch-timer-secs-sync">40</span>
             </div>
           </div>
           <div class="arch-sticky-bar__dual-title">
@@ -36,6 +37,48 @@
           </button>
         </div>
       </div>
+
+      <!-- SINGLE MODE: Default bar with timer + price + Buy Now -->
+      <div class="arch-sticky-bar__single-container" id="archStickySingle">
+        <div class="arch-sticky-bar__info">
+          <div class="arch-sticky-timer">
+            <span class="arch-timer-pulse-dot"></span>
+            <span class="arch-timer-label">Offer ends in:</span>
+            <div class="arch-timer-display">
+              <span class="arch-timer-box" id="archStickyHours">07</span><span class="arch-timer-sep">:</span><!--
+              --><span class="arch-timer-box" id="archStickyMinutes">37</span><span class="arch-timer-sep">:</span><!--
+              --><span class="arch-timer-box" id="archStickySeconds">40</span>
+            </div>
+          </div>
+          <div class="arch-sticky-bar__meta">
+            <div class="arch-sticky-bar__pricing">
+              {% assign sticky_curr_var = product.selected_or_first_available_variant %}
+              {% assign sticky_double_price = sticky_curr_var.price | times: 2 %}
+              <span class="arch-sticky-bar__compare" id="archStickyCompare">
+                {{ sticky_double_price | money | replace: 'Rs. ', '₹' | replace: 'Rs.', '₹' | replace: 'Rs ', '₹' }}
+              </span>
+              <span class="arch-sticky-bar__price" id="archStickyPrice">
+                {{ sticky_curr_var.price | money | replace: 'Rs. ', '₹' | replace: 'Rs.', '₹' | replace: 'Rs ', '₹' }}
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="arch-sticky-bar__action">
+          <button type="button" id="archStickyBuyBtn" class="arch-sticky-btn" onclick="executeStickyBuyNow(this)">
+            <svg class="arch-sticky-btn__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <span class="arch-sticky-btn__text">Buy Now</span>
+            <svg class="arch-sticky-btn__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+
     {% else %}
       <!-- Left: Evergreen Urgency Timer (ABOVE) & Pricing (BELOW) -->
       <div class="arch-sticky-bar__info">
@@ -502,6 +545,21 @@
     font-size: 16px;
   }
 }
+
+/* Single container wrapper (for dual/single toggle on 6-books) */
+.arch-sticky-bar__single-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .arch-sticky-bar__single-container {
+    gap: 12px;
+  }
+}
 </style>
 
 <script>
@@ -556,6 +614,11 @@
     if (atcH) atcH.textContent = hStr;
     if (atcM) atcM.textContent = mStr;
     if (atcS) atcS.textContent = sStr;
+
+    // Sync dual-mode timer elements
+    document.querySelectorAll('.arch-timer-hours-sync').forEach(function(el) { el.textContent = hStr; });
+    document.querySelectorAll('.arch-timer-mins-sync').forEach(function(el) { el.textContent = mStr; });
+    document.querySelectorAll('.arch-timer-secs-sync').forEach(function(el) { el.textContent = sStr; });
   }
 
   setInterval(updateTimer, 1000);
@@ -591,6 +654,26 @@
       bar.classList.remove('arch-sticky-bar--visible');
       bar.setAttribute('aria-hidden', 'true');
       document.body.classList.remove('has-arch-sticky-bar');
+    }
+
+    // Toggle dual vs single mode for 6-books product
+    var dualEl = document.getElementById('archStickyDual');
+    var singleEl = document.getElementById('archStickySingle');
+    if (dualEl && singleEl) {
+      var editorialSection = document.getElementById('editorial-sales-section');
+      if (editorialSection) {
+        var eRect = editorialSection.getBoundingClientRect();
+        // Editorial section is "in view" when its top has scrolled past 75% of viewport
+        // AND its bottom hasn't scrolled past the top of the viewport
+        var inEditorial = eRect.top <= triggerOffset && eRect.bottom > 0;
+        if (inEditorial) {
+          dualEl.style.display = 'flex';
+          singleEl.style.display = 'none';
+        } else {
+          dualEl.style.display = 'none';
+          singleEl.style.display = 'flex';
+        }
+      }
     }
   }
 
