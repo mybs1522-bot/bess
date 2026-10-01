@@ -644,12 +644,18 @@
 
     // 1. Check if we are in the new Editorial Sales Section
     let inEditorial = false;
-    var editorialSection = document.getElementById('editorial-sales-section');
-    if (editorialSection) {
-      var eRect = editorialSection.getBoundingClientRect();
-      inEditorial = eRect.top <= triggerOffset && eRect.bottom > 0;
-      if (inEditorial) {
-        shouldShowBar = true;
+    // The price block might be rendered twice (e.g. in a sticky header), so get the visible one
+    var editorialSections = document.querySelectorAll('.product-editorial-block');
+    for (var i = 0; i < editorialSections.length; i++) {
+      var eRect = editorialSections[i].getBoundingClientRect();
+      // Only consider the element if it's actually visible (has height)
+      if (eRect.height > 0) {
+        // Show if top is above trigger, and bottom hasn't scrolled completely out of view
+        if (eRect.top <= triggerOffset && eRect.bottom > 0) {
+          inEditorial = true;
+          shouldShowBar = true;
+        }
+        break; // Found the visible one, no need to check others
       }
     }
 
